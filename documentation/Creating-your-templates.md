@@ -1,0 +1,143 @@
+# Customize SwiftGen templates
+
+This document describes how to make your own templates for SwiftGen, so it can generate code more to your liking and code following your own coding conventions.
+
+## Templates files on disk
+
+When you invoke SwiftGen, you can specify templates by name or by path.
+
+### Using a full path
+
+If you use the `--templatePath` (or `-p`) option, you'll need to specify the **full path** to the template you want to use. This allows you to store your templates anywhere you want and name them anyhow you want, but can become quite annoying to type.
+
+### Using a name
+
+When you use the `--template` (or `-t`) option, you only specify a **template name**. SwiftGen then searches a matching template using the following rules (where `<subcommand>` is one of `colors`, `images`, `storyboards` or `strings` depending on the subcommand you invoke):
+
+* It searches for a file named `<subcommand>-<name>.stencil` in `~/Library/Application Support/SwiftGen/templates`, which is supposed to contain your own custom templates
+* If it does not find one, it searches for a file named `<subcommand>-<name>.stencil` in `<installdir>/share/swiftgen/templates` which contains the templates bundled with SwiftGen.
+
+For example `swiftgen images -t foo DIR` will search for a template named `images-foo.stencil` in Application Support, then in `/usr/local/share/SwiftGen/templates` (assuming you installed SwiftGen using Homebrew in `/usr/local`)
+
+### Default template
+
+If you don't specify neither `-t` nor `-p`, SwiftGen will assume you specified `-t default`.
+
+That means that `swiftgen images DIR` will use the `images-default.stencil` template. 
+
+Stencil comes with a default template for each of its subcommand, but given this rule, this means that **you have the ability to make your own default template for each subcommand** and store them in `Application Support` named like `images-default.stencil`, etc.
+
+## List installed templates
+
+The `swiftgen templates` command will list all the installed templates (as YAML output) for each subcommand, both for bundled templates and custom templates.
+
+```bash
+$ swiftgen templates
+colors:
+  custom:
+  bundled:
+   - default
+   - rawValue
+images:
+  custom:
+  bundled:
+   - allvalues
+   - default
+storyboards:
+  custom:
+   - mytemplate
+  bundled:
+   - default
+   - lowercase
+   - swift3
+strings:
+  custom:
+   - default
+  bundled:
+   - default
+   - swift3
+```
+
+## Templates Format, Nodes and Filters
+
+Templates in SwiftGen are based on [Stencil](https://stencil.fuller.li/), a template engine inspired by Django and Mustache. The syntax of the templates [is explained in Stencil's documentation](https://stencil.fuller.li/en/latest/templates.html).
+
+Additionally to the [tags and filters](https://stencil.fuller.li/en/latest/builtins.html) provided by Stencil, SwiftGen provides some additional ones:
+
+| Node | Description |
+| ---- | ----------- |
+| `{% set my_capture_variable %}`<br>`{% endset %}` | node pair allowing you to capture the rendering of nodes inside it, so you can reuse it later by reusing `{{ my_capture_variable }}`.<br>This is useful if you intend to reuse the same content at multiple places — like the `sceneID` is for the `storyboards-default.stencil` template for example. |
+| `{% macro my_block a b c %}`<br>`{{a}} - {{b}} - {{c}}`<br>`{% endmacro %}` | node pair allowing you to define a reusable block of nodes inside (like a function), so you can reuse it later.<br>In contrast to the `set` tag, the capturing for `macro` is lazy, it will only be processed when actually called. When processed, the block will provide all the defined parameters as variables with their corresponding names.<br>Similar to the `for` tag, this tag provides it's own context scope when called, so variables inside of it are not available outside of it. |
+| `{% call my_block a b c %}` | node allowing you to call a previously defined block. The number of arguments must match the definition of the block. Note that you can call a block from inside the block itself, allowing a form of recursion if need be. |
+
+| Filter | Description |
+| ------ | ----------- |
+| `swiftIdentifier` | Transforms a `String` into a valid Swift identifier, replacing every invalid character to use for a Swift Identifier by a `_`.<br>This is very useful to use an arbitrary string (like a Storyboard ID) as a `case` or `enum` name. |
+| `join` | Operates on Arrays of Strings; joins elements with `, `. |
+| `lowerFirstWord` | Lowercases the first word of a camelCase text; for example transforms `FooBar` to `fooBar` and `URLChooserController` to `urlChooserController`. |
+| `snakeToCamelCase` | Transforms snake_case (using an underscore to separate words, like `foo_bar_baz`) to CamelCase (`FooBarBaz`). |
+| `titlecase` | Uppercases the first letter of a string. This is quite similar to the `capitalize` filter bundled with Stencil, but doesn't force-lowercase the other letters, so while `fooBarBaz|capitalize` will return `Foobarbaz`, `fooBarBaz|titlecase` with return `FooBarBaz`. |
+| `escapeReservedKeywords` | Checks if the string is one of the reserved keywords and if so, escapes it using backticks. While given `foo_bar` it would return `foo_bar`, given `static`, it would return `\`static\``. |
+
+See also [the `GenumKit.GenumTemplate` source code](https://github.com/AliSoftware/SwiftGen/blob/master/GenumKit/Stencil/GenumTemplate.swift#L35-L42) and [the files in `GenumKit/Stencil`](https://github.com/AliSoftware/SwiftGen/tree/master/GenumKit/Stencil).
+
+## Templates Contexts
+
+When SwiftGen generates your code, it provides a context (a dictionary) with the variables containing what images/colors/strings/… the subcommand did detect, to render your Stencil template using those variables.
+
+Below are the variables in the context generated by each SwiftGen subcommand. They are also visible as [comments in the source code here](https://github.com/AliSoftware/SwiftGen/blob/master/GenumKit/Stencil/Contexts.swift).
+
+### Colors
+
+ - `enumName`: `String` — name of the enum to generate
+ - `colors`: `Array` of:
+    - `name`: `String` — name of each color
+    - `rgb`  : `String` — hex value of the form RRGGBB (like "ff6600")
+    - `rgba` : `String` — hex value of the form RRGGBBAA (like "ff6600cc")
+    - `red`  : `String` — hex value of the red component
+    - `green`: `String` — hex value of the green component
+    - `blue` : `String` — hex value of the blue component
+    - `alpha`: `String` — hex value of the alpha component
+
+### Images
+
+ - `enumName`: `String` — name of the enum to generate
+ - `images`: `Array<String>` — list of image names
+
+### Storyboards
+
+ - `sceneEnumName`: `String`
+ - `segueEnumName`: `String`
+ - `storyboards`: `Array` of:
+    - `name`: `String`
+    - `initialScene`: `Dictionary` (absent if not specified)
+       - `customClass`: `String` (absent if generic UIViewController/NSViewController)
+       - `isBaseViewController`: `Bool`, indicate if the baseType is 'viewController' or anything else
+       - `baseType`: `String` (absent if class is a custom class). The base class type on which the initial scene is base.
+          Possible values include 'ViewController', 'NavigationController', 'TableViewController'…
+    - `scenes`: `Array` (absent if empty)
+       - `identifier`: `String`
+       - `customClass`: `String` (absent if generic UIViewController/NSViewController)
+       - `isBaseViewController`: `Bool`, indicate if the baseType is 'ViewController' or anything else
+       - `baseType`: `String` (absent if class is a custom class). The base class type on which a scene is base.
+          Possible values include 'ViewController', 'NavigationController', 'TableViewController'…
+    - `segues`: `Array` (absent if empty)
+       - `identifier`: `String`
+       - `class`: `String` (absent if generic UIStoryboardSegue)
+ 
+### String
+
+ - `enumName`: `String`
+ - `tableName`: `String` - name of the `.strings` file (usually `"Localizable"`)
+ - `strings`: `Array`
+    - `key`: `String`
+    - `translation`: `String`
+    - `params`: `Dictionary` — defined only if localized string has parameters; contains the following entries:
+       - `count`: `Int` — number of parameters
+       - `types`: `Array<String>` containing types like `"String"`, `"Int"`, etc
+       - `declarations`: `Array<String>` containing declarations like `"let p0"`, `"let p1"`, etc
+       - `names`: `Array<String>` containing parameter names like `"p0"`, `"p1"`, etc
+       - `typednames`: Array<String>` containing typed declarations like `"let p0: String`", `"let p1: Int"`, etc
+    - `keytail`: `String` containing the rest of the key after the next first `.`
+                 (useful to do recursion when splitting keys against `.` for structured templates)
+ - `structuredStrings`: `Dictionary` - contains strings structured by keys separated by '.' syntax
