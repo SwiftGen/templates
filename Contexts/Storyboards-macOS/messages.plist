@@ -3,13 +3,9 @@
 <plist version="1.0">
 <dict>
 	<key>extraImports</key>
-	<array>
-		<string>DBPrefsWindowController</string>
-	</array>
+	<array/>
 	<key>modules</key>
-	<array>
-		<string>DBPrefsWindowController</string>
-	</array>
+	<array/>
 	<key>sceneEnumName</key>
 	<string>StoryboardScene</string>
 	<key>segueEnumName</key>
@@ -18,49 +14,7 @@
 	<array>
 		<dict>
 			<key>name</key>
-			<string>AdditionalImport-osx</string>
-			<key>scenes</key>
-			<array>
-				<dict>
-					<key>customClass</key>
-					<string>DBPrefsWindowController</string>
-					<key>customModule</key>
-					<string>DBPrefsWindowController</string>
-					<key>identifier</key>
-					<string>Preferences</string>
-				</dict>
-			</array>
-			<key>segues</key>
-			<array/>
-		</dict>
-		<dict>
-			<key>name</key>
-			<string>Anonymous-osx</string>
-			<key>scenes</key>
-			<array/>
-			<key>segues</key>
-			<array/>
-		</dict>
-		<dict>
-			<key>name</key>
-			<string>Dependency-osx</string>
-			<key>scenes</key>
-			<array>
-				<dict>
-					<key>baseType</key>
-					<string>ViewController</string>
-					<key>identifier</key>
-					<string>Dependent</string>
-					<key>isBaseViewController</key>
-					<true/>
-				</dict>
-			</array>
-			<key>segues</key>
-			<array/>
-		</dict>
-		<dict>
-			<key>name</key>
-			<string>Message-osx</string>
+			<string>Message</string>
 			<key>scenes</key>
 			<array>
 				<dict>
@@ -147,27 +101,6 @@
 					<string>Show</string>
 				</dict>
 			</array>
-		</dict>
-		<dict>
-			<key>name</key>
-			<string>Placeholder-osx</string>
-			<key>scenes</key>
-			<array>
-				<dict>
-					<key>baseType</key>
-					<string>ControllerPlaceholder</string>
-					<key>identifier</key>
-					<string>Dependent</string>
-				</dict>
-				<dict>
-					<key>baseType</key>
-					<string>WindowController</string>
-					<key>identifier</key>
-					<string>Window</string>
-				</dict>
-			</array>
-			<key>segues</key>
-			<array/>
 		</dict>
 	</array>
 </dict>
