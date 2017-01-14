@@ -7,6 +7,7 @@
 import Foundation
 import XCTest
 import PathKit
+import StencilSwiftKit
 
 private let colorCode: (String) -> String = ProcessInfo().environment["XcodeColors"] == "YES" ? { "\u{001b}[\($0);" } : { _ in "" }
 private let (msgColor, reset) = (colorCode("fg250,0,0"), colorCode(""))
@@ -109,6 +110,31 @@ class Fixtures {
       return try path(for: name, subDirectory: subDirectory).read()
     } catch let e {
       fatalError("Unable to load fixture content: \(e)")
+    }
+  }
+}
+
+extension XCTestCase {
+  /**
+   Test the given template against a list of contexts, comparing the output with files in the expected folder.
+   
+   - Parameter template: The name of the template (without the `stencil` extension)
+   - Parameter contextNames: A list of context names (without the `plist` extension)
+   - Parameter outputPrefix: Prefix for the output files, becomes "{outputPrefix}-context-{contextName}.swift"
+   - Parameter directory: The directory to look for files in (correspons to de command)
+   */
+  func test(template templateName: String, contextNames: [String], outputPrefix: String, directory: Fixtures.Directory) {
+    let template = SwiftTemplate(templateString: Fixtures.template(for: "\(templateName).stencil"),
+                                 environment: stencilSwiftEnvironment())
+    
+    for contextName in contextNames {
+      print("Testing context '\(contextName)'...")
+      
+      let context = Fixtures.context(for: "\(contextName).plist", sub: directory)
+      let result = try! template.render(context)
+      let expected = Fixtures.output(for: "\(outputPrefix)-context-\(contextName).swift", sub: directory)
+      
+      XCTDiffStrings(result, expected)
     }
   }
 }

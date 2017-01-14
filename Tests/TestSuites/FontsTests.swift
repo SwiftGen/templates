@@ -7,36 +7,15 @@
 //
 
 import XCTest
-import StencilSwiftKit
 
 class FontsTests: XCTestCase {
   static let contextNames = ["empty", "defaults", "customname"]
   
   func testDefault() {
-    let template = SwiftTemplate(templateString: Fixtures.template(for: "fonts-default.stencil"), environment: stencilSwiftEnvironment())
-    
-    for contextName in FontsTests.contextNames {
-      print("Testing context '\(contextName)'...")
-      
-      let context = Fixtures.context(for: "\(contextName).plist", sub: .fonts)
-      let result = try! template.render(context)
-      let expected = Fixtures.output(for: "default-context-\(contextName).swift", sub: .fonts)
-      
-      XCTDiffStrings(result, expected)
-    }
+    test(template: "fonts-default", contextNames: FontsTests.contextNames, outputPrefix: "default", directory: .fonts)
   }
   
   func testSwift3() {
-    let template = SwiftTemplate(templateString: Fixtures.template(for: "fonts-swift3.stencil"), environment: stencilSwiftEnvironment())
-    
-    for contextName in FontsTests.contextNames {
-      print("Testing context '\(contextName)'...")
-      
-      let context = Fixtures.context(for: "\(contextName).plist", sub: .fonts)
-      let result = try! template.render(context)
-      let expected = Fixtures.output(for: "swift3-context-\(contextName).swift", sub: .fonts)
-      
-      XCTDiffStrings(result, expected)
-    }
+    test(template: "fonts-swift3", contextNames: FontsTests.contextNames, outputPrefix: "swift3", directory: .fonts)
   }
 }

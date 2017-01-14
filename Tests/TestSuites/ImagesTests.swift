@@ -5,78 +5,27 @@
 //
 
 import XCTest
-import StencilSwiftKit
 
 class ImagesTests: XCTestCase {
   static let contextNames = ["empty", "defaults", "customname"]
   
   func testDefault() {
-    let template = SwiftTemplate(templateString: Fixtures.template(for: "images-default.stencil"), environment: stencilSwiftEnvironment())
-    
-    for contextName in ImagesTests.contextNames {
-      print("Testing context '\(contextName)'...")
-      
-      let context = Fixtures.context(for: "\(contextName).plist", sub: .images)
-      let result = try! template.render(context)
-      let expected = Fixtures.output(for: "default-context-\(contextName).swift", sub: .images)
-      
-      XCTDiffStrings(result, expected)
-    }
+    test(template: "images-default", contextNames: ImagesTests.contextNames, outputPrefix: "default", directory: .images)
   }
   
   func testAllValues() {
-    let template = SwiftTemplate(templateString: Fixtures.template(for: "images-allvalues.stencil"), environment: stencilSwiftEnvironment())
-    
-    for contextName in ImagesTests.contextNames {
-      print("Testing context '\(contextName)'...")
-      
-      let context = Fixtures.context(for: "\(contextName).plist", sub: .images)
-      let result = try! template.render(context)
-      let expected = Fixtures.output(for: "allvalues-context-\(contextName).swift", sub: .images)
-      
-      XCTDiffStrings(result, expected)
-    }
+    test(template: "images-allvalues", contextNames: ImagesTests.contextNames, outputPrefix: "allvalues", directory: .images)
   }
   
   func testSwift3() {
-    let template = SwiftTemplate(templateString: Fixtures.template(for: "images-swift3.stencil"), environment: stencilSwiftEnvironment())
-    
-    for contextName in ImagesTests.contextNames {
-      print("Testing context '\(contextName)'...")
-      
-      let context = Fixtures.context(for: "\(contextName).plist", sub: .images)
-      let result = try! template.render(context)
-      let expected = Fixtures.output(for: "swift3-context-\(contextName).swift", sub: .images)
-      
-      XCTDiffStrings(result, expected)
-    }
+    test(template: "images-swift3", contextNames: ImagesTests.contextNames, outputPrefix: "swift3", directory: .images)
   }
   
   func testDotSyntax() {
-    let template = SwiftTemplate(templateString: Fixtures.template(for: "images-dot-syntax.stencil"), environment: stencilSwiftEnvironment())
-    
-    for contextName in ImagesTests.contextNames {
-      print("Testing context '\(contextName)'...")
-      
-      let context = Fixtures.context(for: "\(contextName).plist", sub: .images)
-      let result = try! template.render(context)
-      let expected = Fixtures.output(for: "dot-syntax-context-\(contextName).swift", sub: .images)
-      
-      XCTDiffStrings(result, expected)
-    }
+    test(template: "images-dot-syntax", contextNames: ImagesTests.contextNames, outputPrefix: "dot-syntax", directory: .images)
   }
   
   func testDotSyntaxSwift3() {
-    let template = SwiftTemplate(templateString: Fixtures.template(for: "images-dot-syntax-swift3.stencil"), environment: stencilSwiftEnvironment())
-    
-    for contextName in ImagesTests.contextNames {
-      print("Testing context '\(contextName)'...")
-      
-      let context = Fixtures.context(for: "\(contextName).plist", sub: .images)
-      let result = try! template.render(context)
-      let expected = Fixtures.output(for: "dot-syntax-swift3-context-\(contextName).swift", sub: .images)
-      
-      XCTDiffStrings(result, expected)
-    }
+    test(template: "images-dot-syntax-swift3", contextNames: ImagesTests.contextNames, outputPrefix: "dot-syntax-swift3", directory: .images)
   }
 }
