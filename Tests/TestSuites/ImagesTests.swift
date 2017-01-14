@@ -18,7 +18,7 @@ class ImagesTests: XCTestCase {
       
       let context = Fixtures.context(for: "\(contextName).plist", sub: .images)
       let result = try! template.render(context)
-      let expected = Fixtures.output(for: "default-context-\(contextName).swift.out", sub: .images)
+      let expected = Fixtures.output(for: "default-context-\(contextName).swift", sub: .images)
       
       XCTDiffStrings(result, expected)
     }
@@ -32,7 +32,7 @@ class ImagesTests: XCTestCase {
       
       let context = Fixtures.context(for: "\(contextName).plist", sub: .images)
       let result = try! template.render(context)
-      let expected = Fixtures.output(for: "allvalues-context-\(contextName).swift.out", sub: .images)
+      let expected = Fixtures.output(for: "allvalues-context-\(contextName).swift", sub: .images)
       
       XCTDiffStrings(result, expected)
     }
@@ -46,7 +46,7 @@ class ImagesTests: XCTestCase {
       
       let context = Fixtures.context(for: "\(contextName).plist", sub: .images)
       let result = try! template.render(context)
-      let expected = Fixtures.output(for: "swift3-context-\(contextName).swift.out", sub: .images)
+      let expected = Fixtures.output(for: "swift3-context-\(contextName).swift", sub: .images)
       
       XCTDiffStrings(result, expected)
     }
@@ -60,7 +60,7 @@ class ImagesTests: XCTestCase {
       
       let context = Fixtures.context(for: "\(contextName).plist", sub: .images)
       let result = try! template.render(context)
-      let expected = Fixtures.output(for: "dot-syntax-context-\(contextName).swift.out", sub: .images)
+      let expected = Fixtures.output(for: "dot-syntax-context-\(contextName).swift", sub: .images)
       
       XCTDiffStrings(result, expected)
     }
@@ -74,7 +74,7 @@ class ImagesTests: XCTestCase {
       
       let context = Fixtures.context(for: "\(contextName).plist", sub: .images)
       let result = try! template.render(context)
-      let expected = Fixtures.output(for: "dot-syntax-swift3-context-\(contextName).swift.out", sub: .images)
+      let expected = Fixtures.output(for: "dot-syntax-swift3-context-\(contextName).swift", sub: .images)
       
       XCTDiffStrings(result, expected)
     }

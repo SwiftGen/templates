@@ -19,7 +19,7 @@ class ColorsTests: XCTestCase {
       
       let context = Fixtures.context(for: "\(contextName).plist", sub: .colors)
       let result = try! template.render(context)
-      let expected = Fixtures.output(for: "default-context-\(contextName).swift.out", sub: .colors)
+      let expected = Fixtures.output(for: "default-context-\(contextName).swift", sub: .colors)
       
       XCTDiffStrings(result, expected)
     }
@@ -33,7 +33,7 @@ class ColorsTests: XCTestCase {
       
       let context = Fixtures.context(for: "\(contextName).plist", sub: .colors)
       let result = try! template.render(context)
-      let expected = Fixtures.output(for: "rawValue-context-\(contextName).swift.out", sub: .colors)
+      let expected = Fixtures.output(for: "rawValue-context-\(contextName).swift", sub: .colors)
       
       XCTDiffStrings(result, expected)
     }
@@ -47,7 +47,7 @@ class ColorsTests: XCTestCase {
       
       let context = Fixtures.context(for: "\(contextName).plist", sub: .colors)
       let result = try! template.render(context)
-      let expected = Fixtures.output(for: "swift3-context-\(contextName).swift.out", sub: .colors)
+      let expected = Fixtures.output(for: "swift3-context-\(contextName).swift", sub: .colors)
       
       XCTDiffStrings(result, expected)
     }

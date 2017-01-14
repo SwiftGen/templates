@@ -20,7 +20,7 @@ class FontsTests: XCTestCase {
       
       let context = Fixtures.context(for: "\(contextName).plist", sub: .fonts)
       let result = try! template.render(context)
-      let expected = Fixtures.output(for: "default-context-\(contextName).swift.out", sub: .fonts)
+      let expected = Fixtures.output(for: "default-context-\(contextName).swift", sub: .fonts)
       
       XCTDiffStrings(result, expected)
     }
@@ -34,7 +34,7 @@ class FontsTests: XCTestCase {
       
       let context = Fixtures.context(for: "\(contextName).plist", sub: .fonts)
       let result = try! template.render(context)
-      let expected = Fixtures.output(for: "swift3-context-\(contextName).swift.out", sub: .fonts)
+      let expected = Fixtures.output(for: "swift3-context-\(contextName).swift", sub: .fonts)
       
       XCTDiffStrings(result, expected)
     }
