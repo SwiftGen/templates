@@ -11,6 +11,7 @@
 		DD1F70E31E29A6E20058A059 /* templates in Resources */ = {isa = PBXBuildFile; fileRef = DD1F70E21E29A6E20058A059 /* templates */; };
 		DD1F70E41E29A8290058A059 /* FontsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD5F34EC1E231E8B00AEB5DA /* FontsTests.swift */; };
 		DD1F70E61E29AA940058A059 /* Expected in Resources */ = {isa = PBXBuildFile; fileRef = DD1F70E51E29AA940058A059 /* Expected */; };
+		DD1F70E71E29B1640058A059 /* ColorsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD5F34EB1E231E8B00AEB5DA /* ColorsTests.swift */; };
 		DD5F34E91E231E6B00AEB5DA /* TestsHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD5F34E71E231E6B00AEB5DA /* TestsHelper.swift */; };
 		DD5F34FA1E231F0400AEB5DA /* Contexts in Resources */ = {isa = PBXBuildFile; fileRef = DD5F34F91E231F0400AEB5DA /* Contexts */; };
 /* End PBXBuildFile section */
@@ -268,6 +269,7 @@
 			files = (
 				DD1F70E41E29A8290058A059 /* FontsTests.swift in Sources */,
 				DD5F34E91E231E6B00AEB5DA /* TestsHelper.swift in Sources */,
+				DD1F70E71E29B1640058A059 /* ColorsTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
