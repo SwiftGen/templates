@@ -7,8 +7,6 @@
 import XCTest
 import StencilSwiftKit
 
-// MARK: - Tests for TXT files
-
 class ColorsTests: XCTestCase {
   static let rawOnlyContextNames = ["empty", "defaults", "customname"]
   static let allContextNames = rawOnlyContextNames + ["text-defaults"]
