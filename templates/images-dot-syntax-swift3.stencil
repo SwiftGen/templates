@@ -35,7 +35,7 @@ struct {{enumName}}Type: ExpressibleByStringLiteral {
 {% macro recursiveBlock images sp %}
 {{sp}}  {% for image in images %}
 {{sp}}  {% if not image.items %}
-{{sp}}  static let {{image.name|swiftIdentifier|snakeToCamelCase|lowerFirstWord}}: AssetType = "{{image.value}}"
+{{sp}}  static let {{image.name|swiftIdentifier|snakeToCamelCase|lowerFirstWord}}: {{enumName}}Type = "{{image.value}}"
 {{sp}}  {% else %}
 {{sp}}  enum {{image.name|swiftIdentifier|snakeToCamelCase}} {
 {{sp}}    {% set sp2 %}{{sp}}  {% endset %}
