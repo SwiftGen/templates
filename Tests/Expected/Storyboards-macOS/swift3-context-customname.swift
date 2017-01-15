@@ -49,7 +49,7 @@ extension NSViewController {
   }
 }
 
-struct XCTStoryboardsScene {
+enum XCTStoryboardsScene {
   enum AdditionalImport: String, StoryboardSceneType {
     static let storyboardName = "AdditionalImport"
 
@@ -157,7 +157,7 @@ struct XCTStoryboardsScene {
   }
 }
 
-struct XCTStoryboardsSegue {
+enum XCTStoryboardsSegue {
   enum Message: String, StoryboardSegueType {
     case custom = "Custom"
     case embed = "Embed"

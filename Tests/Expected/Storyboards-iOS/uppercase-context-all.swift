@@ -44,7 +44,7 @@ extension UIViewController {
   }
 }
 
-struct StoryboardScene {
+enum StoryboardScene {
   enum AdditionalImport: String, StoryboardSceneType {
     static let storyboardName = "AdditionalImport"
 
@@ -169,7 +169,7 @@ struct StoryboardScene {
   }
 }
 
-struct StoryboardSegue {
+enum StoryboardSegue {
   enum AdditionalImport: String, StoryboardSegueType {
     case Test = "test"
   }

@@ -54,7 +54,7 @@ extension NSViewController {
 
 {# This is where the generation begins, this code depends on what you have in your Storyboards #}
 {% if storyboards %}
-struct {{sceneEnumName}} {
+enum {{sceneEnumName}} {
   {% for storyboard in storyboards %}
   {% set storyboardName %}{{storyboard.name|swiftIdentifier}}{% endset %}
   {% if storyboard.scenes %}
@@ -91,7 +91,7 @@ struct {{sceneEnumName}} {
   {% endfor %}
 }
 
-struct {{segueEnumName}} {
+enum {{segueEnumName}} {
   {% for storyboard in storyboards %}{% if storyboard.segues %}
   enum {{storyboard.name|swiftIdentifier}}: String, StoryboardSegueType {
     {% for segue in storyboard.segues %}

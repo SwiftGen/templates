@@ -29,7 +29,7 @@ extension Font {
   }
 }
 
-struct FontFamily {
+enum FontFamily {
   enum SFNSDisplay: String, FontConvertible {
     case Black = ".SFNSDisplay-Black"
     case Bold = ".SFNSDisplay-Bold"
