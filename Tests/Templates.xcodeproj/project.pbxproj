@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 47;
+	objectVersion = 48;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -19,39 +19,6 @@
 		DD5F34E91E231E6B00AEB5DA /* TestsHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD5F34E71E231E6B00AEB5DA /* TestsHelper.swift */; };
 		DD5F34FA1E231F0400AEB5DA /* Contexts in Resources */ = {isa = PBXBuildFile; fileRef = DD5F34F91E231F0400AEB5DA /* Contexts */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXBuildRule section */
-		09A87B6A1BCCA50000D9B9F5 /* PBXBuildRule */ = {
-			isa = PBXBuildRule;
-			compilerSpec = com.apple.compilers.pbxcp;
-			filePatterns = "*.storyboard";
-			fileType = pattern.proxy;
-			isEditable = 1;
-			outputFiles = (
-			);
-			script = "";
-		};
-		09A87B6B1BCCA52400D9B9F5 /* PBXBuildRule */ = {
-			isa = PBXBuildRule;
-			compilerSpec = com.apple.compilers.pbxcp;
-			filePatterns = "*.xcassets";
-			fileType = pattern.proxy;
-			isEditable = 1;
-			outputFiles = (
-			);
-			script = "";
-		};
-		09A87B721BCCA60900D9B9F5 /* PBXBuildRule */ = {
-			isa = PBXBuildRule;
-			compilerSpec = com.apple.compilers.pbxcp;
-			filePatterns = "*.strings";
-			fileType = pattern.proxy;
-			isEditable = 1;
-			outputFiles = (
-			);
-			script = "";
-		};
-/* End PBXBuildRule section */
 
 /* Begin PBXFileReference section */
 		09A87B501BCCA2C600D9B9F5 /* Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -162,9 +129,6 @@
 				E927380300BBDAC26313194A /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
-				09A87B721BCCA60900D9B9F5 /* PBXBuildRule */,
-				09A87B6B1BCCA52400D9B9F5 /* PBXBuildRule */,
-				09A87B6A1BCCA50000D9B9F5 /* PBXBuildRule */,
 			);
 			dependencies = (
 			);
@@ -181,7 +145,7 @@
 			attributes = {
 				LastSwiftUpdateCheck = 0800;
 				LastUpgradeCheck = 0800;
-				ORGANIZATIONNAME = AliSoftware;
+				ORGANIZATIONNAME = SwiftGen;
 				TargetAttributes = {
 					09A87B4F1BCCA2C600D9B9F5 = {
 						CreatedOnToolsVersion = 7.0.1;
@@ -190,7 +154,7 @@
 				};
 			};
 			buildConfigurationList = 09030B661B6D254200275BF5 /* Build configuration list for PBXProject "Templates" */;
-			compatibilityVersion = "Xcode 6.3";
+			compatibilityVersion = "Xcode 8.0";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
