@@ -1,5 +1,6 @@
 // Generated using SwiftGen, by O.Halligon — https://github.com/AliSoftware/SwiftGen
 
+{% macro className scene %}{% if scene.customClass %}{% if scene.customModule %}{{scene.customModule}}.{% endif %}{{scene.customClass}}{% else %}NS{{scene.baseType}}{% endif %}{% endmacro %}
 import Foundation
 import Cocoa
 {% for module in modules %}
@@ -64,23 +65,14 @@ enum {{sceneEnumName}} {
     {% set sceneID %}{{scene.identifier|swiftIdentifier|lowerFirstWord}}{% endset %}
 
     case {{sceneID}}Scene = "{{scene.identifier}}"
-    {% if scene.customClass %}
-    static func instantiate{{sceneID||snakeToCamelCase}}() -> {% if scene.customModule %}{{scene.customModule}}.{% endif %}{{scene.customClass}} {
-      guard let vc = {{sceneEnumName}}.{{storyboardName}}.{{sceneID}}Scene.controller() as? {% if scene.customModule %}{{scene.customModule}}.{% endif %}{{scene.customClass}}
+    {% set sceneClass %}{% call className scene %}{% endset %}
+    static func instantiate{{sceneID||snakeToCamelCase}}() -> {{sceneClass}} {
+      guard let vc = {{sceneEnumName}}.{{storyboardName}}.{{sceneID}}Scene.controller() as? {{sceneClass}}
       else {
-        fatalError("ViewController '{{scene.identifier}}' is not of the expected class {% if scene.customModule %}{{scene.customModule}}.{% endif %}{{scene.customClass}}.")
+        fatalError("ViewController '{{scene.identifier}}' is not of the expected class {{sceneClass}}.")
       }
       return vc
     }
-    {% else %}
-    static func instantiate{{sceneID||snakeToCamelCase}}() -> NS{{scene.baseType}} {
-      guard let vc = {{sceneEnumName}}.{{storyboardName}}.{{sceneID}}Scene.controller() as? NS{{scene.baseType}}
-      else {
-        fatalError("ViewController '{{scene.identifier}}' is not of the expected class NS{{scene.baseType}}.")
-      }
-      return vc
-    }
-    {% endif %}
     {% endfor %}
   }
   {% else %}

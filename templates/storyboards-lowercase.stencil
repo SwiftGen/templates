@@ -1,5 +1,6 @@
 // Generated using SwiftGen, by O.Halligon — https://github.com/AliSoftware/SwiftGen
 
+{% macro className scene %}{% if scene.customClass %}{% if scene.customModule %}{{scene.customModule}}.{% endif %}{{scene.customClass}}{% else %}UI{{scene.baseType}}{% endif %}{% endmacro %}
 import Foundation
 import UIKit
 {% for module in modules %}
@@ -53,8 +54,8 @@ enum {{sceneEnumName}} {
   {% if storyboard.scenes %}
   enum {{storyboardName}}: String, StoryboardSceneType {
     static let storyboardName = "{{storyboard.name}}"
-    {% if storyboard.initialScene %}{% if not storyboard.initialScene.isBaseViewController %}
-    {% set initialSceneClass %}{% if storyboard.initialScene.customClass %}{% if storyboard.initialScene.customModule %}{{storyboard.initialScene.customModule}}.{% endif %}{{storyboard.initialScene.customClass}}{% else %}UI{{storyboard.initialScene.baseType}}{% endif %}{% endset %}
+    {% if storyboard.initialScene %}{% if storyboard.initialScene.baseType != "ViewController" %}
+    {% set initialSceneClass %}{% call className storyboard.initialScene %}{% endset %}
 
     static func initialViewController() -> {{initialSceneClass}} {
       guard let vc = storyboard().instantiateInitialViewController() as? {{initialSceneClass}} else {
@@ -67,24 +68,15 @@ enum {{sceneEnumName}} {
     {% set sceneID %}{{scene.identifier|swiftIdentifier|lowerFirstWord}}{% endset %}
 
     case {{sceneID}} = "{{scene.identifier}}"
-    {% if not scene.isBaseViewController %}
-    {% if scene.customClass %}
-    static func {{sceneID}}ViewController() -> {% if scene.customModule %}{{scene.customModule}}.{% endif %}{{scene.customClass}} {
-      guard let vc = {{sceneEnumName}}.{{storyboardName}}.{{sceneID}}.viewController() as? {% if scene.customModule %}{{scene.customModule}}.{% endif %}{{scene.customClass}}
+    {% if scene.baseType != "ViewController" %}
+    {% set sceneClass %}{% call className scene %}{% endset %}
+    static func {{sceneID}}ViewController() -> {{sceneClass}} {
+      guard let vc = {{sceneEnumName}}.{{storyboardName}}.{{sceneID}}.viewController() as? {{sceneClass}}
       else {
-        fatalError("ViewController '{{scene.identifier}}' is not of the expected class {% if scene.customModule %}{{scene.customModule}}.{% endif %}{{scene.customClass}}.")
+        fatalError("ViewController '{{scene.identifier}}' is not of the expected class {{sceneClass}}.")
       }
       return vc
     }
-    {% else %}
-    static func {{sceneID}}ViewController() -> UI{{scene.baseType}} {
-      guard let vc = {{sceneEnumName}}.{{storyboardName}}.{{sceneID}}.viewController() as? UI{{scene.baseType}}
-      else {
-        fatalError("ViewController '{{scene.identifier}}' is not of the expected class UI{{scene.baseType}}.")
-      }
-      return vc
-    }
-    {% endif %}
     {% else %}
     static func {{sceneID|lowerFirstWord}}ViewController() -> UIViewController {
       return {{sceneEnumName}}.{{storyboardName}}.{{sceneID}}.viewController()
@@ -95,8 +87,8 @@ enum {{sceneEnumName}} {
   {% else %}
   enum {{storyboardName}}: StoryboardSceneType {
     static let storyboardName = "{{storyboard.name}}"
-    {% if storyboard.initialScene %}{% if not storyboard.initialScene.isBaseViewController %}
-    {% set initialSceneClass %}{% if storyboard.initialScene.customClass %}{% if storyboard.initialScene.customModule %}{{storyboard.initialScene.customModule}}.{% endif %}{{storyboard.initialScene.customClass}}{% else %}UI{{storyboard.initialScene.baseType}}{% endif %}{% endset %}
+    {% if storyboard.initialScene %}{% if storyboard.initialScene.baseType != "ViewController" %}
+    {% set initialSceneClass %}{% call className storyboard.initialScene %}{% endset %}
 
     static func initialViewController() -> {{initialSceneClass}} {
       guard let vc = storyboard().instantiateInitialViewController() as? {{initialSceneClass}} else {
