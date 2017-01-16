@@ -86,21 +86,21 @@ extension L10n: CustomStringConvertible {
         return L10n.tr("alert_message")
       case .AlertTitle:
         return L10n.tr("alert_title")
-      case .Greetings(let p0, let p1):
-        return L10n.tr("greetings", p0, p1)
-      case .ObjectOwnership(let p0, let p1, let p2):
-        return L10n.tr("ObjectOwnership", p0, p1, p2)
+      case .Greetings(let p1, let p2):
+        return L10n.tr("greetings", p1, p2)
+      case .ObjectOwnership(let p1, let p2, let p3):
+        return L10n.tr("ObjectOwnership", p1, p2, p3)
       case .Apples(let levelSubKeyApples):
 
         switch levelSubKeyApples {
-          case .Count(let p0):
-            return L10n.tr("apples.count", p0)
+          case .Count(let p1):
+            return L10n.tr("apples.count", p1)
         }
       case .Bananas(let levelSubKeyBananas):
 
         switch levelSubKeyBananas {
-          case .Owner(let p0, let p1):
-            return L10n.tr("bananas.owner", p0, p1)
+          case .Owner(let p1, let p2):
+            return L10n.tr("bananas.owner", p1, p2)
         }
       case .Settings(let levelSubKeySettings):
 

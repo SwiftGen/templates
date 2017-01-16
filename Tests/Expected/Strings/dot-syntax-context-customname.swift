@@ -16,25 +16,25 @@ enum XCTLoc {
   /// Title of the alert
   static let AlertTitle = XCTLoc.tr("alert_title")
   /// Hello, my name is %@ and I'm %d
-  static func Greetings(p0: String, p1: Int) -> String {
-    return XCTLoc.tr("greetings", p0, p1)
+  static func Greetings(p1: String, p2: Int) -> String {
+    return XCTLoc.tr("greetings", p1, p2)
   }
   /// These are %3$@'s %1$d %2$@.
-  static func ObjectOwnership(p0: Int, p1: String, p2: String) -> String {
-    return XCTLoc.tr("ObjectOwnership", p0, p1, p2)
+  static func ObjectOwnership(p1: Int, p2: String, p3: String) -> String {
+    return XCTLoc.tr("ObjectOwnership", p1, p2, p3)
   }
 
   enum Apples {
     /// You have %d apples
-    static func Count(p0: Int) -> String {
-      return XCTLoc.tr("apples.count", p0)
+    static func Count(p1: Int) -> String {
+      return XCTLoc.tr("apples.count", p1)
     }
   }
 
   enum Bananas {
     /// Those %d bananas belong to %@.
-    static func Owner(p0: Int, p1: String) -> String {
-      return XCTLoc.tr("bananas.owner", p0, p1)
+    static func Owner(p1: Int, p2: String) -> String {
+      return XCTLoc.tr("bananas.owner", p1, p2)
     }
   }
 

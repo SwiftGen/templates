@@ -86,21 +86,21 @@ extension XCTLoc: CustomStringConvertible {
         return XCTLoc.tr("alert_message")
       case .AlertTitle:
         return XCTLoc.tr("alert_title")
-      case .Greetings(let p0, let p1):
-        return XCTLoc.tr("greetings", p0, p1)
-      case .ObjectOwnership(let p0, let p1, let p2):
-        return XCTLoc.tr("ObjectOwnership", p0, p1, p2)
+      case .Greetings(let p1, let p2):
+        return XCTLoc.tr("greetings", p1, p2)
+      case .ObjectOwnership(let p1, let p2, let p3):
+        return XCTLoc.tr("ObjectOwnership", p1, p2, p3)
       case .Apples(let levelSubKeyApples):
 
         switch levelSubKeyApples {
-          case .Count(let p0):
-            return XCTLoc.tr("apples.count", p0)
+          case .Count(let p1):
+            return XCTLoc.tr("apples.count", p1)
         }
       case .Bananas(let levelSubKeyBananas):
 
         switch levelSubKeyBananas {
-          case .Owner(let p0, let p1):
-            return XCTLoc.tr("bananas.owner", p0, p1)
+          case .Owner(let p1, let p2):
+            return XCTLoc.tr("bananas.owner", p1, p2)
         }
       case .Settings(let levelSubKeySettings):
 

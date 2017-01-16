@@ -11,14 +11,14 @@ enum XCTLoc {
   case AlertMessage
   /// Title of the alert
   case AlertTitle
-  /// You have %d apples
-  case ApplesCount(Int)
-  /// Those %d bananas belong to %@.
-  case BananasOwner(Int, String)
   /// Hello, my name is %@ and I'm %d
   case Greetings(String, Int)
   /// These are %3$@'s %1$d %2$@.
   case ObjectOwnership(Int, String, String)
+  /// You have %d apples
+  case ApplesCount(Int)
+  /// Those %d bananas belong to %@.
+  case BananasOwner(Int, String)
   /// Some Reserved Keyword there
   case SettingsNavigationBarSelf
   /// Settings
@@ -41,14 +41,14 @@ extension XCTLoc: CustomStringConvertible {
         return XCTLoc.tr("alert_message")
       case .AlertTitle:
         return XCTLoc.tr("alert_title")
-      case .ApplesCount(let p0):
-        return XCTLoc.tr("apples.count", p0)
-      case .BananasOwner(let p0, let p1):
-        return XCTLoc.tr("bananas.owner", p0, p1)
-      case .Greetings(let p0, let p1):
-        return XCTLoc.tr("greetings", p0, p1)
-      case .ObjectOwnership(let p0, let p1, let p2):
-        return XCTLoc.tr("ObjectOwnership", p0, p1, p2)
+      case .Greetings(let p1, let p2):
+        return XCTLoc.tr("greetings", p1, p2)
+      case .ObjectOwnership(let p1, let p2, let p3):
+        return XCTLoc.tr("ObjectOwnership", p1, p2, p3)
+      case .ApplesCount(let p1):
+        return XCTLoc.tr("apples.count", p1)
+      case .BananasOwner(let p1, let p2):
+        return XCTLoc.tr("bananas.owner", p1, p2)
       case .SettingsNavigationBarSelf:
         return XCTLoc.tr("settings.navigation-bar.self")
       case .SettingsNavigationBarTitleEvenDeeper:
@@ -71,4 +71,3 @@ extension XCTLoc: CustomStringConvertible {
 func tr(key: XCTLoc) -> String {
   return key.string
 }
-

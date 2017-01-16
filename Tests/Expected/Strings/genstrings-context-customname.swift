@@ -9,14 +9,14 @@ enum XCTLoc {
   case AlertMessage
   /// Title of the alert
   case AlertTitle
-  /// You have %d apples
-  case ApplesCount(Int)
-  /// Those %d bananas belong to %@.
-  case BananasOwner(Int, String)
   /// Hello, my name is %@ and I'm %d
   case Greetings(String, Int)
   /// These are %3$@'s %1$d %2$@.
   case ObjectOwnership(Int, String, String)
+  /// You have %d apples
+  case ApplesCount(Int)
+  /// Those %d bananas belong to %@.
+  case BananasOwner(Int, String)
   /// Some Reserved Keyword there
   case SettingsNavigationBarSelf
   /// Settings
@@ -40,18 +40,18 @@ extension XCTLoc: CustomStringConvertible {
       case .AlertTitle:
         let format = NSLocalizedString("alert_title", comment: "")
         return XCTLoc.tr(format)
-      case .ApplesCount(let p0):
-        let format = NSLocalizedString("apples.count", comment: "")
-        return XCTLoc.tr(format, p0)
-      case .BananasOwner(let p0, let p1):
-        let format = NSLocalizedString("bananas.owner", comment: "")
-        return XCTLoc.tr(format, p0, p1)
-      case .Greetings(let p0, let p1):
+      case .Greetings(let p1, let p2):
         let format = NSLocalizedString("greetings", comment: "")
-        return XCTLoc.tr(format, p0, p1)
-      case .ObjectOwnership(let p0, let p1, let p2):
+        return XCTLoc.tr(format, p1, p2)
+      case .ObjectOwnership(let p1, let p2, let p3):
         let format = NSLocalizedString("ObjectOwnership", comment: "")
-        return XCTLoc.tr(format, p0, p1, p2)
+        return XCTLoc.tr(format, p1, p2, p3)
+      case .ApplesCount(let p1):
+        let format = NSLocalizedString("apples.count", comment: "")
+        return XCTLoc.tr(format, p1)
+      case .BananasOwner(let p1, let p2):
+        let format = NSLocalizedString("bananas.owner", comment: "")
+        return XCTLoc.tr(format, p1, p2)
       case .SettingsNavigationBarSelf:
         let format = NSLocalizedString("settings.navigation-bar.self", comment: "")
         return XCTLoc.tr(format)
@@ -78,4 +78,3 @@ extension XCTLoc: CustomStringConvertible {
 func tr(key: XCTLoc) -> String {
   return key.string
 }
-

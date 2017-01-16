@@ -23,7 +23,6 @@ import Foundation
 {{sp}}  static let {{string.keytail|swiftIdentifier|snakeToCamelCase|lowerFirstWord|escapeReservedKeywords}} = {{enumName}}.tr("{{string.key}}")
 {{sp}}  {% endif %}
 {{sp}}  {% endfor %}
-{{sp}}  {% if strings.subenums %}
 {{sp}}  {% for subenum in strings.subenums %}
 
 {{sp}}  enum {{subenum.name|swiftIdentifier|snakeToCamelCase}} {
@@ -31,7 +30,6 @@ import Foundation
 {{sp}}    {% call recursiveBlock subenum sp2 %}
 {{sp}}  }
 {{sp}}  {% endfor %}
-{{sp}}  {% endif %}
 {% endmacro %}
 
 enum {{enumName}} {

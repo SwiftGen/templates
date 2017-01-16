@@ -11,14 +11,14 @@ enum L10n {
   case alertMessage
   /// Title of the alert
   case alertTitle
-  /// You have %d apples
-  case applesCount(Int)
-  /// Those %d bananas belong to %@.
-  case bananasOwner(Int, String)
   /// Hello, my name is %@ and I'm %d
   case greetings(String, Int)
   /// These are %3$@'s %1$d %2$@.
   case objectOwnership(Int, String, String)
+  /// You have %d apples
+  case applesCount(Int)
+  /// Those %d bananas belong to %@.
+  case bananasOwner(Int, String)
   /// Some Reserved Keyword there
   case settingsNavigationBarSelf
   /// Settings
@@ -41,14 +41,14 @@ extension L10n: CustomStringConvertible {
         return L10n.tr(key: "alert_message")
       case .alertTitle:
         return L10n.tr(key: "alert_title")
-      case .applesCount(let p0):
-        return L10n.tr(key: "apples.count", p0)
-      case .bananasOwner(let p0, let p1):
-        return L10n.tr(key: "bananas.owner", p0, p1)
-      case .greetings(let p0, let p1):
-        return L10n.tr(key: "greetings", p0, p1)
-      case .objectOwnership(let p0, let p1, let p2):
-        return L10n.tr(key: "ObjectOwnership", p0, p1, p2)
+      case .greetings(let p1, let p2):
+        return L10n.tr(key: "greetings", p1, p2)
+      case .objectOwnership(let p1, let p2, let p3):
+        return L10n.tr(key: "ObjectOwnership", p1, p2, p3)
+      case .applesCount(let p1):
+        return L10n.tr(key: "apples.count", p1)
+      case .bananasOwner(let p1, let p2):
+        return L10n.tr(key: "bananas.owner", p1, p2)
       case .settingsNavigationBarSelf:
         return L10n.tr(key: "settings.navigation-bar.self")
       case .settingsNavigationBarTitleEvenDeeper:
@@ -71,4 +71,3 @@ extension L10n: CustomStringConvertible {
 func tr(_ key: L10n) -> String {
   return key.string
 }
-
