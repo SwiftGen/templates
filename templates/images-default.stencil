@@ -11,11 +11,20 @@
 
 // swiftlint:disable file_length
 // swiftlint:disable line_length
+{% macro recursiveBlock images %}
+  {% for image in images %}
+  {% if not image.items %}
+  case {{image.value|swiftIdentifier}} = "{{image.value}}"
+  {% else %}
+  {% call recursiveBlock image.items %}
+  {% endif %}
+  {% endfor %}
+{% endmacro %}
 
 // swiftlint:disable type_body_length
 enum {{enumName}}: String {
-  {% for image in images %}
-  case {{image|swiftIdentifier}} = "{{image}}"
+  {% for catalog in catalogs %}
+  {% call recursiveBlock catalog.assets %}
   {% endfor %}
 
   var image: Image {

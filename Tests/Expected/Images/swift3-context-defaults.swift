@@ -16,10 +16,10 @@ enum Asset: String {
   case exoticBanana = "Exotic/Banana"
   case exoticMango = "Exotic/Mango"
   case lemon = "Lemon"
-  case roundApple = "Round/Apple"
   case roundApricot = "Round/Apricot"
-  case roundDoubleCherry = "Round/Double/Cherry"
   case roundOrange = "Round/Orange"
+  case roundApple = "Round/Apple"
+  case roundDoubleCherry = "Round/Double/Cherry"
   case roundTomato = "Round/Tomato"
 
   var image: Image {
