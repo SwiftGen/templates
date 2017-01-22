@@ -11,11 +11,12 @@ warn("Big PR") if git.lines_of_code > 500
 # if git.lines_of_code > 3 && !git.modified_files.include?("CHANGELOG.yml")
 if !git.modified_files.include?("CHANGELOG.yml") && !declared_trivial
   fail("Please include a CHANGELOG entry. \nYou can find it at [CHANGELOG.md](https://github.com/SwiftGen/SwiftGen/blob/master/CHANGELOG.md).")
-  message <<-CHANGELOG_FORMAT.gsub(/^ *\|/,'')
-  We use the following format for CHANGELOG entries:
+  changelog_msg = <<-CHANGELOG_FORMAT.gsub(/^ *\|/,'')
+  |We use the following format for CHANGELOG entries:
   |<code><pre>
   | * Describe your change here.  Don’t forget to use 2 spaces at the end of the last line describing your change.  
   |   [#nn](https://github.com/SwiftGen/SwiftGen/pull/nn)
   |</pre>/<code>
 CHANGELOG_FORMAT
+  message(changelog_msg)
 end
