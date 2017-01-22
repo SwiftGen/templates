@@ -10,14 +10,22 @@ warn("Big PR") if git.lines_of_code > 500
 
 # if git.lines_of_code > 3 && !git.modified_files.include?("CHANGELOG.yml")
 if !git.modified_files.include?("CHANGELOG.yml") && !declared_trivial
-  fail("Please include a CHANGELOG entry. \nYou can find it at [CHANGELOG.md](https://github.com/SwiftGen/SwiftGen/blob/master/CHANGELOG.md).")
+  repo_url = github.pr_json['head']['repo']['html_url']
+  pr_number = github.pr_json['number']
+  pr_url = github.pr_json['html_url']
+  pr_title = github.pr_title.sub(/[?.!,;]?$/, '').capitalize
+  pr_author = github.pr_author
+  pr_author_url = "https://github.com/#{github.pr_author}"
+
+  fail("Please include a CHANGELOG entry. \nYou can find it at [CHANGELOG.md](#{repo_url}/blob/master/CHANGELOG.md).")
   changelog_msg = <<-CHANGELOG_FORMAT.gsub(/^ *\|/,'')
   |Note: we use the following format for CHANGELOG entries:
   |```
-  | * Describe your change here. Don’t forget to use 2 spaces at the end
-  |   of the last line describing your change.  
-  |   [#nn](https://github.com/SwiftGen/SwiftGen/pull/nn)
+  | * #{pr_title}  
+  |   [##{pr_number}](#{pr_url})
+  |   [@#{pr_author}](#{pr_author_url})
   |```
+  |:bulb: Don't forget to use 2 spaces after the full stop at the end of the line describing your changes.
 CHANGELOG_FORMAT
   markdown(changelog_msg)
 end
