@@ -14,5 +14,6 @@ if !git.modified_files.include?("CHANGELOG.yml") && !declared_trivial
   message "We use the following format for CHANGELOG entries:\n\n" +
           '```' + "\n" +
           "* Describe your change here.  Don't forget to use 2 spaces at the end of the last line describing your change.  \n" +
-          "  [#nn](https://github.com/SwiftGen/SwiftGen/pull/nn)"
+          "  [#nn](https://github.com/SwiftGen/SwiftGen/pull/nn)" +
+          '```' + "\n"
 end
