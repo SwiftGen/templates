@@ -7,6 +7,8 @@ dependencies:
     - rake lint:install
 
 test:
+  pre:
+    - bundle exec danger
   override:
     - rake lint:tests
     - rake xcode:test
