@@ -163,4 +163,3 @@ extension XCTLoc: CustomStringConvertible {
 func tr(key: XCTLoc) -> String {
   return key.string
 }
-
