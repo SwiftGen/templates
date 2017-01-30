@@ -1,18 +1,16 @@
-# For now this script doesn't work completely, because:
-# - Some of the templates are aimed for Swift 3, so compiling them with Swift 2.2 will fail
-# - Some templates require some context, specially for the Storyboards we need to declare
-#   XXPickerViewController and CreateAccViewController dummy VC subclasses to be able to compile.
-#
-# Once we find a clean way to resolve those limitation, we could reactivate the script.
-# You could also temporarly activate the script and ignore the errors listed above to check if those
-#   are the only errors or if we introduced unrelated errors that needs to be fixed
+# first compile the modules
+echo "Compiling modules…"
+./Scripts/compile-modules.sh
 
+# compile each file
 for f in `find "Tests/Expected" -name '*.swift'`
 do
 	if [[ $f == *"swift3"* ]]; then
 		TOOLCHAIN=""
+		MODULES="Scripts/Modules/swift3"
 	else
 		TOOLCHAIN="--toolchain com.apple.dt.toolchain.Swift_2_3"
+		MODULES="Scripts/Modules/swift2.3"
 	fi
 	if [[ $f == *"macOS"* ]]; then
 		SDK="macosx"
@@ -23,5 +21,5 @@ do
 	fi
 
 	echo "Checking $f template-generated fixture for build errors…"
-	xcrun $TOOLCHAIN -sdk $SDK swiftc -parse -target $TARGET "$f"
+	xcrun $TOOLCHAIN -sdk $SDK swiftc -parse -target $TARGET "$f" -I $MODULES
 done
