@@ -10,5 +10,6 @@ env:
 
 script:
   - rake "$RAKETASK"
+  - Scripts/swiftlint-output.sh
   - Scripts/compile-modules.sh
   - Scripts/compile-output.sh
