@@ -50,7 +50,7 @@ extension UIViewController {
 {% if storyboards %}
 enum {{sceneEnumName}} {
   {% for storyboard in storyboards %}
-  {% set storyboardName %}{{storyboard.name|swiftIdentifier}}{% endset %}
+  {% set storyboardName %}{{storyboard.name|swiftIdentifier|escapeReservedKeywords}}{% endset %}
   {% if storyboard.scenes %}
   enum {{storyboardName}}: String, StoryboardSceneType {
     static let storyboardName = "{{storyboard.name}}"
@@ -65,7 +65,7 @@ enum {{sceneEnumName}} {
     }
     {% endif %}{% endif %}
     {% for scene in storyboard.scenes %}
-    {% set sceneID %}{{scene.identifier|swiftIdentifier|lowerFirstWord}}{% endset %}
+    {% set sceneID %}{{scene.identifier|swiftIdentifier|lowerFirstWord|escapeReservedKeywords}}{% endset %}
 
     case {{sceneID}}{% if sceneID != scene.identifier %} = "{{scene.identifier}}"{% endif %}
     {% if scene.baseType != "ViewController" %}
@@ -104,10 +104,10 @@ enum {{sceneEnumName}} {
 
 enum {{segueEnumName}} {
   {% for storyboard in storyboards %}{% if storyboard.segues %}
-  enum {{storyboard.name|swiftIdentifier}}: String, StoryboardSegueType {
+  enum {{storyboard.name|swiftIdentifier|escapeReservedKeywords}}: String, StoryboardSegueType {
     {% for segue in storyboard.segues %}
     {% set segueID %}{{segue.identifier|swiftIdentifier}}{% endset %}
-    case {{segueID}}{% if segueID != segue.identifier %} = "{{segue.identifier}}"{% endif %}
+    case {{segueID|escapeReservedKeywords}}{% if segueID != segue.identifier %} = "{{segue.identifier}}"{% endif %}
     {% endfor %}
   }
   {% endif %}{% endfor %}

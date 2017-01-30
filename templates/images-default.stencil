@@ -14,7 +14,7 @@
 {% macro recursiveBlock images %}
   {% for image in images %}
   {% if not image.items %}
-  case {{image.value|swiftIdentifier}} = "{{image.value}}"
+  case {{image.value|swiftIdentifier|escapeReservedKeywords}} = "{{image.value}}"
   {% else %}
   {% call recursiveBlock image.items %}
   {% endif %}

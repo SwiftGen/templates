@@ -7,7 +7,7 @@ import Foundation
 {% macro recursiveBlock strings %}
   {% for string in strings.strings %}
   /// {{string.translation}}
-  case {{string.key|swiftIdentifier|snakeToCamelCase}}{% if string.params %}({{string.params.types|join}}){% endif %}
+  case {{string.key|swiftIdentifier|snakeToCamelCase|escapeReservedKeywords}}{% if string.params %}({{string.params.types|join}}){% endif %}
   {% endfor %}
   {% for subenum in strings.subenums %}
   {% call recursiveBlock subenum %}
@@ -23,11 +23,11 @@ enum {{enumName}} {
 {% macro recursiveBlock strings %}
       {% for string in strings.strings %}
       {% if string.params %}
-      case .{{string.key|swiftIdentifier|snakeToCamelCase}}({% call parametersBlock string.params %}):
+      case .{{string.key|swiftIdentifier|snakeToCamelCase|escapeReservedKeywords}}({% call parametersBlock string.params %}):
         let format = NSLocalizedString("{{string.key}}", comment: "")
         return {{enumName}}.tr(format, {% call argumentsBlock string.params %})
       {% else %}
-      case .{{string.key|swiftIdentifier|snakeToCamelCase}}:
+      case .{{string.key|swiftIdentifier|snakeToCamelCase|escapeReservedKeywords}}:
         let format = NSLocalizedString("{{string.key}}", comment: "")
         return {{enumName}}.tr(format)
       {% endif %}

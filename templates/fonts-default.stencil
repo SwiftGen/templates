@@ -32,9 +32,9 @@ extension Font {
 
 enum {{enumName}} {
   {% for family in families %}
-  enum {{family.name|swiftIdentifier|snakeToCamelCaseNoPrefix}}: String, FontConvertible {
+  enum {{family.name|swiftIdentifier|snakeToCamelCaseNoPrefix|escapeReservedKeywords}}: String, FontConvertible {
     {% for font in family.fonts %}
-    case {{font.style|swiftIdentifier|snakeToCamelCaseNoPrefix}} = "{{font.fontName}}"
+    case {{font.style|swiftIdentifier|snakeToCamelCaseNoPrefix|escapeReservedKeywords}} = "{{font.fontName}}"
     {% endfor %}
   }
   {% endfor %}
