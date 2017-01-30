@@ -10,4 +10,5 @@ env:
 
 script:
   - rake "$RAKETASK"
+  - Scripts/compile-modules.sh
   - Scripts/compile-output.sh

@@ -1,8 +1,3 @@
-# first compile the modules
-echo "Compiling modules…"
-./Scripts/compile-modules.sh
-
-# compile each file
 for f in `find "Tests/Expected" -name '*.swift'`
 do
 	if [[ $f == *"swift3"* ]]; then
@@ -12,6 +7,7 @@ do
 		TOOLCHAIN="--toolchain com.apple.dt.toolchain.Swift_2_3"
 		MODULES="Scripts/Modules/swift2.3"
 	fi
+
 	if [[ $f == *"macOS"* ]]; then
 		SDK="macosx"
 		TARGET="x86_64-apple-macosx10.12"
