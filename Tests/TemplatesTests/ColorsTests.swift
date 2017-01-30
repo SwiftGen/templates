@@ -13,21 +13,21 @@ class ColorsTests: XCTestCase {
   }
 
   func testDefault() {
-    test(template: "colors-default",
+    test(template: "default",
          contextNames: Contexts.all,
          outputPrefix: "default",
          directory: .colors)
   }
 
   func testRawValue() {
-    test(template: "colors-rawValue",
+    test(template: "rawValue",
          contextNames: Contexts.rawOnly,
          outputPrefix: "rawValue",
          directory: .colors)
   }
 
   func testSwift3() {
-    test(template: "colors-swift3",
+    test(template: "swift3",
          contextNames: Contexts.all,
          outputPrefix: "swift3",
          directory: .colors)

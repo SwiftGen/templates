@@ -12,23 +12,26 @@ class StoryboardsMacOSTests: XCTestCase {
   }
 
   func testDefault() {
-    test(template: "storyboards-osx-default",
+    test(template: "osx-default",
          contextNames: Contexts.all,
          outputPrefix: "default",
-         directory: .storyboardsMacOS)
+         directory: .storyboards,
+         resourceDirectory: .storyboardsMacOS)
   }
 
   func testSwift3() {
-    test(template: "storyboards-osx-swift3",
+    test(template: "osx-swift3",
          contextNames: Contexts.all,
          outputPrefix: "swift3",
-         directory: .storyboardsMacOS)
+         directory: .storyboards,
+         resourceDirectory: .storyboardsMacOS)
   }
 
   func testLowercase() {
-    test(template: "storyboards-osx-lowercase",
+    test(template: "osx-lowercase",
          contextNames: Contexts.all,
          outputPrefix: "lowercase",
-         directory: .storyboardsMacOS)
+         directory: .storyboards,
+         resourceDirectory: .storyboardsMacOS)
   }
 }

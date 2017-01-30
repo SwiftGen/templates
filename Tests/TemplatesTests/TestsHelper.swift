@@ -71,6 +71,7 @@ class Fixtures {
     case colors = "Colors"
     case fonts = "Fonts"
     case images = "Images"
+    case storyboards = "Storyboards"
     case storyboardsiOS = "Storyboards-iOS"
     case storyboardsMacOS = "Storyboards-macOS"
     case strings = "Strings"
@@ -110,8 +111,8 @@ class Fixtures {
     return data
   }
 
-  static func template(for name: String) -> String {
-    return string(for: name, subDirectory: "templates")
+  static func template(for name: String, sub: Directory) -> String {
+    return string(for: name, subDirectory: "templates/\(sub.rawValue.lowercased())")
   }
 
   static func output(for name: String, sub: Directory) -> String {
@@ -144,26 +145,30 @@ extension XCTestCase {
    - Parameter contextNames: A list of context names (without the `plist` extension)
    - Parameter outputPrefix: Prefix for the output files, becomes "{outputPrefix}-context-{contextName}.swift"
    - Parameter directory: The directory to look for files in (correspons to de command)
+   - Parameter resourceDirectory: The directory to look for files in (corresponds to de command)
    - Parameter contextVariations: Optional closure to generate context variations.
    */
   func test(template templateName: String,
             contextNames: [String],
             outputPrefix: String,
             directory: Fixtures.Directory,
+            resourceDirectory: Fixtures.Directory? = nil,
             contextVariations: VariationGenerator? = nil) {
-    let template = StencilSwiftTemplate(templateString: Fixtures.template(for: "\(templateName).stencil"),
+    let templateString = Fixtures.template(for: "\(templateName).stencil", sub: directory)
+    let template = StencilSwiftTemplate(templateString: templateString,
                                         environment: stencilSwiftEnvironment())
     let contextVariations = contextVariations ?? { [(context: $1, suffix: "")] }
+    let resourceDir = resourceDirectory ?? directory
 
     for contextName in contextNames {
       print("Testing context '\(contextName)'...")
-      let context = Fixtures.context(for: "\(contextName).plist", sub: directory)
+      let context = Fixtures.context(for: "\(contextName).plist", sub: resourceDir)
 
       for (context, suffix) in contextVariations(contextName, context) {
         guard let result = try? template.render(context) else {
           fatalError("Unable to render template")
         }
-        let expected = Fixtures.output(for: "\(outputPrefix)-context-\(contextName)\(suffix).swift", sub: directory)
+        let expected = Fixtures.output(for: "\(outputPrefix)-context-\(contextName)\(suffix).swift", sub: resourceDir)
         XCTDiffStrings(result, expected)
       }
     }
