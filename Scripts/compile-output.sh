@@ -21,5 +21,5 @@ do
 	fi
 
 	echo "Checking $f template-generated fixture for build errors…"
-	xcrun $TOOLCHAIN -sdk $SDK swiftc -parse -target $TARGET "$f" -I $MODULES
+	xcrun $TOOLCHAIN -sdk $SDK swiftc -parse -target $TARGET -I $MODULES "Scripts/Definitions.swift" "$f"
 done
