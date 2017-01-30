@@ -2,7 +2,7 @@
 
 import Foundation
 import Cocoa
-import DBPrefsWindowController
+import PrefsWindowController
 
 // swiftlint:disable file_length
 // swiftlint:disable line_length
@@ -54,10 +54,10 @@ enum XCTStoryboardsScene {
     static let storyboardName = "AdditionalImport"
 
     case preferencesScene = "Preferences"
-    static func instantiatePreferences() -> DBPrefsWindowController.DBPrefsWindowController {
-      guard let vc = XCTStoryboardsScene.AdditionalImport.preferencesScene.controller() as? DBPrefsWindowController.DBPrefsWindowController
+    static func instantiatePreferences() -> PrefsWindowController.DBPrefsWindowController {
+      guard let vc = XCTStoryboardsScene.AdditionalImport.preferencesScene.controller() as? PrefsWindowController.DBPrefsWindowController
       else {
-        fatalError("ViewController 'Preferences' is not of the expected class DBPrefsWindowController.DBPrefsWindowController.")
+        fatalError("ViewController 'Preferences' is not of the expected class PrefsWindowController.DBPrefsWindowController.")
       }
       return vc
     }
