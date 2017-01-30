@@ -159,11 +159,11 @@ enum StoryboardScene {
 
 enum StoryboardSegue {
   enum Message: String, StoryboardSegueType {
-    case Custom = "Custom"
-    case Embed = "Embed"
-    case Modal = "Modal"
-    case Popover = "Popover"
-    case Sheet = "Sheet"
-    case Show = "Show"
+    case Custom
+    case Embed
+    case Modal
+    case Popover
+    case Sheet
+    case Show
   }
 }

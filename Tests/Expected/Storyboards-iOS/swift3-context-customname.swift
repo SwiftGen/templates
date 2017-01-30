@@ -171,7 +171,7 @@ enum XCTStoryboardsScene {
 
 enum XCTStoryboardsSegue {
   enum AdditionalImport: String, StoryboardSegueType {
-    case test = "test"
+    case test
   }
   enum Message: String, StoryboardSegueType {
     case customBack = "CustomBack"
