@@ -33,9 +33,6 @@ enum ColorName: UInt32 {
   /// <span style="display:block;width:3em;height:2em;border:1px solid black;background:#33fe66"></span>
   /// Alpha: 100% <br/> (0x33fe66ff)
   case ArticleTitle = 0x33fe66ff
-  /// <span style="display:block;width:3em;height:2em;border:1px solid black;background:#ff66cc"></span>
-  /// Alpha: 100% <br/> (0xff66ccff)
-  case Cyan_Color = 0xff66ccff
   /// <span style="display:block;width:3em;height:2em;border:1px solid black;background:#ffffff"></span>
   /// Alpha: 80% <br/> (0xffffffcc)
   case Translucent = 0xffffffcc
