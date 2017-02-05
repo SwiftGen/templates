@@ -19,12 +19,26 @@ extension FontConvertible where Self: RawRepresentable, Self.RawValue == String 
   func font(size: CGFloat) -> Font! {
     return Font(font: self, size: size)
   }
+
+  func register() {
+    let extensions = ["otf", "ttf"]
+    let bundle = NSBundle(forClass: BundleToken.self)
+
+    guard let url = extensions.flatMap({ bundle.URLForResource(rawValue, withExtension: $0) }).first else { return }
+
+    var errorRef: Unmanaged<CFError>?
+    CTFontManagerRegisterFontsForURL(url as CFURL, .none, &errorRef)
+  }
 }
 
 extension Font {
   convenience init!<FontType: FontConvertible
     where FontType: RawRepresentable, FontType.RawValue == String>
     (font: FontType, size: CGFloat) {
+      if UIFont.fontNames(forFamilyName: font.rawValue).isEmpty {
+        font.register()
+      }
+
       self.init(name: font.rawValue, size: size)
   }
 }
@@ -62,3 +76,5 @@ enum FontFamily {
     case Internal = "private"
   }
 }
+
+private final class BundleToken {}
