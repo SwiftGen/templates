@@ -13,7 +13,7 @@ protocol StoryboardSceneType {
 
 extension StoryboardSceneType {
   static func storyboard() -> UIStoryboard {
-    return UIStoryboard(name: self.storyboardName, bundle: nil)
+    return UIStoryboard(name: self.storyboardName, bundle: NSBundle(forClass: BundleToken.self))
   }
 
   static func initialViewController() -> UIViewController {
