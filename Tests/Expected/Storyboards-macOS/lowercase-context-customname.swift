@@ -14,7 +14,7 @@ protocol StoryboardSceneType {
 
 extension StoryboardSceneType {
   static func storyboard() -> NSStoryboard {
-    return NSStoryboard(name: self.storyboardName, bundle: nil)
+    return NSStoryboard(name: self.storyboardName, bundle: NSBundle(forClass: BundleToken.self))
   }
 
   static func initialController() -> AnyObject {
@@ -167,3 +167,5 @@ enum XCTStoryboardsSegue {
     case Public = "public"
   }
 }
+
+private final class BundleToken {}
