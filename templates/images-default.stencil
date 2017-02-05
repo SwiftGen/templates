@@ -11,6 +11,21 @@
 
 // swiftlint:disable file_length
 // swiftlint:disable line_length
+
+protocol ImageConvertible {
+  var image: Image { get }
+}
+
+extension ImageConvertible where Self: RawRepresentable, Self.RawValue == String {
+  var image: Image {
+    let bundle = NSBundle(forClass: BundleToken.self)
+    #if os(iOS) || os(tvOS) || os(watchOS)
+    return Image(named: rawValue, inBundle: bundle, compatibleWithTraitCollection: nil)!
+    #elseif os(OSX)
+    return bundle.imageForResource(rawValue)!
+    #endif
+  }
+}
 {% macro recursiveBlock images %}
   {% for image in images %}
   {% if not image.items %}
@@ -22,22 +37,14 @@
 {% endmacro %}
 
 // swiftlint:disable type_body_length
-enum {{enumName}}: String {
+enum {{enumName}}: String, ImageConvertible {
   {% for catalog in catalogs %}
   {% call recursiveBlock catalog.assets %}
   {% endfor %}
-
-  var image: Image {
-    return Image(asset: self)
-  }
 }
 // swiftlint:enable type_body_length
 
-extension Image {
-  convenience init!(asset: {{enumName}}) {
-    self.init(named: asset.rawValue)
-  }
-}
+private final class BundleToken {}
 {% else %}
 // No image found
 {% endif %}

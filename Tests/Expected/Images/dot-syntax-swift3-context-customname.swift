@@ -15,8 +15,13 @@
 struct XCTImagesType: ExpressibleByStringLiteral {
   fileprivate var value: String
 
-  var image: UIImage {
-    return UIImage(asset: self)
+  var image: Image {
+    let bundle = Bundle(for: BundleToken.self)
+    #if os(iOS) || os(tvOS) || os(watchOS)
+    return Image(named: value, in: bundle, compatibleWith: nil)!
+    #elseif os(OSX)
+    return bundle.image(forResource: value)!
+    #endif
   }
 
   init(stringLiteral value: String) {
@@ -53,8 +58,4 @@ enum XCTImages {
 }
 // swiftlint:enable type_body_length
 
-extension Image {
-  convenience init!(asset: XCTImagesType) {
-    self.init(named: asset.value)
-  }
-}
+private final class BundleToken {}
