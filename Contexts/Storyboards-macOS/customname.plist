@@ -4,11 +4,11 @@
 <dict>
 	<key>extraImports</key>
 	<array>
-		<string>DBPrefsWindowController</string>
+		<string>PrefsWindowController</string>
 	</array>
 	<key>modules</key>
 	<array>
-		<string>DBPrefsWindowController</string>
+		<string>PrefsWindowController</string>
 	</array>
 	<key>sceneEnumName</key>
 	<string>XCTStoryboardsScene</string>
@@ -25,7 +25,7 @@
 					<key>customClass</key>
 					<string>DBPrefsWindowController</string>
 					<key>customModule</key>
-					<string>DBPrefsWindowController</string>
+					<string>PrefsWindowController</string>
 					<key>identifier</key>
 					<string>Preferences</string>
 				</dict>

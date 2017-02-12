@@ -33,9 +33,6 @@ enum ColorName {
   /// <span style="display:block;width:3em;height:2em;border:1px solid black;background:#33fe66"></span>
   /// Alpha: 100% <br/> (0x33fe66ff)
   case ArticleTitle
-  /// <span style="display:block;width:3em;height:2em;border:1px solid black;background:#ff66cc"></span>
-  /// Alpha: 100% <br/> (0xff66ccff)
-  case Cyan_Color
   /// <span style="display:block;width:3em;height:2em;border:1px solid black;background:#ffffff"></span>
   /// Alpha: 80% <br/> (0xffffffcc)
   case Translucent
@@ -48,8 +45,6 @@ enum ColorName {
       return 0xff66ccff
     case .ArticleTitle:
       return 0x33fe66ff
-    case .Cyan_Color:
-      return 0xff66ccff
     case .Translucent:
       return 0xffffffcc
     }

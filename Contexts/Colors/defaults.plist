@@ -54,22 +54,6 @@
 		</dict>
 		<dict>
 			<key>alpha</key>
-			<string>ff</string>
-			<key>blue</key>
-			<string>cc</string>
-			<key>green</key>
-			<string>66</string>
-			<key>name</key>
-			<string>Cyan-Color</string>
-			<key>red</key>
-			<string>ff</string>
-			<key>rgb</key>
-			<string>ff66cc</string>
-			<key>rgba</key>
-			<string>ff66ccff</string>
-		</dict>
-		<dict>
-			<key>alpha</key>
 			<string>cc</string>
 			<key>blue</key>
 			<string>ff</string>

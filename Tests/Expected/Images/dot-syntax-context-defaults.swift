@@ -19,15 +19,15 @@ struct AssetType: StringLiteralConvertible {
     return UIImage(asset: self)
   }
 
-  public init(stringLiteral value: String) {
+  init(stringLiteral value: String) {
     self.value = value
   }
 
-  public init(extendedGraphemeClusterLiteral value: String) {
+  init(extendedGraphemeClusterLiteral value: String) {
     self.init(stringLiteral: value)
   }
 
-  public init(unicodeScalarLiteral value: String) {
+  init(unicodeScalarLiteral value: String) {
     self.init(stringLiteral: value)
   }
 }
