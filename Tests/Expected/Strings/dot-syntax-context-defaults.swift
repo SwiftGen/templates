@@ -9,6 +9,7 @@ import Foundation
 // swiftlint:disable nesting
 // swiftlint:disable variable_name
 // swiftlint:disable valid_docs
+// swiftlint:disable type_name
 
 enum L10n {
   /// Some alert body there
@@ -87,4 +88,3 @@ extension L10n {
 // swiftlint:enable nesting
 // swiftlint:enable variable_name
 // swiftlint:enable valid_docs
-

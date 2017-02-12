@@ -55,7 +55,7 @@ enum StoryboardScene {
       return vc
     }
 
-    case SomeSlackViewControllerInstance = "SomeSlackViewControllerInstance"
+    case SomeSlackViewControllerInstance
     static func someSlackViewControllerInstanceViewController() -> SlackTextViewController.SLKTextViewController {
       guard let vc = StoryboardScene.AdditionalImport.SomeSlackViewControllerInstance.viewController() as? SlackTextViewController.SLKTextViewController
       else {
@@ -77,7 +77,7 @@ enum StoryboardScene {
   enum Dependency: String, StoryboardSceneType {
     static let storyboardName = "Dependency"
 
-    case Dependent = "Dependent"
+    case Dependent
     static func dependentViewController() -> UIViewController {
       return StoryboardScene.Dependency.Dependent.viewController()
     }
@@ -85,12 +85,12 @@ enum StoryboardScene {
   enum Message: String, StoryboardSceneType {
     static let storyboardName = "Message"
 
-    case Composer = "Composer"
+    case Composer
     static func composerViewController() -> UIViewController {
       return StoryboardScene.Message.Composer.viewController()
     }
 
-    case MessagesList = "MessagesList"
+    case MessagesList
     static func messagesListViewController() -> UITableViewController {
       guard let vc = StoryboardScene.Message.MessagesList.viewController() as? UITableViewController
       else {
@@ -99,7 +99,7 @@ enum StoryboardScene {
       return vc
     }
 
-    case NavCtrl = "NavCtrl"
+    case NavCtrl
     static func navCtrlViewController() -> UINavigationController {
       guard let vc = StoryboardScene.Message.NavCtrl.viewController() as? UINavigationController
       else {
@@ -108,7 +108,7 @@ enum StoryboardScene {
       return vc
     }
 
-    case URLChooser = "URLChooser"
+    case URLChooser
     static func urlChooserViewController() -> XXPickerViewController {
       guard let vc = StoryboardScene.Message.URLChooser.viewController() as? XXPickerViewController
       else {
@@ -120,7 +120,7 @@ enum StoryboardScene {
   enum Placeholder: String, StoryboardSceneType {
     static let storyboardName = "Placeholder"
 
-    case Navigation = "Navigation"
+    case Navigation
     static func navigationViewController() -> UINavigationController {
       guard let vc = StoryboardScene.Placeholder.Navigation.viewController() as? UINavigationController
       else {
@@ -144,7 +144,7 @@ enum StoryboardScene {
       return StoryboardScene.Wizard.Accept_CGU.viewController()
     }
 
-    case CreateAccount = "CreateAccount"
+    case CreateAccount
     static func createAccountViewController() -> CreateAccViewController {
       guard let vc = StoryboardScene.Wizard.CreateAccount.viewController() as? CreateAccViewController
       else {
@@ -153,7 +153,7 @@ enum StoryboardScene {
       return vc
     }
 
-    case Preferences = "Preferences"
+    case Preferences
     static func preferencesViewController() -> UITableViewController {
       guard let vc = StoryboardScene.Wizard.Preferences.viewController() as? UITableViewController
       else {
@@ -162,7 +162,7 @@ enum StoryboardScene {
       return vc
     }
 
-    case Validate_Password = "Validate_Password"
+    case Validate_Password
     static func validatePasswordViewController() -> UIViewController {
       return StoryboardScene.Wizard.Validate_Password.viewController()
     }
@@ -174,13 +174,12 @@ enum StoryboardSegue {
     case Test = "test"
   }
   enum Message: String, StoryboardSegueType {
-    case CustomBack = "CustomBack"
-    case Embed = "Embed"
-    case NonCustom = "NonCustom"
+    case CustomBack
+    case Embed
+    case NonCustom
     case Show_NavCtrl = "Show-NavCtrl"
   }
   enum Wizard: String, StoryboardSegueType {
-    case ShowPassword = "ShowPassword"
+    case ShowPassword
   }
 }
-

@@ -171,7 +171,7 @@ enum StoryboardScene {
 
 enum StoryboardSegue {
   enum AdditionalImport: String, StoryboardSegueType {
-    case test = "test"
+    case test
   }
   enum Message: String, StoryboardSegueType {
     case customBack = "CustomBack"
@@ -183,4 +183,3 @@ enum StoryboardSegue {
     case showPassword = "ShowPassword"
   }
 }
-

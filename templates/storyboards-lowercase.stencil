@@ -67,7 +67,7 @@ enum {{sceneEnumName}} {
     {% for scene in storyboard.scenes %}
     {% set sceneID %}{{scene.identifier|swiftIdentifier|lowerFirstWord}}{% endset %}
 
-    case {{sceneID}} = "{{scene.identifier}}"
+    case {{sceneID}}{% if sceneID != scene.identifier %} = "{{scene.identifier}}"{% endif %}
     {% if scene.baseType != "ViewController" %}
     {% set sceneClass %}{% call className scene %}{% endset %}
     static func {{sceneID}}ViewController() -> {{sceneClass}} {
@@ -106,7 +106,8 @@ enum {{segueEnumName}} {
   {% for storyboard in storyboards %}{% if storyboard.segues %}
   enum {{storyboard.name|swiftIdentifier}}: String, StoryboardSegueType {
     {% for segue in storyboard.segues %}
-    case {{segue.identifier|swiftIdentifier}} = "{{segue.identifier}}"
+    {% set segueID %}{{segue.identifier|swiftIdentifier}}{% endset %}
+    case {{segueID}}{% if segueID != segue.identifier %} = "{{segue.identifier}}"{% endif %}
     {% endfor %}
   }
   {% endif %}{% endfor %}

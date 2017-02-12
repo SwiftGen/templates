@@ -9,6 +9,9 @@ env:
  - RAKETASK=test
 
 script:
+  - Scripts/install_swiftlint.sh
+  - PROJECT_DIR=Tests Scripts/swiftlint-code.sh
   - rake "$RAKETASK"
+  - Scripts/swiftlint-output.sh
   - Scripts/compile-modules.sh
   - Scripts/compile-output.sh

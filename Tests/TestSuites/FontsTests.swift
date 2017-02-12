@@ -9,13 +9,21 @@
 import XCTest
 
 class FontsTests: XCTestCase {
-  static let contextNames = ["empty", "defaults", "customname"]
-  
-  func testDefault() {
-    test(template: "fonts-default", contextNames: FontsTests.contextNames, outputPrefix: "default", directory: .fonts)
+  enum Contexts {
+    static let all = ["empty", "defaults", "customname"]
   }
-  
+
+  func testDefault() {
+    test(template: "fonts-default",
+         contextNames: Contexts.all,
+         outputPrefix: "default",
+         directory: .fonts)
+  }
+
   func testSwift3() {
-    test(template: "fonts-swift3", contextNames: FontsTests.contextNames, outputPrefix: "swift3", directory: .fonts)
+    test(template: "fonts-swift3",
+         contextNames: Contexts.all,
+         outputPrefix: "swift3",
+         directory: .fonts)
   }
 }

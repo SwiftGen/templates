@@ -174,13 +174,12 @@ enum XCTStoryboardsSegue {
     case Test = "test"
   }
   enum Message: String, StoryboardSegueType {
-    case CustomBack = "CustomBack"
-    case Embed = "Embed"
-    case NonCustom = "NonCustom"
+    case CustomBack
+    case Embed
+    case NonCustom
     case Show_NavCtrl = "Show-NavCtrl"
   }
   enum Wizard: String, StoryboardSegueType {
-    case ShowPassword = "ShowPassword"
+    case ShowPassword
   }
 }
-
