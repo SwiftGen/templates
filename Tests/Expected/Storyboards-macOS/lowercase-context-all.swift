@@ -53,11 +53,11 @@ enum StoryboardScene {
   enum AdditionalImport: String, StoryboardSceneType {
     static let storyboardName = "AdditionalImport"
 
-    case preferencesScene = "Preferences"
-    static func instantiatePreferences() -> PrefsWindowController.DBPrefsWindowController {
-      guard let vc = StoryboardScene.AdditionalImport.preferencesScene.controller() as? PrefsWindowController.DBPrefsWindowController
+    case privateScene = "private"
+    static func instantiatePrivate() -> PrefsWindowController.DBPrefsWindowController {
+      guard let vc = StoryboardScene.AdditionalImport.privateScene.controller() as? PrefsWindowController.DBPrefsWindowController
       else {
-        fatalError("ViewController 'Preferences' is not of the expected class PrefsWindowController.DBPrefsWindowController.")
+        fatalError("ViewController 'private' is not of the expected class PrefsWindowController.DBPrefsWindowController.")
       }
       return vc
     }
@@ -159,11 +159,11 @@ enum StoryboardScene {
 
 enum StoryboardSegue {
   enum Message: String, StoryboardSegueType {
-    case Custom
     case Embed
     case Modal
     case Popover
     case Sheet
     case Show
+    case Public = "public"
   }
 }

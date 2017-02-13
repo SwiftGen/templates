@@ -27,7 +27,7 @@
 					<key>customModule</key>
 					<string>PrefsWindowController</string>
 					<key>identifier</key>
-					<string>Preferences</string>
+					<string>private</string>
 				</dict>
 			</array>
 			<key>segues</key>
@@ -114,12 +114,6 @@
 					<key>customClass</key>
 					<string></string>
 					<key>identifier</key>
-					<string>Custom</string>
-				</dict>
-				<dict>
-					<key>customClass</key>
-					<string></string>
-					<key>identifier</key>
 					<string>Embed</string>
 				</dict>
 				<dict>
@@ -145,6 +139,12 @@
 					<string></string>
 					<key>identifier</key>
 					<string>Show</string>
+				</dict>
+				<dict>
+					<key>customClass</key>
+					<string></string>
+					<key>identifier</key>
+					<string>public</string>
 				</dict>
 			</array>
 		</dict>
