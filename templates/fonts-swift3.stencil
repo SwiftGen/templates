@@ -36,9 +36,15 @@ extension Font {
   convenience init!<FontType: FontConvertible>
     (font: FontType, size: CGFloat)
     where FontType: RawRepresentable, FontType.RawValue == String {
+      #if os(iOS) || os(tvOS) || os(watchOS)
       if UIFont.fontNames(forFamilyName: font.rawValue).isEmpty {
         font.register()
       }
+      #elseif os(OSX)
+      if NSFontManager.shared().availableMembers(ofFontFamily: font.rawValue) == nil {
+        font.register()
+      }
+      #endif
 
       self.init(name: font.rawValue, size: size)
   }
