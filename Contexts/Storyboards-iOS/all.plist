@@ -38,7 +38,7 @@
 					<key>customModule</key>
 					<string>SlackTextViewController</string>
 					<key>identifier</key>
-					<string>SomeSlackViewControllerInstance</string>
+					<string>public</string>
 				</dict>
 			</array>
 			<key>segues</key>
@@ -47,7 +47,7 @@
 					<key>customClass</key>
 					<string>SlideDownSegue</string>
 					<key>identifier</key>
-					<string>test</string>
+					<string>private</string>
 				</dict>
 			</array>
 		</dict>

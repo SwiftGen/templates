@@ -65,13 +65,13 @@ enum {{sceneEnumName}} {
     }
     {% endif %}{% endif %}
     {% for scene in storyboard.scenes %}
-    {% set sceneID %}{{scene.identifier|swiftIdentifier|escapeReservedKeywords}}{% endset %}
+    {% set sceneID %}{{scene.identifier|swiftIdentifier}}{% endset %}
 
-    case {{sceneID}}{% if sceneID != scene.identifier %} = "{{scene.identifier}}"{% endif %}
+    case {{sceneID|escapeReservedKeywords}}{% if sceneID != scene.identifier %} = "{{scene.identifier}}"{% endif %}
     {% if scene.baseType != "ViewController" %}
     {% set sceneClass %}{% call className scene %}{% endset %}
     static func {{sceneID|snakeToCamelCase|lowerFirstWord}}ViewController() -> {{sceneClass}} {
-      guard let vc = {{sceneEnumName}}.{{storyboardName}}.{{sceneID}}.viewController() as? {{sceneClass}}
+      guard let vc = {{sceneEnumName}}.{{storyboardName}}.{{sceneID|escapeReservedKeywords}}.viewController() as? {{sceneClass}}
       else {
         fatalError("ViewController '{{scene.identifier}}' is not of the expected class {{sceneClass}}.")
       }

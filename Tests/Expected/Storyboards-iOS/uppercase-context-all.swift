@@ -55,11 +55,11 @@ enum StoryboardScene {
       return vc
     }
 
-    case SomeSlackViewControllerInstance
-    static func someSlackViewControllerInstanceViewController() -> SlackTextViewController.SLKTextViewController {
-      guard let vc = StoryboardScene.AdditionalImport.SomeSlackViewControllerInstance.viewController() as? SlackTextViewController.SLKTextViewController
+    case Public = "public"
+    static func publicViewController() -> SlackTextViewController.SLKTextViewController {
+      guard let vc = StoryboardScene.AdditionalImport.Public.viewController() as? SlackTextViewController.SLKTextViewController
       else {
-        fatalError("ViewController 'SomeSlackViewControllerInstance' is not of the expected class SlackTextViewController.SLKTextViewController.")
+        fatalError("ViewController 'public' is not of the expected class SlackTextViewController.SLKTextViewController.")
       }
       return vc
     }
@@ -171,7 +171,7 @@ enum StoryboardScene {
 
 enum StoryboardSegue {
   enum AdditionalImport: String, StoryboardSegueType {
-    case Test = "test"
+    case Private = "private"
   }
   enum Message: String, StoryboardSegueType {
     case CustomBack
