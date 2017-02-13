@@ -18,10 +18,12 @@ struct XCTImagesType: ExpressibleByStringLiteral {
   var image: Image {
     let bundle = Bundle(for: BundleToken.self)
     #if os(iOS) || os(tvOS) || os(watchOS)
-    return Image(named: value, in: bundle, compatibleWith: nil)!
+    let image = Image(named: value, in: bundle, compatibleWith: nil)
     #elseif os(OSX)
-    return bundle.image(forResource: value)!
+    let image = bundle.image(forResource: value)
     #endif
+    guard let result = image else { fatalError("Unable to load image \(value).") }
+    return result
   }
 
   init(stringLiteral value: String) {
@@ -62,7 +64,7 @@ extension Image {
   convenience init!(asset: XCTImagesType) {
     #if os(iOS) || os(tvOS) || os(watchOS)
     let bundle = Bundle(for: BundleToken.self)
-    self.init(named: asset.value, in: bundle, compatibleWith: nil)!
+    self.init(named: asset.value, in: bundle, compatibleWith: nil)
     #elseif os(OSX)
     self.init(named: asset.value)
     #endif

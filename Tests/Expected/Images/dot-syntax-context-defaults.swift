@@ -18,10 +18,12 @@ struct AssetType: StringLiteralConvertible {
   var image: Image {
     let bundle = NSBundle(forClass: BundleToken.self)
     #if os(iOS) || os(tvOS) || os(watchOS)
-    return Image(named: value, inBundle: bundle, compatibleWithTraitCollection: nil)!
+    let image = Image(named: value, inBundle: bundle, compatibleWithTraitCollection: nil)
     #elseif os(OSX)
-    return bundle.imageForResource(value)!
+    let image = bundle.imageForResource(value)
     #endif
+    guard let result = image else { fatalError("Unable to load image \(value).") }
+    return result
   }
 
   init(stringLiteral value: String) {
@@ -62,9 +64,9 @@ extension Image {
   convenience init!(asset: AssetType) {
     #if os(iOS) || os(tvOS) || os(watchOS)
     let bundle = NSBundle(forClass: BundleToken.self)
-    self.init(named: asset.value, inBundle: bundle, compatibleWithTraitCollection: nil)!
+    self.init(named: asset.value, inBundle: bundle, compatibleWithTraitCollection: nil)
     #elseif os(OSX)
-    self.init(named: asset.value)!
+    self.init(named: asset.value)
     #endif
   }
 }

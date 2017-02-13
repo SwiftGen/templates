@@ -19,10 +19,12 @@ extension ImageConvertible where Self: RawRepresentable, Self.RawValue == String
   var image: Image {
     let bundle = NSBundle(forClass: BundleToken.self)
     #if os(iOS) || os(tvOS) || os(watchOS)
-    return Image(named: rawValue, inBundle: bundle, compatibleWithTraitCollection: nil)!
+    let image = Image(named: rawValue, inBundle: bundle, compatibleWithTraitCollection: nil)
     #elseif os(OSX)
-    return bundle.imageForResource(rawValue)!
+    let image = bundle.imageForResource(rawValue)
     #endif
+    guard let result = image else { fatalError("Unable to load image \(rawValue).") }
+    return result
   }
 }
 
@@ -54,9 +56,9 @@ extension Image {
   convenience init!(asset: Asset) {
     #if os(iOS) || os(tvOS) || os(watchOS)
     let bundle = NSBundle(forClass: BundleToken.self)
-    self.init(named: asset.rawValue, inBundle: bundle, compatibleWithTraitCollection: nil)!
+    self.init(named: asset.rawValue, inBundle: bundle, compatibleWithTraitCollection: nil)
     #elseif os(OSX)
-    self.init(named: asset.rawValue)!
+    self.init(named: asset.rawValue)
     #endif
   }
 }
