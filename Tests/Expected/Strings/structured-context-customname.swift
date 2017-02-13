@@ -13,10 +13,10 @@ enum XCTLoc {
   case AlertMessage
   /// Title of the alert
   case AlertTitle
-  /// Hello, my name is %@ and I'm %d
-  case Greetings(String, Int)
   /// These are %3$@'s %1$d %2$@.
   case ObjectOwnership(Int, String, String)
+  /// Hello, my name is %@ and I'm %d
+  case Private(String, Int)
 
   case Apples(ApplesXCTLoc)
   enum ApplesXCTLoc {
@@ -41,28 +41,48 @@ enum XCTLoc {
       case Title(TitleXCTLoc)
       enum TitleXCTLoc {
 
-        case Even(EvenXCTLoc)
-        enum EvenXCTLoc {
-          /// Settings
-          case Deeper
+        case Deeper(DeeperXCTLoc)
+        enum DeeperXCTLoc {
 
-          case Deeper(DeeperXCTLoc)
-          enum DeeperXCTLoc {
+          case Than(ThanXCTLoc)
+          enum ThanXCTLoc {
 
-            case Than(ThanXCTLoc)
-            enum ThanXCTLoc {
+            case We(WeXCTLoc)
+            enum WeXCTLoc {
 
-              case We(WeXCTLoc)
-              enum WeXCTLoc {
+              case Can(CanXCTLoc)
+              enum CanXCTLoc {
 
-                case Can(CanXCTLoc)
-                enum CanXCTLoc {
-                  /// DeepSettings
-                  case Handle
+                case Handle(HandleXCTLoc)
+                enum HandleXCTLoc {
+
+                  case No(NoXCTLoc)
+                  enum NoXCTLoc {
+
+                    case Really(ReallyXCTLoc)
+                    enum ReallyXCTLoc {
+
+                      case This(ThisXCTLoc)
+                      enum ThisXCTLoc {
+
+                        case Is(IsXCTLoc)
+                        enum IsXCTLoc {
+                          /// DeepSettings
+                          case Deep
+                        }
+                      }
+                    }
+                  }
                 }
               }
             }
           }
+        }
+
+        case Even(EvenXCTLoc)
+        enum EvenXCTLoc {
+          /// Settings
+          case Deeper
         }
       }
     }
@@ -86,10 +106,10 @@ extension XCTLoc: CustomStringConvertible {
         return XCTLoc.tr("alert_message")
       case .AlertTitle:
         return XCTLoc.tr("alert_title")
-      case .Greetings(let p1, let p2):
-        return XCTLoc.tr("greetings", p1, p2)
       case .ObjectOwnership(let p1, let p2, let p3):
         return XCTLoc.tr("ObjectOwnership", p1, p2, p3)
+      case .Private(let p1, let p2):
+        return XCTLoc.tr("private", p1, p2)
       case .Apples(let levelSubKeyApples):
 
         switch levelSubKeyApples {
@@ -113,29 +133,49 @@ extension XCTLoc: CustomStringConvertible {
               case .Title(let levelSubSubSubKeyTitle):
 
                 switch levelSubSubSubKeyTitle {
+                  case .Deeper(let levelSubSubSubSubKeyDeeper):
+
+                    switch levelSubSubSubSubKeyDeeper {
+                      case .Than(let levelSubSubSubSubSubKeyThan):
+
+                        switch levelSubSubSubSubSubKeyThan {
+                          case .We(let levelSubSubSubSubSubSubKeyWe):
+
+                            switch levelSubSubSubSubSubSubKeyWe {
+                              case .Can(let levelSubSubSubSubSubSubSubKeyCan):
+
+                                switch levelSubSubSubSubSubSubSubKeyCan {
+                                  case .Handle(let levelSubSubSubSubSubSubSubSubKeyHandle):
+
+                                    switch levelSubSubSubSubSubSubSubSubKeyHandle {
+                                      case .No(let levelSubSubSubSubSubSubSubSubSubKeyNo):
+
+                                        switch levelSubSubSubSubSubSubSubSubSubKeyNo {
+                                          case .Really(let levelSubSubSubSubSubSubSubSubSubSubKeyReally):
+
+                                            switch levelSubSubSubSubSubSubSubSubSubSubKeyReally {
+                                              case .This(let levelSubSubSubSubSubSubSubSubSubSubSubKeyThis):
+
+                                                switch levelSubSubSubSubSubSubSubSubSubSubSubKeyThis {
+                                                  case .Is(let levelSubSubSubSubSubSubSubSubSubSubSubSubKeyIs):
+
+                                                    switch levelSubSubSubSubSubSubSubSubSubSubSubSubKeyIs {
+                                                      case .Deep:
+                                                        return XCTLoc.tr("settings.navigation-bar.title.deeper.than.we.can.handle.no.really.this.is.deep")
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
                   case .Even(let levelSubSubSubSubKeyEven):
 
                     switch levelSubSubSubSubKeyEven {
                       case .Deeper:
                         return XCTLoc.tr("settings.navigation-bar.title.even.deeper")
-                      case .Deeper(let levelSubSubSubSubSubKeyDeeper):
-
-                        switch levelSubSubSubSubSubKeyDeeper {
-                          case .Than(let levelSubSubSubSubSubSubKeyThan):
-
-                            switch levelSubSubSubSubSubSubKeyThan {
-                              case .We(let levelSubSubSubSubSubSubSubKeyWe):
-
-                                switch levelSubSubSubSubSubSubSubKeyWe {
-                                  case .Can(let levelSubSubSubSubSubSubSubSubKeyCan):
-
-                                    switch levelSubSubSubSubSubSubSubSubKeyCan {
-                                      case .Handle:
-                                        return XCTLoc.tr("settings.navigation-bar.title.even.deeper.than.we.can.handle")
-                                    }
-                                }
-                            }
-                        }
                     }
                 }
             }

@@ -9,13 +9,13 @@ import Foundation
 enum XCTLoc {
   case alertMessage
   case alertTitle
-  case greetings(String, Int)
   case objectOwnership(Int, String, String)
+  case `private`(String, Int)
   case applesCount(Int)
   case bananasOwner(Int, String)
   case settingsNavigationBarSelf
+  case settingsNavigationBarTitleDeeperThanWeCanHandleNoReallyThisIsDeep
   case settingsNavigationBarTitleEvenDeeper
-  case settingsNavigationBarTitleEvenDeeperThanWeCanHandle
   case seTTingsUSerProFileSectioNFooterText
   case settingsUserProfileSectionHeaderTitle
 }
@@ -30,20 +30,20 @@ extension XCTLoc: CustomStringConvertible {
         return XCTLoc.tr(key: "alert_message")
       case .alertTitle:
         return XCTLoc.tr(key: "alert_title")
-      case .greetings(let p1, let p2):
-        return XCTLoc.tr(key: "greetings", p1, p2)
       case .objectOwnership(let p1, let p2, let p3):
         return XCTLoc.tr(key: "ObjectOwnership", p1, p2, p3)
+      case .`private`(let p1, let p2):
+        return XCTLoc.tr(key: "private", p1, p2)
       case .applesCount(let p1):
         return XCTLoc.tr(key: "apples.count", p1)
       case .bananasOwner(let p1, let p2):
         return XCTLoc.tr(key: "bananas.owner", p1, p2)
       case .settingsNavigationBarSelf:
         return XCTLoc.tr(key: "settings.navigation-bar.self")
+      case .settingsNavigationBarTitleDeeperThanWeCanHandleNoReallyThisIsDeep:
+        return XCTLoc.tr(key: "settings.navigation-bar.title.deeper.than.we.can.handle.no.really.this.is.deep")
       case .settingsNavigationBarTitleEvenDeeper:
         return XCTLoc.tr(key: "settings.navigation-bar.title.even.deeper")
-      case .settingsNavigationBarTitleEvenDeeperThanWeCanHandle:
-        return XCTLoc.tr(key: "settings.navigation-bar.title.even.deeper.than.we.can.handle")
       case .seTTingsUSerProFileSectioNFooterText:
         return XCTLoc.tr(key: "seTTings.uSer-proFile-sectioN.footer_text")
       case .settingsUserProfileSectionHeaderTitle:

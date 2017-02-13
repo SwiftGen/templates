@@ -9,20 +9,20 @@ enum L10n {
   case AlertMessage
   /// Title of the alert
   case AlertTitle
-  /// Hello, my name is %@ and I'm %d
-  case Greetings(String, Int)
   /// These are %3$@'s %1$d %2$@.
   case ObjectOwnership(Int, String, String)
+  /// Hello, my name is %@ and I'm %d
+  case Private(String, Int)
   /// You have %d apples
   case ApplesCount(Int)
   /// Those %d bananas belong to %@.
   case BananasOwner(Int, String)
   /// Some Reserved Keyword there
   case SettingsNavigationBarSelf
+  /// DeepSettings
+  case SettingsNavigationBarTitleDeeperThanWeCanHandleNoReallyThisIsDeep
   /// Settings
   case SettingsNavigationBarTitleEvenDeeper
-  /// DeepSettings
-  case SettingsNavigationBarTitleEvenDeeperThanWeCanHandle
   /// Here you can change some user profile settings.
   case SeTTingsUSerProFileSectioNFooterText
   /// User Profile Settings
@@ -40,12 +40,12 @@ extension L10n: CustomStringConvertible {
       case .AlertTitle:
         let format = NSLocalizedString("alert_title", comment: "")
         return L10n.tr(format)
-      case .Greetings(let p1, let p2):
-        let format = NSLocalizedString("greetings", comment: "")
-        return L10n.tr(format, p1, p2)
       case .ObjectOwnership(let p1, let p2, let p3):
         let format = NSLocalizedString("ObjectOwnership", comment: "")
         return L10n.tr(format, p1, p2, p3)
+      case .Private(let p1, let p2):
+        let format = NSLocalizedString("private", comment: "")
+        return L10n.tr(format, p1, p2)
       case .ApplesCount(let p1):
         let format = NSLocalizedString("apples.count", comment: "")
         return L10n.tr(format, p1)
@@ -55,11 +55,11 @@ extension L10n: CustomStringConvertible {
       case .SettingsNavigationBarSelf:
         let format = NSLocalizedString("settings.navigation-bar.self", comment: "")
         return L10n.tr(format)
+      case .SettingsNavigationBarTitleDeeperThanWeCanHandleNoReallyThisIsDeep:
+        let format = NSLocalizedString("settings.navigation-bar.title.deeper.than.we.can.handle.no.really.this.is.deep", comment: "")
+        return L10n.tr(format)
       case .SettingsNavigationBarTitleEvenDeeper:
         let format = NSLocalizedString("settings.navigation-bar.title.even.deeper", comment: "")
-        return L10n.tr(format)
-      case .SettingsNavigationBarTitleEvenDeeperThanWeCanHandle:
-        let format = NSLocalizedString("settings.navigation-bar.title.even.deeper.than.we.can.handle", comment: "")
         return L10n.tr(format)
       case .SeTTingsUSerProFileSectioNFooterText:
         let format = NSLocalizedString("seTTings.uSer-proFile-sectioN.footer_text", comment: "")

@@ -16,13 +16,13 @@ enum XCTLoc {
   static let alertMessage = XCTLoc.tr("alert_message")
   /// Title of the alert
   static let alertTitle = XCTLoc.tr("alert_title")
-  /// Hello, my name is %@ and I'm %d
-  static func greetings(_ p1: String, _ p2: Int) -> String {
-    return XCTLoc.tr("greetings", p1, p2)
-  }
   /// These are %3$@'s %1$d %2$@.
   static func objectOwnership(_ p1: Int, _ p2: String, _ p3: String) -> String {
     return XCTLoc.tr("ObjectOwnership", p1, p2, p3)
+  }
+  /// Hello, my name is %@ and I'm %d
+  static func `private`(_ p1: String, _ p2: Int) -> String {
+    return XCTLoc.tr("private", p1, p2)
   }
 
   enum Apples {
@@ -47,23 +47,38 @@ enum XCTLoc {
 
       enum Title {
 
-        enum Even {
-          /// Settings
-          static let deeper = XCTLoc.tr("settings.navigation-bar.title.even.deeper")
+        enum Deeper {
 
-          enum Deeper {
+          enum Than {
 
-            enum Than {
+            enum We {
 
-              enum We {
+              enum Can {
 
-                enum Can {
-                  /// DeepSettings
-                  static let handle = XCTLoc.tr("settings.navigation-bar.title.even.deeper.than.we.can.handle")
+                enum Handle {
+
+                  enum No {
+
+                    enum Really {
+
+                      enum This {
+
+                        enum Is {
+                          /// DeepSettings
+                          static let deep = XCTLoc.tr("settings.navigation-bar.title.deeper.than.we.can.handle.no.really.this.is.deep")
+                        }
+                      }
+                    }
+                  }
                 }
               }
             }
           }
+        }
+
+        enum Even {
+          /// Settings
+          static let deeper = XCTLoc.tr("settings.navigation-bar.title.even.deeper")
         }
       }
     }

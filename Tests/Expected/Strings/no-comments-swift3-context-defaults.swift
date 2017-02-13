@@ -9,13 +9,13 @@ import Foundation
 enum L10n {
   case alertMessage
   case alertTitle
-  case greetings(String, Int)
   case objectOwnership(Int, String, String)
+  case `private`(String, Int)
   case applesCount(Int)
   case bananasOwner(Int, String)
   case settingsNavigationBarSelf
+  case settingsNavigationBarTitleDeeperThanWeCanHandleNoReallyThisIsDeep
   case settingsNavigationBarTitleEvenDeeper
-  case settingsNavigationBarTitleEvenDeeperThanWeCanHandle
   case seTTingsUSerProFileSectioNFooterText
   case settingsUserProfileSectionHeaderTitle
 }
@@ -30,20 +30,20 @@ extension L10n: CustomStringConvertible {
         return L10n.tr(key: "alert_message")
       case .alertTitle:
         return L10n.tr(key: "alert_title")
-      case .greetings(let p1, let p2):
-        return L10n.tr(key: "greetings", p1, p2)
       case .objectOwnership(let p1, let p2, let p3):
         return L10n.tr(key: "ObjectOwnership", p1, p2, p3)
+      case .`private`(let p1, let p2):
+        return L10n.tr(key: "private", p1, p2)
       case .applesCount(let p1):
         return L10n.tr(key: "apples.count", p1)
       case .bananasOwner(let p1, let p2):
         return L10n.tr(key: "bananas.owner", p1, p2)
       case .settingsNavigationBarSelf:
         return L10n.tr(key: "settings.navigation-bar.self")
+      case .settingsNavigationBarTitleDeeperThanWeCanHandleNoReallyThisIsDeep:
+        return L10n.tr(key: "settings.navigation-bar.title.deeper.than.we.can.handle.no.really.this.is.deep")
       case .settingsNavigationBarTitleEvenDeeper:
         return L10n.tr(key: "settings.navigation-bar.title.even.deeper")
-      case .settingsNavigationBarTitleEvenDeeperThanWeCanHandle:
-        return L10n.tr(key: "settings.navigation-bar.title.even.deeper.than.we.can.handle")
       case .seTTingsUSerProFileSectioNFooterText:
         return L10n.tr(key: "seTTings.uSer-proFile-sectioN.footer_text")
       case .settingsUserProfileSectionHeaderTitle:

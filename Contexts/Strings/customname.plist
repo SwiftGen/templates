@@ -86,39 +86,6 @@
 		</dict>
 		<dict>
 			<key>key</key>
-			<string>greetings</string>
-			<key>keytail</key>
-			<string>greetings</string>
-			<key>params</key>
-			<dict>
-				<key>count</key>
-				<integer>2</integer>
-				<key>declarations</key>
-				<array>
-					<string>let p0</string>
-					<string>let p1</string>
-				</array>
-				<key>names</key>
-				<array>
-					<string>p0</string>
-					<string>p1</string>
-				</array>
-				<key>typednames</key>
-				<array>
-					<string>p0: String</string>
-					<string>p1: Int</string>
-				</array>
-				<key>types</key>
-				<array>
-					<string>String</string>
-					<string>Int</string>
-				</array>
-			</dict>
-			<key>translation</key>
-			<string>Hello, my name is %@ and I'm %d</string>
-		</dict>
-		<dict>
-			<key>key</key>
 			<string>ObjectOwnership</string>
 			<key>keytail</key>
 			<string>ObjectOwnership</string>
@@ -156,6 +123,39 @@
 		</dict>
 		<dict>
 			<key>key</key>
+			<string>private</string>
+			<key>keytail</key>
+			<string>private</string>
+			<key>params</key>
+			<dict>
+				<key>count</key>
+				<integer>2</integer>
+				<key>declarations</key>
+				<array>
+					<string>let p0</string>
+					<string>let p1</string>
+				</array>
+				<key>names</key>
+				<array>
+					<string>p0</string>
+					<string>p1</string>
+				</array>
+				<key>typednames</key>
+				<array>
+					<string>p0: String</string>
+					<string>p1: Int</string>
+				</array>
+				<key>types</key>
+				<array>
+					<string>String</string>
+					<string>Int</string>
+				</array>
+			</dict>
+			<key>translation</key>
+			<string>Hello, my name is %@ and I'm %d</string>
+		</dict>
+		<dict>
+			<key>key</key>
 			<string>settings.navigation-bar.self</string>
 			<key>keytail</key>
 			<string>settings.navigation-bar.self</string>
@@ -164,19 +164,19 @@
 		</dict>
 		<dict>
 			<key>key</key>
+			<string>settings.navigation-bar.title.deeper.than.we.can.handle.no.really.this.is.deep</string>
+			<key>keytail</key>
+			<string>settings.navigation-bar.title.deeper.than.we.can.handle.no.really.this.is.deep</string>
+			<key>translation</key>
+			<string>DeepSettings</string>
+		</dict>
+		<dict>
+			<key>key</key>
 			<string>settings.navigation-bar.title.even.deeper</string>
 			<key>keytail</key>
 			<string>settings.navigation-bar.title.even.deeper</string>
 			<key>translation</key>
 			<string>Settings</string>
-		</dict>
-		<dict>
-			<key>key</key>
-			<string>settings.navigation-bar.title.even.deeper.than.we.can.handle</string>
-			<key>keytail</key>
-			<string>settings.navigation-bar.title.even.deeper.than.we.can.handle</string>
-			<key>translation</key>
-			<string>DeepSettings</string>
 		</dict>
 		<dict>
 			<key>key</key>
@@ -217,39 +217,6 @@
 			</dict>
 			<dict>
 				<key>key</key>
-				<string>greetings</string>
-				<key>keytail</key>
-				<string>greetings</string>
-				<key>params</key>
-				<dict>
-					<key>count</key>
-					<integer>2</integer>
-					<key>declarations</key>
-					<array>
-						<string>let p0</string>
-						<string>let p1</string>
-					</array>
-					<key>names</key>
-					<array>
-						<string>p0</string>
-						<string>p1</string>
-					</array>
-					<key>typednames</key>
-					<array>
-						<string>p0: String</string>
-						<string>p1: Int</string>
-					</array>
-					<key>types</key>
-					<array>
-						<string>String</string>
-						<string>Int</string>
-					</array>
-				</dict>
-				<key>translation</key>
-				<string>Hello, my name is %@ and I'm %d</string>
-			</dict>
-			<dict>
-				<key>key</key>
 				<string>ObjectOwnership</string>
 				<key>keytail</key>
 				<string>ObjectOwnership</string>
@@ -284,6 +251,39 @@
 				</dict>
 				<key>translation</key>
 				<string>These are %3$@'s %1$d %2$@.</string>
+			</dict>
+			<dict>
+				<key>key</key>
+				<string>private</string>
+				<key>keytail</key>
+				<string>private</string>
+				<key>params</key>
+				<dict>
+					<key>count</key>
+					<integer>2</integer>
+					<key>declarations</key>
+					<array>
+						<string>let p0</string>
+						<string>let p1</string>
+					</array>
+					<key>names</key>
+					<array>
+						<string>p0</string>
+						<string>p1</string>
+					</array>
+					<key>typednames</key>
+					<array>
+						<string>p0: String</string>
+						<string>p1: Int</string>
+					</array>
+					<key>types</key>
+					<array>
+						<string>String</string>
+						<string>Int</string>
+					</array>
+				</dict>
+				<key>translation</key>
+				<string>Hello, my name is %@ and I'm %d</string>
 			</dict>
 		</array>
 		<key>subenums</key>
@@ -392,6 +392,77 @@
 								<array>
 									<dict>
 										<key>name</key>
+										<string>Deeper</string>
+										<key>subenums</key>
+										<array>
+											<dict>
+												<key>name</key>
+												<string>Than</string>
+												<key>subenums</key>
+												<array>
+													<dict>
+														<key>name</key>
+														<string>We</string>
+														<key>subenums</key>
+														<array>
+															<dict>
+																<key>name</key>
+																<string>Can</string>
+																<key>subenums</key>
+																<array>
+																	<dict>
+																		<key>name</key>
+																		<string>Handle</string>
+																		<key>subenums</key>
+																		<array>
+																			<dict>
+																				<key>name</key>
+																				<string>No</string>
+																				<key>subenums</key>
+																				<array>
+																					<dict>
+																						<key>name</key>
+																						<string>Really</string>
+																						<key>subenums</key>
+																						<array>
+																							<dict>
+																								<key>name</key>
+																								<string>This</string>
+																								<key>subenums</key>
+																								<array>
+																									<dict>
+																										<key>name</key>
+																										<string>Is</string>
+																										<key>strings</key>
+																										<array>
+																											<dict>
+																												<key>key</key>
+																												<string>settings.navigation-bar.title.deeper.than.we.can.handle.no.really.this.is.deep</string>
+																												<key>keytail</key>
+																												<string>deep</string>
+																												<key>translation</key>
+																												<string>DeepSettings</string>
+																											</dict>
+																										</array>
+																									</dict>
+																								</array>
+																							</dict>
+																						</array>
+																					</dict>
+																				</array>
+																			</dict>
+																		</array>
+																	</dict>
+																</array>
+															</dict>
+														</array>
+													</dict>
+												</array>
+											</dict>
+										</array>
+									</dict>
+									<dict>
+										<key>name</key>
 										<string>Even</string>
 										<key>strings</key>
 										<array>
@@ -402,45 +473,6 @@
 												<string>deeper</string>
 												<key>translation</key>
 												<string>Settings</string>
-											</dict>
-										</array>
-										<key>subenums</key>
-										<array>
-											<dict>
-												<key>name</key>
-												<string>Deeper</string>
-												<key>subenums</key>
-												<array>
-													<dict>
-														<key>name</key>
-														<string>Than</string>
-														<key>subenums</key>
-														<array>
-															<dict>
-																<key>name</key>
-																<string>We</string>
-																<key>subenums</key>
-																<array>
-																	<dict>
-																		<key>name</key>
-																		<string>Can</string>
-																		<key>strings</key>
-																		<array>
-																			<dict>
-																				<key>key</key>
-																				<string>settings.navigation-bar.title.even.deeper.than.we.can.handle</string>
-																				<key>keytail</key>
-																				<string>handle</string>
-																				<key>translation</key>
-																				<string>DeepSettings</string>
-																			</dict>
-																		</array>
-																	</dict>
-																</array>
-															</dict>
-														</array>
-													</dict>
-												</array>
 											</dict>
 										</array>
 									</dict>
