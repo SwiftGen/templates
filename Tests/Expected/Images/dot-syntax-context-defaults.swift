@@ -18,9 +18,9 @@ struct AssetType: StringLiteralConvertible {
   var image: Image {
     let bundle = NSBundle(forClass: BundleToken.self)
     #if os(iOS) || os(tvOS) || os(watchOS)
-    return Image(named: rawValue, inBundle: bundle, compatibleWithTraitCollection: nil)!
+    return Image(named: value, inBundle: bundle, compatibleWithTraitCollection: nil)!
     #elseif os(OSX)
-    return bundle.imageForResource(rawValue)!
+    return bundle.imageForResource(value)!
     #endif
   }
 
@@ -57,5 +57,16 @@ enum Asset {
   }
 }
 // swiftlint:enable type_body_length
+
+extension Image {
+  convenience init!(asset: AssetType) {
+    #if os(iOS) || os(tvOS) || os(watchOS)
+    let bundle = NSBundle(forClass: BundleToken.self)
+    self.init(named: asset.value, inBundle: bundle, compatibleWithTraitCollection: nil)!
+    #elseif os(OSX)
+    self.init(named: asset.value)!
+    #endif
+  }
+}
 
 private final class BundleToken {}

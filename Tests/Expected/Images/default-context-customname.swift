@@ -39,4 +39,15 @@ enum XCTImages: String, ImageConvertible {
 }
 // swiftlint:enable type_body_length
 
+extension Image {
+  convenience init!(asset: XCTImages) {
+    #if os(iOS) || os(tvOS) || os(watchOS)
+    let bundle = NSBundle(forClass: BundleToken.self)
+    self.init(named: asset.rawValue, inBundle: bundle, compatibleWithTraitCollection: nil)!
+    #elseif os(OSX)
+    self.init(named: asset.rawValue)!
+    #endif
+  }
+}
+
 private final class BundleToken {}

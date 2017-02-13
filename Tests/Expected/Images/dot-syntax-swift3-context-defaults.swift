@@ -58,4 +58,15 @@ enum Asset {
 }
 // swiftlint:enable type_body_length
 
+extension Image {
+  convenience init!(asset: AssetType) {
+    #if os(iOS) || os(tvOS) || os(watchOS)
+    let bundle = Bundle(for: BundleToken.self)
+    self.init(named: asset.value, in: bundle, compatibleWith: nil)!
+    #elseif os(OSX)
+    self.init(named: asset.value)
+    #endif
+  }
+}
+
 private final class BundleToken {}
