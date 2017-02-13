@@ -11,11 +11,17 @@
 // swiftlint:disable file_length
 // swiftlint:disable line_length
 
-protocol ImageConvertible {
-  var image: Image { get }
-}
+// swiftlint:disable type_body_length
+enum Asset: String {
+  case exoticBanana = "Exotic/Banana"
+  case exoticMango = "Exotic/Mango"
+  case `private` = "private"
+  case roundApricot = "Round/Apricot"
+  case roundOrange = "Round/Orange"
+  case roundApple = "Round/Apple"
+  case roundDoubleCherry = "Round/Double/Cherry"
+  case roundTomato = "Round/Tomato"
 
-extension ImageConvertible where Self: RawRepresentable, Self.RawValue == String {
   var image: Image {
     let bundle = Bundle(for: BundleToken.self)
     #if os(iOS) || os(tvOS) || os(watchOS)
@@ -26,18 +32,6 @@ extension ImageConvertible where Self: RawRepresentable, Self.RawValue == String
     guard let result = image else { fatalError("Unable to load image \(rawValue).") }
     return result
   }
-}
-
-// swiftlint:disable type_body_length
-enum Asset: String, ImageConvertible {
-  case exoticBanana = "Exotic/Banana"
-  case exoticMango = "Exotic/Mango"
-  case `private` = "private"
-  case roundApricot = "Round/Apricot"
-  case roundOrange = "Round/Orange"
-  case roundApple = "Round/Apple"
-  case roundDoubleCherry = "Round/Double/Cherry"
-  case roundTomato = "Round/Tomato"
 }
 // swiftlint:enable type_body_length
 

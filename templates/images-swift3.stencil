@@ -11,23 +11,6 @@
 
 // swiftlint:disable file_length
 // swiftlint:disable line_length
-
-protocol ImageConvertible {
-  var image: Image { get }
-}
-
-extension ImageConvertible where Self: RawRepresentable, Self.RawValue == String {
-  var image: Image {
-    let bundle = Bundle(for: BundleToken.self)
-    #if os(iOS) || os(tvOS) || os(watchOS)
-    let image = Image(named: rawValue, in: bundle, compatibleWith: nil)
-    #elseif os(OSX)
-    let image = bundle.image(forResource: rawValue)
-    #endif
-    guard let result = image else { fatalError("Unable to load image \(rawValue).") }
-    return result
-  }
-}
 {% macro recursiveBlock images %}
   {% for image in images %}
   {% if not image.items %}
@@ -39,10 +22,21 @@ extension ImageConvertible where Self: RawRepresentable, Self.RawValue == String
 {% endmacro %}
 
 // swiftlint:disable type_body_length
-enum {{enumName}}: String, ImageConvertible {
+enum {{enumName}}: String {
   {% for catalog in catalogs %}
   {% call recursiveBlock catalog.assets %}
   {% endfor %}
+
+  var image: Image {
+    let bundle = Bundle(for: BundleToken.self)
+    #if os(iOS) || os(tvOS) || os(watchOS)
+    let image = Image(named: rawValue, in: bundle, compatibleWith: nil)
+    #elseif os(OSX)
+    let image = bundle.image(forResource: rawValue)
+    #endif
+    guard let result = image else { fatalError("Unable to load image \(rawValue).") }
+    return result
+  }
 }
 // swiftlint:enable type_body_length
 
