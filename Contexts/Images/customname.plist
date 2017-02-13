@@ -28,9 +28,9 @@
 				</dict>
 				<dict>
 					<key>name</key>
-					<string>Lemon</string>
+					<string>private</string>
 					<key>value</key>
-					<string>Lemon</string>
+					<string>private</string>
 				</dict>
 				<dict>
 					<key>items</key>
@@ -94,12 +94,12 @@
 	<array>
 		<string>Exotic/Banana</string>
 		<string>Exotic/Mango</string>
-		<string>Lemon</string>
 		<string>Round/Apple</string>
 		<string>Round/Apricot</string>
 		<string>Round/Double/Cherry</string>
 		<string>Round/Orange</string>
 		<string>Round/Tomato</string>
+		<string>private</string>
 	</array>
 </dict>
 </plist>

@@ -38,7 +38,7 @@ enum Asset {
     static let Banana: AssetType = "Exotic/Banana"
     static let Mango: AssetType = "Exotic/Mango"
   }
-  static let Lemon: AssetType = "Lemon"
+  static let Private: AssetType = "private"
   enum Round {
     static let Apricot: AssetType = "Round/Apricot"
     static let Orange: AssetType = "Round/Orange"

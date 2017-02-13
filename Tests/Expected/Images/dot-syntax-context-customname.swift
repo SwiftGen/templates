@@ -38,7 +38,7 @@ enum XCTImages {
     static let Banana: XCTImagesType = "Exotic/Banana"
     static let Mango: XCTImagesType = "Exotic/Mango"
   }
-  static let Lemon: XCTImagesType = "Lemon"
+  static let Private: XCTImagesType = "private"
   enum Round {
     static let Apricot: XCTImagesType = "Round/Apricot"
     static let Orange: XCTImagesType = "Round/Orange"

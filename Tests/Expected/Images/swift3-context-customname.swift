@@ -15,7 +15,7 @@
 enum XCTImages: String {
   case exoticBanana = "Exotic/Banana"
   case exoticMango = "Exotic/Mango"
-  case lemon = "Lemon"
+  case `private` = "private"
   case roundApricot = "Round/Apricot"
   case roundOrange = "Round/Orange"
   case roundApple = "Round/Apple"

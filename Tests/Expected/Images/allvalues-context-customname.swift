@@ -15,7 +15,7 @@
 enum XCTImages: String {
   case Exotic_Banana = "Exotic/Banana"
   case Exotic_Mango = "Exotic/Mango"
-  case Lemon = "Lemon"
+  case Private = "private"
   case Round_Apricot = "Round/Apricot"
   case Round_Orange = "Round/Orange"
   case Round_Apple = "Round/Apple"
@@ -25,7 +25,7 @@ enum XCTImages: String {
   static let allValues = [
     Exotic_Banana,
     Exotic_Mango,
-    Lemon,
+    Private,
     Round_Apricot,
     Round_Orange,
     Round_Apple,
