@@ -7,6 +7,7 @@ import UIKit
 import {{module}}
 {% endfor %}
 
+{% if storyboards %}
 // swiftlint:disable file_length
 // swiftlint:disable line_length
 // swiftlint:disable type_body_length
@@ -47,7 +48,6 @@ extension UIViewController {
 }
 
 {# This is where the generation begins, this code depends on what you have in your Storyboards #}
-{% if storyboards %}
 enum {{sceneEnumName}} {
   {% for storyboard in storyboards %}
   {% set storyboardName %}{{storyboard.name|swiftIdentifier|escapeReservedKeywords}}{% endset %}
