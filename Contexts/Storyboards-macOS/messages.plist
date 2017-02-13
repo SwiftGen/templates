@@ -68,12 +68,6 @@
 					<key>customClass</key>
 					<string></string>
 					<key>identifier</key>
-					<string>Custom</string>
-				</dict>
-				<dict>
-					<key>customClass</key>
-					<string></string>
-					<key>identifier</key>
 					<string>Embed</string>
 				</dict>
 				<dict>
@@ -99,6 +93,12 @@
 					<string></string>
 					<key>identifier</key>
 					<string>Show</string>
+				</dict>
+				<dict>
+					<key>customClass</key>
+					<string></string>
+					<key>identifier</key>
+					<string>public</string>
 				</dict>
 			</array>
 		</dict>

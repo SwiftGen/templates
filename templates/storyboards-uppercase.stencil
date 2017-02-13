@@ -50,7 +50,7 @@ extension UIViewController {
 {% if storyboards %}
 enum {{sceneEnumName}} {
   {% for storyboard in storyboards %}
-  {% set storyboardName %}{{storyboard.name|swiftIdentifier}}{% endset %}
+  {% set storyboardName %}{{storyboard.name|swiftIdentifier|escapeReservedKeywords}}{% endset %}
   {% if storyboard.scenes %}
   enum {{storyboardName}}: String, StoryboardSceneType {
     static let storyboardName = "{{storyboard.name}}"
@@ -67,11 +67,11 @@ enum {{sceneEnumName}} {
     {% for scene in storyboard.scenes %}
     {% set sceneID %}{{scene.identifier|swiftIdentifier}}{% endset %}
 
-    case {{sceneID}}{% if sceneID != scene.identifier %} = "{{scene.identifier}}"{% endif %}
+    case {{sceneID|escapeReservedKeywords}}{% if sceneID != scene.identifier %} = "{{scene.identifier}}"{% endif %}
     {% if scene.baseType != "ViewController" %}
     {% set sceneClass %}{% call className scene %}{% endset %}
     static func {{sceneID|snakeToCamelCase|lowerFirstWord}}ViewController() -> {{sceneClass}} {
-      guard let vc = {{sceneEnumName}}.{{storyboardName}}.{{sceneID}}.viewController() as? {{sceneClass}}
+      guard let vc = {{sceneEnumName}}.{{storyboardName}}.{{sceneID|escapeReservedKeywords}}.viewController() as? {{sceneClass}}
       else {
         fatalError("ViewController '{{scene.identifier}}' is not of the expected class {{sceneClass}}.")
       }
@@ -104,10 +104,10 @@ enum {{sceneEnumName}} {
 
 enum {{segueEnumName}} {
   {% for storyboard in storyboards %}{% if storyboard.segues %}
-  enum {{storyboard.name|swiftIdentifier}}: String, StoryboardSegueType {
+  enum {{storyboard.name|swiftIdentifier|escapeReservedKeywords}}: String, StoryboardSegueType {
     {% for segue in storyboard.segues %}
     {% set segueID %}{{segue.identifier|swiftIdentifier}}{% endset %}
-    case {{segueID}}{% if segueID != segue.identifier %} = "{{segue.identifier}}"{% endif %}
+    case {{segueID|escapeReservedKeywords}}{% if segueID != segue.identifier %} = "{{segue.identifier}}"{% endif %}
     {% endfor %}
   }
   {% endif %}{% endfor %}

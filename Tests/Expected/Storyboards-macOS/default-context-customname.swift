@@ -53,11 +53,11 @@ enum XCTStoryboardsScene {
   enum AdditionalImport: String, StoryboardSceneType {
     static let storyboardName = "AdditionalImport"
 
-    case PreferencesScene = "Preferences"
-    static func instantiatePreferences() -> PrefsWindowController.DBPrefsWindowController {
-      guard let vc = XCTStoryboardsScene.AdditionalImport.PreferencesScene.controller() as? PrefsWindowController.DBPrefsWindowController
+    case PrivateScene = "private"
+    static func instantiatePrivate() -> PrefsWindowController.DBPrefsWindowController {
+      guard let vc = XCTStoryboardsScene.AdditionalImport.PrivateScene.controller() as? PrefsWindowController.DBPrefsWindowController
       else {
-        fatalError("ViewController 'Preferences' is not of the expected class PrefsWindowController.DBPrefsWindowController.")
+        fatalError("ViewController 'private' is not of the expected class PrefsWindowController.DBPrefsWindowController.")
       }
       return vc
     }
@@ -159,11 +159,11 @@ enum XCTStoryboardsScene {
 
 enum XCTStoryboardsSegue {
   enum Message: String, StoryboardSegueType {
-    case Custom
     case Embed
     case Modal
     case Popover
     case Sheet
     case Show
+    case Public = "public"
   }
 }

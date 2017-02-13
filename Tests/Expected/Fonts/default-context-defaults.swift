@@ -58,4 +58,7 @@ enum FontFamily {
   enum ZapfDingbats: String, FontConvertible {
     case Regular = "ZapfDingbatsITC"
   }
+  enum Public: String, FontConvertible {
+    case Internal = "private"
+  }
 }

@@ -13,10 +13,10 @@ enum L10n {
   case AlertMessage
   /// Title of the alert
   case AlertTitle
-  /// Hello, my name is %@ and I'm %d
-  case Greetings(String, Int)
   /// These are %3$@'s %1$d %2$@.
   case ObjectOwnership(Int, String, String)
+  /// Hello, my name is %@ and I'm %d
+  case Private(String, Int)
 
   case Apples(ApplesL10n)
   enum ApplesL10n {
@@ -41,28 +41,48 @@ enum L10n {
       case Title(TitleL10n)
       enum TitleL10n {
 
-        case Even(EvenL10n)
-        enum EvenL10n {
-          /// Settings
-          case Deeper
+        case Deeper(DeeperL10n)
+        enum DeeperL10n {
 
-          case Deeper(DeeperL10n)
-          enum DeeperL10n {
+          case Than(ThanL10n)
+          enum ThanL10n {
 
-            case Than(ThanL10n)
-            enum ThanL10n {
+            case We(WeL10n)
+            enum WeL10n {
 
-              case We(WeL10n)
-              enum WeL10n {
+              case Can(CanL10n)
+              enum CanL10n {
 
-                case Can(CanL10n)
-                enum CanL10n {
-                  /// DeepSettings
-                  case Handle
+                case Handle(HandleL10n)
+                enum HandleL10n {
+
+                  case No(NoL10n)
+                  enum NoL10n {
+
+                    case Really(ReallyL10n)
+                    enum ReallyL10n {
+
+                      case This(ThisL10n)
+                      enum ThisL10n {
+
+                        case Is(IsL10n)
+                        enum IsL10n {
+                          /// DeepSettings
+                          case Deep
+                        }
+                      }
+                    }
+                  }
                 }
               }
             }
           }
+        }
+
+        case Even(EvenL10n)
+        enum EvenL10n {
+          /// Settings
+          case Deeper
         }
       }
     }
@@ -86,10 +106,10 @@ extension L10n: CustomStringConvertible {
         return L10n.tr("alert_message")
       case .AlertTitle:
         return L10n.tr("alert_title")
-      case .Greetings(let p1, let p2):
-        return L10n.tr("greetings", p1, p2)
       case .ObjectOwnership(let p1, let p2, let p3):
         return L10n.tr("ObjectOwnership", p1, p2, p3)
+      case .Private(let p1, let p2):
+        return L10n.tr("private", p1, p2)
       case .Apples(let levelSubKeyApples):
 
         switch levelSubKeyApples {
@@ -113,29 +133,49 @@ extension L10n: CustomStringConvertible {
               case .Title(let levelSubSubSubKeyTitle):
 
                 switch levelSubSubSubKeyTitle {
+                  case .Deeper(let levelSubSubSubSubKeyDeeper):
+
+                    switch levelSubSubSubSubKeyDeeper {
+                      case .Than(let levelSubSubSubSubSubKeyThan):
+
+                        switch levelSubSubSubSubSubKeyThan {
+                          case .We(let levelSubSubSubSubSubSubKeyWe):
+
+                            switch levelSubSubSubSubSubSubKeyWe {
+                              case .Can(let levelSubSubSubSubSubSubSubKeyCan):
+
+                                switch levelSubSubSubSubSubSubSubKeyCan {
+                                  case .Handle(let levelSubSubSubSubSubSubSubSubKeyHandle):
+
+                                    switch levelSubSubSubSubSubSubSubSubKeyHandle {
+                                      case .No(let levelSubSubSubSubSubSubSubSubSubKeyNo):
+
+                                        switch levelSubSubSubSubSubSubSubSubSubKeyNo {
+                                          case .Really(let levelSubSubSubSubSubSubSubSubSubSubKeyReally):
+
+                                            switch levelSubSubSubSubSubSubSubSubSubSubKeyReally {
+                                              case .This(let levelSubSubSubSubSubSubSubSubSubSubSubKeyThis):
+
+                                                switch levelSubSubSubSubSubSubSubSubSubSubSubKeyThis {
+                                                  case .Is(let levelSubSubSubSubSubSubSubSubSubSubSubSubKeyIs):
+
+                                                    switch levelSubSubSubSubSubSubSubSubSubSubSubSubKeyIs {
+                                                      case .Deep:
+                                                        return L10n.tr("settings.navigation-bar.title.deeper.than.we.can.handle.no.really.this.is.deep")
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
                   case .Even(let levelSubSubSubSubKeyEven):
 
                     switch levelSubSubSubSubKeyEven {
                       case .Deeper:
                         return L10n.tr("settings.navigation-bar.title.even.deeper")
-                      case .Deeper(let levelSubSubSubSubSubKeyDeeper):
-
-                        switch levelSubSubSubSubSubKeyDeeper {
-                          case .Than(let levelSubSubSubSubSubSubKeyThan):
-
-                            switch levelSubSubSubSubSubSubKeyThan {
-                              case .We(let levelSubSubSubSubSubSubSubKeyWe):
-
-                                switch levelSubSubSubSubSubSubSubKeyWe {
-                                  case .Can(let levelSubSubSubSubSubSubSubSubKeyCan):
-
-                                    switch levelSubSubSubSubSubSubSubSubKeyCan {
-                                      case .Handle:
-                                        return L10n.tr("settings.navigation-bar.title.even.deeper.than.we.can.handle")
-                                    }
-                                }
-                            }
-                        }
                     }
                 }
             }

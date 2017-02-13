@@ -16,13 +16,13 @@ enum L10n {
   static let AlertMessage = L10n.tr("alert_message")
   /// Title of the alert
   static let AlertTitle = L10n.tr("alert_title")
-  /// Hello, my name is %@ and I'm %d
-  static func Greetings(p1: String, p2: Int) -> String {
-    return L10n.tr("greetings", p1, p2)
-  }
   /// These are %3$@'s %1$d %2$@.
   static func ObjectOwnership(p1: Int, p2: String, p3: String) -> String {
     return L10n.tr("ObjectOwnership", p1, p2, p3)
+  }
+  /// Hello, my name is %@ and I'm %d
+  static func Private(p1: String, p2: Int) -> String {
+    return L10n.tr("private", p1, p2)
   }
 
   enum Apples {
@@ -47,23 +47,38 @@ enum L10n {
 
       enum Title {
 
-        enum Even {
-          /// Settings
-          static let Deeper = L10n.tr("settings.navigation-bar.title.even.deeper")
+        enum Deeper {
 
-          enum Deeper {
+          enum Than {
 
-            enum Than {
+            enum We {
 
-              enum We {
+              enum Can {
 
-                enum Can {
-                  /// DeepSettings
-                  static let Handle = L10n.tr("settings.navigation-bar.title.even.deeper.than.we.can.handle")
+                enum Handle {
+
+                  enum No {
+
+                    enum Really {
+
+                      enum This {
+
+                        enum Is {
+                          /// DeepSettings
+                          static let Deep = L10n.tr("settings.navigation-bar.title.deeper.than.we.can.handle.no.really.this.is.deep")
+                        }
+                      }
+                    }
+                  }
                 }
               }
             }
           }
+        }
+
+        enum Even {
+          /// Settings
+          static let Deeper = L10n.tr("settings.navigation-bar.title.even.deeper")
         }
       }
     }

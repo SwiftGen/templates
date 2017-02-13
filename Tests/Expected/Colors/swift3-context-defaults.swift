@@ -35,7 +35,7 @@ enum ColorName {
   case articleTitle
   /// <span style="display:block;width:3em;height:2em;border:1px solid black;background:#ffffff"></span>
   /// Alpha: 80% <br/> (0xffffffcc)
-  case translucent
+  case `private`
 
   var rgbaValue: UInt32 {
     switch self {
@@ -45,7 +45,7 @@ enum ColorName {
       return 0xff66ccff
     case .articleTitle:
       return 0x33fe66ff
-    case .translucent:
+    case .`private`:
       return 0xffffffcc
     }
   }

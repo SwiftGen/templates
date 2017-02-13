@@ -154,6 +154,19 @@
 			<key>name</key>
 			<string>Zapf Dingbats</string>
 		</dict>
+		<dict>
+			<key>fonts</key>
+			<array>
+				<dict>
+					<key>fontName</key>
+					<string>private</string>
+					<key>style</key>
+					<string>internal</string>
+				</dict>
+			</array>
+			<key>name</key>
+			<string>public</string>
+		</dict>
 	</array>
 </dict>
 </plist>

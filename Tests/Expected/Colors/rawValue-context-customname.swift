@@ -35,7 +35,7 @@ enum XCTColors: UInt32 {
   case ArticleTitle = 0x33fe66ff
   /// <span style="display:block;width:3em;height:2em;border:1px solid black;background:#ffffff"></span>
   /// Alpha: 80% <br/> (0xffffffcc)
-  case Translucent = 0xffffffcc
+  case Private = 0xffffffcc
 
   var color: Color {
     return Color(named: self)
