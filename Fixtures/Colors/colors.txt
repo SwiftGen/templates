@@ -10,6 +10,6 @@ ArticleBody      : 339666
 
 # Footnote
 ArticleFootnote  : ff66ccff
-Translucent      : ffffffcc
-NamedValue       : Translucent
+private          : ffffffcc
+NamedValue       : private
 NestedNamedValue : NamedValue

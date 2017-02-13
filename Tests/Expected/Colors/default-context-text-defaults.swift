@@ -44,7 +44,7 @@ enum ColorName {
   case NestedNamedValue
   /// <span style="display:block;width:3em;height:2em;border:1px solid black;background:#ffffff"></span>
   /// Alpha: 80% <br/> (0xffffffcc)
-  case Translucent
+  case Private
 
   var rgbaValue: UInt32 {
     switch self {
@@ -60,7 +60,7 @@ enum ColorName {
       return 0xffffffcc
     case .NestedNamedValue:
       return 0xffffffcc
-    case .Translucent:
+    case .Private:
       return 0xffffffcc
     }
   }

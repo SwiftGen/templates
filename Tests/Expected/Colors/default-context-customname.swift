@@ -35,7 +35,7 @@ enum XCTColors {
   case ArticleTitle
   /// <span style="display:block;width:3em;height:2em;border:1px solid black;background:#ffffff"></span>
   /// Alpha: 80% <br/> (0xffffffcc)
-  case Translucent
+  case Private
 
   var rgbaValue: UInt32 {
     switch self {
@@ -45,7 +45,7 @@ enum XCTColors {
       return 0xff66ccff
     case .ArticleTitle:
       return 0x33fe66ff
-    case .Translucent:
+    case .Private:
       return 0xffffffcc
     }
   }

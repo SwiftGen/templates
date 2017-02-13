@@ -108,7 +108,7 @@
 			<key>green</key>
 			<string>ff</string>
 			<key>name</key>
-			<string>Translucent</string>
+			<string>private</string>
 			<key>red</key>
 			<string>ff</string>
 			<key>rgb</key>
