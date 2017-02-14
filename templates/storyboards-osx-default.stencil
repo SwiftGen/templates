@@ -4,7 +4,9 @@
 import Foundation
 import Cocoa
 {% for module in modules %}
+{% if module != env.PRODUCT_MODULE_NAME and module != param.module %}
 import {{module}}
+{% endif %}
 {% endfor %}
 
 {% if storyboards %}
