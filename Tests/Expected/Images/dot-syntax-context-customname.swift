@@ -15,8 +15,15 @@
 struct XCTImagesType: StringLiteralConvertible {
   private var value: String
 
-  var image: UIImage {
-    return UIImage(asset: self)
+  var image: Image {
+    let bundle = NSBundle(forClass: BundleToken.self)
+    #if os(iOS) || os(tvOS) || os(watchOS)
+    let image = Image(named: value, inBundle: bundle, compatibleWithTraitCollection: nil)
+    #elseif os(OSX)
+    let image = bundle.imageForResource(value)
+    #endif
+    guard let result = image else { fatalError("Unable to load image \(value).") }
+    return result
   }
 
   init(stringLiteral value: String) {
@@ -55,6 +62,13 @@ enum XCTImages {
 
 extension Image {
   convenience init!(asset: XCTImagesType) {
+    #if os(iOS) || os(tvOS) || os(watchOS)
+    let bundle = NSBundle(forClass: BundleToken.self)
+    self.init(named: asset.value, inBundle: bundle, compatibleWithTraitCollection: nil)
+    #elseif os(OSX)
     self.init(named: asset.value)
+    #endif
   }
 }
+
+private final class BundleToken {}

@@ -23,13 +23,27 @@ enum XCTImages: String {
   case Round_Tomato = "Round/Tomato"
 
   var image: Image {
-    return Image(asset: self)
+    let bundle = NSBundle(forClass: BundleToken.self)
+    #if os(iOS) || os(tvOS) || os(watchOS)
+    let image = Image(named: rawValue, inBundle: bundle, compatibleWithTraitCollection: nil)
+    #elseif os(OSX)
+    let image = bundle.imageForResource(rawValue)
+    #endif
+    guard let result = image else { fatalError("Unable to load image \(rawValue).") }
+    return result
   }
 }
 // swiftlint:enable type_body_length
 
 extension Image {
   convenience init!(asset: XCTImages) {
+    #if os(iOS) || os(tvOS) || os(watchOS)
+    let bundle = NSBundle(forClass: BundleToken.self)
+    self.init(named: asset.rawValue, inBundle: bundle, compatibleWithTraitCollection: nil)
+    #elseif os(OSX)
     self.init(named: asset.rawValue)
+    #endif
   }
 }
+
+private final class BundleToken {}

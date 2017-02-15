@@ -15,8 +15,15 @@
 struct AssetType: ExpressibleByStringLiteral {
   fileprivate var value: String
 
-  var image: UIImage {
-    return UIImage(asset: self)
+  var image: Image {
+    let bundle = Bundle(for: BundleToken.self)
+    #if os(iOS) || os(tvOS) || os(watchOS)
+    let image = Image(named: value, in: bundle, compatibleWith: nil)
+    #elseif os(OSX)
+    let image = bundle.image(forResource: value)
+    #endif
+    guard let result = image else { fatalError("Unable to load image \(value).") }
+    return result
   }
 
   init(stringLiteral value: String) {
@@ -55,6 +62,13 @@ enum Asset {
 
 extension Image {
   convenience init!(asset: AssetType) {
+    #if os(iOS) || os(tvOS) || os(watchOS)
+    let bundle = Bundle(for: BundleToken.self)
+    self.init(named: asset.value, in: bundle, compatibleWith: nil)
+    #elseif os(OSX)
     self.init(named: asset.value)
+    #endif
   }
 }
+
+private final class BundleToken {}

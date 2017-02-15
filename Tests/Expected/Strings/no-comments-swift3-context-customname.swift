@@ -52,7 +52,7 @@ extension XCTLoc: CustomStringConvertible {
   }
 
   private static func tr(key: String, _ args: CVarArg...) -> String {
-    let format = NSLocalizedString(key, comment: "")
+    let format = NSLocalizedString(key, bundle: Bundle(for: BundleToken.self), comment: "")
     return String(format: format, locale: Locale.current, arguments: args)
   }
 }
@@ -60,3 +60,5 @@ extension XCTLoc: CustomStringConvertible {
 func tr(_ key: XCTLoc) -> String {
   return key.string
 }
+
+private final class BundleToken {}

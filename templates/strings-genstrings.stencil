@@ -24,11 +24,11 @@ enum {{enumName}} {
       {% for string in strings.strings %}
       {% if string.params %}
       case .{{string.key|swiftIdentifier|snakeToCamelCase|escapeReservedKeywords}}({% call parametersBlock string.params %}):
-        let format = NSLocalizedString("{{string.key}}", comment: "")
+        let format = NSLocalizedString("{{string.key}}", bundle: NSBundle(forClass: BundleToken.self), comment: "")
         return {{enumName}}.tr(format, {% call argumentsBlock string.params %})
       {% else %}
       case .{{string.key|swiftIdentifier|snakeToCamelCase|escapeReservedKeywords}}:
-        let format = NSLocalizedString("{{string.key}}", comment: "")
+        let format = NSLocalizedString("{{string.key}}", bundle: NSBundle(forClass: BundleToken.self), comment: "")
         return {{enumName}}.tr(format)
       {% endif %}
       {% endfor %}
@@ -53,6 +53,8 @@ extension {{enumName}}: CustomStringConvertible {
 func tr(key: {{enumName}}) -> String {
   return key.string
 }
+
+private final class BundleToken {}
 {% else %}
 // No string found
 {% endif %}

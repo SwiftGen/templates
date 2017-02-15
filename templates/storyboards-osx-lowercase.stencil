@@ -7,6 +7,7 @@ import Cocoa
 import {{module}}
 {% endfor %}
 
+{% if storyboards %}
 // swiftlint:disable file_length
 // swiftlint:disable line_length
 // swiftlint:disable type_body_length
@@ -18,7 +19,7 @@ protocol StoryboardSceneType {
 
 extension StoryboardSceneType {
   static func storyboard() -> NSStoryboard {
-    return NSStoryboard(name: self.storyboardName, bundle: nil)
+    return NSStoryboard(name: self.storyboardName, bundle: NSBundle(forClass: BundleToken.self))
   }
 
   static func initialController() -> AnyObject {
@@ -54,7 +55,6 @@ extension NSViewController {
 }
 
 {# This is where the generation begins, this code depends on what you have in your Storyboards #}
-{% if storyboards %}
 enum {{sceneEnumName}} {
   {% for storyboard in storyboards %}
   {% set storyboardName %}{{storyboard.name|swiftIdentifier|escapeReservedKeywords}}{% endset %}
@@ -93,6 +93,8 @@ enum {{segueEnumName}} {
   }
   {% endif %}{% endfor %}
 }
+
+private final class BundleToken {}
 {% else %}
 // No storyboard found
 {% endif %}

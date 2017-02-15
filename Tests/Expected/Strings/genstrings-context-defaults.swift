@@ -35,37 +35,37 @@ extension L10n: CustomStringConvertible {
   var string: String {
     switch self {
       case .AlertMessage:
-        let format = NSLocalizedString("alert_message", comment: "")
+        let format = NSLocalizedString("alert_message", bundle: NSBundle(forClass: BundleToken.self), comment: "")
         return L10n.tr(format)
       case .AlertTitle:
-        let format = NSLocalizedString("alert_title", comment: "")
+        let format = NSLocalizedString("alert_title", bundle: NSBundle(forClass: BundleToken.self), comment: "")
         return L10n.tr(format)
       case .ObjectOwnership(let p1, let p2, let p3):
-        let format = NSLocalizedString("ObjectOwnership", comment: "")
+        let format = NSLocalizedString("ObjectOwnership", bundle: NSBundle(forClass: BundleToken.self), comment: "")
         return L10n.tr(format, p1, p2, p3)
       case .Private(let p1, let p2):
-        let format = NSLocalizedString("private", comment: "")
+        let format = NSLocalizedString("private", bundle: NSBundle(forClass: BundleToken.self), comment: "")
         return L10n.tr(format, p1, p2)
       case .ApplesCount(let p1):
-        let format = NSLocalizedString("apples.count", comment: "")
+        let format = NSLocalizedString("apples.count", bundle: NSBundle(forClass: BundleToken.self), comment: "")
         return L10n.tr(format, p1)
       case .BananasOwner(let p1, let p2):
-        let format = NSLocalizedString("bananas.owner", comment: "")
+        let format = NSLocalizedString("bananas.owner", bundle: NSBundle(forClass: BundleToken.self), comment: "")
         return L10n.tr(format, p1, p2)
       case .SettingsNavigationBarSelf:
-        let format = NSLocalizedString("settings.navigation-bar.self", comment: "")
+        let format = NSLocalizedString("settings.navigation-bar.self", bundle: NSBundle(forClass: BundleToken.self), comment: "")
         return L10n.tr(format)
       case .SettingsNavigationBarTitleDeeperThanWeCanHandleNoReallyThisIsDeep:
-        let format = NSLocalizedString("settings.navigation-bar.title.deeper.than.we.can.handle.no.really.this.is.deep", comment: "")
+        let format = NSLocalizedString("settings.navigation-bar.title.deeper.than.we.can.handle.no.really.this.is.deep", bundle: NSBundle(forClass: BundleToken.self), comment: "")
         return L10n.tr(format)
       case .SettingsNavigationBarTitleEvenDeeper:
-        let format = NSLocalizedString("settings.navigation-bar.title.even.deeper", comment: "")
+        let format = NSLocalizedString("settings.navigation-bar.title.even.deeper", bundle: NSBundle(forClass: BundleToken.self), comment: "")
         return L10n.tr(format)
       case .SeTTingsUSerProFileSectioNFooterText:
-        let format = NSLocalizedString("seTTings.uSer-proFile-sectioN.footer_text", comment: "")
+        let format = NSLocalizedString("seTTings.uSer-proFile-sectioN.footer_text", bundle: NSBundle(forClass: BundleToken.self), comment: "")
         return L10n.tr(format)
       case .SettingsUserProfileSectionHeaderTitle:
-        let format = NSLocalizedString("SETTINGS.USER_PROFILE_SECTION.HEADER_TITLE", comment: "")
+        let format = NSLocalizedString("SETTINGS.USER_PROFILE_SECTION.HEADER_TITLE", bundle: NSBundle(forClass: BundleToken.self), comment: "")
         return L10n.tr(format)
     }
   }
@@ -78,3 +78,5 @@ extension L10n: CustomStringConvertible {
 func tr(key: L10n) -> String {
   return key.string
 }
+
+private final class BundleToken {}

@@ -192,7 +192,7 @@ extension L10n: CustomStringConvertible {
   }
 
   private static func tr(key: String, _ args: CVarArgType...) -> String {
-    let format = NSLocalizedString(key, comment: "")
+    let format = NSLocalizedString(key, bundle: NSBundle(forClass: BundleToken.self), comment: "")
     return String(format: format, locale: NSLocale.currentLocale(), arguments: args)
   }
 }
@@ -203,3 +203,5 @@ extension L10n: CustomStringConvertible {
 func tr(key: L10n) -> String {
   return key.string
 }
+
+private final class BundleToken {}

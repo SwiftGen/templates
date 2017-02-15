@@ -94,10 +94,12 @@ enum XCTLoc {
 
 extension XCTLoc {
   private static func tr(key: String, _ args: CVarArgType...) -> String {
-    let format = NSLocalizedString(key, comment: "")
+    let format = NSLocalizedString(key, bundle: NSBundle(forClass: BundleToken.self), comment: "")
     return String(format: format, locale: NSLocale.currentLocale(), arguments: args)
   }
 }
+
+private final class BundleToken {}
 
 // swiftlint:enable type_body_length
 // swiftlint:enable nesting
