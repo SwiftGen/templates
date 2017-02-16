@@ -20,7 +20,7 @@ CHECKOUT OPTIONS:
     :commit: 99efba56e942270780a452e5dcdfa1a839839cf4
     :git: https://github.com/kylef/Stencil
   StencilSwiftKit:
-    :commit: 59efee95ce9514e45b2bc6f5b78d3bdffb273a78
+    :commit: cc3c4d9aed593c7026e8d18c7d7d75628039a330
     :git: https://github.com/SwiftGen/StencilSwiftKit
 
 SPEC CHECKSUMS:
@@ -30,4 +30,4 @@ SPEC CHECKSUMS:
 
 PODFILE CHECKSUM: af694ce70d27109bd28ecfb95a4370560e111f3a
 
-COCOAPODS: 1.2.0.beta.3
+COCOAPODS: 1.2.0

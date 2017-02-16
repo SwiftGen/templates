@@ -134,8 +134,8 @@ extension XCTestCase {
    - Parameter contextVariations: Optional closure to generate context variations.
    */
   func test(template templateName: String, contextNames: [String], outputPrefix: String, directory: Fixtures.Directory, contextVariations: VariationGenerator? = nil) {
-    let template = SwiftTemplate(templateString: Fixtures.template(for: "\(templateName).stencil"),
-                                 environment: stencilSwiftEnvironment())
+    let template = StencilSwiftTemplate(templateString: Fixtures.template(for: "\(templateName).stencil"),
+                                        environment: stencilSwiftEnvironment())
     let contextVariations = contextVariations ?? { [(context: $1, suffix: "")] }
     
     for contextName in contextNames {
