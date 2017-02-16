@@ -116,25 +116,37 @@ class Fixtures {
 
 extension XCTestCase {
   /**
+   Generate variations of a context.
+   
+   - Parameter name: The name of the context
+   - Parameter context: The context itself
+   - Return: a tuple with a list of generated contexts, and a suffix to find the correct output file
+   */
+  typealias VariationGenerator = ((String, [String: Any]) -> [(context: [String: Any], suffix: String)])
+  
+  /**
    Test the given template against a list of contexts, comparing the output with files in the expected folder.
    
    - Parameter template: The name of the template (without the `stencil` extension)
    - Parameter contextNames: A list of context names (without the `plist` extension)
    - Parameter outputPrefix: Prefix for the output files, becomes "{outputPrefix}-context-{contextName}.swift"
    - Parameter directory: The directory to look for files in (correspons to de command)
+   - Parameter contextVariations: Optional closure to generate context variations.
    */
-  func test(template templateName: String, contextNames: [String], outputPrefix: String, directory: Fixtures.Directory) {
-    let template = SwiftTemplate(templateString: Fixtures.template(for: "\(templateName).stencil"),
-                                 environment: stencilSwiftEnvironment())
+  func test(template templateName: String, contextNames: [String], outputPrefix: String, directory: Fixtures.Directory, contextVariations: VariationGenerator? = nil) {
+    let template = StencilSwiftTemplate(templateString: Fixtures.template(for: "\(templateName).stencil"),
+                                        environment: stencilSwiftEnvironment())
+    let contextVariations = contextVariations ?? { [(context: $1, suffix: "")] }
     
     for contextName in contextNames {
       print("Testing context '\(contextName)'...")
-      
       let context = Fixtures.context(for: "\(contextName).plist", sub: directory)
-      let result = try! template.render(context)
-      let expected = Fixtures.output(for: "\(outputPrefix)-context-\(contextName).swift", sub: directory)
       
-      XCTDiffStrings(result, expected)
+      for (context, suffix) in contextVariations(contextName, context) {
+        let result = try! template.render(context)
+        let expected = Fixtures.output(for: "\(outputPrefix)-context-\(contextName)\(suffix).swift", sub: directory)
+        XCTDiffStrings(result, expected)
+      }
     }
   }
 }
