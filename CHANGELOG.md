@@ -1,6 +1,24 @@
-# templates CHANGELOG
+# Templates CHANGELOG
 
 ---
+
+## Master
+
+### Bug Fixes
+
+_None_
+
+### Breaking Changes
+
+_None_
+
+### New Features
+
+_None_
+
+### Internal Changes
+
+_None_
 
 ## 1.0.0
 
