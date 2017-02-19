@@ -70,6 +70,6 @@ _See SwitftGen's own CHANGELOG pre SwiftGen 4.2 version, before the refactoring 
 
 ### Depreciations
 
-Note that in preparation for the upcoming SwiftGen 5.0, some variables available in the SwiftGen's Stencil templates have been deprecatd and will be renamed. To prepare for SwiftGen 5.0, **we strongly advise to migrate your custom templates so they use the new variables** (already available in SwiftGen 4.2 / SwiftGenKit 1.0.1) instead of the old ones, so that they will continue to work in SwiftGen 5.0
+Note that in preparation for the upcoming SwiftGen 5.0, some variables available in the SwiftGen's Stencil templates have been deprecated and will be renamed. To prepare for SwiftGen 5.0, **we strongly advise to migrate your custom templates so they use the new variables** (already available in SwiftGen 4.2 / SwiftGenKit 1.0.1) instead of the old ones, so that they will continue to work in SwiftGen 5.0
 
 See [the migration guide in SwiftGen's wiki](https://github.com/SwiftGen/SwiftGen/wiki/Migration-Guides).
