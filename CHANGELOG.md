@@ -4,7 +4,7 @@
 
 ## 1.0.0
 
-The templates tagged with this version are the ones embedded in SwiftGen 4.2.
+_The templates tagged with this version are the ones embedded in SwiftGen 4.2._
 
 ### Internal Changes
 
@@ -27,8 +27,8 @@ The templates tagged with this version are the ones embedded in SwiftGen 4.2.
 * Storyboards templates don't `import` your app module anymore, removing that annoying warning.  
   [@djbe](https://github.com/djbe)
   [#19](https://github.com/SwiftGen/templates/pull/19)
-  * It works by checking the environment variable `PRODUCT_MODULE_NAME`, which is automatically injected if you run `swiftgen` as part of a Script Build Phase in your Xcode project.
-  * If you dont use `swiftgen` in a Script Build Phase of your Xcode project but manually in the terminal, use `PRODUCT_MODULE_NAME=YourAppModuleName swiftgen storyboards …` when invoking SwiftGen to inject it.
+  * It works by checking the environment variable `PRODUCT_MODULE_NAME`, which is automatically injected by Xcode if you run `swiftgen` as part of a Script Build Phase in your Xcode project.
+  * If you don't use `swiftgen` in a Script Build Phase of your Xcode project but manually in the terminal, you can instead use  `swiftgen storyboards --param module=YourAppModuleName …` when invoking SwiftGen to inject it manually instead.
 
 ### New Features
 
