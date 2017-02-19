@@ -16,14 +16,12 @@ class FontsTests: XCTestCase {
   func testDefault() {
     test(template: "default",
          contextNames: Contexts.all,
-         outputPrefix: "default",
          directory: .fonts)
   }
 
   func testSwift3() {
     test(template: "swift3",
          contextNames: Contexts.all,
-         outputPrefix: "swift3",
          directory: .fonts)
   }
 }
