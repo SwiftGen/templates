@@ -1,4 +1,4 @@
-// Generated using SwiftGen, by O.Halligon — https://github.com/AliSoftware/SwiftGen
+// Generated using SwiftGen, by O.Halligon — https://github.com/SwiftGen/SwiftGen
 
 #if os(iOS) || os(tvOS) || os(watchOS)
   import UIKit.UIColor
