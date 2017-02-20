@@ -27,6 +27,9 @@ func diff(_ result: String, _ expected: String) -> String? {
       break
     }
   }
+  if firstDiff == nil && lhsLines.count != rhsLines.count {
+    firstDiff = min(lhsLines.count, rhsLines.count)
+  }
   if let badLineIdx = firstDiff {
     let slice = { (lines: [String], context: Int) -> ArraySlice<String> in
       let start = max(0, badLineIdx-context)
