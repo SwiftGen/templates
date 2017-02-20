@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <font name="A01">
+        <family>FranklinGothicFS</family>
+        <style>Book</style>
+        <size>58</size>
+    </font>
+</resources>
