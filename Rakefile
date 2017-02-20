@@ -9,6 +9,15 @@ def xcpretty(cmd, task)
   end
 end
 
+def plain(cmd, task)
+  name = task.name.gsub(/:/,"_")
+  if ENV['CI']
+    sh "set -o pipefail && #{cmd} | tee \"#{ENV['CIRCLE_ARTIFACTS']}/#{name}_raw.log\""
+  else
+    sh cmd
+  end
+end
+
 namespace :xcode do
   desc 'Build using Xcode'
   task :build do |task|
@@ -18,6 +27,28 @@ namespace :xcode do
   desc 'Run Xcode Unit Tests'
   task :test => :build do |task|
     xcpretty("xcodebuild -workspace Tests/Templates.xcworkspace -scheme Tests test-without-building", task)
+  end
+
+  desc 'Lint code'
+  task :lint do |task|
+    plain("PROJECT_DIR=Tests ./Scripts/swiftlint-code.sh", task)
+  end
+end
+
+namespace :output do
+  desc 'Lint output'
+  task :lint do |task|
+    plain("PROJECT_DIR=Tests ./Scripts/swiftlint-output.sh", task)
+  end
+
+  desc 'Compile modules'
+  task :modules do |task|
+    plain("./Scripts/compile-modules.sh", task)
+  end
+
+  desc 'Compile output'
+  task :compile => :modules do |task|
+    plain("./Scripts/compile-output.sh", task)
   end
 end
 

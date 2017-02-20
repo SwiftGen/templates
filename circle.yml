@@ -5,7 +5,11 @@ machine:
 dependencies:
   pre:
     - gem install xcpretty --no-rdoc --no-ri --no-document --quiet
+    - Scripts/install_swiftlint.sh
 
 test:
   override:
+    - rake xcode:lint
     - rake xcode:test
+    - rake output:lint
+    - rake output:compile
