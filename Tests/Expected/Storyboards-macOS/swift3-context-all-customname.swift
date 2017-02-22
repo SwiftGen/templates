@@ -2,6 +2,7 @@
 
 import Foundation
 import Cocoa
+import FadeSegue
 import PrefsWindowController
 
 // swiftlint:disable file_length
