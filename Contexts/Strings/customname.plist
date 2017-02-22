@@ -27,6 +27,10 @@
 			<string>apples.count</string>
 			<key>keytail</key>
 			<string>apples.count</string>
+			<key>parameters</key>
+			<array>
+				<string>Int</string>
+			</array>
 			<key>params</key>
 			<dict>
 				<key>count</key>
@@ -56,6 +60,11 @@
 			<string>bananas.owner</string>
 			<key>keytail</key>
 			<string>bananas.owner</string>
+			<key>parameters</key>
+			<array>
+				<string>Int</string>
+				<string>String</string>
+			</array>
 			<key>params</key>
 			<dict>
 				<key>count</key>
@@ -89,6 +98,12 @@
 			<string>ObjectOwnership</string>
 			<key>keytail</key>
 			<string>ObjectOwnership</string>
+			<key>parameters</key>
+			<array>
+				<string>Int</string>
+				<string>String</string>
+				<string>String</string>
+			</array>
 			<key>params</key>
 			<dict>
 				<key>count</key>
@@ -126,6 +141,11 @@
 			<string>private</string>
 			<key>keytail</key>
 			<string>private</string>
+			<key>parameters</key>
+			<array>
+				<string>String</string>
+				<string>Int</string>
+			</array>
 			<key>params</key>
 			<dict>
 				<key>count</key>
@@ -220,6 +240,12 @@
 				<string>ObjectOwnership</string>
 				<key>keytail</key>
 				<string>ObjectOwnership</string>
+				<key>parameters</key>
+				<array>
+					<string>Int</string>
+					<string>String</string>
+					<string>String</string>
+				</array>
 				<key>params</key>
 				<dict>
 					<key>count</key>
@@ -257,6 +283,11 @@
 				<string>private</string>
 				<key>keytail</key>
 				<string>private</string>
+				<key>parameters</key>
+				<array>
+					<string>String</string>
+					<string>Int</string>
+				</array>
 				<key>params</key>
 				<dict>
 					<key>count</key>
@@ -298,6 +329,10 @@
 						<string>apples.count</string>
 						<key>keytail</key>
 						<string>count</string>
+						<key>parameters</key>
+						<array>
+							<string>Int</string>
+						</array>
 						<key>params</key>
 						<dict>
 							<key>count</key>
@@ -334,6 +369,11 @@
 						<string>bananas.owner</string>
 						<key>keytail</key>
 						<string>owner</string>
+						<key>parameters</key>
+						<array>
+							<string>Int</string>
+							<string>String</string>
+						</array>
 						<key>params</key>
 						<dict>
 							<key>count</key>
