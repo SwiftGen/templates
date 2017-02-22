@@ -470,5 +470,273 @@
 	</dict>
 	<key>tableName</key>
 	<string>Localizable</string>
+	<key>tables</key>
+	<array>
+		<dict>
+			<key>name</key>
+			<string>Localizable</string>
+			<key>strings</key>
+			<dict>
+				<key>strings</key>
+				<array>
+					<dict>
+						<key>key</key>
+						<string>alert_message</string>
+						<key>keytail</key>
+						<string>alert_message</string>
+						<key>translation</key>
+						<string>Contenu détaillé de l'alerte</string>
+					</dict>
+					<dict>
+						<key>key</key>
+						<string>alert_title</string>
+						<key>keytail</key>
+						<string>alert_title</string>
+						<key>translation</key>
+						<string>Titre de l'alerte</string>
+					</dict>
+					<dict>
+						<key>key</key>
+						<string>greetings</string>
+						<key>keytail</key>
+						<string>greetings</string>
+						<key>parameters</key>
+						<array>
+							<string>String</string>
+							<string>Int</string>
+						</array>
+						<key>params</key>
+						<dict>
+							<key>count</key>
+							<integer>2</integer>
+							<key>declarations</key>
+							<array>
+								<string>let p0</string>
+								<string>let p1</string>
+							</array>
+							<key>names</key>
+							<array>
+								<string>p0</string>
+								<string>p1</string>
+							</array>
+							<key>typednames</key>
+							<array>
+								<string>p0: String</string>
+								<string>p1: Int</string>
+							</array>
+							<key>types</key>
+							<array>
+								<string>String</string>
+								<string>Int</string>
+							</array>
+						</dict>
+						<key>translation</key>
+						<string>Bonjour, mon nom est %@ et j'ai %d ans</string>
+					</dict>
+					<dict>
+						<key>key</key>
+						<string>ObjectOwnership</string>
+						<key>keytail</key>
+						<string>ObjectOwnership</string>
+						<key>parameters</key>
+						<array>
+							<string>Int</string>
+							<string>String</string>
+							<string>String</string>
+						</array>
+						<key>params</key>
+						<dict>
+							<key>count</key>
+							<integer>3</integer>
+							<key>declarations</key>
+							<array>
+								<string>let p0</string>
+								<string>let p1</string>
+								<string>let p2</string>
+							</array>
+							<key>names</key>
+							<array>
+								<string>p0</string>
+								<string>p1</string>
+								<string>p2</string>
+							</array>
+							<key>typednames</key>
+							<array>
+								<string>p0: Int</string>
+								<string>p1: String</string>
+								<string>p2: String</string>
+							</array>
+							<key>types</key>
+							<array>
+								<string>Int</string>
+								<string>String</string>
+								<string>String</string>
+							</array>
+						</dict>
+						<key>translation</key>
+						<string>Ce sont les %1$d %2$@ de %3$@.</string>
+					</dict>
+				</array>
+				<key>subenums</key>
+				<array>
+					<dict>
+						<key>name</key>
+						<string>Apples</string>
+						<key>strings</key>
+						<array>
+							<dict>
+								<key>key</key>
+								<string>apples.count</string>
+								<key>keytail</key>
+								<string>count</string>
+								<key>parameters</key>
+								<array>
+									<string>Int</string>
+								</array>
+								<key>params</key>
+								<dict>
+									<key>count</key>
+									<integer>1</integer>
+									<key>declarations</key>
+									<array>
+										<string>let p0</string>
+									</array>
+									<key>names</key>
+									<array>
+										<string>p0</string>
+									</array>
+									<key>typednames</key>
+									<array>
+										<string>p0: Int</string>
+									</array>
+									<key>types</key>
+									<array>
+										<string>Int</string>
+									</array>
+								</dict>
+								<key>translation</key>
+								<string>Vous avez %d pommes</string>
+							</dict>
+						</array>
+					</dict>
+					<dict>
+						<key>name</key>
+						<string>Bananas</string>
+						<key>strings</key>
+						<array>
+							<dict>
+								<key>key</key>
+								<string>bananas.owner</string>
+								<key>keytail</key>
+								<string>owner</string>
+								<key>parameters</key>
+								<array>
+									<string>Int</string>
+									<string>String</string>
+								</array>
+								<key>params</key>
+								<dict>
+									<key>count</key>
+									<integer>2</integer>
+									<key>declarations</key>
+									<array>
+										<string>let p0</string>
+										<string>let p1</string>
+									</array>
+									<key>names</key>
+									<array>
+										<string>p0</string>
+										<string>p1</string>
+									</array>
+									<key>typednames</key>
+									<array>
+										<string>p0: Int</string>
+										<string>p1: String</string>
+									</array>
+									<key>types</key>
+									<array>
+										<string>Int</string>
+										<string>String</string>
+									</array>
+								</dict>
+								<key>translation</key>
+								<string>Ces %d bananes appartiennent à %@.</string>
+							</dict>
+						</array>
+					</dict>
+					<dict>
+						<key>name</key>
+						<string>Settings</string>
+						<key>subenums</key>
+						<array>
+							<dict>
+								<key>name</key>
+								<string>Navigation_Bar</string>
+								<key>strings</key>
+								<array>
+									<dict>
+										<key>key</key>
+										<string>settings.navigation-bar.self</string>
+										<key>keytail</key>
+										<string>self</string>
+										<key>translation</key>
+										<string>Quelques mots-clés réservés</string>
+									</dict>
+								</array>
+								<key>subenums</key>
+								<array>
+									<dict>
+										<key>name</key>
+										<string>Title</string>
+										<key>subenums</key>
+										<array>
+											<dict>
+												<key>name</key>
+												<string>Even</string>
+												<key>strings</key>
+												<array>
+													<dict>
+														<key>key</key>
+														<string>settings.navigation-bar.title.even.deeper</string>
+														<key>keytail</key>
+														<string>deeper</string>
+														<key>translation</key>
+														<string>Paramètres</string>
+													</dict>
+												</array>
+											</dict>
+										</array>
+									</dict>
+								</array>
+							</dict>
+							<dict>
+								<key>name</key>
+								<string>User_Profile_Section</string>
+								<key>strings</key>
+								<array>
+									<dict>
+										<key>key</key>
+										<string>seTTings.uSer-proFile-sectioN.footer_text</string>
+										<key>keytail</key>
+										<string>footer_text</string>
+										<key>translation</key>
+										<string>Ici, vous pouvez modifier certains paramètres de profil d'utilisateur.</string>
+									</dict>
+									<dict>
+										<key>key</key>
+										<string>SETTINGS.USER_PROFILE_SECTION.HEADER_TITLE</string>
+										<key>keytail</key>
+										<string>HEADER_TITLE</string>
+										<key>translation</key>
+										<string>Profil de l'utilisateur Paramètres</string>
+									</dict>
+								</array>
+							</dict>
+						</array>
+					</dict>
+				</array>
+			</dict>
+		</dict>
+	</array>
 </dict>
 </plist>

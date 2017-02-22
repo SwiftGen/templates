@@ -10,5 +10,14 @@
 	<dict/>
 	<key>tableName</key>
 	<string>Localizable</string>
+	<key>tables</key>
+	<array>
+		<dict>
+			<key>name</key>
+			<string>Localizable</string>
+			<key>strings</key>
+			<dict/>
+		</dict>
+	</array>
 </dict>
 </plist>

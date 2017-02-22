@@ -42,7 +42,7 @@
 				</array>
 			</dict>
 			<key>translation</key>
-			<string>Hello, my name is %@ and I&apos;m %d</string>
+			<string>Hello, my name is %@ and I'm %d</string>
 		</dict>
 		<dict>
 			<key>key</key>
@@ -93,7 +93,7 @@
 					</array>
 				</dict>
 				<key>translation</key>
-				<string>Hello, my name is %@ and I&apos;m %d</string>
+				<string>Hello, my name is %@ and I'm %d</string>
 			</dict>
 			<dict>
 				<key>key</key>
@@ -107,5 +107,64 @@
 	</dict>
 	<key>tableName</key>
 	<string>Localizable</string>
+	<key>tables</key>
+	<array>
+		<dict>
+			<key>name</key>
+			<string>Localizable</string>
+			<key>strings</key>
+			<dict>
+				<key>strings</key>
+				<array>
+					<dict>
+						<key>key</key>
+						<string>Greetings</string>
+						<key>keytail</key>
+						<string>Greetings</string>
+						<key>parameters</key>
+						<array>
+							<string>String</string>
+							<string>Int</string>
+						</array>
+						<key>params</key>
+						<dict>
+							<key>count</key>
+							<integer>2</integer>
+							<key>declarations</key>
+							<array>
+								<string>let p0</string>
+								<string>let p1</string>
+							</array>
+							<key>names</key>
+							<array>
+								<string>p0</string>
+								<string>p1</string>
+							</array>
+							<key>typednames</key>
+							<array>
+								<string>p0: String</string>
+								<string>p1: Int</string>
+							</array>
+							<key>types</key>
+							<array>
+								<string>String</string>
+								<string>Int</string>
+							</array>
+						</dict>
+						<key>translation</key>
+						<string>Hello, my name is %@ and I'm %d</string>
+					</dict>
+					<dict>
+						<key>key</key>
+						<string>Title</string>
+						<key>keytail</key>
+						<string>Title</string>
+						<key>translation</key>
+						<string>My awesome title</string>
+					</dict>
+				</array>
+			</dict>
+		</dict>
+	</array>
 </dict>
 </plist>
