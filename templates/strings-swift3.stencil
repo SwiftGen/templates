@@ -21,13 +21,13 @@ enum {{enumName}} {
 }
 // swiftlint:enable type_body_length
 
-{% macro parametersBlock params %}{% for type in params.types %}let p{{forloop.counter}}{% if not forloop.last %}, {% endif %}{% endfor %}{% endmacro %}
-{% macro argumentsBlock params %}{% for type in params.types %}p{{forloop.counter}}{% if not forloop.last %}, {% endif %}{% endfor %}{% endmacro %}
+{% macro parametersBlock params %}{% for type in params %}let p{{forloop.counter}}{% if not forloop.last %}, {% endif %}{% endfor %}{% endmacro %}
+{% macro argumentsBlock params %}{% for type in params %}p{{forloop.counter}}{% if not forloop.last %}, {% endif %}{% endfor %}{% endmacro %}
 {% macro recursiveBlock strings %}
       {% for string in strings.strings %}
-      {% if string.params %}
-      case .{{string.key|swiftIdentifier|snakeToCamelCase|lowerFirstWord|escapeReservedKeywords}}({% call parametersBlock string.params %}):
-        return {{enumName}}.tr(key: "{{string.key}}", {% call argumentsBlock string.params %})
+      {% if string.parameters %}
+      case .{{string.key|swiftIdentifier|snakeToCamelCase|lowerFirstWord|escapeReservedKeywords}}({% call parametersBlock string.parameters %}):
+        return {{enumName}}.tr(key: "{{string.key}}", {% call argumentsBlock string.parameters %})
       {% else %}
       case .{{string.key|swiftIdentifier|snakeToCamelCase|lowerFirstWord|escapeReservedKeywords}}:
         return {{enumName}}.tr(key: "{{string.key}}")
