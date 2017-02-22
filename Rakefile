@@ -34,7 +34,7 @@ namespace :output do
     Utils.print_header 'Compile output modules'
 
     # macOS
-    modules = ['PrefsWindowController']
+    modules = ['FadeSegue', 'PrefsWindowController']
     modules.each do |m|
       Utils.print_info "Compiling module #{m}… (macos)"
       compile_module(m, :macosx, task)
