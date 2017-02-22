@@ -118,8 +118,6 @@
 				<dict>
 					<key>customClass</key>
 					<string>FadeSegue</string>
-					<key>customModule</key>
-					<string>FadeSegue</string>
 					<key>identifier</key>
 					<string>public</string>
 				</dict>
