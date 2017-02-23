@@ -4,6 +4,11 @@
 <dict>
 	<key>enumName</key>
 	<string>XCTLoc</string>
+	<key>param</key>
+	<dict>
+		<key>enumName</key>
+		<string>XCTLoc</string>
+	</dict>
 	<key>strings</key>
 	<array>
 		<dict>

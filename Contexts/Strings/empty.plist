@@ -4,6 +4,11 @@
 <dict>
 	<key>enumName</key>
 	<string>L10n</string>
+	<key>param</key>
+	<dict>
+		<key>enumName</key>
+		<string>L10n</string>
+	</dict>
 	<key>strings</key>
 	<array/>
 	<key>structuredStrings</key>
