@@ -168,5 +168,10 @@
 			<string>public</string>
 		</dict>
 	</array>
+	<key>param</key>
+	<dict>
+		<key>enumName</key>
+		<string>FontFamily</string>
+	</dict>
 </dict>
 </plist>

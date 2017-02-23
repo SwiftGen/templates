@@ -14,6 +14,13 @@
 		<string>LocationPicker</string>
 		<string>SlackTextViewController</string>
 	</array>
+	<key>param</key>
+	<dict>
+		<key>sceneEnumName</key>
+		<string>StoryboardScene</string>
+		<key>segueEnumName</key>
+		<string>StoryboardSegue</string>
+	</dict>
 	<key>sceneEnumName</key>
 	<string>StoryboardScene</string>
 	<key>segueEnumName</key>

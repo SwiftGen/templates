@@ -6,6 +6,13 @@
 	<array/>
 	<key>modules</key>
 	<array/>
+	<key>param</key>
+	<dict>
+		<key>sceneEnumName</key>
+		<string>StoryboardScene</string>
+		<key>segueEnumName</key>
+		<string>StoryboardSegue</string>
+	</dict>
 	<key>sceneEnumName</key>
 	<string>StoryboardScene</string>
 	<key>segueEnumName</key>
