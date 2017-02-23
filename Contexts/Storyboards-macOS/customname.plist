@@ -10,6 +10,13 @@
 	<array>
 		<string>PrefsWindowController</string>
 	</array>
+	<key>param</key>
+	<dict>
+		<key>sceneEnumName</key>
+		<string>XCTStoryboardsScene</string>
+		<key>segueEnumName</key>
+		<string>XCTStoryboardsSegue</string>
+	</dict>
 	<key>sceneEnumName</key>
 	<string>XCTStoryboardsScene</string>
 	<key>segueEnumName</key>
