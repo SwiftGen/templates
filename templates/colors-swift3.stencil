@@ -28,8 +28,8 @@ extension Color {
 {% set enumName %}{{param.enumName|default:"ColorName"}}{% endset %}
 enum {{enumName}} {
   {% for color in colors %}
-  /// <span style="display:block;width:3em;height:2em;border:1px solid black;background:#{{color.rgb}}"></span>
-  /// Alpha: {{color.alpha|hexToInt|int255toFloat|percent}} <br/> (0x{{color.rgba}})
+  /// <span style="display:block;width:3em;height:2em;border:1px solid black;background:#{{color.red}}{{color.green}}{{color.blue}}"></span>
+  /// Alpha: {{color.alpha|hexToInt|int255toFloat|percent}} <br/> (0x{{color.red}}{{color.green}}{{color.blue}}{{color.alpha}})
   case {{color.name|swiftIdentifier|snakeToCamelCase|lowerFirstWord|escapeReservedKeywords}}
   {% endfor %}
 
@@ -37,7 +37,7 @@ enum {{enumName}} {
     switch self {
     {% for color in colors %}
     case .{{color.name|swiftIdentifier|snakeToCamelCase|lowerFirstWord|escapeReservedKeywords}}:
-      return 0x{{color.rgba}}
+      return 0x{{color.red}}{{color.green}}{{color.blue}}{{color.alpha}}
     {% endfor %}
     }
   }
