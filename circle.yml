@@ -9,7 +9,7 @@ dependencies:
 
 test:
   override:
-    - rake xcode:lint
+    - rake lint:code
     - rake xcode:test
-    - rake output:lint
     - rake output:compile
+    - rake lint:output

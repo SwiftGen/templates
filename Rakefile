@@ -28,19 +28,21 @@ namespace :xcode do
   task :test => :build do |task|
     xcpretty("xcodebuild -workspace Tests/Templates.xcworkspace -scheme Tests test-without-building", task)
   end
+end
 
-  desc 'Lint code'
-  task :lint do |task|
+namespace :lint do
+  desc 'Lint the test code'
+  task :code do |task|
     plain("PROJECT_DIR=Tests ./Scripts/swiftlint-code.sh", task)
+  end
+  
+  desc 'Lint the output code'
+  task :output do |task|
+    plain("PROJECT_DIR=Tests ./Scripts/swiftlint-output.sh", task)
   end
 end
 
 namespace :output do
-  desc 'Lint output'
-  task :lint do |task|
-    plain("PROJECT_DIR=Tests ./Scripts/swiftlint-output.sh", task)
-  end
-
   desc 'Compile modules'
   task :modules do |task|
     plain("./Scripts/compile-modules.sh", task)
