@@ -1,3 +1,5 @@
+RESULT=0
+
 for f in `find "Tests/Expected" -name '*.swift'`
 do
 	if [[ $f == *"swift3"* ]]; then
@@ -17,5 +19,10 @@ do
 	fi
 
 	echo "Checking $f template-generated fixture for build errors…"
-	xcrun $TOOLCHAIN -sdk $SDK swiftc -parse -target $TARGET -I $MODULES "Fixtures/stub-env/Definitions.swift" "$f"
+	xcrun $TOOLCHAIN -sdk $SDK swiftc -parse -target $TARGET -I $MODULES "Fixtures/stub-env/Definitions.swift" "$f" || {
+		RESULT=1;
+	}
 done
+
+# return failure if one compilation failed
+exit $RESULT
