@@ -16,6 +16,7 @@ import Foundation
 {% endmacro %}
 
 // swiftlint:disable type_body_length
+{% set enumName %}{{param.enumName|default:"L10n"}}{% endset %}
 enum {{enumName}} {
   {% call recursiveBlock structuredStrings %}
 }

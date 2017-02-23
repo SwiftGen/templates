@@ -9,6 +9,7 @@ import Foundation
 // swiftlint:disable type_body_length
 // swiftlint:disable nesting
 
+{% set enumName %}{{param.enumName|default:"L10n"}}{% endset %}
 enum {{enumName}} {
 {% macro enumBlock strings sp %}
 {{sp}}  {% for string in strings.strings %}

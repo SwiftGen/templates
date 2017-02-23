@@ -50,7 +50,7 @@ extension Font {
   }
 }
 
-enum {{enumName}} {
+enum {{param.enumName|default:"FontFamily"}} {
   {% for family in families %}
   enum {{family.name|swiftIdentifier|snakeToCamelCaseNoPrefix|escapeReservedKeywords}}: String, FontConvertible {
     {% for font in family.fonts %}

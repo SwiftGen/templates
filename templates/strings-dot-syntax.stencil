@@ -33,6 +33,7 @@ import Foundation
 {{sp}}  {% endfor %}
 {% endmacro %}
 
+{% set enumName %}{{param.enumName|default:"L10n"}}{% endset %}
 enum {{enumName}} {
   {% call recursiveBlock structuredStrings sp %}
 }

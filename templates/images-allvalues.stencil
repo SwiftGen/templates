@@ -31,6 +31,7 @@
 {% endmacro %}
 
 // swiftlint:disable type_body_length
+{% set enumName %}{{param.enumName|default:"Asset"}}{% endset %}
 enum {{enumName}}: String {
   {% for catalog in catalogs %}
   {% call recursiveCaseBlock catalog.assets %}
