@@ -18,6 +18,8 @@ TOOLCHAINS = {
 namespace :output do
   desc 'Compile modules'
   task :modules do |task|
+    print_info 'Compile output modules'
+
     # macOS
     modules = ['PrefsWindowController']
     modules.each do |m|
@@ -40,6 +42,8 @@ namespace :output do
 
   desc 'Compile output'
   task :compile => :modules do |task|
+    print_info 'Compiling template output files'
+
     exit Dir.glob('Tests/Expected/**/*.swift').map { |f|
       print "Compiling #{f}…\n"
       compile_file(f, task)
