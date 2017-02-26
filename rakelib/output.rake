@@ -40,17 +40,22 @@ namespace :output do
 
   desc 'Compile output'
   task :compile => :modules do |task|
-    Dir.glob('Tests/Expected/**/*.swift').each do |f|
+    exit Dir.glob('Tests/Expected/**/*.swift').map { |f|
+      print "Compiling #{f}…\n"
       compile_file(f, task)
-    end
+    }.reduce(true) { |result, status|
+      result && status
+    }
   end
 
   def compile_module(m, sdk, task)
     target = SDKS[sdk]
-
-    TOOLCHAINS.each_pair do |key, toolchain|
-      xcrun(%Q(--toolchain #{toolchain[:toolchain]} -sdk #{sdk} swiftc -emit-module "#{MODULE_INPUT_PATH}/#{m}.swift" -module-name "#{m}" -emit-module-path "#{toolchain[:module_path]}" -target "#{target}"), task, false)
+    subtask = File.basename(m, '.*')
+    commands = TOOLCHAINS.map do |key, toolchain|
+      %Q(--toolchain #{toolchain[:toolchain]} -sdk #{sdk} swiftc -emit-module "#{MODULE_INPUT_PATH}/#{m}.swift" -module-name "#{m}" -emit-module-path "#{toolchain[:module_path]}" -target "#{target}")
     end
+
+    xcrun(commands, task, subtask)
   end
 
   def compile_file(f, task)
@@ -68,8 +73,16 @@ namespace :output do
       sdks = [:iphoneos, :macosx]
     end
 
-    sdks.each do |sdk|
-      xcrun(%Q(--toolchain #{toolchain[:toolchain]} -sdk #{sdk} swiftc -parse -target #{SDKS[sdk]} -I #{toolchain[:module_path]} "#{MODULE_OUTPUT_PATH}/Definitions.swift" #{f}), task, false)
+    commands = sdks.map do |sdk|
+      %Q(--toolchain #{toolchain[:toolchain]} -sdk #{sdk} swiftc -parse -target #{SDKS[sdk]} -I #{toolchain[:module_path]} "#{MODULE_OUTPUT_PATH}/Definitions.swift" #{f})
+    end
+    subtask = File.basename(f, '.*')
+
+    begin
+      xcrun(commands, task, subtask)
+      return true
+    rescue
+      return false
     end
   end
 end

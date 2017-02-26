@@ -1,24 +1,27 @@
 # run a command, pipe output through 'xcpretty' and store the output in CI artifacts
-def xcpretty(cmd, task)
-  name = task.name.gsub(/:/,"_")
+def xcpretty(cmd, task, subtask = '')
+  name = (task.name + (subtask.empty? ? '' : "_#{subtask}")).gsub(/[:-]/, "_")
+  command = [*cmd].join(' && ')
   xcpretty = `which xcpretty`
 
   if ENV['CI']
-    sh "set -o pipefail && #{cmd} | tee \"#{ENV['CIRCLE_ARTIFACTS']}/#{name}_raw.log\" | xcpretty --color --report junit --output \"#{ENV['CIRCLE_TEST_REPORTS']}/xcode/#{name}.xml\""
+    sh "set -o pipefail && (#{command}) | tee \"#{ENV['CIRCLE_ARTIFACTS']}/#{name}_raw.log\" | xcpretty --color --report junit --output \"#{ENV['CIRCLE_TEST_REPORTS']}/xcode/#{name}.xml\""
   elsif xcpretty && $?.success?
-    sh "set -o pipefail && #{cmd} | xcpretty -c"
+    sh "set -o pipefail && (#{command}) | xcpretty -c"
   else
-    sh cmd
+    sh command
   end
 end
 
 # run a command and store the output in CI artifacts
-def plain(cmd, task)
-  name = task.name.gsub(/:/,"_")
+def plain(cmd, task, subtask = '')
+  name = (task.name + (subtask.empty? ? '' : "_#{subtask}")).gsub(/[:-]/, "_")
+  command = [*cmd].join(' && ')
+
   if ENV['CI']
-    sh "set -o pipefail && #{cmd} | tee \"#{ENV['CIRCLE_ARTIFACTS']}/#{name}_raw.log\""
+    sh "set -o pipefail && (#{command}) | tee \"#{ENV['CIRCLE_ARTIFACTS']}/#{name}_raw.log\""
   else
-    sh cmd
+    sh command
   end
 end
 
@@ -35,10 +38,14 @@ def version_select
   %Q(DEVELOPER_DIR="#{latest_xcode_version}/Contents/Developer")
 end
 
-def xcrun(cmd, task, pretty=true)
-  if pretty
-    xcpretty("#{version_select} xcrun #{cmd}", task)
+def xcrun(cmd, task, subtask = '')
+  commands = [*cmd].map { |cmd|
+    "#{version_select} xcrun #{cmd}"
+  }
+
+  if commands.join.match('xcodebuild')
+    xcpretty(commands, task, subtask)
   else
-    plain("#{version_select} xcrun #{cmd}", task)
+    plain(commands, task, subtask)
   end
 end
