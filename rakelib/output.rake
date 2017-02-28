@@ -18,19 +18,19 @@ TOOLCHAINS = {
 namespace :output do
   desc 'Compile modules'
   task :modules do |task|
-    print_info 'Compile output modules'
+    Utils.print_info 'Compile output modules'
 
     # macOS
     modules = ['PrefsWindowController']
     modules.each do |m|
-      print "Compiling module #{m}… (macos)\n"
+      puts "Compiling module #{m}… (macos)"
       compile_module(m, :macosx, task)
     end
 
     # iOS
     modules = ['CustomSegue', 'LocationPicker', 'SlackTextViewController']
     modules.each do |m|
-      print "Compiling module #{m}… (ios)\n"
+      puts "Compiling module #{m}… (ios)"
       compile_module(m, :iphoneos, task)
     end
 
@@ -42,10 +42,10 @@ namespace :output do
 
   desc 'Compile output'
   task :compile => :modules do |task|
-    print_info 'Compiling template output files'
+    Utils.print_info 'Compiling template output files'
 
     exit Dir.glob('Tests/Expected/**/*.swift').map { |f|
-      print "Compiling #{f}…\n"
+      puts "Compiling #{f}…\n"
       compile_file(f, task)
     }.reduce(true) { |result, status|
       result && status
@@ -59,7 +59,7 @@ namespace :output do
       %Q(--toolchain #{toolchain[:toolchain]} -sdk #{sdk} swiftc -emit-module "#{MODULE_INPUT_PATH}/#{m}.swift" -module-name "#{m}" -emit-module-path "#{toolchain[:module_path]}" -target "#{target}")
     end
 
-    xcrun(commands, task, subtask)
+    Utils.run(commands, task, subtask, xcrun: true)
   end
 
   def compile_file(f, task)
@@ -83,7 +83,7 @@ namespace :output do
     subtask = File.basename(f, '.*')
 
     begin
-      xcrun(commands, task, subtask)
+      Utils.run(commands, task, subtask, xcrun: true)
       return true
     rescue
       return false
