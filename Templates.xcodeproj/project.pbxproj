@@ -29,8 +29,8 @@
 		DD1F70E51E29AA940058A059 /* Expected */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Expected; sourceTree = "<group>"; };
 		DD1F70EC1E2A976A0058A059 /* StoryboardsiOSTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoryboardsiOSTests.swift; sourceTree = "<group>"; };
 		DD1F70ED1E2A976A0058A059 /* StoryboardsMacOSTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoryboardsMacOSTests.swift; sourceTree = "<group>"; };
-		DD5F34E61E231E6B00AEB5DA /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = SOURCE_ROOT; };
-		DD5F34E71E231E6B00AEB5DA /* TestsHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestsHelper.swift; sourceTree = SOURCE_ROOT; };
+		DD5F34E61E231E6B00AEB5DA /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DD5F34E71E231E6B00AEB5DA /* TestsHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TestsHelper.swift; path = Tests/TemplatesTests/TestsHelper.swift; sourceTree = SOURCE_ROOT; };
 		DD5F34EB1E231E8B00AEB5DA /* ColorsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorsTests.swift; sourceTree = "<group>"; };
 		DD5F34EC1E231E8B00AEB5DA /* FontsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FontsTests.swift; sourceTree = "<group>"; };
 		DD5F34ED1E231E8B00AEB5DA /* ImagesTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImagesTests.swift; sourceTree = "<group>"; };
@@ -91,17 +91,16 @@
 		DD5F34111E21657700AEB5DA /* Tests */ = {
 			isa = PBXGroup;
 			children = (
-				DD5F34E71E231E6B00AEB5DA /* TestsHelper.swift */,
-				DD5F34EA1E231E8B00AEB5DA /* TestSuites */,
+				DD5F34EA1E231E8B00AEB5DA /* TemplatesTests */,
 				DD5F34F91E231F0400AEB5DA /* Contexts */,
 				DD1F70E51E29AA940058A059 /* Expected */,
 				DD1F70E21E29A6E20058A059 /* templates */,
 				DD5F34E61E231E6B00AEB5DA /* Info.plist */,
 			);
-			name = Tests;
+			path = Tests;
 			sourceTree = SOURCE_ROOT;
 		};
-		DD5F34EA1E231E8B00AEB5DA /* TestSuites */ = {
+		DD5F34EA1E231E8B00AEB5DA /* TemplatesTests */ = {
 			isa = PBXGroup;
 			children = (
 				DD5F34EB1E231E8B00AEB5DA /* ColorsTests.swift */,
@@ -110,8 +109,9 @@
 				DD1F70EC1E2A976A0058A059 /* StoryboardsiOSTests.swift */,
 				DD1F70ED1E2A976A0058A059 /* StoryboardsMacOSTests.swift */,
 				DD5F34EF1E231E8B00AEB5DA /* StringsTests.swift */,
+				DD5F34E71E231E6B00AEB5DA /* TestsHelper.swift */,
 			);
-			path = TestSuites;
+			path = TemplatesTests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -356,7 +356,7 @@
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				COMBINE_HIDPI_IMAGES = YES;
-				INFOPLIST_FILE = Info.plist;
+				INFOPLIST_FILE = Tests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				PRODUCT_BUNDLE_IDENTIFIER = com.alisoftware.SwiftGenKitTests;
@@ -372,7 +372,7 @@
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				COMBINE_HIDPI_IMAGES = YES;
-				INFOPLIST_FILE = Info.plist;
+				INFOPLIST_FILE = Tests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				PRODUCT_BUNDLE_IDENTIFIER = com.alisoftware.SwiftGenKitTests;
