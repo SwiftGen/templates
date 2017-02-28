@@ -9,10 +9,13 @@ import XCTest
 import PathKit
 import StencilSwiftKit
 
-private let colorCode: (String) -> String = ProcessInfo().environment["XcodeColors"] == "YES" ? { "\u{001b}[\($0);" } : { _ in "" }
+private let colorCode: (String) -> String =
+  ProcessInfo().environment["XcodeColors"] == "YES" ? { "\u{001b}[\($0);" } : { _ in "" }
 private let (msgColor, reset) = (colorCode("fg250,0,0"), colorCode(""))
-private let okCode = (num: colorCode("fg127,127,127"), code: colorCode(""))
-private let koCode = (num: colorCode("fg127,127,127") + colorCode("bg127,0,0"), code: colorCode("fg250,250,250") + colorCode("bg127,0,0"))
+private let okCode = (num: colorCode("fg127,127,127"),
+                      code: colorCode(""))
+private let koCode = (num: colorCode("fg127,127,127") + colorCode("bg127,0,0"),
+                      code: colorCode("fg250,250,250") + colorCode("bg127,0,0"))
 
 func diff(_ result: String, _ expected: String) -> String? {
   guard result != expected else { return nil }
@@ -46,7 +49,14 @@ func diff(_ result: String, _ expected: String) -> String? {
     }
     let lhsNum = addLineNumbers(slice(lhsLines, 4)).joined(separator: "\n")
     let rhsNum = addLineNumbers(slice(rhsLines, 4)).joined(separator: "\n")
-    return "\(msgColor)Mismatch at line \(badLineIdx)\(reset)\n>>>>>> result\n\(lhsNum)\n======\n\(rhsNum)\n<<<<<< expected"
+    return [
+      "\(msgColor)Mismatch at line \(badLineIdx)\(reset)",
+      ">>>>>> result",
+      "\(lhsNum)",
+      "======",
+      "\(rhsNum)",
+      "<<<<<< expected"
+    ].joined(separator: "\n")
   }
   return nil
 }
@@ -65,7 +75,7 @@ class Fixtures {
     case storyboardsMacOS = "Storyboards-macOS"
     case strings = "Strings"
   }
-  
+
   private static let testBundle = Bundle(for: Fixtures.self)
   private init() {}
 
@@ -74,40 +84,40 @@ class Fixtures {
       fatalError("Unable to find resource directory URL")
     }
     let rsrc = Path(rsrcURL.path) + "Fixtures"
-    
+
     guard let dir = sub else { return rsrc }
     return rsrc + dir.rawValue
   }
-  
+
   static func path(for name: String, sub: Directory) -> Path {
     return path(for: name, subDirectory: "Fixtures/\(sub.rawValue)")
   }
-  
+
   private static func path(for name: String, subDirectory: String? = nil) -> Path {
     guard let path = testBundle.path(forResource: name, ofType: "", inDirectory: subDirectory) else {
       fatalError("Unable to find fixture \"\(name)\"")
     }
     return Path(path)
   }
-  
+
   static func context(for name: String, sub: Directory) -> [String: Any] {
     let path = self.path(for: name, subDirectory: "Contexts/\(sub.rawValue)")
-    
+
     guard let data = NSDictionary(contentsOfFile: path.description) as? [String: Any] else {
       fatalError("Unable to load fixture content")
     }
-    
+
     return data
   }
-  
+
   static func template(for name: String) -> String {
     return string(for: name, subDirectory: "templates")
   }
-  
+
   static func output(for name: String, sub: Directory) -> String {
     return string(for: name, subDirectory: "Expected/\(sub.rawValue)")
   }
-  
+
   private static func string(for name: String, subDirectory: String) -> String {
     do {
       return try path(for: name, subDirectory: subDirectory).read()
@@ -120,13 +130,13 @@ class Fixtures {
 extension XCTestCase {
   /**
    Generate variations of a context.
-   
+
    - Parameter name: The name of the context
    - Parameter context: The context itself
    - Return: a tuple with a list of generated contexts, and a suffix to find the correct output file
    */
   typealias VariationGenerator = ((String, [String: Any]) -> [(context: [String: Any], suffix: String)])
-  
+
   /**
    Test the given template against a list of contexts, comparing the output with files in the expected folder.
    
@@ -136,17 +146,23 @@ extension XCTestCase {
    - Parameter directory: The directory to look for files in (correspons to de command)
    - Parameter contextVariations: Optional closure to generate context variations.
    */
-  func test(template templateName: String, contextNames: [String], outputPrefix: String, directory: Fixtures.Directory, contextVariations: VariationGenerator? = nil) {
+  func test(template templateName: String,
+            contextNames: [String],
+            outputPrefix: String,
+            directory: Fixtures.Directory,
+            contextVariations: VariationGenerator? = nil) {
     let template = StencilSwiftTemplate(templateString: Fixtures.template(for: "\(templateName).stencil"),
                                         environment: stencilSwiftEnvironment())
     let contextVariations = contextVariations ?? { [(context: $1, suffix: "")] }
-    
+
     for contextName in contextNames {
       print("Testing context '\(contextName)'...")
       let context = Fixtures.context(for: "\(contextName).plist", sub: directory)
-      
+
       for (context, suffix) in contextVariations(contextName, context) {
-        let result = try! template.render(context)
+        guard let result = try? template.render(context) else {
+          fatalError("Unable to render template")
+        }
         let expected = Fixtures.output(for: "\(outputPrefix)-context-\(contextName)\(suffix).swift", sub: directory)
         XCTDiffStrings(result, expected)
       }
