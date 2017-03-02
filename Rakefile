@@ -3,7 +3,7 @@
 ## [ Constants ] ##############################################################
 
 WORKSPACE = 'Templates'
-TARGET_NAME = 'Tests'
+SCHEME_NAME = 'Tests'
 CONFIGURATION = 'Debug'
 
 
