@@ -31,19 +31,19 @@ TOOLCHAINS = {
 namespace :output do
   desc 'Compile modules'
   task :modules do |task|
-    Utils.print_info 'Compile output modules'
+    Utils.print_header 'Compile output modules'
 
     # macOS
     modules = ['PrefsWindowController']
     modules.each do |m|
-      puts "Compiling module #{m}… (macos)"
+      Utils.print_info "Compiling module #{m}… (macos)"
       compile_module(m, :macosx, task)
     end
 
     # iOS
     modules = ['CustomSegue', 'LocationPicker', 'SlackTextViewController']
     modules.each do |m|
-      puts "Compiling module #{m}… (ios)"
+      Utils.print_info "Compiling module #{m}… (ios)"
       compile_module(m, :iphoneos, task)
     end
 
@@ -55,10 +55,10 @@ namespace :output do
 
   desc 'Compile output'
   task :compile => :modules do |task|
-    Utils.print_info 'Compiling template output files'
+    Utils.print_header 'Compiling template output files'
 
     exit Dir.glob('Tests/Expected/**/*.swift').map { |f|
-      puts "Compiling #{f}…\n"
+      Utils.print_info "Compiling #{f}…\n"
       compile_file(f, task)
     }.reduce(true) { |result, status|
       result && status
@@ -99,6 +99,7 @@ namespace :output do
       Utils.run(commands, task, subtask, xcrun: true)
       return true
     rescue
+      Utils.print_error "Failed to compile #{f}!"
       return false
     end
   end
