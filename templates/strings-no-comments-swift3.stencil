@@ -1,15 +1,15 @@
 // Generated using SwiftGen, by O.Halligon — https://github.com/SwiftGen/SwiftGen
 
-{% if strings %}
+{% if tables.first.strings %}
 import Foundation
 
 // swiftlint:disable file_length
 // swiftlint:disable line_length
-{% macro recursiveBlock strings %}
-  {% for string in strings.strings %}
+{% macro recursiveBlock item %}
+  {% for string in item.strings %}
   case {{string.key|swiftIdentifier|snakeToCamelCase|lowerFirstWord|escapeReservedKeywords}}{% if string.parameters %}({{string.parameters|join}}){% endif %}
   {% endfor %}
-  {% for subenum in strings.subenums %}
+  {% for subenum in item.subenums %}
   {% call recursiveBlock subenum %}
   {% endfor %}
 {% endmacro %}
@@ -17,14 +17,14 @@ import Foundation
 // swiftlint:disable type_body_length
 {% set enumName %}{{param.enumName|default:"L10n"}}{% endset %}
 enum {{enumName}} {
-  {% call recursiveBlock structuredStrings %}
+  {% call recursiveBlock tables.first.strings %}
 }
 // swiftlint:enable type_body_length
 
 {% macro parametersBlock params %}{% for type in params.types %}let p{{forloop.counter}}{% if not forloop.last %}, {% endif %}{% endfor %}{% endmacro %}
 {% macro argumentsBlock params %}{% for type in params.types %}p{{forloop.counter}}{% if not forloop.last %}, {% endif %}{% endfor %}{% endmacro %}
-{% macro recursiveBlock strings %}
-      {% for string in strings.strings %}
+{% macro recursiveBlock item %}
+      {% for string in item.strings %}
       {% if string.parameters %}
       case .{{string.key|swiftIdentifier|snakeToCamelCase|lowerFirstWord|escapeReservedKeywords}}({% call parametersBlock string.parameters %}):
         return {{enumName}}.tr(key: "{{string.key}}", {% call argumentsBlock string.parameters %})
@@ -33,7 +33,7 @@ enum {{enumName}} {
         return {{enumName}}.tr(key: "{{string.key}}")
       {% endif %}
       {% endfor %}
-      {% for subenum in strings.subenums %}
+      {% for subenum in item.subenums %}
       {% call recursiveBlock subenum %}
       {% endfor %}
 {% endmacro %}
@@ -42,7 +42,7 @@ extension {{enumName}}: CustomStringConvertible {
 
   var string: String {
     switch self {
-      {% call recursiveBlock structuredStrings %}
+      {% call recursiveBlock tables.first.strings %}
     }
   }
 
