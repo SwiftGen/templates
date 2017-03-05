@@ -1,6 +1,6 @@
 # StencilSwiftKit
 
-[![Build Status](https://travis-ci.org/SwiftGen/StencilSwiftKit.svg?branch=master)](https://travis-ci.org/SwiftGen/StencilSwiftKit)
+[![CircleCI](https://circleci.com/gh/SwiftGen/StencilSwiftKit/tree/master.svg?style=svg)](https://circleci.com/gh/SwiftGen/StencilSwiftKit/tree/master)
 [![CocoaPods Compatible](https://img.shields.io/cocoapods/v/StencilSwiftKit.svg)](https://img.shields.io/cocoapods/v/StencilSwiftKit.svg)
 [![Platform](https://img.shields.io/cocoapods/p/StencilSwiftKit.svg?style=flat)](http://cocoadocs.org/docsets/StencilSwiftKit)
 ![Swift 3.0](https://img.shields.io/badge/Swift-3.0-orange.svg)
@@ -19,6 +19,10 @@ _TODO: [Write more extension Documentation](https://github.com/SwiftGen/StencilS
 * `SetNode`
   * `{% set <Name> %}…{% endset %}`
   * Renders the nodes inside this block immediately, and stores the result in the `<Name`>  variable of the current context.
+* `MapNode`
+  * `{% map <Variable> into <Name> using <ItemName> %}…{% endmap %}`
+  * Apply a `map` operator to an array, and store the result into a new array variable `<Name>` in the current context.
+  * Inside the map loop, a `maploop` special variable is available (akin to the `forloop` variable in `for` nodes). It exposes `maploop.count`, `maploop.first`, `maploop.last` and `maploop.item`.
 
 ## Filters
 

@@ -1,33 +1,28 @@
 PODS:
-  - PathKit (0.7.0)
-  - Stencil (0.7.1):
-    - PathKit (~> 0.7.0)
-  - StencilSwiftKit (0.0.1):
-    - Stencil (~> 0.7.0)
+  - PathKit (0.8.0)
+  - Stencil (0.8.0):
+    - PathKit (~> 0.8.0)
+  - StencilSwiftKit (1.0.1):
+    - Stencil (~> 0.8.0)
 
 DEPENDENCIES:
-  - Stencil (from `https://github.com/kylef/Stencil`)
+  - Stencil
   - StencilSwiftKit (from `https://github.com/SwiftGen/StencilSwiftKit`)
 
 EXTERNAL SOURCES:
-  Stencil:
-    :git: https://github.com/kylef/Stencil
   StencilSwiftKit:
     :git: https://github.com/SwiftGen/StencilSwiftKit
 
 CHECKOUT OPTIONS:
-  Stencil:
-    :commit: 99efba56e942270780a452e5dcdfa1a839839cf4
-    :git: https://github.com/kylef/Stencil
   StencilSwiftKit:
-    :commit: cc3c4d9aed593c7026e8d18c7d7d75628039a330
+    :commit: 486c0c9e479654cfb2bff61b5f5d17822357923f
     :git: https://github.com/SwiftGen/StencilSwiftKit
 
 SPEC CHECKSUMS:
-  PathKit: f8260c3e41bf4d552f3603853e32a5b325a176d4
-  Stencil: 4177c0cabcdc40dd9be9b7f701d710d0a121023a
-  StencilSwiftKit: e2caece14b65d144da6bbe513a73b01be4833e7b
+  PathKit: dcab05d701474011aae0e40cf892298a831f63d6
+  Stencil: 6669684db0262e6eb316ce233e7e02d6df0a6cd9
+  StencilSwiftKit: fc4a0e446f0f45264d4029b9ca3b4798a6a35ebd
 
-PODFILE CHECKSUM: af694ce70d27109bd28ecfb95a4370560e111f3a
+PODFILE CHECKSUM: 910aa7b4b6bcbe527b3b6800c8fe6bc374027140
 
 COCOAPODS: 1.2.0
