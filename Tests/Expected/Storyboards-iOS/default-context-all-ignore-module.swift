@@ -182,3 +182,5 @@ enum StoryboardSegue {
     case ShowPassword
   }
 }
+
+private final class BundleToken {}

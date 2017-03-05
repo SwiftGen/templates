@@ -18,7 +18,9 @@ _None_
 
 ### Internal Changes
 
-_None_
+* Switch from Travis CI to Circle CI, clean up the Rakefile in the process.  
+  [David Jennes](https://github.com/djbe)
+  [#24](https://github.com/SwiftGen/SwiftGenKit/issues/24)
 
 ## 1.0.0
 

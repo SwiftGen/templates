@@ -1,6 +1,6 @@
 # SwiftGen Templates
 
-[![Build Status](https://travis-ci.org/SwiftGen/templates.svg?branch=master)](https://travis-ci.org/SwiftGen/templates)
+[![CircleCI](https://circleci.com/gh/SwiftGen/templates/tree/master.svg?style=svg)](https://circleci.com/gh/SwiftGen/templates/tree/master)
 ![Swift 3.0](https://img.shields.io/badge/Swift-3.0-orange.svg)
 
 This repository contains [Stencil](https://github.com/kylef/Stencil) templates that are dedicated for being used with [SwiftGen](https://github.com/SwiftGen/swiftgen).
