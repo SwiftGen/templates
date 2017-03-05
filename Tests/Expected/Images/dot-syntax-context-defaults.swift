@@ -17,10 +17,12 @@ struct AssetType: StringLiteralConvertible {
 
   var image: Image {
     let bundle = NSBundle(forClass: BundleToken.self)
-    #if os(iOS) || os(tvOS) || os(watchOS)
+    #if os(iOS) || os(tvOS)
     let image = Image(named: value, inBundle: bundle, compatibleWithTraitCollection: nil)
     #elseif os(OSX)
     let image = bundle.imageForResource(value)
+    #elseif os(watchOS)
+    let image = Image(named: value)
     #endif
     guard let result = image else { fatalError("Unable to load image \(value).") }
     return result
@@ -62,10 +64,10 @@ enum Asset {
 
 extension Image {
   convenience init!(asset: AssetType) {
-    #if os(iOS) || os(tvOS) || os(watchOS)
+    #if os(iOS) || os(tvOS)
     let bundle = NSBundle(forClass: BundleToken.self)
     self.init(named: asset.value, inBundle: bundle, compatibleWithTraitCollection: nil)
-    #elseif os(OSX)
+    #elseif os(OSX) || os(watchOS)
     self.init(named: asset.value)
     #endif
   }
