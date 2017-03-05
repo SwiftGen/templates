@@ -15,7 +15,9 @@ MODULE_INPUT_PATH = 'Fixtures/stub-env/Modules'
 MODULE_OUTPUT_PATH = 'Fixtures/stub-env'
 SDKS = {
   :macosx => 'x86_64-apple-macosx10.12',
-  :iphoneos => 'armv7s-apple-ios10.0'
+  :iphoneos => 'armv7s-apple-ios10.0',
+  :watchos => 'armv7k-apple-watchos3.0',
+  :appletvos => 'arm64-apple-tvos10.0'
 }
 TOOLCHAINS = {
   :swift2 => {
@@ -57,7 +59,7 @@ namespace :output do
   task :compile => :modules do |task|
     Utils.print_header 'Compiling template output files'
 
-    exit Dir.glob('Tests/Expected/**/*.swift').map { |f|
+    exit Dir.glob('Tests/Expected/Images/*.swift').map { |f|
       Utils.print_info "Compiling #{f}…\n"
       compile_file(f, task)
     }.reduce(true) { |result, status|
@@ -87,7 +89,7 @@ namespace :output do
     elsif f.match('macOS')
       sdks = [:macosx]
     else
-      sdks = [:iphoneos, :macosx]
+      sdks = [:iphoneos, :macosx, :appletvos, :watchos]
     end
 
     commands = sdks.map do |sdk|
