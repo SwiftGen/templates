@@ -4,21 +4,25 @@
 // MIT Licence
 //
 
-import XCTest
 import StencilSwiftKit
+import XCTest
 
 class StoryboardsiOSTests: XCTestCase {
   enum Contexts {
-    static let all = ["empty", "all", "customname"]
+    static let all = ["empty", "all"]
   }
 
-  // generate variations to test target module matching
-  static let variations: VariationGenerator = { name, context in
+  // generate variations to test target module matching and custom enum names
+  let variations: VariationGenerator = { name, context in
     guard name == "all" else { return [(context: context, suffix: "")] }
 
     return [
       (context: context,
        suffix: ""),
+      (context: try StencilContext.enrich(context: context,
+                                          parameters: ["sceneEnumName=XCTStoryboardsScene",
+                                                       "segueEnumName=XCTStoryboardsSegue"]),
+       suffix: "-customname"),
       (context: try StencilContext.enrich(context: context,
                                           parameters: [],
                                           environment: ["PRODUCT_MODULE_NAME": "Test"]),
@@ -41,7 +45,7 @@ class StoryboardsiOSTests: XCTestCase {
          contextNames: Contexts.all,
          outputPrefix: "default",
          directory: .storyboardsiOS,
-         contextVariations: StoryboardsiOSTests.variations)
+         contextVariations: variations)
   }
 
   func testSwift3() {
@@ -49,7 +53,7 @@ class StoryboardsiOSTests: XCTestCase {
          contextNames: Contexts.all,
          outputPrefix: "swift3",
          directory: .storyboardsiOS,
-         contextVariations: StoryboardsiOSTests.variations)
+         contextVariations: variations)
   }
 
   func testLowercase() {
@@ -57,7 +61,7 @@ class StoryboardsiOSTests: XCTestCase {
          contextNames: Contexts.all,
          outputPrefix: "lowercase",
          directory: .storyboardsiOS,
-         contextVariations: StoryboardsiOSTests.variations)
+         contextVariations: variations)
   }
 
   func testUppercase() {
@@ -65,6 +69,6 @@ class StoryboardsiOSTests: XCTestCase {
          contextNames: Contexts.all,
          outputPrefix: "uppercase",
          directory: .storyboardsiOS,
-         contextVariations: StoryboardsiOSTests.variations)
+         contextVariations: variations)
   }
 }
