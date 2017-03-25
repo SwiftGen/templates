@@ -167,12 +167,13 @@ extension XCTestCase {
       }
 
       for (index, (context: context, suffix: suffix)) in variations.enumerated() {
-        if variations.count > 1 { print(" - Variation #\(index)...") }
+        let outputFile = "\(outputPrefix)-context-\(contextName)\(suffix).swift"
+        if variations.count > 1 { print(" - Variation #\(index)... (expecting: \(outputFile))") }
         guard let result = try? template.render(context) else {
           fatalError("Unable to render template")
         }
 
-        let expected = Fixtures.output(for: "\(outputPrefix)-context-\(contextName)\(suffix).swift", sub: directory)
+        let expected = Fixtures.output(for: outputFile, sub: directory)
         XCTDiffStrings(result, expected, file: file, line: line)
       }
     }
