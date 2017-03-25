@@ -135,7 +135,7 @@ extension XCTestCase {
    - Parameter context: The context itself
    - Return: a tuple with a list of generated contexts, and a suffix to find the correct output file
    */
-  typealias VariationGenerator = ((String, [String: Any]) -> [(context: [String: Any], suffix: String)])
+  typealias VariationGenerator = ((String, [String: Any]) throws -> [(context: [String: Any], suffix: String)])
 
   /**
    Test the given template against a list of contexts, comparing the output with files in the expected folder.
@@ -150,6 +150,8 @@ extension XCTestCase {
             contextNames: [String],
             outputPrefix: String,
             directory: Fixtures.Directory,
+            file: StaticString = #file,
+            line: UInt = #line,
             contextVariations: VariationGenerator? = nil) {
     let template = StencilSwiftTemplate(templateString: Fixtures.template(for: "\(templateName).stencil"),
                                         environment: stencilSwiftEnvironment())
@@ -159,12 +161,19 @@ extension XCTestCase {
       print("Testing context '\(contextName)'...")
       let context = Fixtures.context(for: "\(contextName).plist", sub: directory)
 
-      for (context, suffix) in contextVariations(contextName, context) {
+      // generate context variations
+      guard let variations = try? contextVariations(contextName, context) else {
+        fatalError("Unable to generate context variations")
+      }
+
+      for (index, (context: context, suffix: suffix)) in variations.enumerated() {
+        if variations.count > 1 { print(" - Variation #\(index)...") }
         guard let result = try? template.render(context) else {
           fatalError("Unable to render template")
         }
+
         let expected = Fixtures.output(for: "\(outputPrefix)-context-\(contextName)\(suffix).swift", sub: directory)
-        XCTDiffStrings(result, expected)
+        XCTDiffStrings(result, expected, file: file, line: line)
       }
     }
   }

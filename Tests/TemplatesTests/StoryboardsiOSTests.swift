@@ -16,28 +16,24 @@ class StoryboardsiOSTests: XCTestCase {
   static let variations: VariationGenerator = { name, context in
     guard name == "all" else { return [(context: context, suffix: "")] }
 
-    do {
-      return [
-        (context: context,
-         suffix: ""),
-        (context: try StencilContext.enrich(context: context,
-                                            parameters: [],
-                                            environment: ["PRODUCT_MODULE_NAME": "Test"]),
-         suffix: ""),
-        (context: try StencilContext.enrich(context: context,
-                                            parameters: [],
-                                            environment: ["PRODUCT_MODULE_NAME": "CustomSegue"]),
-         suffix: "-ignore-module"),
-        (context: try StencilContext.enrich(context: context,
-                                            parameters: ["module=Test"]),
-         suffix: ""),
-        (context: try StencilContext.enrich(context: context,
-                                            parameters: ["module=CustomSegue"]),
-         suffix: "-ignore-module")
-      ]
-    } catch {
-      fatalError("Unable to create context variations")
-    }
+    return [
+      (context: context,
+       suffix: ""),
+      (context: try StencilContext.enrich(context: context,
+                                          parameters: [],
+                                          environment: ["PRODUCT_MODULE_NAME": "Test"]),
+       suffix: ""),
+      (context: try StencilContext.enrich(context: context,
+                                          parameters: [],
+                                          environment: ["PRODUCT_MODULE_NAME": "CustomSegue"]),
+       suffix: "-ignore-module"),
+      (context: try StencilContext.enrich(context: context,
+                                          parameters: ["module=Test"]),
+       suffix: ""),
+      (context: try StencilContext.enrich(context: context,
+                                          parameters: ["module=CustomSegue"]),
+       suffix: "-ignore-module")
+    ]
   }
 
   func testDefault() {

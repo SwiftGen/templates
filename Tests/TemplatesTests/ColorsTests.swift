@@ -17,17 +17,13 @@ class ColorsTests: XCTestCase {
   let variations: VariationGenerator = { name, context in
     guard name == "defaults" else { return [(context: context, suffix: "")] }
 
-    do {
-      return [
-        (context: context,
-         suffix: ""),
-        (context: try StencilContext.enrich(context: context,
-                                            parameters: ["enumName=XCTColors"]),
-         suffix: "-customname")
-      ]
-    } catch {
-      fatalError("Unable to create context variations")
-    }
+    return [
+      (context: context,
+       suffix: ""),
+      (context: try StencilContext.enrich(context: context,
+                                          parameters: ["enumName=XCTColors"]),
+       suffix: "-customname")
+    ]
   }
 
   func testDefault() {
