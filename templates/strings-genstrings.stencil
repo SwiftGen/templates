@@ -7,7 +7,7 @@ import Foundation
 {% macro recursiveBlock item %}
   {% for string in item.strings %}
   /// {{string.translation}}
-  case {{string.key|swiftIdentifier|snakeToCamelCase|escapeReservedKeywords}}{% if string.parameters %}({{string.parameters|join}}){% endif %}
+  case {{string.key|swiftIdentifier|snakeToCamelCase|escapeReservedKeywords}}{% if string.types %}({{string.types|join}}){% endif %}
   {% endfor %}
   {% for subenum in item.subenums %}
   {% call recursiveBlock subenum %}
@@ -19,14 +19,14 @@ enum {{enumName}} {
   {% call recursiveBlock structuredStrings %}
 }
 
-{% macro parametersBlock params %}{% for type in params %}let p{{forloop.counter}}{% if not forloop.last %}, {% endif %}{% endfor %}{% endmacro %}
-{% macro argumentsBlock params %}{% for type in params %}p{{forloop.counter}}{% if not forloop.last %}, {% endif %}{% endfor %}{% endmacro %}
+{% macro parametersBlock types %}{% for type in types %}let p{{forloop.counter}}{% if not forloop.last %}, {% endif %}{% endfor %}{% endmacro %}
+{% macro argumentsBlock types %}{% for type in types %}p{{forloop.counter}}{% if not forloop.last %}, {% endif %}{% endfor %}{% endmacro %}
 {% macro recursiveBlock item %}
       {% for string in item.strings %}
-      {% if string.parameters %}
-      case .{{string.key|swiftIdentifier|snakeToCamelCase|escapeReservedKeywords}}({% call parametersBlock string.parameters %}):
+      {% if string.types %}
+      case .{{string.key|swiftIdentifier|snakeToCamelCase|escapeReservedKeywords}}({% call parametersBlock string.types %}):
         let format = NSLocalizedString("{{string.key}}", bundle: NSBundle(forClass: BundleToken.self), comment: "")
-        return {{enumName}}.tr(format, {% call argumentsBlock string.parameters %})
+        return {{enumName}}.tr(format, {% call argumentsBlock string.types %})
       {% else %}
       case .{{string.key|swiftIdentifier|snakeToCamelCase|escapeReservedKeywords}}:
         let format = NSLocalizedString("{{string.key}}", bundle: NSBundle(forClass: BundleToken.self), comment: "")

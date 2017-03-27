@@ -8,7 +8,7 @@ import Foundation
 {% macro recursiveBlock item %}
   {% for string in item.strings %}
   /// {{string.translation}}
-  case {{string.key|swiftIdentifier|snakeToCamelCase|lowerFirstWord|escapeReservedKeywords}}{% if string.params %}({{string.params.types|join}}){% endif %}
+  case {{string.key|swiftIdentifier|snakeToCamelCase|lowerFirstWord|escapeReservedKeywords}}{% if string.types %}({{string.types|join}}){% endif %}
   {% endfor %}
   {% for subenum in item.subenums %}
   {% call recursiveBlock subenum %}
@@ -22,13 +22,13 @@ enum {{enumName}} {
 }
 // swiftlint:enable type_body_length
 
-{% macro parametersBlock params %}{% for type in params %}let p{{forloop.counter}}{% if not forloop.last %}, {% endif %}{% endfor %}{% endmacro %}
-{% macro argumentsBlock params %}{% for type in params %}p{{forloop.counter}}{% if not forloop.last %}, {% endif %}{% endfor %}{% endmacro %}
+{% macro parametersBlock types %}{% for type in types %}let p{{forloop.counter}}{% if not forloop.last %}, {% endif %}{% endfor %}{% endmacro %}
+{% macro argumentsBlock types %}{% for type in types %}p{{forloop.counter}}{% if not forloop.last %}, {% endif %}{% endfor %}{% endmacro %}
 {% macro recursiveBlock item %}
       {% for string in item.strings %}
-      {% if string.parameters %}
-      case .{{string.key|swiftIdentifier|snakeToCamelCase|lowerFirstWord|escapeReservedKeywords}}({% call parametersBlock string.parameters %}):
-        return {{enumName}}.tr(key: "{{string.key}}", {% call argumentsBlock string.parameters %})
+      {% if string.types %}
+      case .{{string.key|swiftIdentifier|snakeToCamelCase|lowerFirstWord|escapeReservedKeywords}}({% call parametersBlock string.types %}):
+        return {{enumName}}.tr(key: "{{string.key}}", {% call argumentsBlock string.types %})
       {% else %}
       case .{{string.key|swiftIdentifier|snakeToCamelCase|lowerFirstWord|escapeReservedKeywords}}:
         return {{enumName}}.tr(key: "{{string.key}}")
