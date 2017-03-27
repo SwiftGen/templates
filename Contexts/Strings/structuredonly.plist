@@ -48,7 +48,7 @@
 			<string>settings.user_profile_section.points</string>
 			<key>keytail</key>
 			<string>settings.user_profile_section.points</string>
-			<key>parameters</key>
+			<key>types</key>
 			<array>
 				<string>String</string>
 				<string>Int</string>
@@ -157,7 +157,7 @@
 								<string>settings.user_profile_section.points</string>
 								<key>keytail</key>
 								<string>points</string>
-								<key>parameters</key>
+								<key>types</key>
 								<array>
 									<string>String</string>
 									<string>Int</string>
@@ -278,7 +278,7 @@
 										<string>settings.user_profile_section.points</string>
 										<key>keytail</key>
 										<string>points</string>
-										<key>parameters</key>
+										<key>types</key>
 										<array>
 											<string>String</string>
 											<string>Int</string>

@@ -32,7 +32,7 @@
 			<string>apples.count</string>
 			<key>keytail</key>
 			<string>apples.count</string>
-			<key>parameters</key>
+			<key>types</key>
 			<array>
 				<string>Int</string>
 			</array>
@@ -65,7 +65,7 @@
 			<string>bananas.owner</string>
 			<key>keytail</key>
 			<string>bananas.owner</string>
-			<key>parameters</key>
+			<key>types</key>
 			<array>
 				<string>Int</string>
 				<string>String</string>
@@ -103,7 +103,7 @@
 			<string>ObjectOwnership</string>
 			<key>keytail</key>
 			<string>ObjectOwnership</string>
-			<key>parameters</key>
+			<key>types</key>
 			<array>
 				<string>Int</string>
 				<string>String</string>
@@ -146,7 +146,7 @@
 			<string>private</string>
 			<key>keytail</key>
 			<string>private</string>
-			<key>parameters</key>
+			<key>types</key>
 			<array>
 				<string>String</string>
 				<string>Int</string>
@@ -245,7 +245,7 @@
 				<string>ObjectOwnership</string>
 				<key>keytail</key>
 				<string>ObjectOwnership</string>
-				<key>parameters</key>
+				<key>types</key>
 				<array>
 					<string>Int</string>
 					<string>String</string>
@@ -288,7 +288,7 @@
 				<string>private</string>
 				<key>keytail</key>
 				<string>private</string>
-				<key>parameters</key>
+				<key>types</key>
 				<array>
 					<string>String</string>
 					<string>Int</string>
@@ -334,7 +334,7 @@
 						<string>apples.count</string>
 						<key>keytail</key>
 						<string>count</string>
-						<key>parameters</key>
+						<key>types</key>
 						<array>
 							<string>Int</string>
 						</array>
@@ -374,7 +374,7 @@
 						<string>bananas.owner</string>
 						<key>keytail</key>
 						<string>owner</string>
-						<key>parameters</key>
+						<key>types</key>
 						<array>
 							<string>Int</string>
 							<string>String</string>
@@ -584,7 +584,7 @@
 						<string>ObjectOwnership</string>
 						<key>keytail</key>
 						<string>ObjectOwnership</string>
-						<key>parameters</key>
+						<key>types</key>
 						<array>
 							<string>Int</string>
 							<string>String</string>
@@ -627,7 +627,7 @@
 						<string>private</string>
 						<key>keytail</key>
 						<string>private</string>
-						<key>parameters</key>
+						<key>types</key>
 						<array>
 							<string>String</string>
 							<string>Int</string>
@@ -673,7 +673,7 @@
 								<string>apples.count</string>
 								<key>keytail</key>
 								<string>count</string>
-								<key>parameters</key>
+								<key>types</key>
 								<array>
 									<string>Int</string>
 								</array>
@@ -713,7 +713,7 @@
 								<string>bananas.owner</string>
 								<key>keytail</key>
 								<string>owner</string>
-								<key>parameters</key>
+								<key>types</key>
 								<array>
 									<string>Int</string>
 									<string>String</string>

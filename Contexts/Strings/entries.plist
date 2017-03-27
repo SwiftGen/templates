@@ -16,7 +16,7 @@
 			<string>Greetings</string>
 			<key>keytail</key>
 			<string>Greetings</string>
-			<key>parameters</key>
+			<key>types</key>
 			<array>
 				<string>String</string>
 				<string>Int</string>
@@ -67,7 +67,7 @@
 				<string>Greetings</string>
 				<key>keytail</key>
 				<string>Greetings</string>
-				<key>parameters</key>
+				<key>types</key>
 				<array>
 					<string>String</string>
 					<string>Int</string>
@@ -126,7 +126,7 @@
 						<string>Greetings</string>
 						<key>keytail</key>
 						<string>Greetings</string>
-						<key>parameters</key>
+						<key>types</key>
 						<array>
 							<string>String</string>
 							<string>Int</string>
