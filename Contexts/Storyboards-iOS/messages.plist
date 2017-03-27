@@ -65,11 +65,15 @@
 				<dict>
 					<key>customClass</key>
 					<string>CustomSegueClass2</string>
+					<key>customModule</key>
+					<string></string>
 					<key>identifier</key>
 					<string>CustomBack</string>
 				</dict>
 				<dict>
 					<key>customClass</key>
+					<string></string>
+					<key>customModule</key>
 					<string></string>
 					<key>identifier</key>
 					<string>Embed</string>
@@ -77,12 +81,16 @@
 				<dict>
 					<key>customClass</key>
 					<string></string>
+					<key>customModule</key>
+					<string></string>
 					<key>identifier</key>
 					<string>NonCustom</string>
 				</dict>
 				<dict>
 					<key>customClass</key>
 					<string>CustomSegueClass</string>
+					<key>customModule</key>
+					<string></string>
 					<key>identifier</key>
 					<string>Show-NavCtrl</string>
 				</dict>
