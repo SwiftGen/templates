@@ -54,8 +54,8 @@ extension Color {
     self.init(rgbaValue: name.rgbaValue)
   }
 }
+// swiftlint:enable file_length
+// swiftlint:enable line_length
 {% else %}
 // No color found
 {% endif %}
-// swiftlint:enable file_length
-// swiftlint:enable line_length
