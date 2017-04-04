@@ -6,7 +6,7 @@
 
 ### Bug Fixes
 
-_None_
+* Fixed `swiftlint` warnings in generated color extensions
 
 ### Breaking Changes
 
