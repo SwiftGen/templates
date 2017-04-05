@@ -8,6 +8,7 @@
   typealias Color = NSColor
 #endif
 
+// swiftlint:disable operator_usage_whitespace
 extension Color {
   convenience init(rgbaValue: UInt32) {
     let red   = CGFloat((rgbaValue >> 24) & 0xff) / 255.0
@@ -18,5 +19,6 @@ extension Color {
     self.init(red: red, green: green, blue: blue, alpha: alpha)
   }
 }
+// swiftlint:enable operator_usage_whitespace
 
 // No color found
