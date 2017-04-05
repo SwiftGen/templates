@@ -7,8 +7,8 @@
 ### Bug Fixes
 
 * Fixed `swiftlint` warnings in generated color extensions.  
-[Roman Laitarenko](https://github.com/evil159) 
-[#32](https://github.com/SwiftGen/templates/pull/32)
+  [Roman Laitarenko](https://github.com/evil159) 
+  [#32](https://github.com/SwiftGen/templates/pull/32)
 
 ### Breaking Changes
 
