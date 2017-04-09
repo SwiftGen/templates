@@ -24,6 +24,10 @@ _None_
   [David Jennes](https://github.com/djbe)
   [#24](https://github.com/SwiftGen/SwiftGenKit/issues/24)
 
+* Disable SwiftLint `conditional_returns_on_newline` in the font template.  
+  [Tom Baranes](https://github.com/tbaranes)
+  [#33](https://github.com/SwiftGen/templates/pull/33)
+
 ## 1.0.0
 
 _The templates tagged with this version are the ones embedded in SwiftGen 4.2._
