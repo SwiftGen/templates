@@ -24,7 +24,7 @@ class StoryboardsMacOSTests: XCTestCase {
         (context: try StencilContext.enrich(context: context,
                                             parameters: ["sceneEnumName=XCTStoryboardsScene",
                                                          "segueEnumName=XCTStoryboardsSegue"]),
-         suffix: "-customname")
+         suffix: "-customname"),
         (context: try StencilContext.enrich(context: context,
                                             parameters: [],
                                             environment: ["PRODUCT_MODULE_NAME": "Test"]),
