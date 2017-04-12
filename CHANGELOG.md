@@ -6,7 +6,9 @@
 
 ### Bug Fixes
 
-_None_
+* Fixed `swiftlint` warnings in generated color extensions.  
+  [Roman Laitarenko](https://github.com/evil159) 
+  [#32](https://github.com/SwiftGen/templates/pull/32)
 
 ### Breaking Changes
 
@@ -23,6 +25,10 @@ _None_
 * Switch from Travis CI to Circle CI, clean up the Rakefile in the process.  
   [David Jennes](https://github.com/djbe)
   [#24](https://github.com/SwiftGen/SwiftGenKit/issues/24)
+
+* Disable SwiftLint `conditional_returns_on_newline` in the font template.  
+  [Tom Baranes](https://github.com/tbaranes)
+  [#33](https://github.com/SwiftGen/templates/pull/33)
 
 ## 1.0.0
 
