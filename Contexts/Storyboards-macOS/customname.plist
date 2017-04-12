@@ -4,10 +4,12 @@
 <dict>
 	<key>extraImports</key>
 	<array>
+		<string>FadeSegue</string>
 		<string>PrefsWindowController</string>
 	</array>
 	<key>modules</key>
 	<array>
+		<string>FadeSegue</string>
 		<string>PrefsWindowController</string>
 	</array>
 	<key>param</key>
@@ -159,9 +161,7 @@
 				</dict>
 				<dict>
 					<key>customClass</key>
-					<string></string>
-					<key>customModule</key>
-					<string></string>
+					<string>FadeSegue</string>
 					<key>identifier</key>
 					<string>public</string>
 				</dict>

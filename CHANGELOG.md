@@ -9,6 +9,9 @@
 * Fixed `swiftlint` warnings in generated color extensions.  
   [Roman Laitarenko](https://github.com/evil159) 
   [#32](https://github.com/SwiftGen/templates/pull/32)
+* The storyboards macOS swift3 template was missing the "current target" module ignore code.  
+  [@djbe](https://github.com/djbe)
+  [#27](https://github.com/SwiftGen/templates/issues/27)
 
 ### Breaking Changes
 

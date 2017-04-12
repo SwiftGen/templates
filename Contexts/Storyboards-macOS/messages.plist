@@ -3,9 +3,13 @@
 <plist version="1.0">
 <dict>
 	<key>extraImports</key>
-	<array/>
+	<array>
+		<string>FadeSegue</string>
+	</array>
 	<key>modules</key>
-	<array/>
+	<array>
+		<string>FadeSegue</string>
+	</array>
 	<key>param</key>
 	<dict>
 		<key>sceneEnumName</key>
@@ -113,9 +117,7 @@
 				</dict>
 				<dict>
 					<key>customClass</key>
-					<string></string>
-					<key>customModule</key>
-					<string></string>
+					<string>FadeSegue</string>
 					<key>identifier</key>
 					<string>public</string>
 				</dict>
