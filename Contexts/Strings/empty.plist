@@ -4,11 +4,25 @@
 <dict>
 	<key>enumName</key>
 	<string>L10n</string>
+	<key>param</key>
+	<dict>
+		<key>enumName</key>
+		<string>L10n</string>
+	</dict>
 	<key>strings</key>
 	<array/>
 	<key>structuredStrings</key>
 	<dict/>
 	<key>tableName</key>
 	<string>Localizable</string>
+	<key>tables</key>
+	<array>
+		<dict>
+			<key>name</key>
+			<string>Localizable</string>
+			<key>strings</key>
+			<dict/>
+		</dict>
+	</array>
 </dict>
 </plist>

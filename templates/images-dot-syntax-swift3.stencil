@@ -13,6 +13,7 @@
 // swiftlint:disable line_length
 // swiftlint:disable nesting
 
+{% set enumName %}{{param.enumName|default:"Asset"}}{% endset %}
 struct {{enumName}}Type: ExpressibleByStringLiteral {
   fileprivate var value: String
 

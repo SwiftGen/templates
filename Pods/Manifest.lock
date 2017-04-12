@@ -15,7 +15,7 @@ EXTERNAL SOURCES:
 
 CHECKOUT OPTIONS:
   StencilSwiftKit:
-    :commit: 486c0c9e479654cfb2bff61b5f5d17822357923f
+    :commit: 71c7a25f122a5a8ba2c456b35329be2c891528a1
     :git: https://github.com/SwiftGen/StencilSwiftKit
 
 SPEC CHECKSUMS:

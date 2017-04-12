@@ -6,6 +6,13 @@
 	<array/>
 	<key>modules</key>
 	<array/>
+	<key>param</key>
+	<dict>
+		<key>sceneEnumName</key>
+		<string>StoryboardScene</string>
+		<key>segueEnumName</key>
+		<string>StoryboardSegue</string>
+	</dict>
 	<key>sceneEnumName</key>
 	<string>StoryboardScene</string>
 	<key>segueEnumName</key>
@@ -67,11 +74,15 @@
 				<dict>
 					<key>customClass</key>
 					<string></string>
+					<key>customModule</key>
+					<string></string>
 					<key>identifier</key>
 					<string>Embed</string>
 				</dict>
 				<dict>
 					<key>customClass</key>
+					<string></string>
+					<key>customModule</key>
 					<string></string>
 					<key>identifier</key>
 					<string>Modal</string>
@@ -79,11 +90,15 @@
 				<dict>
 					<key>customClass</key>
 					<string></string>
+					<key>customModule</key>
+					<string></string>
 					<key>identifier</key>
 					<string>Popover</string>
 				</dict>
 				<dict>
 					<key>customClass</key>
+					<string></string>
+					<key>customModule</key>
 					<string></string>
 					<key>identifier</key>
 					<string>Sheet</string>
@@ -91,11 +106,15 @@
 				<dict>
 					<key>customClass</key>
 					<string></string>
+					<key>customModule</key>
+					<string></string>
 					<key>identifier</key>
 					<string>Show</string>
 				</dict>
 				<dict>
 					<key>customClass</key>
+					<string></string>
+					<key>customModule</key>
 					<string></string>
 					<key>identifier</key>
 					<string>public</string>

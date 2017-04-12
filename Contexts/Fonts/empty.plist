@@ -6,5 +6,10 @@
 	<string>FontFamily</string>
 	<key>families</key>
 	<array/>
+	<key>param</key>
+	<dict>
+		<key>enumName</key>
+		<string>FontFamily</string>
+	</dict>
 </dict>
 </plist>
