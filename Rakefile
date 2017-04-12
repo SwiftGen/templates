@@ -59,7 +59,7 @@ namespace :output do
   task :compile => :modules do |task|
     Utils.print_header 'Compiling template output files'
 
-    exit Dir.glob('Tests/Expected/Images/*.swift').map { |f|
+    exit Dir.glob('Tests/Expected/**/*.swift').map { |f|
       Utils.print_info "Compiling #{f}…\n"
       compile_file(f, task)
     }.reduce(true) { |result, status|
