@@ -203,7 +203,7 @@
 		};
 		DD3EE1BB1E65E43E00EA1599 /* ⚠️ SwiftLint */ = {
 			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 8;
+			buildActionMask = 12;
 			files = (
 			);
 			inputPaths = (
@@ -211,7 +211,7 @@
 			name = "⚠️ SwiftLint";
 			outputPaths = (
 			);
-			runOnlyForDeploymentPostprocessing = 1;
+			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "if [[ ! $CI ]]; then\n    rake lint:tests\n    rake lint:output\nfi";
 		};
