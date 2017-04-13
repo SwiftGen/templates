@@ -2,7 +2,13 @@
 
 import Foundation
 
+// swiftlint:disable file_length
 // swiftlint:disable line_length
+// swiftlint:disable type_body_length
+// swiftlint:disable nesting
+// swiftlint:disable identifier_name
+// swiftlint:disable valid_docs
+// swiftlint:disable type_name
 
 enum XCTLoc {
   /// Some alert body there

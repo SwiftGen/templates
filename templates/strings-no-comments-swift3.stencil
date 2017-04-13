@@ -5,6 +5,11 @@ import Foundation
 
 // swiftlint:disable file_length
 // swiftlint:disable line_length
+// swiftlint:disable type_body_length
+// swiftlint:disable nesting
+// swiftlint:disable identifier_name
+// swiftlint:disable valid_docs
+// swiftlint:disable type_name
 {% macro recursiveBlock item %}
   {% for string in item.strings %}
   case {{string.key|swiftIdentifier|snakeToCamelCase|lowerFirstWord|escapeReservedKeywords}}{% if string.types %}({{string.types|join}}){% endif %}
@@ -14,12 +19,10 @@ import Foundation
   {% endfor %}
 {% endmacro %}
 
-// swiftlint:disable type_body_length
 {% set enumName %}{{param.enumName|default:"L10n"}}{% endset %}
 enum {{enumName}} {
   {% call recursiveBlock tables.first.strings %}
 }
-// swiftlint:enable type_body_length
 
 {% macro parametersBlock types %}{% for type in types %}let p{{forloop.counter}}{% if not forloop.last %}, {% endif %}{% endfor %}{% endmacro %}
 {% macro argumentsBlock types %}{% for type in types %}p{{forloop.counter}}{% if not forloop.last %}, {% endif %}{% endfor %}{% endmacro %}

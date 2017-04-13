@@ -5,10 +5,9 @@ import Foundation
 
 // swiftlint:disable file_length
 // swiftlint:disable line_length
-
 // swiftlint:disable type_body_length
 // swiftlint:disable nesting
-// swiftlint:disable variable_name
+// swiftlint:disable identifier_name
 // swiftlint:disable valid_docs
 // swiftlint:disable type_name
 {% macro parametersBlock types %}{% for type in types %}p{{forloop.counter}}: {{type}}{% if not forloop.last %}, {% endif %}{% endfor %}{% endmacro %}
@@ -46,11 +45,6 @@ extension {{enumName}} {
 }
 
 private final class BundleToken {}
-
-// swiftlint:enable type_body_length
-// swiftlint:enable nesting
-// swiftlint:enable variable_name
-// swiftlint:enable valid_docs
 {% else %}
 // No string found
 {% endif %}
