@@ -11,6 +11,9 @@
 
 // swiftlint:disable file_length
 // swiftlint:disable line_length
+// swiftlint:disable nesting
+// swiftlint:disable identifier_name
+// swiftlint:disable type_body_length
 {% macro recursiveBlock images %}
   {% for image in images %}
   {% if not image.items %}
@@ -21,7 +24,6 @@
   {% endfor %}
 {% endmacro %}
 
-// swiftlint:disable type_body_length
 {% set enumName %}{{param.enumName|default:"Asset"}}{% endset %}
 enum {{enumName}}: String {
   {% for catalog in catalogs %}
@@ -39,7 +41,6 @@ enum {{enumName}}: String {
     return result
   }
 }
-// swiftlint:enable type_body_length
 
 extension Image {
   convenience init!(asset: {{enumName}}) {
