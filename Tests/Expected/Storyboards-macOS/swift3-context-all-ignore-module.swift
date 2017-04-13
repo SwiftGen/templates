@@ -7,6 +7,7 @@ import PrefsWindowController
 // swiftlint:disable file_length
 // swiftlint:disable line_length
 // swiftlint:disable type_body_length
+// swiftlint:disable identifier_name
 
 protocol StoryboardSceneType {
   static var storyboardName: String { get }
