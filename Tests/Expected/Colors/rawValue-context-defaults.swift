@@ -23,8 +23,9 @@ extension Color {
 
 // swiftlint:disable file_length
 // swiftlint:disable line_length
-
+// swiftlint:disable identifier_name
 // swiftlint:disable type_body_length
+
 enum ColorName: UInt32 {
   /// <span style="display:block;width:3em;height:2em;border:1px solid black;background:#339666"></span>
   /// Alpha: 100% <br/> (0x339666ff)
@@ -43,12 +44,9 @@ enum ColorName: UInt32 {
     return Color(named: self)
   }
 }
-// swiftlint:enable type_body_length
 
 extension Color {
   convenience init(named name: ColorName) {
     self.init(rgbaValue: name.rawValue)
   }
 }
-// swiftlint:enable file_length
-// swiftlint:enable line_length
