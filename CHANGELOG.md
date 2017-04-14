@@ -12,6 +12,10 @@
 * The storyboards macOS swift3 template was missing the "current target" module ignore code.  
   [@djbe](https://github.com/djbe)
   [#27](https://github.com/SwiftGen/templates/issues/27)
+* Fix the `images` templates so that they work on watchOS again.  
+  [David Jennes](https://github.com/djbe)
+  [SwiftGen/SwiftGen#275](https://github.com/SwiftGen/SwiftGen/issues/275)
+  [#30](https://github.com/SwiftGen/SwiftGenKit/issues/30)
 
 ### Breaking Changes
 

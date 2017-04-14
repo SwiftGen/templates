@@ -35,10 +35,12 @@ enum XCTImages: String {
 
   var image: Image {
     let bundle = NSBundle(forClass: BundleToken.self)
-    #if os(iOS) || os(tvOS) || os(watchOS)
+    #if os(iOS) || os(tvOS)
     let image = Image(named: rawValue, inBundle: bundle, compatibleWithTraitCollection: nil)
     #elseif os(OSX)
     let image = bundle.imageForResource(rawValue)
+    #elseif os(watchOS)
+    let image = Image(named: rawValue)
     #endif
     guard let result = image else { fatalError("Unable to load image \(rawValue).") }
     return result
@@ -48,10 +50,10 @@ enum XCTImages: String {
 
 extension Image {
   convenience init!(asset: XCTImages) {
-    #if os(iOS) || os(tvOS) || os(watchOS)
+    #if os(iOS) || os(tvOS)
     let bundle = NSBundle(forClass: BundleToken.self)
     self.init(named: asset.rawValue, inBundle: bundle, compatibleWithTraitCollection: nil)
-    #elseif os(OSX)
+    #elseif os(OSX) || os(watchOS)
     self.init(named: asset.rawValue)
     #endif
   }
