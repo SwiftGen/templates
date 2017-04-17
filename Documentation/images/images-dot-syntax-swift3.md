@@ -1,15 +1,9 @@
-⚠️ This documentation file isn't complete ⚠️
-
-It is only there to serve as an example of how we'd document each template
-
----
-
 ## Template Information
 
 | Name      | Description       |
 | --------- | ----------------- |
-| File name | images-default.stencil |
-| Invocation example | `swiftgen storyboard -t default …` |
+| File name | images-dot-syntax-swift3.stencil |
+| Invocation example | `swiftgen images -t dot-syntax-swift3 …` |
 | Language | Swift 3 |
 | Author | Olivier Halligon |
 
@@ -24,35 +18,32 @@ You can customise some elements of this template by overriding the following par
 
 | Parameter Name | Default Value | Description |
 | -------------- | ------------- | ----------- |
-| `enumName` | `enumName` | Allows you to change the name of the generated `enum` containing all image names as `cases`. |
+| `enumName` | `Asset` | Allows you to change the name of the generated `enum` containing all image names. |
 
 ## Generated Code
 
 **Extract:**
 
 ```swift
-enum Assets {
-  case apple = "Apple"
-  case banana = "Banana"
+enum Asset {
+  enum Exotic {
+    static let banana: AssetType = "Exotic/Banana"
+    static let mango: AssetType = "Exotic/Mango"
+  }
+  static let `private`: AssetType = "private"
 }
 ```
 
-<details>
-<summary>Full generated code</summary>
-
-```swift
-(the full code here)
-```
-</details>
+[Full generated code](https://github.com/SwiftGen/templates/blob/master/Tests/Expected/Images/dot-syntax-swift3-context-defaults.swift)
 
 ## Usage example
 
 ```swift
 // You can create new images with the convenience constructor like this:
-let appleImage = UIImage(asset: .apple)
-let bananaImage = UIImage(asset: .banana)
+let bananaImage = UIImage(asset: Asset.Exotic.banana)
+let privateImage = UIImage(asset: Asset.private)
 
 // Or as an alternative, you can refer to enum instance and call .image on it:
-let sameApplemage = Assets.apple.image
-let sameBananaImage = Assets.banana.image
+let sameBananaImage = Asset.Exotic.banana.image
+let samePrivateImage = Asset.private.image
 ```
