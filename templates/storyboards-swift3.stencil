@@ -1,7 +1,6 @@
 // Generated using SwiftGen, by O.Halligon — https://github.com/SwiftGen/SwiftGen
 
 {% macro className scene %}{% if scene.customClass %}{% if scene.customModule %}{% if not param.ignoreTargetModule or scene.customModule != env.PRODUCT_MODULE_NAME and scene != param.module %}{{scene.customModule}}.{% endif %}{% endif %}{{scene.customClass}}{% else %}UI{{scene.baseType}}{% endif %}{% endmacro %}
-
 import Foundation
 import UIKit
 {% for module in modules %}
