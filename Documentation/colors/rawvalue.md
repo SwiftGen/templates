@@ -1,3 +1,5 @@
+⚠️ Deprecated template ⚠️
+
 ## Template Information
 
 | Name      | Description       |

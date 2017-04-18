@@ -56,7 +56,7 @@ enum StoryboardSegue {
 }
 ```
 
-[Full generated code](https://github.com/SwiftGen/templates/blob/master/Tests/Expected/Storyboards-iOS/default-context-defaults.swift)
+[Full generated code](https://github.com/SwiftGen/templates/blob/master/Tests/Expected/Storyboards-iOS/default-context-all.swift)
 
 ## Usage example
 
@@ -72,7 +72,7 @@ vc.performSegue(StoryboardSegue.Message.Embed)
 
 // or match them (in prepareForSegue):
 override func prepareForSegue(_ segue: UIStoryboardSegue, sender sender: AnyObject?) {
-  switch UIStoryboard.Segue.Message(rawValue: segue.identifier!)! {
+  switch StoryboardSegue.Message(rawValue: segue.identifier!)! {
   case .Embed:
     // Prepare for your custom segue transition
   case .NonCustom:
