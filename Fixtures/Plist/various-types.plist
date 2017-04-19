@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CFBundleIdentifier</key>
+	<string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
+	<key>LSRequiresIPhoneOS</key>
+	<true/>
+	<key>NSAppTransportSecurity</key>
+	<dict>
+		<key>NSAllowsArbitraryLoads</key>
+		<false/>
+		<key>NSAllowsArbitraryLoadsInWebContent</key>
+		<false/>
+		<key>NSExceptionDomains</key>
+		<dict>
+			<key>example.com</key>
+			<dict>
+				<key>NSExceptionAllowsInsecureHTTPLoads</key>
+				<true/>
+				<key>NSIncludesSubdomains</key>
+				<false/>
+			</dict>
+			<key>github.com</key>
+			<dict>
+				<key>NSExceptionAllowsInsecureHTTPLoads</key>
+				<true/>
+				<key>NSIncludesSubdomains</key>
+				<true/>
+			</dict>
+		</dict>
+	</dict>
+	<key>SomeDate</key>
+	<date>2017-04-19T22:19:51Z</date>
+	<key>SomeData</key>
+	<data>AAAREQ==</data>
+	<key>SomeNumber</key>
+	<integer>9223372036854775807</integer>
+	<key>ArrayOfManyTypes</key>
+	<array>
+		<string>Hello</string>
+		<integer>1</integer>
+		<date>2017-04-19T22:35:12Z</date>
+		<data>MjAxNy0wNC0xOVQyMjozNToxMlo=</data>
+		<false/>
+		<array/>
+		<dict/>
+	</array>
+</dict>
+</plist>
