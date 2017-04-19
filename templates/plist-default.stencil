@@ -1,20 +1,121 @@
 // Generated using SwiftGen, by O.Halligon — https://github.com/SwiftGen/SwiftGen
 import Foundation
 
-{% if plistKeys %}
+{% if isEmpty %}
+// No data found
+{% else %}
 private let _Plist = Bundle.main.infoDictionary!
-class _InfoPlist {
-  subscript(key: InfoPlistKey) -> Any? {
-    return _Plist["\(key)"]
-  }
-}
 let InfoPlist = _InfoPlist()
 
-enum InfoPlistKey: String {
-  {% for key in plistKeys %}
+class _InfoPlist {
+{% if stringKeys %}
+  subscript(key: StringKey) -> String {
+    return _Plist["\(key)"] as! String
+  }
+{% endif %}
+{% if intKeys %}
+  subscript(key: IntKey) -> Int {
+    return _Plist["\(key)"] as! Int
+  }
+  // Int64 for 32bit device compatibility
+  // e.g. On 32bit device, Int is Int32 where on 64bit device, it's Int64.
+  subscript(key: IntKey) -> Int64 {
+    return _Plist["\(key)"] as! Int64
+  }
+{% endif %}
+{% if boolKeys %}
+  subscript(key: BoolKey) -> Bool {
+    return _Plist["\(key)"] as! Bool
+  }
+{% endif %}
+{% if dictKeys %}
+  subscript(key: DictKey) -> [String: Any] {
+    return _Plist["\(key)"] as! [String: Any]
+  }
+{% endif %}
+{% if arrayKeys %}
+  subscript(key: ArrayKey) -> [Any] {
+    return _Plist["\(key)"] as! [Any]
+  }
+{% endif %}
+{% if dataKeys %}
+  subscript(key: DataKey) -> Data {
+    return _Plist["\(key)"] as! Data
+  }
+{% endif %}
+{% if dateKeys %}
+  subscript(key: DateKey) -> Date {
+    return _Plist["\(key)"] as! Date
+  }
+{% endif %}
+{% if unknownKeys %}
+  subscript(key: UnknownKey) -> Any {
+    return _Plist["\(key)"]
+  }
+{% endif %}
+}
+
+{% if stringKeys %}
+enum StringKey: String {
+  {% for key in stringKeys %}
   case {{key}} = "{{key}}"
   {% endfor %}
 }
-{% else %}
-// No plistKey found
+{% endif %}
+
+{% if intKeys %}
+enum IntKey: String {
+  {% for key in intKeys %}
+  case {{key}} = "{{key}}"
+  {% endfor %}
+}
+{% endif %}
+
+{% if boolKeys %}
+enum BoolKey: String {
+  {% for key in boolKeys %}
+  case {{key}} = "{{key}}"
+  {% endfor %}
+}
+{% endif %}
+
+{% if dataKeys %}
+enum DataKey: String {
+  {% for key in dataKeys %}
+  case {{key}} = "{{key}}"
+  {% endfor %}
+}
+{% endif %}
+
+{% if dateKeys %}
+enum DateKey: String {
+  {% for key in dateKeys %}
+  case {{key}} = "{{key}}"
+  {% endfor %}
+}
+{% endif %}
+
+{% if dictKeys %}
+enum DictKey: String {
+  {% for key in dictKeys %}
+  case {{key}} = "{{key}}"
+  {% endfor %}
+}
+{% endif %}
+
+{% if arrayKeys %}
+enum ArrayKey: String {
+  {% for key in arrayKeys %}
+  case {{key}} = "{{key}}"
+  {% endfor %}
+}
+{% endif %}
+
+{% if unknownKeys %}
+enum UnknownKey: String {
+  {% for key in unknownKeys %}
+  case {{key}} = "{{key}}"
+  {% endfor %}
+}
+{% endif %}
 {% endif %}
