@@ -54,7 +54,6 @@ class _InfoPlist {
   }
 {% endif %}
 }
-
 {% if stringKeys %}
 enum StringKey: String {
   {% for key in stringKeys %}
@@ -62,7 +61,6 @@ enum StringKey: String {
   {% endfor %}
 }
 {% endif %}
-
 {% if intKeys %}
 enum IntKey: String {
   {% for key in intKeys %}
@@ -70,7 +68,6 @@ enum IntKey: String {
   {% endfor %}
 }
 {% endif %}
-
 {% if boolKeys %}
 enum BoolKey: String {
   {% for key in boolKeys %}
@@ -78,7 +75,6 @@ enum BoolKey: String {
   {% endfor %}
 }
 {% endif %}
-
 {% if dataKeys %}
 enum DataKey: String {
   {% for key in dataKeys %}
@@ -86,7 +82,6 @@ enum DataKey: String {
   {% endfor %}
 }
 {% endif %}
-
 {% if dateKeys %}
 enum DateKey: String {
   {% for key in dateKeys %}
@@ -94,7 +89,6 @@ enum DateKey: String {
   {% endfor %}
 }
 {% endif %}
-
 {% if dictKeys %}
 enum DictKey: String {
   {% for key in dictKeys %}
@@ -102,7 +96,6 @@ enum DictKey: String {
   {% endfor %}
 }
 {% endif %}
-
 {% if arrayKeys %}
 enum ArrayKey: String {
   {% for key in arrayKeys %}
@@ -110,7 +103,6 @@ enum ArrayKey: String {
   {% endfor %}
 }
 {% endif %}
-
 {% if unknownKeys %}
 enum UnknownKey: String {
   {% for key in unknownKeys %}
