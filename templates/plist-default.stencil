@@ -4,7 +4,7 @@ import Foundation
 {% if isEmpty %}
 // No data found
 {% else %}
-private let _Plist = Bundle.main.infoDictionary!
+private let _Plist = Bundle(for: _InfoPlist.self).infoDictionary!
 let InfoPlist = _InfoPlist()
 
 class _InfoPlist {
