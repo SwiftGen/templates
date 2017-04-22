@@ -12,6 +12,8 @@
 				<dict>
 					<key>fontName</key>
 					<string>.SFNSDisplay-Black</string>
+					<key>name</key>
+					<string>.SFNSDisplay-Black</string>
 					<key>style</key>
 					<string>Black</string>
 					<key>path</key>
@@ -19,6 +21,8 @@
 				</dict>
 				<dict>
 					<key>fontName</key>
+					<string>.SFNSDisplay-Bold</string>
+					<key>name</key>
 					<string>.SFNSDisplay-Bold</string>
 					<key>style</key>
 					<string>Bold</string>
@@ -28,6 +32,8 @@
 				<dict>
 					<key>fontName</key>
 					<string>.SFNSDisplay-Heavy</string>
+					<key>name</key>
+					<string>.SFNSDisplay-Heavy</string>
 					<key>style</key>
 					<string>Heavy</string>
 					<key>path</key>
@@ -35,6 +41,8 @@
 				</dict>
 				<dict>
 					<key>fontName</key>
+					<string>.SFNSDisplay-Regular</string>
+					<key>name</key>
 					<string>.SFNSDisplay-Regular</string>
 					<key>style</key>
 					<string>Regular</string>
@@ -51,6 +59,8 @@
 				<dict>
 					<key>fontName</key>
 					<string>.SFNSText-Bold</string>
+					<key>name</key>
+					<string>.SFNSText-Bold</string>
 					<key>style</key>
 					<string>Bold</string>
 					<key>path</key>
@@ -59,6 +69,8 @@
 				<dict>
 					<key>fontName</key>
 					<string>.SFNSText-Heavy</string>
+					<key>name</key>
+					<string>.SFNSText-Heavy</string>
 					<key>style</key>
 					<string>Heavy</string>
 					<key>path</key>
@@ -66,6 +78,8 @@
 				</dict>
 				<dict>
 					<key>fontName</key>
+					<string>.SFNSText-Regular</string>
+					<key>name</key>
 					<string>.SFNSText-Regular</string>
 					<key>style</key>
 					<string>Regular</string>
@@ -82,6 +96,8 @@
 				<dict>
 					<key>fontName</key>
 					<string>Avenir-Black</string>
+					<key>name</key>
+					<string>Avenir-Black</string>
 					<key>style</key>
 					<string>Black</string>
 					<key>path</key>
@@ -89,6 +105,8 @@
 				</dict>
 				<dict>
 					<key>fontName</key>
+					<string>Avenir-BlackOblique</string>
+					<key>name</key>
 					<string>Avenir-BlackOblique</string>
 					<key>style</key>
 					<string>Black Oblique</string>
@@ -98,6 +116,8 @@
 				<dict>
 					<key>fontName</key>
 					<string>Avenir-Book</string>
+					<key>name</key>
+					<string>Avenir-Book</string>
 					<key>style</key>
 					<string>Book</string>
 					<key>path</key>
@@ -105,6 +125,8 @@
 				</dict>
 				<dict>
 					<key>fontName</key>
+					<string>Avenir-BookOblique</string>
+					<key>name</key>
 					<string>Avenir-BookOblique</string>
 					<key>style</key>
 					<string>Book Oblique</string>
@@ -114,6 +136,8 @@
 				<dict>
 					<key>fontName</key>
 					<string>Avenir-Heavy</string>
+					<key>name</key>
+					<string>Avenir-Heavy</string>
 					<key>style</key>
 					<string>Heavy</string>
 					<key>path</key>
@@ -121,6 +145,8 @@
 				</dict>
 				<dict>
 					<key>fontName</key>
+					<string>Avenir-HeavyOblique</string>
+					<key>name</key>
 					<string>Avenir-HeavyOblique</string>
 					<key>style</key>
 					<string>Heavy Oblique</string>
@@ -130,6 +156,8 @@
 				<dict>
 					<key>fontName</key>
 					<string>Avenir-Light</string>
+					<key>name</key>
+					<string>Avenir-Light</string>
 					<key>style</key>
 					<string>Light</string>
 					<key>path</key>
@@ -137,6 +165,8 @@
 				</dict>
 				<dict>
 					<key>fontName</key>
+					<string>Avenir-LightOblique</string>
+					<key>name</key>
 					<string>Avenir-LightOblique</string>
 					<key>style</key>
 					<string>Light Oblique</string>
@@ -146,6 +176,8 @@
 				<dict>
 					<key>fontName</key>
 					<string>Avenir-Medium</string>
+					<key>name</key>
+					<string>Avenir-Medium</string>
 					<key>style</key>
 					<string>Medium</string>
 					<key>path</key>
@@ -153,6 +185,8 @@
 				</dict>
 				<dict>
 					<key>fontName</key>
+					<string>Avenir-MediumOblique</string>
+					<key>name</key>
 					<string>Avenir-MediumOblique</string>
 					<key>style</key>
 					<string>Medium Oblique</string>
@@ -162,6 +196,8 @@
 				<dict>
 					<key>fontName</key>
 					<string>Avenir-Oblique</string>
+					<key>name</key>
+					<string>Avenir-Oblique</string>
 					<key>style</key>
 					<string>Oblique</string>
 					<key>path</key>
@@ -169,6 +205,8 @@
 				</dict>
 				<dict>
 					<key>fontName</key>
+					<string>Avenir-Roman</string>
+					<key>name</key>
 					<string>Avenir-Roman</string>
 					<key>style</key>
 					<string>Roman</string>
@@ -185,6 +223,8 @@
 				<dict>
 					<key>fontName</key>
 					<string>ZapfDingbatsITC</string>
+					<key>name</key>
+					<string>ZapfDingbatsITC</string>
 					<key>style</key>
 					<string>Regular</string>
 					<key>path</key>
@@ -199,6 +239,8 @@
 			<array>
 				<dict>
 					<key>fontName</key>
+					<string>private</string>
+					<key>name</key>
 					<string>private</string>
 					<key>style</key>
 					<string>internal</string>
