@@ -14,6 +14,13 @@
 		<string>LocationPicker</string>
 		<string>SlackTextViewController</string>
 	</array>
+	<key>param</key>
+	<dict>
+		<key>sceneEnumName</key>
+		<string>StoryboardScene</string>
+		<key>segueEnumName</key>
+		<string>StoryboardSegue</string>
+	</dict>
 	<key>sceneEnumName</key>
 	<string>StoryboardScene</string>
 	<key>segueEnumName</key>
@@ -46,6 +53,8 @@
 				<dict>
 					<key>customClass</key>
 					<string>SlideDownSegue</string>
+					<key>customModule</key>
+					<string>CustomSegue</string>
 					<key>identifier</key>
 					<string>private</string>
 				</dict>
@@ -129,11 +138,15 @@
 				<dict>
 					<key>customClass</key>
 					<string>CustomSegueClass2</string>
+					<key>customModule</key>
+					<string></string>
 					<key>identifier</key>
 					<string>CustomBack</string>
 				</dict>
 				<dict>
 					<key>customClass</key>
+					<string></string>
+					<key>customModule</key>
 					<string></string>
 					<key>identifier</key>
 					<string>Embed</string>
@@ -141,12 +154,16 @@
 				<dict>
 					<key>customClass</key>
 					<string></string>
+					<key>customModule</key>
+					<string></string>
 					<key>identifier</key>
 					<string>NonCustom</string>
 				</dict>
 				<dict>
 					<key>customClass</key>
 					<string>CustomSegueClass</string>
+					<key>customModule</key>
+					<string></string>
 					<key>identifier</key>
 					<string>Show-NavCtrl</string>
 				</dict>
@@ -214,6 +231,8 @@
 			<array>
 				<dict>
 					<key>customClass</key>
+					<string></string>
+					<key>customModule</key>
 					<string></string>
 					<key>identifier</key>
 					<string>ShowPassword</string>

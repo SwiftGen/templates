@@ -101,5 +101,10 @@
 		<string>Round/Tomato</string>
 		<string>private</string>
 	</array>
+	<key>param</key>
+	<dict>
+		<key>enumName</key>
+		<string>Asset</string>
+	</dict>
 </dict>
 </plist>

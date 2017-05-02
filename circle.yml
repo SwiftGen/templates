@@ -1,0 +1,14 @@
+machine:
+  xcode:
+    version: 8.2
+
+dependencies:
+  post:
+    - rake lint:install
+
+test:
+  override:
+    - rake lint:tests
+    - rake xcode:test
+    - rake output:compile
+    - rake lint:output
