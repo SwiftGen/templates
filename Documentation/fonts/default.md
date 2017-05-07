@@ -13,7 +13,7 @@
 
 ## Customization
 
-You can customise some elements of this template by overriding the following parameters when invoking `swiftgen` in the command line, using `--param <paramName> <newValue>`
+You can customize some elements of this template by overriding the following parameters when invoking `swiftgen` in the command line, using `--param <paramName> <newValue>`
 
 | Parameter Name | Default Value | Description |
 | -------------- | ------------- | ----------- |
