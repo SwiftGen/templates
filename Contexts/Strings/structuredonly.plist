@@ -16,6 +16,8 @@
 			<string>settings.navigation-bar.self</string>
 			<key>keytail</key>
 			<string>settings.navigation-bar.self</string>
+			<key>name</key>
+			<string>settings.navigation-bar.self</string>
 			<key>translation</key>
 			<string>Some Reserved Keyword there</string>
 		</dict>
@@ -23,6 +25,8 @@
 			<key>key</key>
 			<string>settings.navigation-bar.title.even.deeper</string>
 			<key>keytail</key>
+			<string>settings.navigation-bar.title.even.deeper</string>
+			<key>name</key>
 			<string>settings.navigation-bar.title.even.deeper</string>
 			<key>translation</key>
 			<string>Settings</string>
@@ -32,6 +36,8 @@
 			<string>seTTings.uSer-proFile-sectioN.footer_text</string>
 			<key>keytail</key>
 			<string>seTTings.uSer-proFile-sectioN.footer_text</string>
+			<key>name</key>
+			<string>seTTings.uSer-proFile-sectioN.footer_text</string>
 			<key>translation</key>
 			<string>Here you can change some user profile settings.</string>
 		</dict>
@@ -39,6 +45,8 @@
 			<key>key</key>
 			<string>SETTINGS.USER_PROFILE_SECTION.HEADER_TITLE</string>
 			<key>keytail</key>
+			<string>SETTINGS.USER_PROFILE_SECTION.HEADER_TITLE</string>
+			<key>name</key>
 			<string>SETTINGS.USER_PROFILE_SECTION.HEADER_TITLE</string>
 			<key>translation</key>
 			<string>User Profile Settings</string>
@@ -48,11 +56,8 @@
 			<string>settings.user_profile_section.points</string>
 			<key>keytail</key>
 			<string>settings.user_profile_section.points</string>
-			<key>types</key>
-			<array>
-				<string>String</string>
-				<string>Int</string>
-			</array>
+			<key>name</key>
+			<string>settings.user_profile_section.points</string>
 			<key>params</key>
 			<dict>
 				<key>count</key>
@@ -80,34 +85,44 @@
 			</dict>
 			<key>translation</key>
 			<string>Welcome %@! You have %d points on your account.</string>
+			<key>types</key>
+			<array>
+				<string>String</string>
+				<string>Int</string>
+			</array>
 		</dict>
 	</array>
 	<key>structuredStrings</key>
 	<dict>
-		<key>subenums</key>
+		<key>children</key>
 		<array>
 			<dict>
-				<key>name</key>
-				<string>Settings</string>
-				<key>subenums</key>
+				<key>children</key>
 				<array>
 					<dict>
-						<key>name</key>
-						<string>Navigation_Bar</string>
-						<key>strings</key>
+						<key>children</key>
 						<array>
 							<dict>
-								<key>key</key>
-								<string>settings.navigation-bar.self</string>
-								<key>keytail</key>
-								<string>self</string>
-								<key>translation</key>
-								<string>Some Reserved Keyword there</string>
-							</dict>
-						</array>
-						<key>subenums</key>
-						<array>
-							<dict>
+								<key>children</key>
+								<array>
+									<dict>
+										<key>name</key>
+										<string>Even</string>
+										<key>strings</key>
+										<array>
+											<dict>
+												<key>key</key>
+												<string>settings.navigation-bar.title.even.deeper</string>
+												<key>keytail</key>
+												<string>deeper</string>
+												<key>name</key>
+												<string>deeper</string>
+												<key>translation</key>
+												<string>Settings</string>
+											</dict>
+										</array>
+									</dict>
+								</array>
 								<key>name</key>
 								<string>Title</string>
 								<key>subenums</key>
@@ -121,6 +136,70 @@
 												<key>key</key>
 												<string>settings.navigation-bar.title.even.deeper</string>
 												<key>keytail</key>
+												<string>deeper</string>
+												<key>name</key>
+												<string>deeper</string>
+												<key>translation</key>
+												<string>Settings</string>
+											</dict>
+										</array>
+									</dict>
+								</array>
+							</dict>
+						</array>
+						<key>name</key>
+						<string>Navigation_Bar</string>
+						<key>strings</key>
+						<array>
+							<dict>
+								<key>key</key>
+								<string>settings.navigation-bar.self</string>
+								<key>keytail</key>
+								<string>self</string>
+								<key>name</key>
+								<string>self</string>
+								<key>translation</key>
+								<string>Some Reserved Keyword there</string>
+							</dict>
+						</array>
+						<key>subenums</key>
+						<array>
+							<dict>
+								<key>children</key>
+								<array>
+									<dict>
+										<key>name</key>
+										<string>Even</string>
+										<key>strings</key>
+										<array>
+											<dict>
+												<key>key</key>
+												<string>settings.navigation-bar.title.even.deeper</string>
+												<key>keytail</key>
+												<string>deeper</string>
+												<key>name</key>
+												<string>deeper</string>
+												<key>translation</key>
+												<string>Settings</string>
+											</dict>
+										</array>
+									</dict>
+								</array>
+								<key>name</key>
+								<string>Title</string>
+								<key>subenums</key>
+								<array>
+									<dict>
+										<key>name</key>
+										<string>Even</string>
+										<key>strings</key>
+										<array>
+											<dict>
+												<key>key</key>
+												<string>settings.navigation-bar.title.even.deeper</string>
+												<key>keytail</key>
+												<string>deeper</string>
+												<key>name</key>
 												<string>deeper</string>
 												<key>translation</key>
 												<string>Settings</string>
@@ -141,6 +220,8 @@
 								<string>seTTings.uSer-proFile-sectioN.footer_text</string>
 								<key>keytail</key>
 								<string>footer_text</string>
+								<key>name</key>
+								<string>footer_text</string>
 								<key>translation</key>
 								<string>Here you can change some user profile settings.</string>
 							</dict>
@@ -148,6 +229,8 @@
 								<key>key</key>
 								<string>SETTINGS.USER_PROFILE_SECTION.HEADER_TITLE</string>
 								<key>keytail</key>
+								<string>HEADER_TITLE</string>
+								<key>name</key>
 								<string>HEADER_TITLE</string>
 								<key>translation</key>
 								<string>User Profile Settings</string>
@@ -157,11 +240,8 @@
 								<string>settings.user_profile_section.points</string>
 								<key>keytail</key>
 								<string>points</string>
-								<key>types</key>
-								<array>
-									<string>String</string>
-									<string>Int</string>
-								</array>
+								<key>name</key>
+								<string>points</string>
 								<key>params</key>
 								<dict>
 									<key>count</key>
@@ -189,6 +269,563 @@
 								</dict>
 								<key>translation</key>
 								<string>Welcome %@! You have %d points on your account.</string>
+								<key>types</key>
+								<array>
+									<string>String</string>
+									<string>Int</string>
+								</array>
+							</dict>
+						</array>
+					</dict>
+				</array>
+				<key>name</key>
+				<string>Settings</string>
+				<key>subenums</key>
+				<array>
+					<dict>
+						<key>children</key>
+						<array>
+							<dict>
+								<key>children</key>
+								<array>
+									<dict>
+										<key>name</key>
+										<string>Even</string>
+										<key>strings</key>
+										<array>
+											<dict>
+												<key>key</key>
+												<string>settings.navigation-bar.title.even.deeper</string>
+												<key>keytail</key>
+												<string>deeper</string>
+												<key>name</key>
+												<string>deeper</string>
+												<key>translation</key>
+												<string>Settings</string>
+											</dict>
+										</array>
+									</dict>
+								</array>
+								<key>name</key>
+								<string>Title</string>
+								<key>subenums</key>
+								<array>
+									<dict>
+										<key>name</key>
+										<string>Even</string>
+										<key>strings</key>
+										<array>
+											<dict>
+												<key>key</key>
+												<string>settings.navigation-bar.title.even.deeper</string>
+												<key>keytail</key>
+												<string>deeper</string>
+												<key>name</key>
+												<string>deeper</string>
+												<key>translation</key>
+												<string>Settings</string>
+											</dict>
+										</array>
+									</dict>
+								</array>
+							</dict>
+						</array>
+						<key>name</key>
+						<string>Navigation_Bar</string>
+						<key>strings</key>
+						<array>
+							<dict>
+								<key>key</key>
+								<string>settings.navigation-bar.self</string>
+								<key>keytail</key>
+								<string>self</string>
+								<key>name</key>
+								<string>self</string>
+								<key>translation</key>
+								<string>Some Reserved Keyword there</string>
+							</dict>
+						</array>
+						<key>subenums</key>
+						<array>
+							<dict>
+								<key>children</key>
+								<array>
+									<dict>
+										<key>name</key>
+										<string>Even</string>
+										<key>strings</key>
+										<array>
+											<dict>
+												<key>key</key>
+												<string>settings.navigation-bar.title.even.deeper</string>
+												<key>keytail</key>
+												<string>deeper</string>
+												<key>name</key>
+												<string>deeper</string>
+												<key>translation</key>
+												<string>Settings</string>
+											</dict>
+										</array>
+									</dict>
+								</array>
+								<key>name</key>
+								<string>Title</string>
+								<key>subenums</key>
+								<array>
+									<dict>
+										<key>name</key>
+										<string>Even</string>
+										<key>strings</key>
+										<array>
+											<dict>
+												<key>key</key>
+												<string>settings.navigation-bar.title.even.deeper</string>
+												<key>keytail</key>
+												<string>deeper</string>
+												<key>name</key>
+												<string>deeper</string>
+												<key>translation</key>
+												<string>Settings</string>
+											</dict>
+										</array>
+									</dict>
+								</array>
+							</dict>
+						</array>
+					</dict>
+					<dict>
+						<key>name</key>
+						<string>User_Profile_Section</string>
+						<key>strings</key>
+						<array>
+							<dict>
+								<key>key</key>
+								<string>seTTings.uSer-proFile-sectioN.footer_text</string>
+								<key>keytail</key>
+								<string>footer_text</string>
+								<key>name</key>
+								<string>footer_text</string>
+								<key>translation</key>
+								<string>Here you can change some user profile settings.</string>
+							</dict>
+							<dict>
+								<key>key</key>
+								<string>SETTINGS.USER_PROFILE_SECTION.HEADER_TITLE</string>
+								<key>keytail</key>
+								<string>HEADER_TITLE</string>
+								<key>name</key>
+								<string>HEADER_TITLE</string>
+								<key>translation</key>
+								<string>User Profile Settings</string>
+							</dict>
+							<dict>
+								<key>key</key>
+								<string>settings.user_profile_section.points</string>
+								<key>keytail</key>
+								<string>points</string>
+								<key>name</key>
+								<string>points</string>
+								<key>params</key>
+								<dict>
+									<key>count</key>
+									<integer>2</integer>
+									<key>declarations</key>
+									<array>
+										<string>let p0</string>
+										<string>let p1</string>
+									</array>
+									<key>names</key>
+									<array>
+										<string>p0</string>
+										<string>p1</string>
+									</array>
+									<key>typednames</key>
+									<array>
+										<string>p0: String</string>
+										<string>p1: Int</string>
+									</array>
+									<key>types</key>
+									<array>
+										<string>String</string>
+										<string>Int</string>
+									</array>
+								</dict>
+								<key>translation</key>
+								<string>Welcome %@! You have %d points on your account.</string>
+								<key>types</key>
+								<array>
+									<string>String</string>
+									<string>Int</string>
+								</array>
+							</dict>
+						</array>
+					</dict>
+				</array>
+			</dict>
+		</array>
+		<key>subenums</key>
+		<array>
+			<dict>
+				<key>children</key>
+				<array>
+					<dict>
+						<key>children</key>
+						<array>
+							<dict>
+								<key>children</key>
+								<array>
+									<dict>
+										<key>name</key>
+										<string>Even</string>
+										<key>strings</key>
+										<array>
+											<dict>
+												<key>key</key>
+												<string>settings.navigation-bar.title.even.deeper</string>
+												<key>keytail</key>
+												<string>deeper</string>
+												<key>name</key>
+												<string>deeper</string>
+												<key>translation</key>
+												<string>Settings</string>
+											</dict>
+										</array>
+									</dict>
+								</array>
+								<key>name</key>
+								<string>Title</string>
+								<key>subenums</key>
+								<array>
+									<dict>
+										<key>name</key>
+										<string>Even</string>
+										<key>strings</key>
+										<array>
+											<dict>
+												<key>key</key>
+												<string>settings.navigation-bar.title.even.deeper</string>
+												<key>keytail</key>
+												<string>deeper</string>
+												<key>name</key>
+												<string>deeper</string>
+												<key>translation</key>
+												<string>Settings</string>
+											</dict>
+										</array>
+									</dict>
+								</array>
+							</dict>
+						</array>
+						<key>name</key>
+						<string>Navigation_Bar</string>
+						<key>strings</key>
+						<array>
+							<dict>
+								<key>key</key>
+								<string>settings.navigation-bar.self</string>
+								<key>keytail</key>
+								<string>self</string>
+								<key>name</key>
+								<string>self</string>
+								<key>translation</key>
+								<string>Some Reserved Keyword there</string>
+							</dict>
+						</array>
+						<key>subenums</key>
+						<array>
+							<dict>
+								<key>children</key>
+								<array>
+									<dict>
+										<key>name</key>
+										<string>Even</string>
+										<key>strings</key>
+										<array>
+											<dict>
+												<key>key</key>
+												<string>settings.navigation-bar.title.even.deeper</string>
+												<key>keytail</key>
+												<string>deeper</string>
+												<key>name</key>
+												<string>deeper</string>
+												<key>translation</key>
+												<string>Settings</string>
+											</dict>
+										</array>
+									</dict>
+								</array>
+								<key>name</key>
+								<string>Title</string>
+								<key>subenums</key>
+								<array>
+									<dict>
+										<key>name</key>
+										<string>Even</string>
+										<key>strings</key>
+										<array>
+											<dict>
+												<key>key</key>
+												<string>settings.navigation-bar.title.even.deeper</string>
+												<key>keytail</key>
+												<string>deeper</string>
+												<key>name</key>
+												<string>deeper</string>
+												<key>translation</key>
+												<string>Settings</string>
+											</dict>
+										</array>
+									</dict>
+								</array>
+							</dict>
+						</array>
+					</dict>
+					<dict>
+						<key>name</key>
+						<string>User_Profile_Section</string>
+						<key>strings</key>
+						<array>
+							<dict>
+								<key>key</key>
+								<string>seTTings.uSer-proFile-sectioN.footer_text</string>
+								<key>keytail</key>
+								<string>footer_text</string>
+								<key>name</key>
+								<string>footer_text</string>
+								<key>translation</key>
+								<string>Here you can change some user profile settings.</string>
+							</dict>
+							<dict>
+								<key>key</key>
+								<string>SETTINGS.USER_PROFILE_SECTION.HEADER_TITLE</string>
+								<key>keytail</key>
+								<string>HEADER_TITLE</string>
+								<key>name</key>
+								<string>HEADER_TITLE</string>
+								<key>translation</key>
+								<string>User Profile Settings</string>
+							</dict>
+							<dict>
+								<key>key</key>
+								<string>settings.user_profile_section.points</string>
+								<key>keytail</key>
+								<string>points</string>
+								<key>name</key>
+								<string>points</string>
+								<key>params</key>
+								<dict>
+									<key>count</key>
+									<integer>2</integer>
+									<key>declarations</key>
+									<array>
+										<string>let p0</string>
+										<string>let p1</string>
+									</array>
+									<key>names</key>
+									<array>
+										<string>p0</string>
+										<string>p1</string>
+									</array>
+									<key>typednames</key>
+									<array>
+										<string>p0: String</string>
+										<string>p1: Int</string>
+									</array>
+									<key>types</key>
+									<array>
+										<string>String</string>
+										<string>Int</string>
+									</array>
+								</dict>
+								<key>translation</key>
+								<string>Welcome %@! You have %d points on your account.</string>
+								<key>types</key>
+								<array>
+									<string>String</string>
+									<string>Int</string>
+								</array>
+							</dict>
+						</array>
+					</dict>
+				</array>
+				<key>name</key>
+				<string>Settings</string>
+				<key>subenums</key>
+				<array>
+					<dict>
+						<key>children</key>
+						<array>
+							<dict>
+								<key>children</key>
+								<array>
+									<dict>
+										<key>name</key>
+										<string>Even</string>
+										<key>strings</key>
+										<array>
+											<dict>
+												<key>key</key>
+												<string>settings.navigation-bar.title.even.deeper</string>
+												<key>keytail</key>
+												<string>deeper</string>
+												<key>name</key>
+												<string>deeper</string>
+												<key>translation</key>
+												<string>Settings</string>
+											</dict>
+										</array>
+									</dict>
+								</array>
+								<key>name</key>
+								<string>Title</string>
+								<key>subenums</key>
+								<array>
+									<dict>
+										<key>name</key>
+										<string>Even</string>
+										<key>strings</key>
+										<array>
+											<dict>
+												<key>key</key>
+												<string>settings.navigation-bar.title.even.deeper</string>
+												<key>keytail</key>
+												<string>deeper</string>
+												<key>name</key>
+												<string>deeper</string>
+												<key>translation</key>
+												<string>Settings</string>
+											</dict>
+										</array>
+									</dict>
+								</array>
+							</dict>
+						</array>
+						<key>name</key>
+						<string>Navigation_Bar</string>
+						<key>strings</key>
+						<array>
+							<dict>
+								<key>key</key>
+								<string>settings.navigation-bar.self</string>
+								<key>keytail</key>
+								<string>self</string>
+								<key>name</key>
+								<string>self</string>
+								<key>translation</key>
+								<string>Some Reserved Keyword there</string>
+							</dict>
+						</array>
+						<key>subenums</key>
+						<array>
+							<dict>
+								<key>children</key>
+								<array>
+									<dict>
+										<key>name</key>
+										<string>Even</string>
+										<key>strings</key>
+										<array>
+											<dict>
+												<key>key</key>
+												<string>settings.navigation-bar.title.even.deeper</string>
+												<key>keytail</key>
+												<string>deeper</string>
+												<key>name</key>
+												<string>deeper</string>
+												<key>translation</key>
+												<string>Settings</string>
+											</dict>
+										</array>
+									</dict>
+								</array>
+								<key>name</key>
+								<string>Title</string>
+								<key>subenums</key>
+								<array>
+									<dict>
+										<key>name</key>
+										<string>Even</string>
+										<key>strings</key>
+										<array>
+											<dict>
+												<key>key</key>
+												<string>settings.navigation-bar.title.even.deeper</string>
+												<key>keytail</key>
+												<string>deeper</string>
+												<key>name</key>
+												<string>deeper</string>
+												<key>translation</key>
+												<string>Settings</string>
+											</dict>
+										</array>
+									</dict>
+								</array>
+							</dict>
+						</array>
+					</dict>
+					<dict>
+						<key>name</key>
+						<string>User_Profile_Section</string>
+						<key>strings</key>
+						<array>
+							<dict>
+								<key>key</key>
+								<string>seTTings.uSer-proFile-sectioN.footer_text</string>
+								<key>keytail</key>
+								<string>footer_text</string>
+								<key>name</key>
+								<string>footer_text</string>
+								<key>translation</key>
+								<string>Here you can change some user profile settings.</string>
+							</dict>
+							<dict>
+								<key>key</key>
+								<string>SETTINGS.USER_PROFILE_SECTION.HEADER_TITLE</string>
+								<key>keytail</key>
+								<string>HEADER_TITLE</string>
+								<key>name</key>
+								<string>HEADER_TITLE</string>
+								<key>translation</key>
+								<string>User Profile Settings</string>
+							</dict>
+							<dict>
+								<key>key</key>
+								<string>settings.user_profile_section.points</string>
+								<key>keytail</key>
+								<string>points</string>
+								<key>name</key>
+								<string>points</string>
+								<key>params</key>
+								<dict>
+									<key>count</key>
+									<integer>2</integer>
+									<key>declarations</key>
+									<array>
+										<string>let p0</string>
+										<string>let p1</string>
+									</array>
+									<key>names</key>
+									<array>
+										<string>p0</string>
+										<string>p1</string>
+									</array>
+									<key>typednames</key>
+									<array>
+										<string>p0: String</string>
+										<string>p1: Int</string>
+									</array>
+									<key>types</key>
+									<array>
+										<string>String</string>
+										<string>Int</string>
+									</array>
+								</dict>
+								<key>translation</key>
+								<string>Welcome %@! You have %d points on your account.</string>
+								<key>types</key>
+								<array>
+									<string>String</string>
+									<string>Int</string>
+								</array>
 							</dict>
 						</array>
 					</dict>
@@ -201,34 +838,37 @@
 	<key>tables</key>
 	<array>
 		<dict>
-			<key>name</key>
-			<string>Localizable</string>
-			<key>strings</key>
+			<key>levels</key>
 			<dict>
-				<key>subenums</key>
+				<key>children</key>
 				<array>
 					<dict>
-						<key>name</key>
-						<string>Settings</string>
-						<key>subenums</key>
+						<key>children</key>
 						<array>
 							<dict>
-								<key>name</key>
-								<string>Navigation_Bar</string>
-								<key>strings</key>
+								<key>children</key>
 								<array>
 									<dict>
-										<key>key</key>
-										<string>settings.navigation-bar.self</string>
-										<key>keytail</key>
-										<string>self</string>
-										<key>translation</key>
-										<string>Some Reserved Keyword there</string>
-									</dict>
-								</array>
-								<key>subenums</key>
-								<array>
-									<dict>
+										<key>children</key>
+										<array>
+											<dict>
+												<key>name</key>
+												<string>Even</string>
+												<key>strings</key>
+												<array>
+													<dict>
+														<key>key</key>
+														<string>settings.navigation-bar.title.even.deeper</string>
+														<key>keytail</key>
+														<string>deeper</string>
+														<key>name</key>
+														<string>deeper</string>
+														<key>translation</key>
+														<string>Settings</string>
+													</dict>
+												</array>
+											</dict>
+										</array>
 										<key>name</key>
 										<string>Title</string>
 										<key>subenums</key>
@@ -242,6 +882,70 @@
 														<key>key</key>
 														<string>settings.navigation-bar.title.even.deeper</string>
 														<key>keytail</key>
+														<string>deeper</string>
+														<key>name</key>
+														<string>deeper</string>
+														<key>translation</key>
+														<string>Settings</string>
+													</dict>
+												</array>
+											</dict>
+										</array>
+									</dict>
+								</array>
+								<key>name</key>
+								<string>Navigation_Bar</string>
+								<key>strings</key>
+								<array>
+									<dict>
+										<key>key</key>
+										<string>settings.navigation-bar.self</string>
+										<key>keytail</key>
+										<string>self</string>
+										<key>name</key>
+										<string>self</string>
+										<key>translation</key>
+										<string>Some Reserved Keyword there</string>
+									</dict>
+								</array>
+								<key>subenums</key>
+								<array>
+									<dict>
+										<key>children</key>
+										<array>
+											<dict>
+												<key>name</key>
+												<string>Even</string>
+												<key>strings</key>
+												<array>
+													<dict>
+														<key>key</key>
+														<string>settings.navigation-bar.title.even.deeper</string>
+														<key>keytail</key>
+														<string>deeper</string>
+														<key>name</key>
+														<string>deeper</string>
+														<key>translation</key>
+														<string>Settings</string>
+													</dict>
+												</array>
+											</dict>
+										</array>
+										<key>name</key>
+										<string>Title</string>
+										<key>subenums</key>
+										<array>
+											<dict>
+												<key>name</key>
+												<string>Even</string>
+												<key>strings</key>
+												<array>
+													<dict>
+														<key>key</key>
+														<string>settings.navigation-bar.title.even.deeper</string>
+														<key>keytail</key>
+														<string>deeper</string>
+														<key>name</key>
 														<string>deeper</string>
 														<key>translation</key>
 														<string>Settings</string>
@@ -262,6 +966,8 @@
 										<string>seTTings.uSer-proFile-sectioN.footer_text</string>
 										<key>keytail</key>
 										<string>footer_text</string>
+										<key>name</key>
+										<string>footer_text</string>
 										<key>translation</key>
 										<string>Here you can change some user profile settings.</string>
 									</dict>
@@ -269,6 +975,8 @@
 										<key>key</key>
 										<string>SETTINGS.USER_PROFILE_SECTION.HEADER_TITLE</string>
 										<key>keytail</key>
+										<string>HEADER_TITLE</string>
+										<key>name</key>
 										<string>HEADER_TITLE</string>
 										<key>translation</key>
 										<string>User Profile Settings</string>
@@ -278,11 +986,8 @@
 										<string>settings.user_profile_section.points</string>
 										<key>keytail</key>
 										<string>points</string>
-										<key>types</key>
-										<array>
-											<string>String</string>
-											<string>Int</string>
-										</array>
+										<key>name</key>
+										<string>points</string>
 										<key>params</key>
 										<dict>
 											<key>count</key>
@@ -310,6 +1015,563 @@
 										</dict>
 										<key>translation</key>
 										<string>Welcome %@! You have %d points on your account.</string>
+										<key>types</key>
+										<array>
+											<string>String</string>
+											<string>Int</string>
+										</array>
+									</dict>
+								</array>
+							</dict>
+						</array>
+						<key>name</key>
+						<string>Settings</string>
+						<key>subenums</key>
+						<array>
+							<dict>
+								<key>children</key>
+								<array>
+									<dict>
+										<key>children</key>
+										<array>
+											<dict>
+												<key>name</key>
+												<string>Even</string>
+												<key>strings</key>
+												<array>
+													<dict>
+														<key>key</key>
+														<string>settings.navigation-bar.title.even.deeper</string>
+														<key>keytail</key>
+														<string>deeper</string>
+														<key>name</key>
+														<string>deeper</string>
+														<key>translation</key>
+														<string>Settings</string>
+													</dict>
+												</array>
+											</dict>
+										</array>
+										<key>name</key>
+										<string>Title</string>
+										<key>subenums</key>
+										<array>
+											<dict>
+												<key>name</key>
+												<string>Even</string>
+												<key>strings</key>
+												<array>
+													<dict>
+														<key>key</key>
+														<string>settings.navigation-bar.title.even.deeper</string>
+														<key>keytail</key>
+														<string>deeper</string>
+														<key>name</key>
+														<string>deeper</string>
+														<key>translation</key>
+														<string>Settings</string>
+													</dict>
+												</array>
+											</dict>
+										</array>
+									</dict>
+								</array>
+								<key>name</key>
+								<string>Navigation_Bar</string>
+								<key>strings</key>
+								<array>
+									<dict>
+										<key>key</key>
+										<string>settings.navigation-bar.self</string>
+										<key>keytail</key>
+										<string>self</string>
+										<key>name</key>
+										<string>self</string>
+										<key>translation</key>
+										<string>Some Reserved Keyword there</string>
+									</dict>
+								</array>
+								<key>subenums</key>
+								<array>
+									<dict>
+										<key>children</key>
+										<array>
+											<dict>
+												<key>name</key>
+												<string>Even</string>
+												<key>strings</key>
+												<array>
+													<dict>
+														<key>key</key>
+														<string>settings.navigation-bar.title.even.deeper</string>
+														<key>keytail</key>
+														<string>deeper</string>
+														<key>name</key>
+														<string>deeper</string>
+														<key>translation</key>
+														<string>Settings</string>
+													</dict>
+												</array>
+											</dict>
+										</array>
+										<key>name</key>
+										<string>Title</string>
+										<key>subenums</key>
+										<array>
+											<dict>
+												<key>name</key>
+												<string>Even</string>
+												<key>strings</key>
+												<array>
+													<dict>
+														<key>key</key>
+														<string>settings.navigation-bar.title.even.deeper</string>
+														<key>keytail</key>
+														<string>deeper</string>
+														<key>name</key>
+														<string>deeper</string>
+														<key>translation</key>
+														<string>Settings</string>
+													</dict>
+												</array>
+											</dict>
+										</array>
+									</dict>
+								</array>
+							</dict>
+							<dict>
+								<key>name</key>
+								<string>User_Profile_Section</string>
+								<key>strings</key>
+								<array>
+									<dict>
+										<key>key</key>
+										<string>seTTings.uSer-proFile-sectioN.footer_text</string>
+										<key>keytail</key>
+										<string>footer_text</string>
+										<key>name</key>
+										<string>footer_text</string>
+										<key>translation</key>
+										<string>Here you can change some user profile settings.</string>
+									</dict>
+									<dict>
+										<key>key</key>
+										<string>SETTINGS.USER_PROFILE_SECTION.HEADER_TITLE</string>
+										<key>keytail</key>
+										<string>HEADER_TITLE</string>
+										<key>name</key>
+										<string>HEADER_TITLE</string>
+										<key>translation</key>
+										<string>User Profile Settings</string>
+									</dict>
+									<dict>
+										<key>key</key>
+										<string>settings.user_profile_section.points</string>
+										<key>keytail</key>
+										<string>points</string>
+										<key>name</key>
+										<string>points</string>
+										<key>params</key>
+										<dict>
+											<key>count</key>
+											<integer>2</integer>
+											<key>declarations</key>
+											<array>
+												<string>let p0</string>
+												<string>let p1</string>
+											</array>
+											<key>names</key>
+											<array>
+												<string>p0</string>
+												<string>p1</string>
+											</array>
+											<key>typednames</key>
+											<array>
+												<string>p0: String</string>
+												<string>p1: Int</string>
+											</array>
+											<key>types</key>
+											<array>
+												<string>String</string>
+												<string>Int</string>
+											</array>
+										</dict>
+										<key>translation</key>
+										<string>Welcome %@! You have %d points on your account.</string>
+										<key>types</key>
+										<array>
+											<string>String</string>
+											<string>Int</string>
+										</array>
+									</dict>
+								</array>
+							</dict>
+						</array>
+					</dict>
+				</array>
+				<key>subenums</key>
+				<array>
+					<dict>
+						<key>children</key>
+						<array>
+							<dict>
+								<key>children</key>
+								<array>
+									<dict>
+										<key>children</key>
+										<array>
+											<dict>
+												<key>name</key>
+												<string>Even</string>
+												<key>strings</key>
+												<array>
+													<dict>
+														<key>key</key>
+														<string>settings.navigation-bar.title.even.deeper</string>
+														<key>keytail</key>
+														<string>deeper</string>
+														<key>name</key>
+														<string>deeper</string>
+														<key>translation</key>
+														<string>Settings</string>
+													</dict>
+												</array>
+											</dict>
+										</array>
+										<key>name</key>
+										<string>Title</string>
+										<key>subenums</key>
+										<array>
+											<dict>
+												<key>name</key>
+												<string>Even</string>
+												<key>strings</key>
+												<array>
+													<dict>
+														<key>key</key>
+														<string>settings.navigation-bar.title.even.deeper</string>
+														<key>keytail</key>
+														<string>deeper</string>
+														<key>name</key>
+														<string>deeper</string>
+														<key>translation</key>
+														<string>Settings</string>
+													</dict>
+												</array>
+											</dict>
+										</array>
+									</dict>
+								</array>
+								<key>name</key>
+								<string>Navigation_Bar</string>
+								<key>strings</key>
+								<array>
+									<dict>
+										<key>key</key>
+										<string>settings.navigation-bar.self</string>
+										<key>keytail</key>
+										<string>self</string>
+										<key>name</key>
+										<string>self</string>
+										<key>translation</key>
+										<string>Some Reserved Keyword there</string>
+									</dict>
+								</array>
+								<key>subenums</key>
+								<array>
+									<dict>
+										<key>children</key>
+										<array>
+											<dict>
+												<key>name</key>
+												<string>Even</string>
+												<key>strings</key>
+												<array>
+													<dict>
+														<key>key</key>
+														<string>settings.navigation-bar.title.even.deeper</string>
+														<key>keytail</key>
+														<string>deeper</string>
+														<key>name</key>
+														<string>deeper</string>
+														<key>translation</key>
+														<string>Settings</string>
+													</dict>
+												</array>
+											</dict>
+										</array>
+										<key>name</key>
+										<string>Title</string>
+										<key>subenums</key>
+										<array>
+											<dict>
+												<key>name</key>
+												<string>Even</string>
+												<key>strings</key>
+												<array>
+													<dict>
+														<key>key</key>
+														<string>settings.navigation-bar.title.even.deeper</string>
+														<key>keytail</key>
+														<string>deeper</string>
+														<key>name</key>
+														<string>deeper</string>
+														<key>translation</key>
+														<string>Settings</string>
+													</dict>
+												</array>
+											</dict>
+										</array>
+									</dict>
+								</array>
+							</dict>
+							<dict>
+								<key>name</key>
+								<string>User_Profile_Section</string>
+								<key>strings</key>
+								<array>
+									<dict>
+										<key>key</key>
+										<string>seTTings.uSer-proFile-sectioN.footer_text</string>
+										<key>keytail</key>
+										<string>footer_text</string>
+										<key>name</key>
+										<string>footer_text</string>
+										<key>translation</key>
+										<string>Here you can change some user profile settings.</string>
+									</dict>
+									<dict>
+										<key>key</key>
+										<string>SETTINGS.USER_PROFILE_SECTION.HEADER_TITLE</string>
+										<key>keytail</key>
+										<string>HEADER_TITLE</string>
+										<key>name</key>
+										<string>HEADER_TITLE</string>
+										<key>translation</key>
+										<string>User Profile Settings</string>
+									</dict>
+									<dict>
+										<key>key</key>
+										<string>settings.user_profile_section.points</string>
+										<key>keytail</key>
+										<string>points</string>
+										<key>name</key>
+										<string>points</string>
+										<key>params</key>
+										<dict>
+											<key>count</key>
+											<integer>2</integer>
+											<key>declarations</key>
+											<array>
+												<string>let p0</string>
+												<string>let p1</string>
+											</array>
+											<key>names</key>
+											<array>
+												<string>p0</string>
+												<string>p1</string>
+											</array>
+											<key>typednames</key>
+											<array>
+												<string>p0: String</string>
+												<string>p1: Int</string>
+											</array>
+											<key>types</key>
+											<array>
+												<string>String</string>
+												<string>Int</string>
+											</array>
+										</dict>
+										<key>translation</key>
+										<string>Welcome %@! You have %d points on your account.</string>
+										<key>types</key>
+										<array>
+											<string>String</string>
+											<string>Int</string>
+										</array>
+									</dict>
+								</array>
+							</dict>
+						</array>
+						<key>name</key>
+						<string>Settings</string>
+						<key>subenums</key>
+						<array>
+							<dict>
+								<key>children</key>
+								<array>
+									<dict>
+										<key>children</key>
+										<array>
+											<dict>
+												<key>name</key>
+												<string>Even</string>
+												<key>strings</key>
+												<array>
+													<dict>
+														<key>key</key>
+														<string>settings.navigation-bar.title.even.deeper</string>
+														<key>keytail</key>
+														<string>deeper</string>
+														<key>name</key>
+														<string>deeper</string>
+														<key>translation</key>
+														<string>Settings</string>
+													</dict>
+												</array>
+											</dict>
+										</array>
+										<key>name</key>
+										<string>Title</string>
+										<key>subenums</key>
+										<array>
+											<dict>
+												<key>name</key>
+												<string>Even</string>
+												<key>strings</key>
+												<array>
+													<dict>
+														<key>key</key>
+														<string>settings.navigation-bar.title.even.deeper</string>
+														<key>keytail</key>
+														<string>deeper</string>
+														<key>name</key>
+														<string>deeper</string>
+														<key>translation</key>
+														<string>Settings</string>
+													</dict>
+												</array>
+											</dict>
+										</array>
+									</dict>
+								</array>
+								<key>name</key>
+								<string>Navigation_Bar</string>
+								<key>strings</key>
+								<array>
+									<dict>
+										<key>key</key>
+										<string>settings.navigation-bar.self</string>
+										<key>keytail</key>
+										<string>self</string>
+										<key>name</key>
+										<string>self</string>
+										<key>translation</key>
+										<string>Some Reserved Keyword there</string>
+									</dict>
+								</array>
+								<key>subenums</key>
+								<array>
+									<dict>
+										<key>children</key>
+										<array>
+											<dict>
+												<key>name</key>
+												<string>Even</string>
+												<key>strings</key>
+												<array>
+													<dict>
+														<key>key</key>
+														<string>settings.navigation-bar.title.even.deeper</string>
+														<key>keytail</key>
+														<string>deeper</string>
+														<key>name</key>
+														<string>deeper</string>
+														<key>translation</key>
+														<string>Settings</string>
+													</dict>
+												</array>
+											</dict>
+										</array>
+										<key>name</key>
+										<string>Title</string>
+										<key>subenums</key>
+										<array>
+											<dict>
+												<key>name</key>
+												<string>Even</string>
+												<key>strings</key>
+												<array>
+													<dict>
+														<key>key</key>
+														<string>settings.navigation-bar.title.even.deeper</string>
+														<key>keytail</key>
+														<string>deeper</string>
+														<key>name</key>
+														<string>deeper</string>
+														<key>translation</key>
+														<string>Settings</string>
+													</dict>
+												</array>
+											</dict>
+										</array>
+									</dict>
+								</array>
+							</dict>
+							<dict>
+								<key>name</key>
+								<string>User_Profile_Section</string>
+								<key>strings</key>
+								<array>
+									<dict>
+										<key>key</key>
+										<string>seTTings.uSer-proFile-sectioN.footer_text</string>
+										<key>keytail</key>
+										<string>footer_text</string>
+										<key>name</key>
+										<string>footer_text</string>
+										<key>translation</key>
+										<string>Here you can change some user profile settings.</string>
+									</dict>
+									<dict>
+										<key>key</key>
+										<string>SETTINGS.USER_PROFILE_SECTION.HEADER_TITLE</string>
+										<key>keytail</key>
+										<string>HEADER_TITLE</string>
+										<key>name</key>
+										<string>HEADER_TITLE</string>
+										<key>translation</key>
+										<string>User Profile Settings</string>
+									</dict>
+									<dict>
+										<key>key</key>
+										<string>settings.user_profile_section.points</string>
+										<key>keytail</key>
+										<string>points</string>
+										<key>name</key>
+										<string>points</string>
+										<key>params</key>
+										<dict>
+											<key>count</key>
+											<integer>2</integer>
+											<key>declarations</key>
+											<array>
+												<string>let p0</string>
+												<string>let p1</string>
+											</array>
+											<key>names</key>
+											<array>
+												<string>p0</string>
+												<string>p1</string>
+											</array>
+											<key>typednames</key>
+											<array>
+												<string>p0: String</string>
+												<string>p1: Int</string>
+											</array>
+											<key>types</key>
+											<array>
+												<string>String</string>
+												<string>Int</string>
+											</array>
+										</dict>
+										<key>translation</key>
+										<string>Welcome %@! You have %d points on your account.</string>
+										<key>types</key>
+										<array>
+											<string>String</string>
+											<string>Int</string>
+										</array>
 									</dict>
 								</array>
 							</dict>
@@ -317,6 +1579,8 @@
 					</dict>
 				</array>
 			</dict>
+			<key>name</key>
+			<string>Localizable</string>
 		</dict>
 	</array>
 </dict>
