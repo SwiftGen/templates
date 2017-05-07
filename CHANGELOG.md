@@ -27,6 +27,7 @@ _None_
   [David Jennes](https://github.com/djbe)
   [#28](https://github.com/SwiftGen/templates/issues/28)
   [#39](https://github.com/SwiftGen/templates/issues/39)
+  [#43](https://github.com/SwiftGen/templates/issues/43)
 
 ### Internal Changes
 
