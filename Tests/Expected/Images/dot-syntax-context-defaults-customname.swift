@@ -12,15 +12,17 @@
 // swiftlint:disable line_length
 // swiftlint:disable nesting
 
-struct XCTImagesType: ExpressibleByStringLiteral {
-  fileprivate var value: String
+struct XCTImagesType: StringLiteralConvertible {
+  private var value: String
 
   var image: Image {
-    let bundle = Bundle(for: BundleToken.self)
-    #if os(iOS) || os(tvOS) || os(watchOS)
-    let image = Image(named: value, in: bundle, compatibleWith: nil)
+    let bundle = NSBundle(forClass: BundleToken.self)
+    #if os(iOS) || os(tvOS)
+    let image = Image(named: value, inBundle: bundle, compatibleWithTraitCollection: nil)
     #elseif os(OSX)
-    let image = bundle.image(forResource: value)
+    let image = bundle.imageForResource(value)
+    #elseif os(watchOS)
+    let image = Image(named: value)
     #endif
     guard let result = image else { fatalError("Unable to load image \(value).") }
     return result
@@ -42,19 +44,19 @@ struct XCTImagesType: ExpressibleByStringLiteral {
 // swiftlint:disable type_body_length
 enum XCTImages {
   enum Exotic {
-    static let banana: XCTImagesType = "Exotic/Banana"
-    static let mango: XCTImagesType = "Exotic/Mango"
+    static let Banana: XCTImagesType = "Exotic/Banana"
+    static let Mango: XCTImagesType = "Exotic/Mango"
   }
-  static let `private`: XCTImagesType = "private"
+  static let Private: XCTImagesType = "private"
   enum Round {
-    static let apricot: XCTImagesType = "Round/Apricot"
-    static let orange: XCTImagesType = "Round/Orange"
+    static let Apricot: XCTImagesType = "Round/Apricot"
+    static let Orange: XCTImagesType = "Round/Orange"
     enum Red {
-      static let apple: XCTImagesType = "Round/Apple"
+      static let Apple: XCTImagesType = "Round/Apple"
       enum Double {
-        static let cherry: XCTImagesType = "Round/Double/Cherry"
+        static let Cherry: XCTImagesType = "Round/Double/Cherry"
       }
-      static let tomato: XCTImagesType = "Round/Tomato"
+      static let Tomato: XCTImagesType = "Round/Tomato"
     }
   }
 }
@@ -62,10 +64,10 @@ enum XCTImages {
 
 extension Image {
   convenience init!(asset: XCTImagesType) {
-    #if os(iOS) || os(tvOS) || os(watchOS)
-    let bundle = Bundle(for: BundleToken.self)
-    self.init(named: asset.value, in: bundle, compatibleWith: nil)
-    #elseif os(OSX)
+    #if os(iOS) || os(tvOS)
+    let bundle = NSBundle(forClass: BundleToken.self)
+    self.init(named: asset.value, inBundle: bundle, compatibleWithTraitCollection: nil)
+    #elseif os(OSX) || os(watchOS)
     self.init(named: asset.value)
     #endif
   }

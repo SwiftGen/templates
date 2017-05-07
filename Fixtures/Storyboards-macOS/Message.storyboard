@@ -82,7 +82,7 @@
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                                 <connections>
-                                    <segue destination="F1C-uo-ozY" kind="custom" identifier="public" id="and-Oo-071"/>
+                                    <segue destination="F1C-uo-ozY" kind="custom" identifier="public" customClass="FadeSegue" customModule="FadeSegue" id="and-Oo-071"/>
                                 </connections>
                             </textField>
                         </subviews>

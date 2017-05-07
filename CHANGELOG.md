@@ -6,7 +6,16 @@
 
 ### Bug Fixes
 
-_None_
+* Fixed `swiftlint` warnings in generated color extensions.  
+  [Roman Laitarenko](https://github.com/evil159) 
+  [#32](https://github.com/SwiftGen/templates/pull/32)
+* The storyboards macOS swift3 template was missing the "current target" module ignore code.  
+  [@djbe](https://github.com/djbe)
+  [#27](https://github.com/SwiftGen/templates/issues/27)
+* Fix the `images` templates so that they work on watchOS again.  
+  [David Jennes](https://github.com/djbe)
+  [SwiftGen/SwiftGen#275](https://github.com/SwiftGen/SwiftGen/issues/275)
+  [#30](https://github.com/SwiftGen/SwiftGenKit/issues/30)
 
 ### Breaking Changes
 
@@ -16,13 +25,20 @@ _None_
 
 ### New Features
 
-_None_
+* More variables have been deprecated, while new variables have been added. See [SwiftGenKit#13](https://github.com/SwiftGen/SwiftGenKit/issues/13) for more information.   
+  [David Jennes](https://github.com/djbe)
+  [#28](https://github.com/SwiftGen/templates/issues/28)
+  [#39](https://github.com/SwiftGen/templates/issues/39)
 
 ### Internal Changes
 
 * Switch from Travis CI to Circle CI, clean up the Rakefile in the process.  
   [David Jennes](https://github.com/djbe)
   [#24](https://github.com/SwiftGen/SwiftGenKit/issues/24)
+  [#40](https://github.com/SwiftGen/SwiftGenKit/issues/40)
+* Disable SwiftLint `conditional_returns_on_newline` in the font template.  
+  [Tom Baranes](https://github.com/tbaranes)
+  [#33](https://github.com/SwiftGen/templates/pull/33)
 
 ## 1.0.0
 

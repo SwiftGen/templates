@@ -119,5 +119,10 @@
 	</array>
 	<key>enumName</key>
 	<string>ColorName</string>
+	<key>param</key>
+	<dict>
+		<key>enumName</key>
+		<string>ColorName</string>
+	</dict>
 </dict>
 </plist>

@@ -4,29 +4,46 @@
 // MIT Licence
 //
 
+import StencilSwiftKit
 import XCTest
 
 class ColorsTests: XCTestCase {
   enum Contexts {
-    static let rawOnly = ["empty", "defaults", "customname"]
+    static let rawOnly = ["empty", "defaults"]
     static let all = rawOnly + ["text-defaults"]
+  }
+
+  // generate variations to test customname generation
+  let variations: VariationGenerator = { name, context in
+    guard name == "defaults" else { return [(context: context, suffix: "")] }
+
+    return [
+      (context: context,
+       suffix: ""),
+      (context: try StencilContext.enrich(context: context,
+                                          parameters: ["enumName=XCTColors"]),
+       suffix: "-customname")
+    ]
   }
 
   func testDefault() {
     test(template: "default",
          contextNames: Contexts.all,
-         directory: .colors)
+         directory: .colors,
+         contextVariations: variations)
   }
 
   func testRawValue() {
     test(template: "rawValue",
          contextNames: Contexts.rawOnly,
-         directory: .colors)
+         directory: .colors,
+         contextVariations: variations)
   }
 
   func testSwift3() {
     test(template: "swift3",
          contextNames: Contexts.all,
-         directory: .colors)
+         directory: .colors,
+         contextVariations: variations)
   }
 }

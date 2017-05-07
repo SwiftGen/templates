@@ -1,6 +1,6 @@
 // Generated using SwiftGen, by O.Halligon — https://github.com/SwiftGen/SwiftGen
 
-{% if structuredStrings %}
+{% if tables.first.strings %}
 import Foundation
 
 // swiftlint:disable file_length
@@ -11,20 +11,20 @@ import Foundation
 // swiftlint:disable variable_name
 // swiftlint:disable valid_docs
 // swiftlint:disable type_name
-{% macro parametersBlock params %}{% for type in params.types %}p{{forloop.counter}}: {{type}}{% if not forloop.last %}, {% endif %}{% endfor %}{% endmacro %}
-{% macro argumentsBlock params %}{% for type in params.types %}p{{forloop.counter}}{% if not forloop.last %}, {% endif %}{% endfor %}{% endmacro %}
-{% macro recursiveBlock strings sp %}
-{{sp}}  {% for string in strings.strings %}
+{% macro parametersBlock types %}{% for type in types %}p{{forloop.counter}}: {{type}}{% if not forloop.last %}, {% endif %}{% endfor %}{% endmacro %}
+{% macro argumentsBlock types %}{% for type in types %}p{{forloop.counter}}{% if not forloop.last %}, {% endif %}{% endfor %}{% endmacro %}
+{% macro recursiveBlock item sp %}
+{{sp}}  {% for string in item.strings %}
 {{sp}}  /// {{string.translation}}
-{{sp}}  {% if string.params %}
-{{sp}}  static func {{string.keytail|swiftIdentifier|snakeToCamelCase|escapeReservedKeywords}}({% call parametersBlock string.params %}) -> String {
-{{sp}}    return {{enumName}}.tr("{{string.key}}", {% call argumentsBlock string.params %})
+{{sp}}  {% if string.types %}
+{{sp}}  static func {{string.keytail|swiftIdentifier|snakeToCamelCase|escapeReservedKeywords}}({% call parametersBlock string.types %}) -> String {
+{{sp}}    return {{enumName}}.tr("{{string.key}}", {% call argumentsBlock string.types %})
 {{sp}}  }
 {{sp}}  {% else %}
 {{sp}}  static let {{string.keytail|swiftIdentifier|snakeToCamelCase|escapeReservedKeywords}} = {{enumName}}.tr("{{string.key}}")
 {{sp}}  {% endif %}
 {{sp}}  {% endfor %}
-{{sp}}  {% for subenum in strings.subenums %}
+{{sp}}  {% for subenum in item.subenums %}
 
 {{sp}}  enum {{subenum.name|swiftIdentifier|snakeToCamelCase}} {
 {{sp}}    {% set sp2 %}{{sp}}  {% endset %}
@@ -33,8 +33,9 @@ import Foundation
 {{sp}}  {% endfor %}
 {% endmacro %}
 
+{% set enumName %}{{param.enumName|default:"L10n"}}{% endset %}
 enum {{enumName}} {
-  {% call recursiveBlock structuredStrings sp %}
+  {% call recursiveBlock tables.first.strings sp %}
 }
 
 extension {{enumName}} {

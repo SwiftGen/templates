@@ -8,6 +8,7 @@
   typealias Color = NSColor
 #endif
 
+// swiftlint:disable operator_usage_whitespace
 extension Color {
   convenience init(rgbaValue: UInt32) {
     let red   = CGFloat((rgbaValue >> 24) & 0xff) / 255.0
@@ -18,6 +19,7 @@ extension Color {
     self.init(red: red, green: green, blue: blue, alpha: alpha)
   }
 }
+// swiftlint:enable operator_usage_whitespace
 
 // swiftlint:disable file_length
 // swiftlint:disable line_length
@@ -76,3 +78,5 @@ extension Color {
     self.init(rgbaValue: name.rgbaValue)
   }
 }
+// swiftlint:enable file_length
+// swiftlint:enable line_length

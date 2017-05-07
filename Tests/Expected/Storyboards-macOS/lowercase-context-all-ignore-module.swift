@@ -2,7 +2,6 @@
 
 import Foundation
 import Cocoa
-import FadeSegue
 import PrefsWindowController
 
 // swiftlint:disable file_length
@@ -15,10 +14,10 @@ protocol StoryboardSceneType {
 
 extension StoryboardSceneType {
   static func storyboard() -> NSStoryboard {
-    return NSStoryboard(name: self.storyboardName, bundle: Bundle(for: BundleToken.self))
+    return NSStoryboard(name: self.storyboardName, bundle: NSBundle(forClass: BundleToken.self))
   }
 
-  static func initialController() -> Any {
+  static func initialController() -> AnyObject {
     guard let controller = storyboard().instantiateInitialController()
     else {
       fatalError("Failed to instantiate initialViewController for \(self.storyboardName)")
@@ -28,10 +27,10 @@ extension StoryboardSceneType {
 }
 
 extension StoryboardSceneType where Self: RawRepresentable, Self.RawValue == String {
-  func controller() -> Any {
-    return Self.storyboard().instantiateController(withIdentifier: self.rawValue)
+  func controller() -> AnyObject {
+    return Self.storyboard().instantiateControllerWithIdentifier(self.rawValue)
   }
-  static func controller(identifier: Self) -> Any {
+  static func controller(identifier: Self) -> AnyObject {
     return identifier.controller()
   }
 }
@@ -39,14 +38,14 @@ extension StoryboardSceneType where Self: RawRepresentable, Self.RawValue == Str
 protocol StoryboardSegueType: RawRepresentable { }
 
 extension NSWindowController {
-  func performSegue<S: StoryboardSegueType>(segue: S, sender: Any? = nil) where S.RawValue == String {
-    performSegue(withIdentifier: segue.rawValue, sender: sender)
+  func performSegue<S: StoryboardSegueType where S.RawValue == String>(segue: S, sender: AnyObject? = nil) {
+    performSegueWithIdentifier(segue.rawValue, sender: sender)
   }
 }
 
 extension NSViewController {
-  func performSegue<S: StoryboardSegueType>(segue: S, sender: Any? = nil) where S.RawValue == String {
-    performSegue(withIdentifier: segue.rawValue, sender: sender)
+  func performSegue<S: StoryboardSegueType where S.RawValue == String>(segue: S, sender: AnyObject? = nil) {
+    performSegueWithIdentifier(segue.rawValue, sender: sender)
   }
 }
 
@@ -160,12 +159,12 @@ enum StoryboardScene {
 
 enum StoryboardSegue {
   enum Message: String, StoryboardSegueType {
-    case embed = "Embed"
-    case modal = "Modal"
-    case popover = "Popover"
-    case sheet = "Sheet"
-    case show = "Show"
-    case `public`
+    case Embed
+    case Modal
+    case Popover
+    case Sheet
+    case Show
+    case Public = "public"
   }
 }
 

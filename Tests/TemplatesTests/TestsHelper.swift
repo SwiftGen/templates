@@ -136,7 +136,7 @@ extension XCTestCase {
    - Parameter context: The context itself
    - Return: a tuple with a list of generated contexts, and a suffix to find the correct output file
    */
-  typealias VariationGenerator = ((String, [String: Any]) -> [(context: [String: Any], suffix: String)])
+  typealias VariationGenerator = ((String, [String: Any]) throws -> [(context: [String: Any], suffix: String)])
 
   /**
    Test the given template against a list of contexts, comparing the output with files in the expected folder.
@@ -154,6 +154,8 @@ extension XCTestCase {
             outputPrefix: String? = nil,
             directory: Fixtures.Directory,
             resourceDirectory: Fixtures.Directory? = nil,
+            file: StaticString = #file,
+            line: UInt = #line,
             contextVariations: VariationGenerator? = nil) {
     let templateString = Fixtures.template(for: "\(templateName).stencil", sub: directory)
     let template = StencilSwiftTemplate(templateString: templateString,
@@ -168,12 +170,20 @@ extension XCTestCase {
       print("Testing context '\(contextName)'...")
       let context = Fixtures.context(for: "\(contextName).plist", sub: resourceDir)
 
-      for (context, suffix) in contextVariations(contextName, context) {
+      // generate context variations
+      guard let variations = try? contextVariations(contextName, context) else {
+        fatalError("Unable to generate context variations")
+      }
+
+      for (index, (context: context, suffix: suffix)) in variations.enumerated() {
+        let outputFile = "\(prefix)-context-\(contextName)\(suffix).swift"
+        if variations.count > 1 { print(" - Variation #\(index)... (expecting: \(outputFile))") }
         guard let result = try? template.render(context) else {
           fatalError("Unable to render template")
         }
-        let expected = Fixtures.output(for: "\(prefix)-context-\(contextName)\(suffix).swift", sub: resourceDir)
-        XCTDiffStrings(result, expected)
+
+        let expected = Fixtures.output(for: outputFile, sub: resourceDir)
+        XCTDiffStrings(result, expected, file: file, line: line)
       }
     }
   }

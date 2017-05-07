@@ -4,12 +4,21 @@
 <dict>
 	<key>extraImports</key>
 	<array>
+		<string>FadeSegue</string>
 		<string>PrefsWindowController</string>
 	</array>
 	<key>modules</key>
 	<array>
+		<string>FadeSegue</string>
 		<string>PrefsWindowController</string>
 	</array>
+	<key>param</key>
+	<dict>
+		<key>sceneEnumName</key>
+		<string>XCTStoryboardsScene</string>
+		<key>segueEnumName</key>
+		<string>XCTStoryboardsSegue</string>
+	</dict>
 	<key>sceneEnumName</key>
 	<string>XCTStoryboardsScene</string>
 	<key>segueEnumName</key>
@@ -113,11 +122,15 @@
 				<dict>
 					<key>customClass</key>
 					<string></string>
+					<key>customModule</key>
+					<string></string>
 					<key>identifier</key>
 					<string>Embed</string>
 				</dict>
 				<dict>
 					<key>customClass</key>
+					<string></string>
+					<key>customModule</key>
 					<string></string>
 					<key>identifier</key>
 					<string>Modal</string>
@@ -125,11 +138,15 @@
 				<dict>
 					<key>customClass</key>
 					<string></string>
+					<key>customModule</key>
+					<string></string>
 					<key>identifier</key>
 					<string>Popover</string>
 				</dict>
 				<dict>
 					<key>customClass</key>
+					<string></string>
+					<key>customModule</key>
 					<string></string>
 					<key>identifier</key>
 					<string>Sheet</string>
@@ -137,12 +154,16 @@
 				<dict>
 					<key>customClass</key>
 					<string></string>
+					<key>customModule</key>
+					<string></string>
 					<key>identifier</key>
 					<string>Show</string>
 				</dict>
 				<dict>
 					<key>customClass</key>
-					<string></string>
+					<string>FadeSegue</string>
+					<key>customModule</key>
+					<string>FadeSegue</string>
 					<key>identifier</key>
 					<string>public</string>
 				</dict>
