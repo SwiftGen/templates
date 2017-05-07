@@ -9,8 +9,8 @@
 
 ## When to use it
 
-This template is the default template used by SwiftGen when parsing storyboards for UIKit platforms (iOS, tvOS and watchOS).
-It generates Swift 3 code and is suitable for most needs.
+- When you need to generate *Swift 3* code
+- You want to generate code for UIKit platforms (iOS, tvOS and watchOS)
 
 ## Customization
 

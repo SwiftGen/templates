@@ -9,8 +9,8 @@
 
 ## When to use it
 
-This template is the default template used by SwiftGen when parsing strings in (for example) `Localizable.strings`.
-It generates Swift 2 code and is suitable for people using structured keys for their strings (components separated by the `.` character), for example:
+- When you need to generate *Swift 2* code
+- If you use "structured" keys for your strings, that is components separated by the `.` character, for example:
 
 ```
 "some.deep.structure"

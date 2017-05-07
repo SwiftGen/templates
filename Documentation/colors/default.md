@@ -9,8 +9,7 @@
 
 ## When to use it
 
-This template is the default template used by SwiftGen when parsing colors.
-It generates Swift 2 code and is suitable for most needs.
+- When you need to generate *Swift 2* code
 
 ## Customization
 

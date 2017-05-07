@@ -11,7 +11,8 @@
 
 ## When to use it
 
-This template is a special template used by SwiftGen when parsing colors, it generates Swift 2 code.
+- When you need to generate *Swift 2* code
+- When you DON'T have _multiple_ color names with the _same_ value
 
 In contrast to the default colors template, this template generates an enum conforming to the RawRepresentable protocol. Each enum case has, as a value, the 32-bit integer representation of the color.
 

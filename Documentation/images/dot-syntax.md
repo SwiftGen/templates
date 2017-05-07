@@ -9,8 +9,9 @@
 
 ## When to use it
 
-This template is the default template used by SwiftGen when parsing images in Asset Catalogs.
-It generates Swift 2 code and is suitable for most needs.
+- When you need to generate *Swift 2* code
+
+It also takes into account any namespacing folder in your Assets Catalogs (i.e. if you create a folder in your Assets Catalog, select it, and check the "Provides Namespace" checkbox on the Attributes Inspector panel on the right)
 
 ## Customization
 
