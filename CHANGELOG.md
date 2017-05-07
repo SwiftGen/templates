@@ -37,6 +37,9 @@ _None_
 * Disable SwiftLint `conditional_returns_on_newline` in the font template.  
   [Tom Baranes](https://github.com/tbaranes)
   [#33](https://github.com/SwiftGen/templates/pull/33)
+* Updated templates to use Stencil 0.9.0 features, such as for loops with a where condition.  
+  [David Jennes](https://github.com/djbe) 
+  [#42](https://github.com/SwiftGen/templates/issues/42)
 
 ## 1.0.0
 
