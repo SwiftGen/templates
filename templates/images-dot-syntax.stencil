@@ -12,6 +12,8 @@
 // swiftlint:disable file_length
 // swiftlint:disable line_length
 // swiftlint:disable nesting
+// swiftlint:disable identifier_name
+// swiftlint:disable type_body_length
 
 {% set enumName %}{{param.enumName|default:"Asset"}}{% endset %}
 struct {{enumName}}Type: StringLiteralConvertible {
@@ -55,7 +57,6 @@ struct {{enumName}}Type: StringLiteralConvertible {
 {{sp}}  {% endfor %}
 {% endmacro %}
 
-// swiftlint:disable type_body_length
 enum {{enumName}} {
   {% if catalogs.count > 1 %}
   {% for catalog in catalogs %}
@@ -67,7 +68,6 @@ enum {{enumName}} {
   {% call recursiveBlock catalogs.first.assets "" %}
   {% endif %}
 }
-// swiftlint:enable type_body_length
 
 extension Image {
   convenience init!(asset: {{enumName}}Type) {

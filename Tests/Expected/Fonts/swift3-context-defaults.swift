@@ -11,6 +11,7 @@
 // swiftlint:disable file_length
 // swiftlint:disable line_length
 // swiftlint:disable conditional_returns_on_newline
+// swiftlint:disable identifier_name
 
 protocol FontConvertible {
   func font(size: CGFloat) -> Font!

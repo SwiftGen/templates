@@ -11,6 +11,7 @@ import {{module}}
 // swiftlint:disable file_length
 // swiftlint:disable line_length
 // swiftlint:disable type_body_length
+// swiftlint:disable identifier_name
 
 {# This first part of the code is static, same every time whatever Storyboard you have #}
 protocol StoryboardSceneType {

@@ -11,6 +11,8 @@
 // swiftlint:disable file_length
 // swiftlint:disable line_length
 // swiftlint:disable nesting
+// swiftlint:disable identifier_name
+// swiftlint:disable type_body_length
 
 struct XCTImagesType: ExpressibleByStringLiteral {
   fileprivate var value: String
@@ -41,7 +43,6 @@ struct XCTImagesType: ExpressibleByStringLiteral {
   }
 }
 
-// swiftlint:disable type_body_length
 enum XCTImages {
   enum Exotic {
     static let banana: XCTImagesType = "Exotic/Banana"
@@ -60,7 +61,6 @@ enum XCTImages {
     }
   }
 }
-// swiftlint:enable type_body_length
 
 extension Image {
   convenience init!(asset: XCTImagesType) {
