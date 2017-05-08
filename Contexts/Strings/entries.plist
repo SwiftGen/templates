@@ -16,11 +16,8 @@
 			<string>Greetings</string>
 			<key>keytail</key>
 			<string>Greetings</string>
-			<key>types</key>
-			<array>
-				<string>String</string>
-				<string>Int</string>
-			</array>
+			<key>name</key>
+			<string>Greetings</string>
 			<key>params</key>
 			<dict>
 				<key>count</key>
@@ -48,11 +45,18 @@
 			</dict>
 			<key>translation</key>
 			<string>Hello, my name is %@ and I'm %d</string>
+			<key>types</key>
+			<array>
+				<string>String</string>
+				<string>Int</string>
+			</array>
 		</dict>
 		<dict>
 			<key>key</key>
 			<string>Title</string>
 			<key>keytail</key>
+			<string>Title</string>
+			<key>name</key>
 			<string>Title</string>
 			<key>translation</key>
 			<string>My awesome title</string>
@@ -67,11 +71,8 @@
 				<string>Greetings</string>
 				<key>keytail</key>
 				<string>Greetings</string>
-				<key>types</key>
-				<array>
-					<string>String</string>
-					<string>Int</string>
-				</array>
+				<key>name</key>
+				<string>Greetings</string>
 				<key>params</key>
 				<dict>
 					<key>count</key>
@@ -99,11 +100,18 @@
 				</dict>
 				<key>translation</key>
 				<string>Hello, my name is %@ and I'm %d</string>
+				<key>types</key>
+				<array>
+					<string>String</string>
+					<string>Int</string>
+				</array>
 			</dict>
 			<dict>
 				<key>key</key>
 				<string>Title</string>
 				<key>keytail</key>
+				<string>Title</string>
+				<key>name</key>
 				<string>Title</string>
 				<key>translation</key>
 				<string>My awesome title</string>
@@ -115,9 +123,7 @@
 	<key>tables</key>
 	<array>
 		<dict>
-			<key>name</key>
-			<string>Localizable</string>
-			<key>strings</key>
+			<key>levels</key>
 			<dict>
 				<key>strings</key>
 				<array>
@@ -126,11 +132,8 @@
 						<string>Greetings</string>
 						<key>keytail</key>
 						<string>Greetings</string>
-						<key>types</key>
-						<array>
-							<string>String</string>
-							<string>Int</string>
-						</array>
+						<key>name</key>
+						<string>Greetings</string>
 						<key>params</key>
 						<dict>
 							<key>count</key>
@@ -158,17 +161,26 @@
 						</dict>
 						<key>translation</key>
 						<string>Hello, my name is %@ and I'm %d</string>
+						<key>types</key>
+						<array>
+							<string>String</string>
+							<string>Int</string>
+						</array>
 					</dict>
 					<dict>
 						<key>key</key>
 						<string>Title</string>
 						<key>keytail</key>
 						<string>Title</string>
+						<key>name</key>
+						<string>Title</string>
 						<key>translation</key>
 						<string>My awesome title</string>
 					</dict>
 				</array>
 			</dict>
+			<key>name</key>
+			<string>Localizable</string>
 		</dict>
 	</array>
 </dict>

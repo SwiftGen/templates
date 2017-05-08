@@ -16,6 +16,8 @@
 			<string>MULTILINE</string>
 			<key>keytail</key>
 			<string>MULTILINE</string>
+			<key>name</key>
+			<string>MULTILINE</string>
 			<key>translation</key>
 			<string>multi\nline</string>
 		</dict>
@@ -23,6 +25,9 @@
 			<key>key</key>
 			<string>multiLine\nKey</string>
 			<key>keytail</key>
+			<string>multiLine
+Key</string>
+			<key>name</key>
 			<string>multiLine
 Key</string>
 			<key>translation</key>
@@ -33,6 +38,8 @@ Key</string>
 			<string>MULTILINE2</string>
 			<key>keytail</key>
 			<string>MULTILINE2</string>
+			<key>name</key>
+			<string>MULTILINE2</string>
 			<key>translation</key>
 			<string>another\nmulti\n    line</string>
 		</dict>
@@ -41,6 +48,8 @@ Key</string>
 			<string>SINGLELINE</string>
 			<key>keytail</key>
 			<string>SINGLELINE</string>
+			<key>name</key>
+			<string>SINGLELINE</string>
 			<key>translation</key>
 			<string>single line</string>
 		</dict>
@@ -48,6 +57,8 @@ Key</string>
 			<key>key</key>
 			<string>SINGLELINE2</string>
 			<key>keytail</key>
+			<string>SINGLELINE2</string>
+			<key>name</key>
 			<string>SINGLELINE2</string>
 			<key>translation</key>
 			<string>another single line</string>
@@ -62,6 +73,8 @@ Key</string>
 				<string>MULTILINE</string>
 				<key>keytail</key>
 				<string>MULTILINE</string>
+				<key>name</key>
+				<string>MULTILINE</string>
 				<key>translation</key>
 				<string>multi\nline</string>
 			</dict>
@@ -69,6 +82,9 @@ Key</string>
 				<key>key</key>
 				<string>multiLine\nKey</string>
 				<key>keytail</key>
+				<string>multiLine
+Key</string>
+				<key>name</key>
 				<string>multiLine
 Key</string>
 				<key>translation</key>
@@ -79,6 +95,8 @@ Key</string>
 				<string>MULTILINE2</string>
 				<key>keytail</key>
 				<string>MULTILINE2</string>
+				<key>name</key>
+				<string>MULTILINE2</string>
 				<key>translation</key>
 				<string>another\nmulti\n    line</string>
 			</dict>
@@ -87,6 +105,8 @@ Key</string>
 				<string>SINGLELINE</string>
 				<key>keytail</key>
 				<string>SINGLELINE</string>
+				<key>name</key>
+				<string>SINGLELINE</string>
 				<key>translation</key>
 				<string>single line</string>
 			</dict>
@@ -94,6 +114,8 @@ Key</string>
 				<key>key</key>
 				<string>SINGLELINE2</string>
 				<key>keytail</key>
+				<string>SINGLELINE2</string>
+				<key>name</key>
 				<string>SINGLELINE2</string>
 				<key>translation</key>
 				<string>another single line</string>
@@ -105,9 +127,7 @@ Key</string>
 	<key>tables</key>
 	<array>
 		<dict>
-			<key>name</key>
-			<string>Localizable</string>
-			<key>strings</key>
+			<key>levels</key>
 			<dict>
 				<key>strings</key>
 				<array>
@@ -115,6 +135,8 @@ Key</string>
 						<key>key</key>
 						<string>MULTILINE</string>
 						<key>keytail</key>
+						<string>MULTILINE</string>
+						<key>name</key>
 						<string>MULTILINE</string>
 						<key>translation</key>
 						<string>multi\nline</string>
@@ -125,6 +147,9 @@ Key</string>
 						<key>keytail</key>
 						<string>multiLine
 Key</string>
+						<key>name</key>
+						<string>multiLine
+Key</string>
 						<key>translation</key>
 						<string>test</string>
 					</dict>
@@ -132,6 +157,8 @@ Key</string>
 						<key>key</key>
 						<string>MULTILINE2</string>
 						<key>keytail</key>
+						<string>MULTILINE2</string>
+						<key>name</key>
 						<string>MULTILINE2</string>
 						<key>translation</key>
 						<string>another\nmulti\n    line</string>
@@ -141,6 +168,8 @@ Key</string>
 						<string>SINGLELINE</string>
 						<key>keytail</key>
 						<string>SINGLELINE</string>
+						<key>name</key>
+						<string>SINGLELINE</string>
 						<key>translation</key>
 						<string>single line</string>
 					</dict>
@@ -149,11 +178,15 @@ Key</string>
 						<string>SINGLELINE2</string>
 						<key>keytail</key>
 						<string>SINGLELINE2</string>
+						<key>name</key>
+						<string>SINGLELINE2</string>
 						<key>translation</key>
 						<string>another single line</string>
 					</dict>
 				</array>
 			</dict>
+			<key>name</key>
+			<string>Localizable</string>
 		</dict>
 	</array>
 </dict>
