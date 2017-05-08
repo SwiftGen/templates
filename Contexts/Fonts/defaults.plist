@@ -9,19 +9,11 @@
 			<array>
 				<dict>
 					<key>name</key>
-					<string>.SFNSDisplay-Regular</string>
+					<string>.SFNSDisplay-Black</string>
 					<key>path</key>
-					<string>SFNSDisplay-Regular.otf</string>
+					<string>SFNSDisplay-Black.otf</string>
 					<key>style</key>
-					<string>Regular</string>
-				</dict>
-				<dict>
-					<key>name</key>
-					<string>.SFNSDisplay-Heavy</string>
-					<key>path</key>
-					<string>SFNSDisplay-Heavy.otf</string>
-					<key>style</key>
-					<string>Heavy</string>
+					<string>Black</string>
 				</dict>
 				<dict>
 					<key>name</key>
@@ -33,11 +25,19 @@
 				</dict>
 				<dict>
 					<key>name</key>
-					<string>.SFNSDisplay-Black</string>
+					<string>.SFNSDisplay-Heavy</string>
 					<key>path</key>
-					<string>SFNSDisplay-Black.otf</string>
+					<string>SFNSDisplay-Heavy.otf</string>
 					<key>style</key>
-					<string>Black</string>
+					<string>Heavy</string>
+				</dict>
+				<dict>
+					<key>name</key>
+					<string>.SFNSDisplay-Regular</string>
+					<key>path</key>
+					<string>SFNSDisplay-Regular.otf</string>
+					<key>style</key>
+					<string>Regular</string>
 				</dict>
 			</array>
 			<key>name</key>
@@ -48,19 +48,19 @@
 			<array>
 				<dict>
 					<key>name</key>
-					<string>.SFNSText-Heavy</string>
-					<key>path</key>
-					<string>SFNSText-Heavy.otf</string>
-					<key>style</key>
-					<string>Heavy</string>
-				</dict>
-				<dict>
-					<key>name</key>
 					<string>.SFNSText-Bold</string>
 					<key>path</key>
 					<string>SFNSText-Bold.otf</string>
 					<key>style</key>
 					<string>Bold</string>
+				</dict>
+				<dict>
+					<key>name</key>
+					<string>.SFNSText-Heavy</string>
+					<key>path</key>
+					<string>SFNSText-Heavy.otf</string>
+					<key>style</key>
+					<string>Heavy</string>
 				</dict>
 				<dict>
 					<key>name</key>
@@ -79,14 +79,6 @@
 			<array>
 				<dict>
 					<key>name</key>
-					<string>Avenir-BlackOblique</string>
-					<key>path</key>
-					<string>Avenir.ttc</string>
-					<key>style</key>
-					<string>Black Oblique</string>
-				</dict>
-				<dict>
-					<key>name</key>
 					<string>Avenir-Black</string>
 					<key>path</key>
 					<string>Avenir.ttc</string>
@@ -95,11 +87,43 @@
 				</dict>
 				<dict>
 					<key>name</key>
+					<string>Avenir-BlackOblique</string>
+					<key>path</key>
+					<string>Avenir.ttc</string>
+					<key>style</key>
+					<string>Black Oblique</string>
+				</dict>
+				<dict>
+					<key>name</key>
+					<string>Avenir-Book</string>
+					<key>path</key>
+					<string>Avenir.ttc</string>
+					<key>style</key>
+					<string>Book</string>
+				</dict>
+				<dict>
+					<key>name</key>
+					<string>Avenir-BookOblique</string>
+					<key>path</key>
+					<string>Avenir.ttc</string>
+					<key>style</key>
+					<string>Book Oblique</string>
+				</dict>
+				<dict>
+					<key>name</key>
 					<string>Avenir-Heavy</string>
 					<key>path</key>
 					<string>Avenir.ttc</string>
 					<key>style</key>
 					<string>Heavy</string>
+				</dict>
+				<dict>
+					<key>name</key>
+					<string>Avenir-HeavyOblique</string>
+					<key>path</key>
+					<string>Avenir.ttc</string>
+					<key>style</key>
+					<string>Heavy Oblique</string>
 				</dict>
 				<dict>
 					<key>name</key>
@@ -119,27 +143,19 @@
 				</dict>
 				<dict>
 					<key>name</key>
-					<string>Avenir-BookOblique</string>
-					<key>path</key>
-					<string>Avenir.ttc</string>
-					<key>style</key>
-					<string>Book Oblique</string>
-				</dict>
-				<dict>
-					<key>name</key>
-					<string>Avenir-HeavyOblique</string>
-					<key>path</key>
-					<string>Avenir.ttc</string>
-					<key>style</key>
-					<string>Heavy Oblique</string>
-				</dict>
-				<dict>
-					<key>name</key>
 					<string>Avenir-Medium</string>
 					<key>path</key>
 					<string>Avenir.ttc</string>
 					<key>style</key>
 					<string>Medium</string>
+				</dict>
+				<dict>
+					<key>name</key>
+					<string>Avenir-MediumOblique</string>
+					<key>path</key>
+					<string>Avenir.ttc</string>
+					<key>style</key>
+					<string>Medium Oblique</string>
 				</dict>
 				<dict>
 					<key>name</key>
@@ -156,22 +172,6 @@
 					<string>Avenir.ttc</string>
 					<key>style</key>
 					<string>Roman</string>
-				</dict>
-				<dict>
-					<key>name</key>
-					<string>Avenir-MediumOblique</string>
-					<key>path</key>
-					<string>Avenir.ttc</string>
-					<key>style</key>
-					<string>Medium Oblique</string>
-				</dict>
-				<dict>
-					<key>name</key>
-					<string>Avenir-Book</string>
-					<key>path</key>
-					<string>Avenir.ttc</string>
-					<key>style</key>
-					<string>Book</string>
 				</dict>
 			</array>
 			<key>name</key>
