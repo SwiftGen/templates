@@ -17,7 +17,7 @@ import Foundation
 // swiftlint:disable identifier_name line_length type_body_length
 {% set enumName %}{{param.enumName|default:"L10n"}}{% endset %}
 enum {{enumName}} {
-  {% call recursiveBlock structuredStrings %}
+  {% call recursiveBlock tables.first.levels %}
 }
 
 {% macro parametersBlock types %}{% for type in types %}let p{{forloop.counter}}{% if not forloop.last %}, {% endif %}{% endfor %}{% endmacro %}
