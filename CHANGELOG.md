@@ -2,7 +2,7 @@
 
 ---
 
-## Master
+## 1.1.0
 
 ### Bug Fixes
 
@@ -16,10 +16,6 @@
   [David Jennes](https://github.com/djbe)
   [SwiftGen/SwiftGen#275](https://github.com/SwiftGen/SwiftGen/issues/275)
   [#30](https://github.com/SwiftGen/SwiftGenKit/issues/30)
-
-### Breaking Changes
-
-_None_
 
 ### New Features
 
