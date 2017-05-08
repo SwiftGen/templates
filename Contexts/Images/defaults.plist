@@ -88,23 +88,5 @@
 			<string>Images</string>
 		</dict>
 	</array>
-	<key>enumName</key>
-	<string>Asset</string>
-	<key>images</key>
-	<array>
-		<string>Exotic/Banana</string>
-		<string>Exotic/Mango</string>
-		<string>Round/Apple</string>
-		<string>Round/Apricot</string>
-		<string>Round/Double/Cherry</string>
-		<string>Round/Orange</string>
-		<string>Round/Tomato</string>
-		<string>private</string>
-	</array>
-	<key>param</key>
-	<dict>
-		<key>enumName</key>
-		<string>Asset</string>
-	</dict>
 </dict>
 </plist>

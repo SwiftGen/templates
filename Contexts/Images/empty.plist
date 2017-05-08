@@ -4,14 +4,5 @@
 <dict>
 	<key>catalogs</key>
 	<array/>
-	<key>enumName</key>
-	<string>Asset</string>
-	<key>images</key>
-	<array/>
-	<key>param</key>
-	<dict>
-		<key>enumName</key>
-		<string>Asset</string>
-	</dict>
 </dict>
 </plist>

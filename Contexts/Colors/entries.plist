@@ -15,10 +15,6 @@
 			<string>ArticleBackground</string>
 			<key>red</key>
 			<string>ff</string>
-			<key>rgb</key>
-			<string>ffcc00</string>
-			<key>rgba</key>
-			<string>ffcc0099</string>
 		</dict>
 		<dict>
 			<key>alpha</key>
@@ -31,10 +27,6 @@
 			<string>ArticleTitle</string>
 			<key>red</key>
 			<string>99</string>
-			<key>rgb</key>
-			<string>996600</string>
-			<key>rgba</key>
-			<string>996600ff</string>
 		</dict>
 		<dict>
 			<key>alpha</key>
@@ -47,18 +39,7 @@
 			<string>Text&amp;Body Color</string>
 			<key>red</key>
 			<string>99</string>
-			<key>rgb</key>
-			<string>999999</string>
-			<key>rgba</key>
-			<string>999999ff</string>
 		</dict>
 	</array>
-	<key>enumName</key>
-	<string>ColorName</string>
-	<key>param</key>
-	<dict>
-		<key>enumName</key>
-		<string>ColorName</string>
-	</dict>
 </dict>
 </plist>
