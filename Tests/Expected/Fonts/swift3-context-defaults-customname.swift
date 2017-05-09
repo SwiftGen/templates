@@ -9,8 +9,6 @@
 #endif
 
 // swiftlint:disable file_length
-// swiftlint:disable line_length
-// swiftlint:disable conditional_returns_on_newline
 
 protocol FontConvertible {
   func font(size: CGFloat) -> Font!
@@ -25,7 +23,9 @@ extension FontConvertible where Self: RawRepresentable, Self.RawValue == String 
     let extensions = ["otf", "ttf"]
     let bundle = Bundle(for: BundleToken.self)
 
-    guard let url = extensions.flatMap({ bundle.url(forResource: rawValue, withExtension: $0) }).first else { return }
+    guard let url = extensions.flatMap({ bundle.url(forResource: rawValue, withExtension: $0) }).first else {
+      return
+    }
 
     var errorRef: Unmanaged<CFError>?
     CTFontManagerRegisterFontsForURL(url as CFURL, .none, &errorRef)
@@ -50,6 +50,9 @@ extension Font {
   }
 }
 
+// swiftlint:disable identifier_name
+// swiftlint:disable line_length
+// swiftlint:disable type_body_length
 enum CustomFamily {
   enum SFNSDisplay: String, FontConvertible {
     case black = ".SFNSDisplay-Black"
@@ -83,5 +86,8 @@ enum CustomFamily {
     case `internal` = "private"
   }
 }
+// swiftlint:enable identifier_name
+// swiftlint:enable line_length
+// swiftlint:enable type_body_length
 
 private final class BundleToken {}
