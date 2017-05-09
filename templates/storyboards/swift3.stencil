@@ -3,10 +3,8 @@
 {% macro className scene %}{% if scene.customClass %}{% if scene.customModule %}{{scene.customModule}}.{% endif %}{{scene.customClass}}{% else %}UI{{scene.baseType}}{% endif %}{% endmacro %}
 import Foundation
 import UIKit
-{% for module in modules %}
-{% if module != env.PRODUCT_MODULE_NAME and module != param.module %}
+{% for module in modules where module != env.PRODUCT_MODULE_NAME and module != param.module %}
 import {{module}}
-{% endif %}
 {% endfor %}
 
 {% if storyboards %}
@@ -57,7 +55,7 @@ enum {{sceneEnumName}} {
   {% if storyboard.scenes %}
   enum {{storyboardName}}: String, StoryboardSceneType {
     static let storyboardName = "{{storyboard.name}}"
-    {% if storyboard.initialScene %}{% if storyboard.initialScene.baseType != "ViewController" %}
+    {% if storyboard.initialScene and storyboard.initialScene.baseType != "ViewController" %}
     {% set initialSceneClass %}{% call className storyboard.initialScene %}{% endset %}
 
     static func initialViewController() -> {{initialSceneClass}} {
@@ -66,7 +64,7 @@ enum {{sceneEnumName}} {
       }
       return vc
     }
-    {% endif %}{% endif %}
+    {% endif %}
     {% for scene in storyboard.scenes %}
     {% set sceneID %}{{scene.identifier|swiftIdentifier|snakeToCamelCase|lowerFirstWord}}{% endset %}
 
@@ -90,7 +88,7 @@ enum {{sceneEnumName}} {
   {% else %}
   enum {{storyboardName}}: StoryboardSceneType {
     static let storyboardName = "{{storyboard.name}}"
-    {% if storyboard.initialScene %}{% if storyboard.initialScene.baseType != "ViewController" %}
+    {% if storyboard.initialScene and storyboard.initialScene.baseType != "ViewController" %}
     {% set initialSceneClass %}{% call className storyboard.initialScene %}{% endset %}
 
     static func initialViewController() -> {{initialSceneClass}} {
@@ -99,21 +97,21 @@ enum {{sceneEnumName}} {
       }
       return vc
     }
-    {% endif %}{% endif %}
+    {% endif %}
   }
   {% endif %}
   {% endfor %}
 }
 
 enum {{param.segueEnumName|default:"StoryboardSegue"}} {
-  {% for storyboard in storyboards %}{% if storyboard.segues %}
+  {% for storyboard in storyboards where storyboard.segues %}
   enum {{storyboard.name|swiftIdentifier|escapeReservedKeywords}}: String, StoryboardSegueType {
     {% for segue in storyboard.segues %}
     {% set segueID %}{{segue.identifier|swiftIdentifier|snakeToCamelCase|lowerFirstWord}}{% endset %}
     case {{segueID|escapeReservedKeywords}}{% if segueID != segue.identifier %} = "{{segue.identifier}}"{% endif %}
     {% endfor %}
   }
-  {% endif %}{% endfor %}
+  {% endfor %}
 }
 
 private final class BundleToken {}

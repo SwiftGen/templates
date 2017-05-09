@@ -1,6 +1,6 @@
 // Generated using SwiftGen, by O.Halligon — https://github.com/SwiftGen/SwiftGen
 
-{% if tables.first.strings %}
+{% if tables.first.levels %}
 import Foundation
 
 // swiftlint:disable file_length
@@ -10,15 +10,15 @@ import Foundation
   /// {{string.translation}}
   case {{string.key|swiftIdentifier|snakeToCamelCase|escapeReservedKeywords}}{% if string.types %}({{string.types|join}}){% endif %}
   {% endfor %}
-  {% for subenum in item.subenums %}
-  {% call recursiveBlock subenum %}
+  {% for child in item.children %}
+  {% call recursiveBlock child %}
   {% endfor %}
 {% endmacro %}
 
 // swiftlint:disable type_body_length
 {% set enumName %}{{param.enumName|default:"L10n"}}{% endset %}
 enum {{enumName}} {
-  {% call recursiveBlock tables.first.strings %}
+  {% call recursiveBlock tables.first.levels %}
 }
 // swiftlint:enable type_body_length
 
@@ -34,8 +34,8 @@ enum {{enumName}} {
         return {{enumName}}.tr("{{string.key}}")
       {% endif %}
       {% endfor %}
-      {% for subenum in item.subenums %}
-      {% call recursiveBlock subenum %}
+      {% for child in item.children %}
+      {% call recursiveBlock child %}
       {% endfor %}
 {% endmacro %}
 extension {{enumName}}: CustomStringConvertible {
@@ -43,7 +43,7 @@ extension {{enumName}}: CustomStringConvertible {
 
   var string: String {
     switch self {
-      {% call recursiveBlock tables.first.strings %}
+      {% call recursiveBlock tables.first.levels %}
     }
   }
 

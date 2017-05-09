@@ -18,10 +18,10 @@
 	<key>tables</key>
 	<array>
 		<dict>
+			<key>levels</key>
+			<dict/>
 			<key>name</key>
 			<string>Localizable</string>
-			<key>strings</key>
-			<dict/>
 		</dict>
 	</array>
 </dict>

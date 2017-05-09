@@ -6,6 +6,26 @@
 
 ### Bug Fixes
 
+_None_
+
+### Breaking Changes
+
+* Templates are now organized in subdirectories for each command.  
+  [@djbe](https://github.com/djbe)
+  [#13](https://github.com/SwiftGen/templates/issues/13)
+
+### New Features
+
+_None_
+
+### Internal Changes
+
+_None_
+
+## 1.1.0
+
+### Bug Fixes
+
 * Fixed `swiftlint` warnings in generated color extensions.  
   [Roman Laitarenko](https://github.com/evil159) 
   [#32](https://github.com/SwiftGen/templates/pull/32)
@@ -17,18 +37,13 @@
   [SwiftGen/SwiftGen#275](https://github.com/SwiftGen/SwiftGen/issues/275)
   [#30](https://github.com/SwiftGen/SwiftGenKit/issues/30)
 
-### Breaking Changes
-
-* Templates are now organized in subdirectories for each command.  
-  [@djbe](https://github.com/djbe)
-  [#13](https://github.com/SwiftGen/templates/issues/13)
-
 ### New Features
 
 * More variables have been deprecated, while new variables have been added. See [SwiftGenKit#13](https://github.com/SwiftGen/SwiftGenKit/issues/13) for more information.   
   [David Jennes](https://github.com/djbe)
   [#28](https://github.com/SwiftGen/templates/issues/28)
   [#39](https://github.com/SwiftGen/templates/issues/39)
+  [#43](https://github.com/SwiftGen/templates/issues/43)
 
 ### Internal Changes
 
@@ -39,6 +54,9 @@
 * Disable SwiftLint `conditional_returns_on_newline` in the font template.  
   [Tom Baranes](https://github.com/tbaranes)
   [#33](https://github.com/SwiftGen/templates/pull/33)
+* Updated templates to use Stencil 0.9.0 features, such as for loops with a where condition.  
+  [David Jennes](https://github.com/djbe) 
+  [#42](https://github.com/SwiftGen/templates/issues/42)
 
 ## 1.0.0
 
