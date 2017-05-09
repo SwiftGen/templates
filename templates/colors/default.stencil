@@ -1,5 +1,6 @@
 // Generated using SwiftGen, by O.Halligon — https://github.com/SwiftGen/SwiftGen
 
+{% if colors %}
 #if os(iOS) || os(tvOS) || os(watchOS)
   import UIKit.UIColor
   typealias Color = UIColor
@@ -7,6 +8,8 @@
   import AppKit.NSColor
   typealias Color = NSColor
 #endif
+
+// swiftlint:disable file_length
 
 // swiftlint:disable operator_usage_whitespace
 extension Color {
@@ -21,11 +24,9 @@ extension Color {
 }
 // swiftlint:enable operator_usage_whitespace
 
-{% if colors %}
 {# Note: We don't use a UInt32 rawValue in this template so we can have multiple colors with the same rgbaValue #}
-// swiftlint:disable file_length
+// swiftlint:disable identifier_name
 // swiftlint:disable line_length
-
 // swiftlint:disable type_body_length
 {% set enumName %}{{param.enumName|default:"ColorName"}}{% endset %}
 enum {{enumName}} {
@@ -48,6 +49,8 @@ enum {{enumName}} {
     return Color(named: self)
   }
 }
+// swiftlint:enable identifier_name
+// swiftlint:enable line_length
 // swiftlint:enable type_body_length
 
 extension Color {
@@ -55,8 +58,6 @@ extension Color {
     self.init(rgbaValue: name.rgbaValue)
   }
 }
-// swiftlint:enable file_length
-// swiftlint:enable line_length
 {% else %}
 // No color found
 {% endif %}
