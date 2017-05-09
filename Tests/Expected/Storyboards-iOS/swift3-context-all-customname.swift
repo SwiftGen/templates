@@ -7,8 +7,6 @@ import LocationPicker
 import SlackTextViewController
 
 // swiftlint:disable file_length
-// swiftlint:disable line_length
-// swiftlint:disable type_body_length
 
 protocol StoryboardSceneType {
   static var storyboardName: String { get }
@@ -44,6 +42,10 @@ extension UIViewController {
   }
 }
 
+// swiftlint:disable identifier_name
+// swiftlint:disable line_length
+// swiftlint:disable type_body_length
+// swiftlint:disable type_name
 enum XCTStoryboardsScene {
   enum AdditionalImport: String, StoryboardSceneType {
     static let storyboardName = "AdditionalImport"
@@ -183,5 +185,9 @@ enum XCTStoryboardsSegue {
     case showPassword = "ShowPassword"
   }
 }
+// swiftlint:enable identifier_name
+// swiftlint:enable line_length
+// swiftlint:enable type_body_length
+// swiftlint:enable type_name
 
 private final class BundleToken {}
