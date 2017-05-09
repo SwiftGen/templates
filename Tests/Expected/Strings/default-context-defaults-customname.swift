@@ -3,8 +3,9 @@
 import Foundation
 
 // swiftlint:disable file_length
-// swiftlint:disable line_length
 
+// swiftlint:disable identifier_name
+// swiftlint:disable line_length
 // swiftlint:disable type_body_length
 enum XCTLoc {
   /// Some alert body there
@@ -30,7 +31,6 @@ enum XCTLoc {
   /// User Profile Settings
   case SettingsUserProfileSectionHeaderTitle
 }
-// swiftlint:enable type_body_length
 
 extension XCTLoc: CustomStringConvertible {
   var description: String { return self.string }
@@ -67,6 +67,9 @@ extension XCTLoc: CustomStringConvertible {
     return String(format: format, locale: NSLocale.currentLocale(), arguments: args)
   }
 }
+// swiftlint:enable identifier_name
+// swiftlint:enable line_length
+// swiftlint:enable type_body_length
 
 func tr(key: XCTLoc) -> String {
   return key.string

@@ -3,14 +3,12 @@
 import Foundation
 
 // swiftlint:disable file_length
+
+// swiftlint:disable identifier_name
 // swiftlint:disable line_length
-
-// swiftlint:disable type_body_length
 // swiftlint:disable nesting
-// swiftlint:disable variable_name
-// swiftlint:disable valid_docs
+// swiftlint:disable type_body_length
 // swiftlint:disable type_name
-
 enum L10n {
   /// Some alert body there
   static let alertMessage = L10n.tr("alert_message")
@@ -91,6 +89,11 @@ enum L10n {
     }
   }
 }
+// swiftlint:enable identifier_name
+// swiftlint:enable line_length
+// swiftlint:enable nesting
+// swiftlint:enable type_body_length
+// swiftlint:enable type_name
 
 extension L10n {
   fileprivate static func tr(_ key: String, _ args: CVarArg...) -> String {
@@ -100,8 +103,3 @@ extension L10n {
 }
 
 private final class BundleToken {}
-
-// swiftlint:enable type_body_length
-// swiftlint:enable nesting
-// swiftlint:enable variable_name
-// swiftlint:enable valid_docs

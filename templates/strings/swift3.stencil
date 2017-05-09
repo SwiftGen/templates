@@ -4,7 +4,6 @@
 import Foundation
 
 // swiftlint:disable file_length
-// swiftlint:disable line_length
 {% macro recursiveBlock item %}
   {% for string in item.strings %}
   /// {{string.translation}}
@@ -15,12 +14,13 @@ import Foundation
   {% endfor %}
 {% endmacro %}
 
+// swiftlint:disable identifier_name
+// swiftlint:disable line_length
 // swiftlint:disable type_body_length
 {% set enumName %}{{param.enumName|default:"L10n"}}{% endset %}
 enum {{enumName}} {
   {% call recursiveBlock tables.first.levels %}
 }
-// swiftlint:enable type_body_length
 
 {% macro parametersBlock types %}{% for type in types %}let p{{forloop.counter}}{% if not forloop.last %}, {% endif %}{% endfor %}{% endmacro %}
 {% macro argumentsBlock types %}{% for type in types %}p{{forloop.counter}}{% if not forloop.last %}, {% endif %}{% endfor %}{% endmacro %}
@@ -52,6 +52,9 @@ extension {{enumName}}: CustomStringConvertible {
     return String(format: format, locale: Locale.current, arguments: args)
   }
 }
+// swiftlint:enable identifier_name
+// swiftlint:enable line_length
+// swiftlint:enable type_body_length
 
 func tr(_ key: {{enumName}}) -> String {
   return key.string
