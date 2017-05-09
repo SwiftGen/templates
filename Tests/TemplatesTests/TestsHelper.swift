@@ -24,11 +24,9 @@ func diff(_ result: String, _ expected: String) -> String? {
   let lhsLines = result.components(separatedBy: nl)
   let rhsLines = expected.components(separatedBy: nl)
 
-  for (idx, pair) in zip(lhsLines, rhsLines).enumerated() {
-    if pair.0 != pair.1 {
-      firstDiff = idx
-      break
-    }
+  for (idx, pair) in zip(lhsLines, rhsLines).enumerated() where pair.0 != pair.1 {
+    firstDiff = idx
+    break
   }
   if firstDiff == nil && lhsLines.count != rhsLines.count {
     firstDiff = min(lhsLines.count, rhsLines.count)
