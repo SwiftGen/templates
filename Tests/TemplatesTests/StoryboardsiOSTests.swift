@@ -41,34 +41,34 @@ class StoryboardsiOSTests: XCTestCase {
   }
 
   func testDefault() {
-    test(template: "storyboards-default",
+    test(template: "default",
          contextNames: Contexts.all,
-         outputPrefix: "default",
-         directory: .storyboardsiOS,
+         directory: .storyboards,
+         resourceDirectory: .storyboardsiOS,
          contextVariations: variations)
   }
 
   func testSwift3() {
-    test(template: "storyboards-swift3",
+    test(template: "swift3",
          contextNames: Contexts.all,
-         outputPrefix: "swift3",
-         directory: .storyboardsiOS,
+         directory: .storyboards,
+         resourceDirectory: .storyboardsiOS,
          contextVariations: variations)
   }
 
   func testLowercase() {
-    test(template: "storyboards-lowercase",
+    test(template: "lowercase",
          contextNames: Contexts.all,
-         outputPrefix: "lowercase",
-         directory: .storyboardsiOS,
+         directory: .storyboards,
+         resourceDirectory: .storyboardsiOS,
          contextVariations: variations)
   }
 
   func testUppercase() {
-    test(template: "storyboards-uppercase",
+    test(template: "uppercase",
          contextNames: Contexts.all,
-         outputPrefix: "uppercase",
-         directory: .storyboardsiOS,
+         directory: .storyboards,
+         resourceDirectory: .storyboardsiOS,
          contextVariations: variations)
   }
 }

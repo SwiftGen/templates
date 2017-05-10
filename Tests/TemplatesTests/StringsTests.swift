@@ -26,57 +26,50 @@ class StringsTests: XCTestCase {
   }
 
   func testDefault() {
-    test(template: "strings-default",
+    test(template: "default",
          contextNames: Contexts.all,
-         outputPrefix: "default",
          directory: .strings,
          contextVariations: variations)
   }
 
   func testSwift3() {
-    test(template: "strings-swift3",
+    test(template: "swift3",
          contextNames: Contexts.all,
-         outputPrefix: "swift3",
          directory: .strings,
          contextVariations: variations)
   }
 
   func testNoCommentsSwift3() {
-    test(template: "strings-no-comments-swift3",
+    test(template: "no-comments-swift3",
          contextNames: Contexts.all,
-         outputPrefix: "no-comments-swift3",
          directory: .strings,
          contextVariations: variations)
   }
 
   func testGenstrings() {
-    test(template: "strings-genstrings",
+    test(template: "genstrings",
          contextNames: Contexts.all,
-         outputPrefix: "genstrings",
          directory: .strings,
          contextVariations: variations)
   }
 
   func testStructured() {
-    test(template: "strings-structured",
+    test(template: "structured",
          contextNames: Contexts.all,
-         outputPrefix: "structured",
          directory: .strings,
          contextVariations: variations)
   }
 
   func testDotSyntax() {
-    test(template: "strings-dot-syntax",
+    test(template: "dot-syntax",
          contextNames: Contexts.all,
-         outputPrefix: "dot-syntax",
          directory: .strings,
          contextVariations: variations)
   }
 
   func testDotSyntaxSwift3() {
-    test(template: "strings-dot-syntax-swift3",
+    test(template: "dot-syntax-swift3",
          contextNames: Contexts.all,
-         outputPrefix: "dot-syntax-swift3",
          directory: .strings,
          contextVariations: variations)
   }

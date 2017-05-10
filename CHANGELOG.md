@@ -10,7 +10,9 @@ _None_
 
 ### Breaking Changes
 
-_None_
+* Templates are now organized in subdirectories for each command.  
+  [@djbe](https://github.com/djbe)
+  [#13](https://github.com/SwiftGen/templates/issues/13)
 
 ### New Features
 
