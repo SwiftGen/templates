@@ -65,3 +65,22 @@ private final class BundleToken {}
 {% else %}
 // No fonts found
 {% endif %}
+
+{% if fonts %}
+enum FontName: String {
+  {% for font in fonts %}
+	case {{font.name|swiftIdentifier|snakeToCamelCase|lowerFirstWord|escapeReservedKeywords}}
+  {% endfor %}
+
+  var font: Font {
+	switch self {
+	{% for font in fonts %}
+	case .{{font.name|swiftIdentifier|snakeToCamelCase|lowerFirstWord|escapeReservedKeywords}}:
+return {{enumName}}.{{font.family|swiftIdentifier|snakeToCamelCaseNoPrefix|escapeReservedKeywords}}.{{font.style|swiftIdentifier|snakeToCamelCaseNoPrefix|lowerFirstWord|escapeReservedKeywords}}.font(size: {{font.size}})
+	{% endfor %}
+	}
+  }
+}
+{% else %}
+// No fonts file found
+{% endif %}
