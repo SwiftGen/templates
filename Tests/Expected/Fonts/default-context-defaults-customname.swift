@@ -50,9 +50,7 @@ extension Font {
   }
 }
 
-// swiftlint:disable identifier_name
-// swiftlint:disable line_length
-// swiftlint:disable type_body_length
+// swiftlint:disable identifier_name line_length type_body_length
 enum CustomFamily {
   enum SFNSDisplay: String, FontConvertible {
     case Black = ".SFNSDisplay-Black"
@@ -86,8 +84,6 @@ enum CustomFamily {
     case Internal = "private"
   }
 }
-// swiftlint:enable identifier_name
-// swiftlint:enable line_length
-// swiftlint:enable type_body_length
+// swiftlint:enable identifier_name line_length type_body_length
 
 private final class BundleToken {}

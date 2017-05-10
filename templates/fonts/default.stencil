@@ -51,9 +51,7 @@ extension Font {
   }
 }
 
-// swiftlint:disable identifier_name
-// swiftlint:disable line_length
-// swiftlint:disable type_body_length
+// swiftlint:disable identifier_name line_length type_body_length
 enum {{param.enumName|default:"FontFamily"}} {
   {% for family in families %}
   enum {{family.name|swiftIdentifier|snakeToCamelCaseNoPrefix|escapeReservedKeywords}}: String, FontConvertible {
@@ -63,9 +61,7 @@ enum {{param.enumName|default:"FontFamily"}} {
   }
   {% endfor %}
 }
-// swiftlint:enable identifier_name
-// swiftlint:enable line_length
-// swiftlint:enable type_body_length
+// swiftlint:enable identifier_name line_length type_body_length
 
 private final class BundleToken {}
 {% else %}

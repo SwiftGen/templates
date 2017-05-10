@@ -9,8 +9,6 @@
 #endif
 
 // swiftlint:disable file_length
-// swiftlint:disable line_length
-// swiftlint:disable nesting
 
 struct AssetType: StringLiteralConvertible {
   private var value: String
@@ -41,7 +39,7 @@ struct AssetType: StringLiteralConvertible {
   }
 }
 
-// swiftlint:disable type_body_length
+// swiftlint:disable identifier_name line_length nesting type_body_length type_name
 enum Asset {
   enum Exotic {
     static let Banana: AssetType = "Exotic/Banana"
@@ -60,7 +58,7 @@ enum Asset {
     }
   }
 }
-// swiftlint:enable type_body_length
+// swiftlint:enable identifier_name line_length nesting type_body_length type_name
 
 extension Image {
   convenience init!(asset: AssetType) {

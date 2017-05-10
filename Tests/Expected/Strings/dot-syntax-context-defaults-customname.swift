@@ -4,11 +4,7 @@ import Foundation
 
 // swiftlint:disable file_length
 
-// swiftlint:disable identifier_name
-// swiftlint:disable line_length
-// swiftlint:disable nesting
-// swiftlint:disable type_body_length
-// swiftlint:disable type_name
+// swiftlint:disable explicit_type_interface identifier_name line_length nesting type_body_length type_name
 enum XCTLoc {
   /// Some alert body there
   static let AlertMessage = XCTLoc.tr("alert_message")
@@ -89,11 +85,7 @@ enum XCTLoc {
     }
   }
 }
-// swiftlint:enable identifier_name
-// swiftlint:enable line_length
-// swiftlint:enable nesting
-// swiftlint:enable type_body_length
-// swiftlint:enable type_name
+// swiftlint:enable explicit_type_interface identifier_name line_length nesting type_body_length type_name
 
 extension XCTLoc {
   private static func tr(key: String, _ args: CVarArgType...) -> String {

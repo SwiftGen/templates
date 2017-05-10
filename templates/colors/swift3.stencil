@@ -25,9 +25,7 @@ extension Color {
 // swiftlint:enable operator_usage_whitespace
 
 {# Note: We don't use a UInt32 rawValue in this template so we can have multiple colors with the same rgbaValue #}
-// swiftlint:disable identifier_name
-// swiftlint:disable line_length
-// swiftlint:disable type_body_length
+// swiftlint:disable identifier_name line_length type_body_length
 {% set enumName %}{{param.enumName|default:"ColorName"}}{% endset %}
 enum {{enumName}} {
   {% for color in colors %}
@@ -49,9 +47,7 @@ enum {{enumName}} {
     return Color(named: self)
   }
 }
-// swiftlint:enable identifier_name
-// swiftlint:enable line_length
-// swiftlint:enable type_body_length
+// swiftlint:enable identifier_name line_length type_body_length
 
 extension Color {
   convenience init(named name: {{enumName}}) {

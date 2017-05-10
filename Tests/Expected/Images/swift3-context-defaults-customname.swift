@@ -10,9 +10,7 @@
 
 // swiftlint:disable file_length
 
-// swiftlint:disable identifier_name
-// swiftlint:disable line_length
-// swiftlint:disable type_body_length
+// swiftlint:disable identifier_name line_length type_body_length
 enum XCTImages: String {
   case exoticBanana = "Exotic/Banana"
   case exoticMango = "Exotic/Mango"
@@ -23,9 +21,7 @@ enum XCTImages: String {
   case roundDoubleCherry = "Round/Double/Cherry"
   case roundTomato = "Round/Tomato"
 }
-// swiftlint:enable identifier_name
-// swiftlint:enable line_length
-// swiftlint:enable type_body_length
+// swiftlint:enable identifier_name line_length type_body_length
 
 extension XCTImages {
   var image: Image {

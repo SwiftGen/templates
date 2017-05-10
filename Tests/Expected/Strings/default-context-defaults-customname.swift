@@ -4,9 +4,7 @@ import Foundation
 
 // swiftlint:disable file_length
 
-// swiftlint:disable identifier_name
-// swiftlint:disable line_length
-// swiftlint:disable type_body_length
+// swiftlint:disable identifier_name line_length type_body_length
 enum XCTLoc {
   /// Some alert body there
   case AlertMessage
@@ -67,9 +65,7 @@ extension XCTLoc: CustomStringConvertible {
     return String(format: format, locale: NSLocale.currentLocale(), arguments: args)
   }
 }
-// swiftlint:enable identifier_name
-// swiftlint:enable line_length
-// swiftlint:enable type_body_length
+// swiftlint:enable identifier_name line_length type_body_length
 
 func tr(key: XCTLoc) -> String {
   return key.string

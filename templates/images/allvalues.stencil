@@ -29,24 +29,21 @@
   {% endfor %}
 {% endmacro %}
 
-// swiftlint:disable identifier_name
-// swiftlint:disable line_length
-// swiftlint:disable type_body_length
+// swiftlint:disable identifier_name line_length type_body_length
 {% set enumName %}{{param.enumName|default:"Asset"}}{% endset %}
 enum {{enumName}}: String {
   {% for catalog in catalogs %}
   {% call recursiveCaseBlock catalog.assets %}
   {% endfor %}
 
+  // swiftlint:disable:next explicit_type_interface
   static let allValues = [
     {% for catalog in catalogs %}
     {% call recursiveValueBlock catalog.assets false %}
     {% endfor %}
   ]
 }
-// swiftlint:enable identifier_name
-// swiftlint:enable line_length
-// swiftlint:enable type_body_length
+// swiftlint:enable identifier_name line_length type_body_length
 
 extension {{enumName}} {
   var image: Image {

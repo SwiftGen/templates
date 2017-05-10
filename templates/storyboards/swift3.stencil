@@ -47,10 +47,7 @@ extension UIViewController {
 }
 
 {# This is where the generation begins, this code depends on what you have in your Storyboards #}
-// swiftlint:disable identifier_name
-// swiftlint:disable line_length
-// swiftlint:disable type_body_length
-// swiftlint:disable type_name
+// swiftlint:disable explicit_type_interface identifier_name line_length type_body_length type_name
 {% set sceneEnumName %}{{param.sceneEnumName|default:"StoryboardScene"}}{% endset %}
 enum {{sceneEnumName}} {
   {% for storyboard in storyboards %}
@@ -116,10 +113,7 @@ enum {{param.segueEnumName|default:"StoryboardSegue"}} {
   }
   {% endfor %}
 }
-// swiftlint:enable identifier_name
-// swiftlint:enable line_length
-// swiftlint:enable type_body_length
-// swiftlint:enable type_name
+// swiftlint:enable explicit_type_interface identifier_name line_length type_body_length type_name
 
 private final class BundleToken {}
 {% else %}

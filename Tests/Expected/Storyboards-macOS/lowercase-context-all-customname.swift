@@ -49,10 +49,7 @@ extension NSViewController {
   }
 }
 
-// swiftlint:disable identifier_name
-// swiftlint:disable line_length
-// swiftlint:disable type_body_length
-// swiftlint:disable type_name
+// swiftlint:disable explicit_type_interface identifier_name line_length type_body_length type_name
 enum XCTStoryboardsScene {
   enum AdditionalImport: String, StoryboardSceneType {
     static let storyboardName = "AdditionalImport"
@@ -171,9 +168,6 @@ enum XCTStoryboardsSegue {
     case Public = "public"
   }
 }
-// swiftlint:enable identifier_name
-// swiftlint:enable line_length
-// swiftlint:enable type_body_length
-// swiftlint:enable type_name
+// swiftlint:enable explicit_type_interface identifier_name line_length type_body_length type_name
 
 private final class BundleToken {}
