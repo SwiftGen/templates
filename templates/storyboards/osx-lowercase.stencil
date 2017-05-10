@@ -1,9 +1,10 @@
 // Generated using SwiftGen, by O.Halligon — https://github.com/SwiftGen/SwiftGen
 
 {% if storyboards %}
+// swiftlint:disable sorted_imports
 {% macro className scene %}{% if scene.customClass %}{% if scene.customModule %}{{scene.customModule}}.{% endif %}{{scene.customClass}}{% else %}NS{{scene.baseType}}{% endif %}{% endmacro %}
-import Foundation
 import Cocoa
+import Foundation
 {% for module in modules where module != env.PRODUCT_MODULE_NAME and module != param.module %}
 import {{module}}
 {% endfor %}

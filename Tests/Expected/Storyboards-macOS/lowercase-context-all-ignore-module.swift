@@ -1,7 +1,8 @@
 // Generated using SwiftGen, by O.Halligon — https://github.com/SwiftGen/SwiftGen
 
-import Foundation
+// swiftlint:disable sorted_imports
 import Cocoa
+import Foundation
 import PrefsWindowController
 
 // swiftlint:disable file_length
