@@ -10,47 +10,70 @@
 #endif
 
 // swiftlint:disable file_length
-{% macro recursiveBlock images %}
-  {% for image in images %}
-  {% if not image.items %}
-  case {{image.value|swiftIdentifier|snakeToCamelCase|lowerFirstWord|escapeReservedKeywords}} = "{{image.value}}"
-  {% else %}
-  {% call recursiveBlock image.items %}
-  {% endif %}
-  {% endfor %}
-{% endmacro %}
 
-// swiftlint:disable identifier_name line_length type_body_length
 {% set enumName %}{{param.enumName|default:"Asset"}}{% endset %}
-enum {{enumName}}: String {
-  {% for catalog in catalogs %}
-  {% call recursiveBlock catalog.assets %}
-  {% endfor %}
-}
-// swiftlint:enable identifier_name line_length type_body_length
+struct {{enumName}}Type: ExpressibleByStringLiteral {
+  fileprivate var value: String
 
-extension {{enumName}} {
   var image: Image {
     let bundle = Bundle(for: BundleToken.self)
     #if os(iOS) || os(tvOS)
-    let image = Image(named: rawValue, in: bundle, compatibleWith: nil)
+    let image = Image(named: value, in: bundle, compatibleWith: nil)
     #elseif os(OSX)
-    let image = bundle.image(forResource: rawValue)
+    let image = bundle.image(forResource: value)
     #elseif os(watchOS)
-    let image = Image(named: rawValue)
+    let image = Image(named: value)
     #endif
-    guard let result = image else { fatalError("Unable to load image \(rawValue).") }
+    guard let result = image else { fatalError("Unable to load image \(value).") }
     return result
   }
+
+  init(stringLiteral value: String) {
+    self.value = value
+  }
+
+  init(extendedGraphemeClusterLiteral value: String) {
+    self.init(stringLiteral: value)
+  }
+
+  init(unicodeScalarLiteral value: String) {
+    self.init(stringLiteral: value)
+  }
 }
+{% macro recursiveBlock images sp %}
+{{sp}}  {% for image in images %}
+{{sp}}  {% if not image.items %}
+{{sp}}  static let {{image.name|swiftIdentifier|snakeToCamelCase|lowerFirstWord|escapeReservedKeywords}}: {{enumName}}Type = "{{image.value}}"
+{{sp}}  {% else %}
+{{sp}}  enum {{image.name|swiftIdentifier|snakeToCamelCase|escapeReservedKeywords}} {
+{{sp}}    {% set sp2 %}{{sp}}  {% endset %}
+{{sp}}    {% call recursiveBlock image.items sp2 %}
+{{sp}}  }
+{{sp}}  {% endif %}
+{{sp}}  {% endfor %}
+{% endmacro %}
+
+// swiftlint:disable identifier_name line_length nesting type_body_length type_name
+enum {{enumName}} {
+  {% if catalogs.count > 1 %}
+  {% for catalog in catalogs %}
+  enum {{catalog.name|swiftIdentifier|snakeToCamelCase|escapeReservedKeywords}} {
+    {% call recursiveBlock catalog.assets "  " %}
+  }
+  {% endfor %}
+  {% else %}
+  {% call recursiveBlock catalogs.first.assets "" %}
+  {% endif %}
+}
+// swiftlint:enable identifier_name line_length nesting type_body_length type_name
 
 extension Image {
-  convenience init!(asset: {{enumName}}) {
+  convenience init!(asset: {{enumName}}Type) {
     #if os(iOS) || os(tvOS)
     let bundle = Bundle(for: BundleToken.self)
-    self.init(named: asset.rawValue, in: bundle, compatibleWith: nil)
+    self.init(named: asset.value, in: bundle, compatibleWith: nil)
     #elseif os(OSX) || os(watchOS)
-    self.init(named: asset.rawValue)
+    self.init(named: asset.value)
     #endif
   }
 }
