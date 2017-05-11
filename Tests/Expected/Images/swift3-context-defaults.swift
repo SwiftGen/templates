@@ -57,6 +57,17 @@ enum Asset {
       static let tomato: AssetType = "Round/Tomato"
     }
   }
+
+  static let allValues = [
+    Exotic.banana,
+    Exotic.mango,
+    `private`,
+    Round.apricot,
+    Round.orange,
+    Round.Red.apple,
+    Round.Red.Double.cherry,
+    Round.Red.tomato
+  ]
 }
 // swiftlint:enable identifier_name line_length nesting type_body_length type_name
 

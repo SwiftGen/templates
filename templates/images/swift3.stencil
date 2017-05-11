@@ -40,15 +40,33 @@ struct {{enumName}}Type: ExpressibleByStringLiteral {
     self.init(stringLiteral: value)
   }
 }
-{% macro recursiveBlock images sp %}
+{% macro enumBlock images sp %}
+{{sp}}  {% call casesBlock images sp %}
+
+{{sp}}  static let allValues = [
+{{sp}}    {% set sp2 %}{{sp}}  {% endset %}
+{{sp}}    {% call allValuesBlock images "" false sp2 %}
+{{sp}}  ]
+{% endmacro %}
+{% macro casesBlock images sp %}
 {{sp}}  {% for image in images %}
 {{sp}}  {% if not image.items %}
 {{sp}}  static let {{image.name|swiftIdentifier|snakeToCamelCase|lowerFirstWord|escapeReservedKeywords}}: {{enumName}}Type = "{{image.value}}"
 {{sp}}  {% else %}
 {{sp}}  enum {{image.name|swiftIdentifier|snakeToCamelCase|escapeReservedKeywords}} {
 {{sp}}    {% set sp2 %}{{sp}}  {% endset %}
-{{sp}}    {% call recursiveBlock image.items sp2 %}
+{{sp}}    {% call casesBlock image.items sp2 %}
 {{sp}}  }
+{{sp}}  {% endif %}
+{{sp}}  {% endfor %}
+{% endmacro %}
+{% macro allValuesBlock images prefix isLast sp %}
+{{sp}}  {% for image in images %}
+{{sp}}  {% if not image.items %}
+{{sp}}  {{prefix}}{{image.name|swiftIdentifier|snakeToCamelCase|lowerFirstWord|escapeReservedKeywords}}{% if not forloop.last or not isLast %},{% endif %}
+{{sp}}  {% else %}
+{{sp}}  {% set prefix2 %}{{prefix}}{{image.name|swiftIdentifier|snakeToCamelCase|escapeReservedKeywords}}.{% endset %}
+{{sp}}  {% call allValuesBlock image.items prefix2 forloop.last sp %}
 {{sp}}  {% endif %}
 {{sp}}  {% endfor %}
 {% endmacro %}
@@ -58,11 +76,11 @@ enum {{enumName}} {
   {% if catalogs.count > 1 %}
   {% for catalog in catalogs %}
   enum {{catalog.name|swiftIdentifier|snakeToCamelCase|escapeReservedKeywords}} {
-    {% call recursiveBlock catalog.assets "  " %}
+    {% call enumBlock catalog.assets "  " %}
   }
   {% endfor %}
   {% else %}
-  {% call recursiveBlock catalogs.first.assets "" %}
+  {% call enumBlock catalogs.first.assets "" %}
   {% endif %}
 }
 // swiftlint:enable identifier_name line_length nesting type_body_length type_name

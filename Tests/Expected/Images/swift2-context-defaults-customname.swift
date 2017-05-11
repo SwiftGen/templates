@@ -57,6 +57,17 @@ enum XCTImages {
       static let Tomato: XCTImagesType = "Round/Tomato"
     }
   }
+
+  static let allValues = [
+    Exotic.Banana,
+    Exotic.Mango,
+    Private,
+    Round.Apricot,
+    Round.Orange,
+    Round.Red.Apple,
+    Round.Red.Double.Cherry,
+    Round.Red.Tomato
+  ]
 }
 // swiftlint:enable identifier_name line_length nesting type_body_length type_name
 
