@@ -10,41 +10,63 @@
 
 // swiftlint:disable file_length
 
-// swiftlint:disable identifier_name line_length type_body_length
-enum XCTImages: String {
-  case exoticBanana = "Exotic/Banana"
-  case exoticMango = "Exotic/Mango"
-  case `private` = "private"
-  case roundApricot = "Round/Apricot"
-  case roundOrange = "Round/Orange"
-  case roundApple = "Round/Apple"
-  case roundDoubleCherry = "Round/Double/Cherry"
-  case roundTomato = "Round/Tomato"
-}
-// swiftlint:enable identifier_name line_length type_body_length
+struct XCTImagesType: ExpressibleByStringLiteral {
+  fileprivate var value: String
 
-extension XCTImages {
   var image: Image {
     let bundle = Bundle(for: BundleToken.self)
     #if os(iOS) || os(tvOS)
-    let image = Image(named: rawValue, in: bundle, compatibleWith: nil)
+    let image = Image(named: value, in: bundle, compatibleWith: nil)
     #elseif os(OSX)
-    let image = bundle.image(forResource: rawValue)
+    let image = bundle.image(forResource: value)
     #elseif os(watchOS)
-    let image = Image(named: rawValue)
+    let image = Image(named: value)
     #endif
-    guard let result = image else { fatalError("Unable to load image \(rawValue).") }
+    guard let result = image else { fatalError("Unable to load image \(value).") }
     return result
+  }
+
+  init(stringLiteral value: String) {
+    self.value = value
+  }
+
+  init(extendedGraphemeClusterLiteral value: String) {
+    self.init(stringLiteral: value)
+  }
+
+  init(unicodeScalarLiteral value: String) {
+    self.init(stringLiteral: value)
   }
 }
 
+// swiftlint:disable identifier_name line_length nesting type_body_length type_name
+enum XCTImages {
+  enum Exotic {
+    static let banana: XCTImagesType = "Exotic/Banana"
+    static let mango: XCTImagesType = "Exotic/Mango"
+  }
+  static let `private`: XCTImagesType = "private"
+  enum Round {
+    static let apricot: XCTImagesType = "Round/Apricot"
+    static let orange: XCTImagesType = "Round/Orange"
+    enum Red {
+      static let apple: XCTImagesType = "Round/Apple"
+      enum Double {
+        static let cherry: XCTImagesType = "Round/Double/Cherry"
+      }
+      static let tomato: XCTImagesType = "Round/Tomato"
+    }
+  }
+}
+// swiftlint:enable identifier_name line_length nesting type_body_length type_name
+
 extension Image {
-  convenience init!(asset: XCTImages) {
+  convenience init!(asset: XCTImagesType) {
     #if os(iOS) || os(tvOS)
     let bundle = Bundle(for: BundleToken.self)
-    self.init(named: asset.rawValue, in: bundle, compatibleWith: nil)
+    self.init(named: asset.value, in: bundle, compatibleWith: nil)
     #elseif os(OSX) || os(watchOS)
-    self.init(named: asset.rawValue)
+    self.init(named: asset.value)
     #endif
   }
 }
