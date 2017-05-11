@@ -25,43 +25,8 @@ class StringsTests: XCTestCase {
     ]
   }
 
-  func testDefault() {
-    test(template: "default",
-         contextNames: Contexts.all,
-         directory: .strings,
-         contextVariations: variations)
-  }
-
-  func testSwift3() {
-    test(template: "swift3",
-         contextNames: Contexts.all,
-         directory: .strings,
-         contextVariations: variations)
-  }
-
-  func testNoCommentsSwift3() {
-    test(template: "no-comments-swift3",
-         contextNames: Contexts.all,
-         directory: .strings,
-         contextVariations: variations)
-  }
-
-  func testGenstrings() {
-    test(template: "genstrings",
-         contextNames: Contexts.all,
-         directory: .strings,
-         contextVariations: variations)
-  }
-
-  func testStructured() {
-    test(template: "structured",
-         contextNames: Contexts.all,
-         directory: .strings,
-         contextVariations: variations)
-  }
-
-  func testDotSyntax() {
-    test(template: "dot-syntax",
+  func testDotSyntaxSwift2() {
+    test(template: "dot-syntax-swift2",
          contextNames: Contexts.all,
          directory: .strings,
          contextVariations: variations)
@@ -69,6 +34,20 @@ class StringsTests: XCTestCase {
 
   func testDotSyntaxSwift3() {
     test(template: "dot-syntax-swift3",
+         contextNames: Contexts.all,
+         directory: .strings,
+         contextVariations: variations)
+  }
+
+  func testFlatSwift2() {
+    test(template: "flat-swift2",
+         contextNames: Contexts.all,
+         directory: .strings,
+         contextVariations: variations)
+  }
+
+  func testFlatSwift3() {
+    test(template: "flat-swift3",
          contextNames: Contexts.all,
          directory: .strings,
          contextVariations: variations)
