@@ -1,12 +1,11 @@
 // Generated using SwiftGen, by O.Halligon — https://github.com/SwiftGen/SwiftGen
 
-import Foundation
+// swiftlint:disable sorted_imports
 import Cocoa
+import Foundation
 import PrefsWindowController
 
 // swiftlint:disable file_length
-// swiftlint:disable line_length
-// swiftlint:disable type_body_length
 
 protocol StoryboardSceneType {
   static var storyboardName: String { get }
@@ -49,6 +48,7 @@ extension NSViewController {
   }
 }
 
+// swiftlint:disable explicit_type_interface identifier_name line_length type_body_length type_name
 enum StoryboardScene {
   enum AdditionalImport: String, StoryboardSceneType {
     static let storyboardName = "AdditionalImport"
@@ -167,5 +167,6 @@ enum StoryboardSegue {
     case Public = "public"
   }
 }
+// swiftlint:enable explicit_type_interface identifier_name line_length type_body_length type_name
 
 private final class BundleToken {}

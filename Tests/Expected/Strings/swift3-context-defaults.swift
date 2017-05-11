@@ -3,9 +3,8 @@
 import Foundation
 
 // swiftlint:disable file_length
-// swiftlint:disable line_length
 
-// swiftlint:disable type_body_length
+// swiftlint:disable identifier_name line_length type_body_length
 enum L10n {
   /// Some alert body there
   case alertMessage
@@ -30,7 +29,6 @@ enum L10n {
   /// User Profile Settings
   case settingsUserProfileSectionHeaderTitle
 }
-// swiftlint:enable type_body_length
 
 extension L10n: CustomStringConvertible {
   var description: String { return self.string }
@@ -67,6 +65,7 @@ extension L10n: CustomStringConvertible {
     return String(format: format, locale: Locale.current, arguments: args)
   }
 }
+// swiftlint:enable identifier_name line_length type_body_length
 
 func tr(_ key: L10n) -> String {
   return key.string

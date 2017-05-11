@@ -2,8 +2,9 @@
 
 import Foundation
 
-// swiftlint:disable line_length
+// swiftlint:disable file_length
 
+// swiftlint:disable identifier_name line_length type_body_length
 enum L10n {
   /// Some alert body there
   case AlertMessage
@@ -74,6 +75,7 @@ extension L10n: CustomStringConvertible {
     return String(format: format, locale: NSLocale.currentLocale(), arguments: args)
   }
 }
+// swiftlint:enable identifier_name line_length type_body_length
 
 func tr(key: L10n) -> String {
   return key.string

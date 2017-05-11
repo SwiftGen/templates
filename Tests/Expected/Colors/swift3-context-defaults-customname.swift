@@ -1,12 +1,14 @@
 // Generated using SwiftGen, by O.Halligon — https://github.com/SwiftGen/SwiftGen
 
-#if os(iOS) || os(tvOS) || os(watchOS)
-  import UIKit.UIColor
-  typealias Color = UIColor
-#elseif os(OSX)
+#if os(OSX)
   import AppKit.NSColor
   typealias Color = NSColor
+#elseif os(iOS) || os(tvOS) || os(watchOS)
+  import UIKit.UIColor
+  typealias Color = UIColor
 #endif
+
+// swiftlint:disable file_length
 
 // swiftlint:disable operator_usage_whitespace
 extension Color {
@@ -21,10 +23,7 @@ extension Color {
 }
 // swiftlint:enable operator_usage_whitespace
 
-// swiftlint:disable file_length
-// swiftlint:disable line_length
-
-// swiftlint:disable type_body_length
+// swiftlint:disable identifier_name line_length type_body_length
 enum XCTColors {
   /// <span style="display:block;width:3em;height:2em;border:1px solid black;background:#339666"></span>
   /// Alpha: 100% <br/> (0x339666ff)
@@ -56,12 +55,10 @@ enum XCTColors {
     return Color(named: self)
   }
 }
-// swiftlint:enable type_body_length
+// swiftlint:enable identifier_name line_length type_body_length
 
 extension Color {
   convenience init(named name: XCTColors) {
     self.init(rgbaValue: name.rgbaValue)
   }
 }
-// swiftlint:enable file_length
-// swiftlint:enable line_length

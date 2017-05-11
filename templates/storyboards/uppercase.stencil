@@ -1,5 +1,7 @@
 // Generated using SwiftGen, by O.Halligon — https://github.com/SwiftGen/SwiftGen
 
+{% if storyboards %}
+// swiftlint:disable sorted_imports
 {% macro className scene %}{% if scene.customClass %}{% if scene.customModule %}{{scene.customModule}}.{% endif %}{{scene.customClass}}{% else %}UI{{scene.baseType}}{% endif %}{% endmacro %}
 import Foundation
 import UIKit
@@ -7,10 +9,7 @@ import UIKit
 import {{module}}
 {% endfor %}
 
-{% if storyboards %}
 // swiftlint:disable file_length
-// swiftlint:disable line_length
-// swiftlint:disable type_body_length
 
 {# This first part of the code is static, same every time whatever Storyboard you have #}
 protocol StoryboardSceneType {
@@ -48,6 +47,7 @@ extension UIViewController {
 }
 
 {# This is where the generation begins, this code depends on what you have in your Storyboards #}
+// swiftlint:disable explicit_type_interface identifier_name line_length type_body_length type_name
 {% set sceneEnumName %}{{param.sceneEnumName|default:"StoryboardScene"}}{% endset %}
 enum {{sceneEnumName}} {
   {% for storyboard in storyboards %}
@@ -113,6 +113,7 @@ enum {{param.segueEnumName|default:"StoryboardSegue"}} {
   }
   {% endfor %}
 }
+// swiftlint:enable explicit_type_interface identifier_name line_length type_body_length type_name
 
 private final class BundleToken {}
 {% else %}

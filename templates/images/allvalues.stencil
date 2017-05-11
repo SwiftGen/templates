@@ -1,16 +1,15 @@
 // Generated using SwiftGen, by O.Halligon — https://github.com/SwiftGen/SwiftGen
 
 {% if images %}
-#if os(iOS) || os(tvOS) || os(watchOS)
-  import UIKit.UIImage
-  typealias Image = UIImage
-#elseif os(OSX)
+#if os(OSX)
   import AppKit.NSImage
   typealias Image = NSImage
+#elseif os(iOS) || os(tvOS) || os(watchOS)
+  import UIKit.UIImage
+  typealias Image = UIImage
 #endif
 
 // swiftlint:disable file_length
-// swiftlint:disable line_length
 {% macro recursiveCaseBlock images %}
   {% for image in images %}
   {% if not image.items %}
@@ -30,19 +29,23 @@
   {% endfor %}
 {% endmacro %}
 
-// swiftlint:disable type_body_length
+// swiftlint:disable identifier_name line_length type_body_length
 {% set enumName %}{{param.enumName|default:"Asset"}}{% endset %}
 enum {{enumName}}: String {
   {% for catalog in catalogs %}
   {% call recursiveCaseBlock catalog.assets %}
   {% endfor %}
 
+  // swiftlint:disable:next explicit_type_interface
   static let allValues = [
     {% for catalog in catalogs %}
     {% call recursiveValueBlock catalog.assets false %}
     {% endfor %}
   ]
+}
+// swiftlint:enable identifier_name line_length type_body_length
 
+extension {{enumName}} {
   var image: Image {
     let bundle = NSBundle(forClass: BundleToken.self)
     #if os(iOS) || os(tvOS)
@@ -56,7 +59,6 @@ enum {{enumName}}: String {
     return result
   }
 }
-// swiftlint:enable type_body_length
 
 extension Image {
   convenience init!(asset: {{enumName}}) {

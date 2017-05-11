@@ -1,17 +1,16 @@
 // Generated using SwiftGen, by O.Halligon — https://github.com/SwiftGen/SwiftGen
 
-#if os(iOS) || os(tvOS) || os(watchOS)
-  import UIKit.UIImage
-  typealias Image = UIImage
-#elseif os(OSX)
+#if os(OSX)
   import AppKit.NSImage
   typealias Image = NSImage
+#elseif os(iOS) || os(tvOS) || os(watchOS)
+  import UIKit.UIImage
+  typealias Image = UIImage
 #endif
 
 // swiftlint:disable file_length
-// swiftlint:disable line_length
 
-// swiftlint:disable type_body_length
+// swiftlint:disable identifier_name line_length type_body_length
 enum Asset: String {
   case Exotic_Banana = "Exotic/Banana"
   case Exotic_Mango = "Exotic/Mango"
@@ -22,6 +21,7 @@ enum Asset: String {
   case Round_Double_Cherry = "Round/Double/Cherry"
   case Round_Tomato = "Round/Tomato"
 
+  // swiftlint:disable:next explicit_type_interface
   static let allValues = [
     Exotic_Banana,
     Exotic_Mango,
@@ -32,7 +32,10 @@ enum Asset: String {
     Round_Double_Cherry,
     Round_Tomato
   ]
+}
+// swiftlint:enable identifier_name line_length type_body_length
 
+extension Asset {
   var image: Image {
     let bundle = NSBundle(forClass: BundleToken.self)
     #if os(iOS) || os(tvOS)
@@ -46,7 +49,6 @@ enum Asset: String {
     return result
   }
 }
-// swiftlint:enable type_body_length
 
 extension Image {
   convenience init!(asset: Asset) {

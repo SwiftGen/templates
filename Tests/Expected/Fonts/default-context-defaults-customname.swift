@@ -1,16 +1,14 @@
 // Generated using SwiftGen, by O.Halligon — https://github.com/SwiftGen/SwiftGen
 
-#if os(iOS) || os(tvOS) || os(watchOS)
-  import UIKit.UIFont
-  typealias Font = UIFont
-#elseif os(OSX)
+#if os(OSX)
   import AppKit.NSFont
   typealias Font = NSFont
+#elseif os(iOS) || os(tvOS) || os(watchOS)
+  import UIKit.UIFont
+  typealias Font = UIFont
 #endif
 
 // swiftlint:disable file_length
-// swiftlint:disable line_length
-// swiftlint:disable conditional_returns_on_newline
 
 protocol FontConvertible {
   func font(size: CGFloat) -> Font!
@@ -25,7 +23,9 @@ extension FontConvertible where Self: RawRepresentable, Self.RawValue == String 
     let extensions = ["otf", "ttf"]
     let bundle = NSBundle(forClass: BundleToken.self)
 
-    guard let url = extensions.flatMap({ bundle.URLForResource(rawValue, withExtension: $0) }).first else { return }
+    guard let url = extensions.flatMap({ bundle.URLForResource(rawValue, withExtension: $0) }).first else {
+      return
+    }
 
     var errorRef: Unmanaged<CFError>?
     CTFontManagerRegisterFontsForURL(url as CFURL, .None, &errorRef)
@@ -50,6 +50,7 @@ extension Font {
   }
 }
 
+// swiftlint:disable identifier_name line_length type_body_length
 enum CustomFamily {
   enum SFNSDisplay: String, FontConvertible {
     case Black = ".SFNSDisplay-Black"
@@ -83,5 +84,6 @@ enum CustomFamily {
     case Internal = "private"
   }
 }
+// swiftlint:enable identifier_name line_length type_body_length
 
 private final class BundleToken {}

@@ -6,7 +6,9 @@
 
 ### Bug Fixes
 
-_None_
+* Fixed `swiftlint` errors for the latest version.  
+  [David Jennes](https://github.com/djbe) 
+  [#46](https://github.com/SwiftGen/templates/pull/46)
 
 ### Breaking Changes
 

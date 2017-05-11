@@ -3,7 +3,7 @@
 {% if tables.first.levels %}
 import Foundation
 
-// swiftlint:disable line_length
+// swiftlint:disable file_length
 {% macro recursiveBlock item %}
   {% for string in item.strings %}
   /// {{string.translation}}
@@ -14,6 +14,7 @@ import Foundation
   {% endfor %}
 {% endmacro %}
 
+// swiftlint:disable identifier_name line_length type_body_length
 {% set enumName %}{{param.enumName|default:"L10n"}}{% endset %}
 enum {{enumName}} {
   {% call recursiveBlock structuredStrings %}
@@ -50,6 +51,7 @@ extension {{enumName}}: CustomStringConvertible {
     return String(format: format, locale: NSLocale.currentLocale(), arguments: args)
   }
 }
+// swiftlint:enable identifier_name line_length type_body_length
 
 func tr(key: {{enumName}}) -> String {
   return key.string
