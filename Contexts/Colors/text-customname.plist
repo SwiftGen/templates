@@ -15,10 +15,6 @@
 			<string>ArticleBody</string>
 			<key>red</key>
 			<string>33</string>
-			<key>rgb</key>
-			<string>339666</string>
-			<key>rgba</key>
-			<string>339666ff</string>
 		</dict>
 		<dict>
 			<key>alpha</key>
@@ -31,10 +27,6 @@
 			<string>ArticleFootnote</string>
 			<key>red</key>
 			<string>ff</string>
-			<key>rgb</key>
-			<string>ff66cc</string>
-			<key>rgba</key>
-			<string>ff66ccff</string>
 		</dict>
 		<dict>
 			<key>alpha</key>
@@ -47,10 +39,6 @@
 			<string>ArticleTitle</string>
 			<key>red</key>
 			<string>33</string>
-			<key>rgb</key>
-			<string>33fe66</string>
-			<key>rgba</key>
-			<string>33fe66ff</string>
 		</dict>
 		<dict>
 			<key>alpha</key>
@@ -63,10 +51,6 @@
 			<string>Cyan-Color</string>
 			<key>red</key>
 			<string>ff</string>
-			<key>rgb</key>
-			<string>ff66cc</string>
-			<key>rgba</key>
-			<string>ff66ccff</string>
 		</dict>
 		<dict>
 			<key>alpha</key>
@@ -79,10 +63,6 @@
 			<string>NamedValue</string>
 			<key>red</key>
 			<string>ff</string>
-			<key>rgb</key>
-			<string>ffffff</string>
-			<key>rgba</key>
-			<string>ffffffcc</string>
 		</dict>
 		<dict>
 			<key>alpha</key>
@@ -95,10 +75,6 @@
 			<string>NestedNamedValue</string>
 			<key>red</key>
 			<string>ff</string>
-			<key>rgb</key>
-			<string>ffffff</string>
-			<key>rgba</key>
-			<string>ffffffcc</string>
 		</dict>
 		<dict>
 			<key>alpha</key>
@@ -111,18 +87,7 @@
 			<string>private</string>
 			<key>red</key>
 			<string>ff</string>
-			<key>rgb</key>
-			<string>ffffff</string>
-			<key>rgba</key>
-			<string>ffffffcc</string>
 		</dict>
 	</array>
-	<key>enumName</key>
-	<string>XCTColors</string>
-	<key>param</key>
-	<dict>
-		<key>enumName</key>
-		<string>XCTColors</string>
-	</dict>
 </dict>
 </plist>

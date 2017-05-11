@@ -22,7 +22,9 @@ _None_
 
 ### Internal Changes
 
-_None_
+* Removed deprecated variables. See [SwiftGenKit#5](https://github.com/SwiftGen/SwiftGenKit/issues/5) for more information.   
+  [David Jennes](https://github.com/djbe)
+  [#45](https://github.com/SwiftGen/templates/issues/45)
 
 ## 1.1.0
 
@@ -41,7 +43,7 @@ _None_
 
 ### New Features
 
-* More variables have been deprecated, while new variables have been added. See [SwiftGenKit#13](https://github.com/SwiftGen/SwiftGenKit/issues/13) for more information.   
+* More variables have been deprecated, while new variables have been added. See [SwiftGenKit#5](https://github.com/SwiftGen/SwiftGenKit/issues/5) for more information.   
   [David Jennes](https://github.com/djbe)
   [#28](https://github.com/SwiftGen/templates/issues/28)
   [#39](https://github.com/SwiftGen/templates/issues/39)

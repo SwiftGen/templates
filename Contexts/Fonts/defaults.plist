@@ -2,16 +2,12 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>enumName</key>
-	<string>FontFamily</string>
 	<key>families</key>
 	<array>
 		<dict>
 			<key>fonts</key>
 			<array>
 				<dict>
-					<key>fontName</key>
-					<string>.SFNSDisplay-Black</string>
 					<key>name</key>
 					<string>.SFNSDisplay-Black</string>
 					<key>path</key>
@@ -20,8 +16,6 @@
 					<string>Black</string>
 				</dict>
 				<dict>
-					<key>fontName</key>
-					<string>.SFNSDisplay-Bold</string>
 					<key>name</key>
 					<string>.SFNSDisplay-Bold</string>
 					<key>path</key>
@@ -30,8 +24,6 @@
 					<string>Bold</string>
 				</dict>
 				<dict>
-					<key>fontName</key>
-					<string>.SFNSDisplay-Heavy</string>
 					<key>name</key>
 					<string>.SFNSDisplay-Heavy</string>
 					<key>path</key>
@@ -40,8 +32,6 @@
 					<string>Heavy</string>
 				</dict>
 				<dict>
-					<key>fontName</key>
-					<string>.SFNSDisplay-Regular</string>
 					<key>name</key>
 					<string>.SFNSDisplay-Regular</string>
 					<key>path</key>
@@ -57,8 +47,6 @@
 			<key>fonts</key>
 			<array>
 				<dict>
-					<key>fontName</key>
-					<string>.SFNSText-Bold</string>
 					<key>name</key>
 					<string>.SFNSText-Bold</string>
 					<key>path</key>
@@ -67,8 +55,6 @@
 					<string>Bold</string>
 				</dict>
 				<dict>
-					<key>fontName</key>
-					<string>.SFNSText-Heavy</string>
 					<key>name</key>
 					<string>.SFNSText-Heavy</string>
 					<key>path</key>
@@ -77,8 +63,6 @@
 					<string>Heavy</string>
 				</dict>
 				<dict>
-					<key>fontName</key>
-					<string>.SFNSText-Regular</string>
 					<key>name</key>
 					<string>.SFNSText-Regular</string>
 					<key>path</key>
@@ -94,8 +78,6 @@
 			<key>fonts</key>
 			<array>
 				<dict>
-					<key>fontName</key>
-					<string>Avenir-Black</string>
 					<key>name</key>
 					<string>Avenir-Black</string>
 					<key>path</key>
@@ -104,8 +86,6 @@
 					<string>Black</string>
 				</dict>
 				<dict>
-					<key>fontName</key>
-					<string>Avenir-BlackOblique</string>
 					<key>name</key>
 					<string>Avenir-BlackOblique</string>
 					<key>path</key>
@@ -114,8 +94,6 @@
 					<string>Black Oblique</string>
 				</dict>
 				<dict>
-					<key>fontName</key>
-					<string>Avenir-Book</string>
 					<key>name</key>
 					<string>Avenir-Book</string>
 					<key>path</key>
@@ -124,8 +102,6 @@
 					<string>Book</string>
 				</dict>
 				<dict>
-					<key>fontName</key>
-					<string>Avenir-BookOblique</string>
 					<key>name</key>
 					<string>Avenir-BookOblique</string>
 					<key>path</key>
@@ -134,8 +110,6 @@
 					<string>Book Oblique</string>
 				</dict>
 				<dict>
-					<key>fontName</key>
-					<string>Avenir-Heavy</string>
 					<key>name</key>
 					<string>Avenir-Heavy</string>
 					<key>path</key>
@@ -144,8 +118,6 @@
 					<string>Heavy</string>
 				</dict>
 				<dict>
-					<key>fontName</key>
-					<string>Avenir-HeavyOblique</string>
 					<key>name</key>
 					<string>Avenir-HeavyOblique</string>
 					<key>path</key>
@@ -154,8 +126,6 @@
 					<string>Heavy Oblique</string>
 				</dict>
 				<dict>
-					<key>fontName</key>
-					<string>Avenir-Light</string>
 					<key>name</key>
 					<string>Avenir-Light</string>
 					<key>path</key>
@@ -164,8 +134,6 @@
 					<string>Light</string>
 				</dict>
 				<dict>
-					<key>fontName</key>
-					<string>Avenir-LightOblique</string>
 					<key>name</key>
 					<string>Avenir-LightOblique</string>
 					<key>path</key>
@@ -174,8 +142,6 @@
 					<string>Light Oblique</string>
 				</dict>
 				<dict>
-					<key>fontName</key>
-					<string>Avenir-Medium</string>
 					<key>name</key>
 					<string>Avenir-Medium</string>
 					<key>path</key>
@@ -184,8 +150,6 @@
 					<string>Medium</string>
 				</dict>
 				<dict>
-					<key>fontName</key>
-					<string>Avenir-MediumOblique</string>
 					<key>name</key>
 					<string>Avenir-MediumOblique</string>
 					<key>path</key>
@@ -194,8 +158,6 @@
 					<string>Medium Oblique</string>
 				</dict>
 				<dict>
-					<key>fontName</key>
-					<string>Avenir-Oblique</string>
 					<key>name</key>
 					<string>Avenir-Oblique</string>
 					<key>path</key>
@@ -204,8 +166,6 @@
 					<string>Oblique</string>
 				</dict>
 				<dict>
-					<key>fontName</key>
-					<string>Avenir-Roman</string>
 					<key>name</key>
 					<string>Avenir-Roman</string>
 					<key>path</key>
@@ -221,8 +181,6 @@
 			<key>fonts</key>
 			<array>
 				<dict>
-					<key>fontName</key>
-					<string>ZapfDingbatsITC</string>
 					<key>name</key>
 					<string>ZapfDingbatsITC</string>
 					<key>path</key>
@@ -238,8 +196,6 @@
 			<key>fonts</key>
 			<array>
 				<dict>
-					<key>fontName</key>
-					<string>private</string>
 					<key>name</key>
 					<string>private</string>
 					<key>path</key>
@@ -252,10 +208,5 @@
 			<string>public</string>
 		</dict>
 	</array>
-	<key>param</key>
-	<dict>
-		<key>enumName</key>
-		<string>FontFamily</string>
-	</dict>
 </dict>
 </plist>

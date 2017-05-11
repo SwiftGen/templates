@@ -2,27 +2,11 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>extraImports</key>
-	<array>
-		<string>FadeSegue</string>
-		<string>PrefsWindowController</string>
-	</array>
 	<key>modules</key>
 	<array>
 		<string>FadeSegue</string>
 		<string>PrefsWindowController</string>
 	</array>
-	<key>param</key>
-	<dict>
-		<key>sceneEnumName</key>
-		<string>StoryboardScene</string>
-		<key>segueEnumName</key>
-		<string>StoryboardSegue</string>
-	</dict>
-	<key>sceneEnumName</key>
-	<string>StoryboardScene</string>
-	<key>segueEnumName</key>
-	<string>StoryboardSegue</string>
 	<key>storyboards</key>
 	<array>
 		<dict>
@@ -60,8 +44,6 @@
 					<string>ViewController</string>
 					<key>identifier</key>
 					<string>Dependent</string>
-					<key>isBaseViewController</key>
-					<true/>
 				</dict>
 			</array>
 			<key>segues</key>
@@ -77,24 +59,18 @@
 					<string>ViewController</string>
 					<key>identifier</key>
 					<string>MessageDetails</string>
-					<key>isBaseViewController</key>
-					<true/>
 				</dict>
 				<dict>
 					<key>baseType</key>
 					<string>ViewController</string>
 					<key>identifier</key>
 					<string>MessageList</string>
-					<key>isBaseViewController</key>
-					<true/>
 				</dict>
 				<dict>
 					<key>baseType</key>
 					<string>ViewController</string>
 					<key>identifier</key>
 					<string>MessageListFooter</string>
-					<key>isBaseViewController</key>
-					<true/>
 				</dict>
 				<dict>
 					<key>customClass</key>
