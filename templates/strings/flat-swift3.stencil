@@ -6,7 +6,9 @@ import Foundation
 // swiftlint:disable file_length
 {% macro recursiveBlock item %}
   {% for string in item.strings %}
+  {% if not param.noComments %}
   /// {{string.translation}}
+  {% endif %}
   case {{string.key|swiftIdentifier|snakeToCamelCase|lowerFirstWord|escapeReservedKeywords}}{% if string.types %}({{string.types|join:", "}}){% endif %}
   {% endfor %}
   {% for child in item.children %}

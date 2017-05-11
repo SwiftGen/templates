@@ -8,7 +8,9 @@ import Foundation
 {% macro argumentsBlock types %}{% for type in types %}p{{forloop.counter}}{% if not forloop.last %}, {% endif %}{% endfor %}{% endmacro %}
 {% macro recursiveBlock item sp %}
 {{sp}}  {% for string in item.strings %}
+{{sp}}  {% if not param.noComments %}
 {{sp}}  /// {{string.translation}}
+{{sp}}  {% endif %}
 {{sp}}  {% if string.types %}
 {{sp}}  static func {{string.name|swiftIdentifier|snakeToCamelCase|escapeReservedKeywords}}({% call parametersBlock string.types %}) -> String {
 {{sp}}    return {{enumName}}.tr("{{string.key}}", {% call argumentsBlock string.types %})

@@ -21,7 +21,10 @@ class StringsTests: XCTestCase {
        suffix: ""),
       (context: try StencilContext.enrich(context: context,
                                           parameters: ["enumName=XCTLoc"]),
-       suffix: "-customname")
+       suffix: "-customname"),
+      (context: try StencilContext.enrich(context: context,
+                                          parameters: ["noComments"]),
+       suffix: "-no-comments")
     ]
   }
 
