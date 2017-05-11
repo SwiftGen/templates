@@ -2,7 +2,7 @@
 
 | Name      | Description       |
 | --------- | ----------------- |
-| File name | colors-swift3.stencil |
+| File name | colors/swift3.stencil |
 | Invocation example | `swiftgen colors -t swift3 …` |
 | Language | Swift 3 |
 | Author | Olivier Halligon |

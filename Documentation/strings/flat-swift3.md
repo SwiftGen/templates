@@ -2,14 +2,14 @@
 
 | Name      | Description       |
 | --------- | ----------------- |
-| File name | strings-default.stencil |
-| Invocation example | `swiftgen strings -t default …` |
-| Language | Swift 2 |
+| File name | strings/flat-swift3.stencil |
+| Invocation example | `swiftgen strings -t flat-swift3 …` |
+| Language | Swift 3 |
 | Author | Olivier Halligon |
 
 ## When to use it
 
-- When you need to generate *Swift 2* code
+- When you need to generate *Swift 3* code
 - If you use unstructured key names for your strings, or a structure that we don't support (yet). If you use "dot-syntax" keys, please check out the [dot-syntax](dot-syntax.md) template.
 
 ## Customization
@@ -27,26 +27,26 @@ You can customize some elements of this template by overriding the following par
 ```swift
 enum L10n {
   /// Some alert body there
-  case AlertMessage
+  case alertMessage
   /// Title of the alert
-  case AlertTitle
+  case alertTitle
   /// You have %d apples
-  case ApplesCount(Int)
+  case applesCount(Int)
   /// Those %d bananas belong to %@.
-  case BananasOwner(Int, String)
+  case bananasOwner(Int, String)
 }
 ```
 
-[Full generated code](https://github.com/SwiftGen/templates/blob/master/Tests/Expected/Strings/default-context-defaults.swift)
+[Full generated code](https://github.com/SwiftGen/templates/blob/master/Tests/Expected/Strings/swift3-context-defaults.swift)
 
 ## Usage example
 
 ```swift
 // Simple strings
-let message = L10n.AlertMessage.string
-let title = tr(.AlertTitle)
+let message = L10n.alertMessage.string
+let title = tr(.alertTitle)
 
 // with parameters, note that each argument needs to be of the correct type
-let apples = L10n.ApplesCount(3)
-let bananas = L10n.BananasOwner(5, "Olivier")
+let apples = L10n.applesCount(3)
+let bananas = L10n.bananasOwner(5, "Olivier")
 ```

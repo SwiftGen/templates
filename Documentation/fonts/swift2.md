@@ -2,8 +2,8 @@
 
 | Name      | Description       |
 | --------- | ----------------- |
-| File name | fonts-default.stencil |
-| Invocation example | `swiftgen fonts -t default …` |
+| File name | fonts/swift2.stencil |
+| Invocation example | `swiftgen fonts -t swift2 …` |
 | Language | Swift 2 |
 | Author | Olivier Halligon |
 
@@ -34,7 +34,7 @@ enum FontFamily {
 }
 ```
 
-[Full generated code](https://github.com/SwiftGen/templates/blob/master/Tests/Expected/Fonts/default-context-defaults.swift)
+[Full generated code](https://github.com/SwiftGen/templates/blob/master/Tests/Expected/Fonts/swift2-context-defaults.swift)
 
 ## Usage example
 

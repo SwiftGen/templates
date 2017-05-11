@@ -2,14 +2,14 @@
 
 | Name      | Description       |
 | --------- | ----------------- |
-| File name | images-dot-syntax-swift3.stencil |
-| Invocation example | `swiftgen images -t dot-syntax-swift3 …` |
-| Language | Swift 3 |
+| File name | images/swift2.stencil |
+| Invocation example | `swiftgen images -t swift2 …` |
+| Language | Swift 2 |
 | Author | Olivier Halligon |
 
 ## When to use it
 
-- When you need to generate *Swift 3* code
+- When you need to generate *Swift 2* code
 
 It also takes into account any namespacing folder in your Assets Catalogs (i.e. if you create a folder in your Assets Catalog, select it, and check the "Provides Namespace" checkbox on the Attributes Inspector panel on the right)
 
@@ -28,23 +28,23 @@ You can customize some elements of this template by overriding the following par
 ```swift
 enum Asset {
   enum Exotic {
-    static let banana: AssetType = "Exotic/Banana"
-    static let mango: AssetType = "Exotic/Mango"
+    static let Banana: AssetType = "Exotic/Banana"
+    static let Mango: AssetType = "Exotic/Mango"
   }
-  static let `private`: AssetType = "private"
+  static let Private: AssetType = "private"
 }
 ```
 
-[Full generated code](https://github.com/SwiftGen/templates/blob/master/Tests/Expected/Images/dot-syntax-swift3-context-defaults.swift)
+[Full generated code](https://github.com/SwiftGen/templates/blob/master/Tests/Expected/Images/swift2-context-defaults.swift)
 
 ## Usage example
 
 ```swift
 // You can create new images with the convenience constructor like this:
-let bananaImage = UIImage(asset: Asset.Exotic.banana)
-let privateImage = UIImage(asset: Asset.private)
+let bananaImage = UIImage(Asset.Exotic.Banana)
+let privateImage = UIImage(Asset.Private)
 
 // Or as an alternative, you can refer to enum instance and call .image on it:
-let sameBananaImage = Asset.Exotic.banana.image
-let samePrivateImage = Asset.private.image
+let sameBananaImage = Asset.Exotic.Banana.image
+let samePrivateImage = Asset.Private.image
 ```

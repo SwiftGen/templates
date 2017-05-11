@@ -2,8 +2,8 @@
 
 | Name      | Description       |
 | --------- | ----------------- |
-| File name | colors-default.stencil |
-| Invocation example | `swiftgen colors -t default …` |
+| File name | colors/swift2.stencil |
+| Invocation example | `swiftgen colors -t swift2 …` |
 | Language | Swift 2 |
 | Author | Olivier Halligon |
 
@@ -35,7 +35,7 @@ enum ColorName {
 }
 ```
 
-[Full generated code](https://github.com/SwiftGen/templates/blob/master/Tests/Expected/Colors/default-context-defaults.swift)
+[Full generated code](https://github.com/SwiftGen/templates/blob/master/Tests/Expected/Colors/swift2-context-defaults.swift)
 
 ## Usage example
 

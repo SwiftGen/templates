@@ -2,8 +2,8 @@
 
 | Name      | Description       |
 | --------- | ----------------- |
-| File name | strings-dot-syntax.stencil |
-| Invocation example | `swiftgen strings -t dot-syntax …` |
+| File name | strings/dot-syntax-swift2.stencil |
+| Invocation example | `swiftgen strings -t dot-syntax-swift2 …` |
 | Language | Swift 2 |
 | Author | Olivier Halligon |
 
@@ -53,7 +53,7 @@ enum L10n {
 }
 ```
 
-[Full generated code](https://github.com/SwiftGen/templates/blob/master/Tests/Expected/Strings/dot-syntax-context-defaults.swift)
+[Full generated code](https://github.com/SwiftGen/templates/blob/master/Tests/Expected/Strings/dot-syntax-swift2-context-defaults.swift)
 
 ## Usage example
 

@@ -2,7 +2,7 @@
 
 | Name      | Description       |
 | --------- | ----------------- |
-| File name | fonts-swift3.stencil |
+| File name | fonts/swift3.stencil |
 | Invocation example | `swiftgen fonts -t swift3 …` |
 | Language | Swift 3 |
 | Author | Olivier Halligon |

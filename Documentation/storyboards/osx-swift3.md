@@ -2,8 +2,8 @@
 
 | Name      | Description       |
 | --------- | ----------------- |
-| File name | storyboards-osx-swift3.stencil |
-| Invocation example | `swiftgen storyboards -t osx-swift3 …` |
+| File name | storyboards/macOS-swift3.stencil |
+| Invocation example | `swiftgen storyboards -t macOS-swift3 …` |
 | Language | Swift 3 |
 | Author | Olivier Halligon |
 

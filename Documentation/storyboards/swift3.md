@@ -2,7 +2,7 @@
 
 | Name      | Description       |
 | --------- | ----------------- |
-| File name | storyboards-swift3.stencil |
+| File name | storyboards/swift3.stencil |
 | Invocation example | `swiftgen storyboards -t swift3 …` |
 | Language | Swift 3 |
 | Author | Olivier Halligon |

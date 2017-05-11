@@ -2,8 +2,8 @@
 
 | Name      | Description       |
 | --------- | ----------------- |
-| File name | strings-dot-syntax.stencil |
-| Invocation example | `swiftgen strings -t dot-syntax …` |
+| File name | strings/dot-syntax-swift3.stencil |
+| Invocation example | `swiftgen strings -t dot-syntax-swift3 …` |
 | Language | Swift 3 |
 | Author | Olivier Halligon |
 
