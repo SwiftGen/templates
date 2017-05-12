@@ -14,11 +14,12 @@
 
 ## Customization
 
-You can customize some elements of this template by overriding the following parameters when invoking `swiftgen` in the command line, using `--param <paramName> <newValue>`
+You can customize some elements of this template by overriding the following parameters when invoking `swiftgen` in the command line, using `--param <paramName>=<newValue>`
 
 | Parameter Name | Default Value | Description |
 | -------------- | ------------- | ----------- |
 | `enumName` | `L10n` | Allows you to change the name of the generated `enum` containing all string tables. |
+| `noComments` | N/A | Setting this parameter will disable the comments describing the translation of a key. |
 
 ## Generated Code
 

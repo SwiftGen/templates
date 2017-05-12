@@ -15,7 +15,7 @@ It also takes into account any namespacing folder in your Assets Catalogs (i.e. 
 
 ## Customization
 
-You can customize some elements of this template by overriding the following parameters when invoking `swiftgen` in the command line, using `--param <paramName> <newValue>`
+You can customize some elements of this template by overriding the following parameters when invoking `swiftgen` in the command line, using `--param <paramName>=<newValue>`
 
 | Parameter Name | Default Value | Description |
 | -------------- | ------------- | ----------- |
