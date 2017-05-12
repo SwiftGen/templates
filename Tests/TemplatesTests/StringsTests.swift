@@ -28,20 +28,6 @@ class StringsTests: XCTestCase {
     ]
   }
 
-  func testDotSyntaxSwift2() {
-    test(template: "dot-syntax-swift2",
-         contextNames: Contexts.all,
-         directory: .strings,
-         contextVariations: variations)
-  }
-
-  func testDotSyntaxSwift3() {
-    test(template: "dot-syntax-swift3",
-         contextNames: Contexts.all,
-         directory: .strings,
-         contextVariations: variations)
-  }
-
   func testFlatSwift2() {
     test(template: "flat-swift2",
          contextNames: Contexts.all,
@@ -51,6 +37,20 @@ class StringsTests: XCTestCase {
 
   func testFlatSwift3() {
     test(template: "flat-swift3",
+         contextNames: Contexts.all,
+         directory: .strings,
+         contextVariations: variations)
+  }
+
+  func testStructuredSwift2() {
+    test(template: "structured-swift2",
+         contextNames: Contexts.all,
+         directory: .strings,
+         contextVariations: variations)
+  }
+
+  func testStructuredSwift3() {
+    test(template: "structured-swift3",
          contextNames: Contexts.all,
          directory: .strings,
          contextVariations: variations)
