@@ -42,11 +42,13 @@ struct {{enumName}}Type: ExpressibleByStringLiteral {
 }
 {% macro enumBlock images sp %}
 {{sp}}  {% call casesBlock images sp %}
+{{sp}}  {% if not param.noAllValues %}
 
 {{sp}}  static let allValues = [
 {{sp}}    {% set sp2 %}{{sp}}  {% endset %}
 {{sp}}    {% call allValuesBlock images "" false sp2 %}
 {{sp}}  ]
+{{sp}}  {% endif %}
 {% endmacro %}
 {% macro casesBlock images sp %}
 {{sp}}  {% for image in images %}

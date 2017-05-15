@@ -21,7 +21,10 @@ class ImagesTests: XCTestCase {
        suffix: ""),
       (context: try StencilContext.enrich(context: context,
                                           parameters: ["enumName=XCTImages"]),
-       suffix: "-customname")
+       suffix: "-customname"),
+      (context: try StencilContext.enrich(context: context,
+                                          parameters: ["noAllValues"]),
+       suffix: "-no-all-values")
     ]
   }
 

@@ -20,6 +20,7 @@ You can customize some elements of this template by overriding the following par
 | Parameter Name | Default Value | Description |
 | -------------- | ------------- | ----------- |
 | `enumName` | `Asset` | Allows you to change the name of the generated `enum` containing all image names. |
+| `noAllValues` | N/A | Setting this parameter will disable generation of the `allValues` constant. |
 
 ## Generated Code
 
