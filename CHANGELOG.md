@@ -15,6 +15,9 @@
 * Templates are now organized in subdirectories for each command.  
   [@djbe](https://github.com/djbe)
   [#13](https://github.com/SwiftGen/templates/issues/13)
+* Update templates to use the Stencil built-in `join` filter instead of our own.  
+  [@djbe](https://github.com/djbe)
+  [#22](https://github.com/SwiftGen/templates/issues/22)
 
 ### New Features
 

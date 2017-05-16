@@ -11,7 +11,7 @@ enum {{enumName}} {
 {% macro enumBlock item sp %}
 {{sp}}  {% for string in item.strings %}
 {{sp}}  /// {{string.translation}}
-{{sp}}  case {{string.name|swiftIdentifier|snakeToCamelCase|escapeReservedKeywords}}{% if string.types %}({{string.types|join}}){% endif %}
+{{sp}}  case {{string.name|swiftIdentifier|snakeToCamelCase|escapeReservedKeywords}}{% if string.types %}({{string.types|join:", "}}){% endif %}
 {{sp}}  {% endfor %}
 {{sp}}  {% for child in item.children %}
 

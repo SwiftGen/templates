@@ -7,10 +7,6 @@
 import Foundation
 import Stencil
 
-// For retro-compatibility. Remove in next major.
-@available(*, deprecated, renamed: "Filters.Error", message: "Use the Filters.Error nested type instead")
-typealias FilterError = Filters.Error
-
 enum Filters {
   enum Error: Swift.Error {
     case invalidInputType
@@ -43,17 +39,5 @@ enum Filters {
     default:
       throw Error.invalidInputType
     }
-  }
-}
-
-// For retro-compatibility. Remove in next major.
-@available(*, deprecated, message: "Use the official `join` filter which is now part of Stencil itself")
-enum ArrayFilters {
-  static func join(_ value: Any?) throws -> Any? {
-    guard let array = value as? [Any] else { throw Filters.Error.invalidInputType }
-    let strings = array.flatMap { $0 as? String }
-    guard array.count == strings.count else { throw Filters.Error.invalidInputType }
-
-    return strings.joined(separator: ", ")
   }
 }
