@@ -2,14 +2,14 @@
 
 | Name      | Description       |
 | --------- | ----------------- |
-| File name | colors/swift3.stencil |
-| Invocation example | `swiftgen colors -t swift3 …` |
-| Language | Swift 3 |
+| File name | colors/swift2.stencil |
+| Invocation example | `swiftgen colors -t swift2 …` |
+| Language | Swift 2 |
 | Author | Olivier Halligon |
 
 ## When to use it
 
-- When you need to generate *Swift 3* code
+- When you need to generate *Swift 2* code
 - Supports _multiple_ color names with the _same_ value
 
 ## Customization
@@ -28,23 +28,23 @@ You can customize some elements of this template by overriding the following par
 enum ColorName {
   /// <span style="display:block;width:3em;height:2em;border:1px solid black;background:#339666"></span>
   /// Alpha: 100% <br/> (0x339666ff)
-  case articleBody
+  case ArticleBody
   /// <span style="display:block;width:3em;height:2em;border:1px solid black;background:#ff66cc"></span>
   /// Alpha: 100% <br/> (0xff66ccff)
-  case articleFootnote
+  case ArticleFootnote
 }
 ```
 
-[Full generated code](https://github.com/SwiftGen/templates/blob/master/Tests/Expected/Colors/swift3-context-defaults.swift)
+[Full generated code](https://github.com/SwiftGen/templates/blob/master/Tests/Expected/Colors/swift2-context-defaults.swift)
 
 ## Usage example
 
 ```swift
 // You can create colors with the convenience constructor like this:
-let title = UIColor(named: .articleTitle)
-let footnote = UIColor(named: .articleFootnote)
+let title = UIColor(named: .ArticleTitle)
+let footnote = UIColor(named: .ArticleFootnote)
 
 // Or as an alternative, you can refer to enum instance and call .color on it:
-let sameTitle = ColorName.articleBody.color
-let sameFootnote = ColorName.articleFootnote.color
+let sameTitle = ColorName.ArticleBody.color
+let sameFootnote = ColorName.ArticleFootnote.color
 ```

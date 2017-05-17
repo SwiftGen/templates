@@ -45,28 +45,19 @@ class StoryboardsMacOSTests: XCTestCase {
     }
   }
 
-  func testDefault() {
-    test(template: "osx-default",
+  func testSwift2() {
+    test(template: "macOS-swift2",
          contextNames: Contexts.all,
-         outputPrefix: "default",
+         outputPrefix: "swift2",
          directory: .storyboards,
          resourceDirectory: .storyboardsMacOS,
          contextVariations: variations)
   }
 
   func testSwift3() {
-    test(template: "osx-swift3",
+    test(template: "macOS-swift3",
          contextNames: Contexts.all,
          outputPrefix: "swift3",
-         directory: .storyboards,
-         resourceDirectory: .storyboardsMacOS,
-         contextVariations: variations)
-  }
-
-  func testLowercase() {
-    test(template: "osx-lowercase",
-         contextNames: Contexts.all,
-         outputPrefix: "lowercase",
          directory: .storyboards,
          resourceDirectory: .storyboardsMacOS,
          contextVariations: variations)

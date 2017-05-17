@@ -26,16 +26,9 @@ class ColorsTests: XCTestCase {
     ]
   }
 
-  func testDefault() {
-    test(template: "default",
+  func testSwift2() {
+    test(template: "swift2",
          contextNames: Contexts.all,
-         directory: .colors,
-         contextVariations: variations)
-  }
-
-  func testRawValue() {
-    test(template: "rawValue",
-         contextNames: Contexts.rawOnly,
          directory: .colors,
          contextVariations: variations)
   }

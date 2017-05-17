@@ -10,15 +10,15 @@
 
 // swiftlint:disable file_length
 
-struct XCTImagesType: ExpressibleByStringLiteral {
-  fileprivate var value: String
+struct AssetType: StringLiteralConvertible {
+  private var value: String
 
   var image: Image {
-    let bundle = Bundle(for: BundleToken.self)
+    let bundle = NSBundle(forClass: BundleToken.self)
     #if os(iOS) || os(tvOS)
-    let image = Image(named: value, in: bundle, compatibleWith: nil)
+    let image = Image(named: value, inBundle: bundle, compatibleWithTraitCollection: nil)
     #elseif os(OSX)
-    let image = bundle.image(forResource: value)
+    let image = bundle.imageForResource(value)
     #elseif os(watchOS)
     let image = Image(named: value)
     #endif
@@ -40,42 +40,42 @@ struct XCTImagesType: ExpressibleByStringLiteral {
 }
 
 // swiftlint:disable identifier_name line_length nesting type_body_length type_name
-enum XCTImages {
+enum Asset {
   enum Exotic {
-    static let banana: XCTImagesType = "Exotic/Banana"
-    static let mango: XCTImagesType = "Exotic/Mango"
+    static let Banana: AssetType = "Exotic/Banana"
+    static let Mango: AssetType = "Exotic/Mango"
   }
-  static let `private`: XCTImagesType = "private"
+  static let Private: AssetType = "private"
   enum Round {
-    static let apricot: XCTImagesType = "Round/Apricot"
-    static let orange: XCTImagesType = "Round/Orange"
+    static let Apricot: AssetType = "Round/Apricot"
+    static let Orange: AssetType = "Round/Orange"
     enum Red {
-      static let apple: XCTImagesType = "Round/Apple"
+      static let Apple: AssetType = "Round/Apple"
       enum Double {
-        static let cherry: XCTImagesType = "Round/Double/Cherry"
+        static let Cherry: AssetType = "Round/Double/Cherry"
       }
-      static let tomato: XCTImagesType = "Round/Tomato"
+      static let Tomato: AssetType = "Round/Tomato"
     }
   }
 
   static let allValues = [
-    Exotic.banana,
-    Exotic.mango,
-    `private`,
-    Round.apricot,
-    Round.orange,
-    Round.Red.apple,
-    Round.Red.Double.cherry,
-    Round.Red.tomato
+    Exotic.Banana,
+    Exotic.Mango,
+    Private,
+    Round.Apricot,
+    Round.Orange,
+    Round.Red.Apple,
+    Round.Red.Double.Cherry,
+    Round.Red.Tomato
   ]
 }
 // swiftlint:enable identifier_name line_length nesting type_body_length type_name
 
 extension Image {
-  convenience init!(asset: XCTImagesType) {
+  convenience init!(asset: AssetType) {
     #if os(iOS) || os(tvOS)
-    let bundle = Bundle(for: BundleToken.self)
-    self.init(named: asset.value, in: bundle, compatibleWith: nil)
+    let bundle = NSBundle(forClass: BundleToken.self)
+    self.init(named: asset.value, inBundle: bundle, compatibleWithTraitCollection: nil)
     #elseif os(OSX) || os(watchOS)
     self.init(named: asset.value)
     #endif

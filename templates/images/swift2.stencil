@@ -12,15 +12,15 @@
 // swiftlint:disable file_length
 
 {% set enumName %}{{param.enumName|default:"Asset"}}{% endset %}
-struct {{enumName}}Type: ExpressibleByStringLiteral {
-  fileprivate var value: String
+struct {{enumName}}Type: StringLiteralConvertible {
+  private var value: String
 
   var image: Image {
-    let bundle = Bundle(for: BundleToken.self)
+    let bundle = NSBundle(forClass: BundleToken.self)
     #if os(iOS) || os(tvOS)
-    let image = Image(named: value, in: bundle, compatibleWith: nil)
+    let image = Image(named: value, inBundle: bundle, compatibleWithTraitCollection: nil)
     #elseif os(OSX)
-    let image = bundle.image(forResource: value)
+    let image = bundle.imageForResource(value)
     #elseif os(watchOS)
     let image = Image(named: value)
     #endif
@@ -53,7 +53,7 @@ struct {{enumName}}Type: ExpressibleByStringLiteral {
 {% macro casesBlock images sp %}
 {{sp}}  {% for image in images %}
 {{sp}}  {% if not image.items %}
-{{sp}}  static let {{image.name|swiftIdentifier|snakeToCamelCase|lowerFirstWord|escapeReservedKeywords}}: {{enumName}}Type = "{{image.value}}"
+{{sp}}  static let {{image.name|swiftIdentifier|snakeToCamelCase|escapeReservedKeywords}}: {{enumName}}Type = "{{image.value}}"
 {{sp}}  {% else %}
 {{sp}}  enum {{image.name|swiftIdentifier|snakeToCamelCase|escapeReservedKeywords}} {
 {{sp}}    {% set sp2 %}{{sp}}  {% endset %}
@@ -65,7 +65,7 @@ struct {{enumName}}Type: ExpressibleByStringLiteral {
 {% macro allValuesBlock images prefix isLast sp %}
 {{sp}}  {% for image in images %}
 {{sp}}  {% if not image.items %}
-{{sp}}  {{prefix}}{{image.name|swiftIdentifier|snakeToCamelCase|lowerFirstWord|escapeReservedKeywords}}{% if not forloop.last or not isLast %},{% endif %}
+{{sp}}  {{prefix}}{{image.name|swiftIdentifier|snakeToCamelCase|escapeReservedKeywords}}{% if not forloop.last or not isLast %},{% endif %}
 {{sp}}  {% else %}
 {{sp}}  {% set prefix2 %}{{prefix}}{{image.name|swiftIdentifier|snakeToCamelCase|escapeReservedKeywords}}.{% endset %}
 {{sp}}  {% call allValuesBlock image.items prefix2 forloop.last sp %}
@@ -77,7 +77,7 @@ struct {{enumName}}Type: ExpressibleByStringLiteral {
 enum {{enumName}} {
   {% if catalogs.count > 1 %}
   {% for catalog in catalogs %}
-  enum {{catalog.name|swiftIdentifier|snakeToCamelCase|escapeReservedKeywords}} {
+  enum {{catalog.name|swiftIdentifier|titlecase|snakeToCamelCase|escapeReservedKeywords}} {
     {% call enumBlock catalog.assets "  " %}
   }
   {% endfor %}
@@ -90,8 +90,8 @@ enum {{enumName}} {
 extension Image {
   convenience init!(asset: {{enumName}}Type) {
     #if os(iOS) || os(tvOS)
-    let bundle = Bundle(for: BundleToken.self)
-    self.init(named: asset.value, in: bundle, compatibleWith: nil)
+    let bundle = NSBundle(forClass: BundleToken.self)
+    self.init(named: asset.value, inBundle: bundle, compatibleWithTraitCollection: nil)
     #elseif os(OSX) || os(watchOS)
     self.init(named: asset.value)
     #endif

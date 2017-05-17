@@ -13,11 +13,14 @@
 ### Breaking Changes
 
 * Templates are now organized in subdirectories for each command.  
-  [@djbe](https://github.com/djbe)
+  [David Jennes](https://github.com/djbe)
   [#13](https://github.com/SwiftGen/templates/issues/13)
 * Update templates to use the Stencil built-in `join` filter instead of our own.  
-  [@djbe](https://github.com/djbe)
+  [David Jennes](https://github.com/djbe)
   [#22](https://github.com/SwiftGen/templates/issues/22)
+* Many deprecated templates have been removed, and others have been renamed to reflect new behaviours. We've prepared a migration guide which you can find here: [Documentation/MigrationGuide](https://github.com/SwiftGen/templates/blob/master/Documentation/MigrationGuide.md).  
+  [David Jennes](https://github.com/djbe)
+  [#47](https://github.com/SwiftGen/templates/issues/47)
 
 ### New Features
 
@@ -73,7 +76,7 @@ _The templates tagged with this version are the ones embedded in SwiftGen 4.2._
 
 * Initial tagging of templates as part of being split in their own repository.  
 * Templates are now linted and unit-tested, to ensure the code generated compiles properly.  
-  [@djbe](https://github.com/djbe)
+  [David Jennes](https://github.com/djbe)
   [#5](https://github.com/SwiftGen/templates/issues/5)
   [#6](https://github.com/SwiftGen/templates/issues/6)
   [#15](https://github.com/SwiftGen/templates/pull/15)
@@ -82,11 +85,11 @@ _The templates tagged with this version are the ones embedded in SwiftGen 4.2._
 ### Bug Fixes
 
 * Use `escapeReservedKeywords` in all templates — to ensure compilation even for scenes named with a reserved keyword.  
-  [@djbe](https://github.com/djbe)
+  [David Jennes](https://github.com/djbe)
   [#3](https://github.com/SwiftGen/templates/issues/3)
   [#14](https://github.com/SwiftGen/templates/pull/14)
 * Storyboards templates don't `import` your app module anymore, removing that annoying warning.  
-  [@djbe](https://github.com/djbe)
+  [David Jennes](https://github.com/djbe)
   [#19](https://github.com/SwiftGen/templates/pull/19)
   * It works by checking the environment variable `PRODUCT_MODULE_NAME`, which is automatically injected by Xcode if you run `swiftgen` as part of a Script Build Phase in your Xcode project.
   * If you don't use `swiftgen` in a Script Build Phase of your Xcode project but manually in the terminal, you can instead use  `swiftgen storyboards --param module=YourAppModuleName …` when invoking SwiftGen to inject it manually instead.
@@ -95,14 +98,14 @@ _The templates tagged with this version are the ones embedded in SwiftGen 4.2._
 
 * Use an explicit bundle parameter to support frameworks for all templates.  
   [@NachoSoto](https://github.com/NachoSoto)
-  [@djbe](https://github.com/djbe)
+  [David Jennes](https://github.com/djbe)
   [SwiftGen/SwiftGen#255](https://github.com/SwiftGen/SwiftGen/pull/255)
   [#17](https://github.com/SwiftGen/templates/pull/17)
 * Use `enum` instead of `struct` for namespacing in all templates.  
-  [@djbe](https://github.com/djbe)
+  [David Jennes](https://github.com/djbe)
   [#7](https://github.com/SwiftGen/templates/issues/7)
 * Reworked templates to get rid of deprecated Stencil variables.  
-  [@djbe](https://github.com/djbe)
+  [David Jennes](https://github.com/djbe)
   [#8](https://github.com/SwiftGen/templates/issues/8)
   [#9](https://github.com/SwiftGen/templates/issues/9)
 

@@ -2,14 +2,14 @@
 
 | Name      | Description       |
 | --------- | ----------------- |
-| File name | fonts/swift3.stencil |
-| Invocation example | `swiftgen fonts -t swift3 …` |
-| Language | Swift 3 |
+| File name | fonts/swift2.stencil |
+| Invocation example | `swiftgen fonts -t swift2 …` |
+| Language | Swift 2 |
 | Author | Olivier Halligon |
 
 ## When to use it
 
-- When you need to generate *Swift 3* code
+- When you need to generate *Swift 2* code
 
 ## Customization
 
@@ -26,24 +26,24 @@ You can customize some elements of this template by overriding the following par
 ```swift
 enum FontFamily {
   enum SFNSDisplay: String, FontConvertible {
-    case regular = ".SFNSDisplay-Regular"
+    case Regular = ".SFNSDisplay-Regular"
   }
   enum ZapfDingbats: String, FontConvertible {
-    case regular = "ZapfDingbatsITC"
+    case Regular = "ZapfDingbatsITC"
   }
 }
 ```
 
-[Full generated code](https://github.com/SwiftGen/templates/blob/master/Tests/Expected/Fonts/swift3-context-defaults.swift)
+[Full generated code](https://github.com/SwiftGen/templates/blob/master/Tests/Expected/Fonts/swift2-context-defaults.swift)
 
 ## Usage example
 
 ```swift
 // You can create fonts with the convenience constructor like this:
-let displayRegular = UIFont(font: FontFamily.SFNSDisplay.regular, size: 20.0)
-let dingbats = UIFont(font: FontFamily.ZapfDingbats.regular, size: 20.0)
+let displayRegular = UIFont(FontFamily.SFNSDisplay.Regular, size: 20.0)
+let dingbats = UIFont(FontFamily.ZapfDingbats.Regular, size: 20.0)
 
 // Or as an alternative, you can refer to enum instance and call .font on it:
-let sameDisplayRegular = FontFamily.SFNSDisplay.regular.font(size: 20.0)
-let sameDingbats = FontFamily.ZapfDingbats.regular.font(size: 20.0)
+let sameDisplayRegular = FontFamily.SFNSDisplay.Regular.font(20.0)
+let sameDingbats = FontFamily.ZapfDingbats.Regular.font(20.0)
 ```

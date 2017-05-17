@@ -27,8 +27,8 @@ class FontsTests: XCTestCase {
     ]
   }
 
-  func testDefault() {
-    test(template: "default",
+  func testSwift2() {
+    test(template: "swift2",
          contextNames: Contexts.all,
          directory: .fonts,
          contextVariations: variations)

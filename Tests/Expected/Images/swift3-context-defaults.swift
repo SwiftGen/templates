@@ -10,41 +10,74 @@
 
 // swiftlint:disable file_length
 
-// swiftlint:disable identifier_name line_length type_body_length
-enum Asset: String {
-  case exoticBanana = "Exotic/Banana"
-  case exoticMango = "Exotic/Mango"
-  case `private` = "private"
-  case roundApricot = "Round/Apricot"
-  case roundOrange = "Round/Orange"
-  case roundApple = "Round/Apple"
-  case roundDoubleCherry = "Round/Double/Cherry"
-  case roundTomato = "Round/Tomato"
-}
-// swiftlint:enable identifier_name line_length type_body_length
+struct AssetType: ExpressibleByStringLiteral {
+  fileprivate var value: String
 
-extension Asset {
   var image: Image {
     let bundle = Bundle(for: BundleToken.self)
     #if os(iOS) || os(tvOS)
-    let image = Image(named: rawValue, in: bundle, compatibleWith: nil)
+    let image = Image(named: value, in: bundle, compatibleWith: nil)
     #elseif os(OSX)
-    let image = bundle.image(forResource: rawValue)
+    let image = bundle.image(forResource: value)
     #elseif os(watchOS)
-    let image = Image(named: rawValue)
+    let image = Image(named: value)
     #endif
-    guard let result = image else { fatalError("Unable to load image \(rawValue).") }
+    guard let result = image else { fatalError("Unable to load image \(value).") }
     return result
+  }
+
+  init(stringLiteral value: String) {
+    self.value = value
+  }
+
+  init(extendedGraphemeClusterLiteral value: String) {
+    self.init(stringLiteral: value)
+  }
+
+  init(unicodeScalarLiteral value: String) {
+    self.init(stringLiteral: value)
   }
 }
 
+// swiftlint:disable identifier_name line_length nesting type_body_length type_name
+enum Asset {
+  enum Exotic {
+    static let banana: AssetType = "Exotic/Banana"
+    static let mango: AssetType = "Exotic/Mango"
+  }
+  static let `private`: AssetType = "private"
+  enum Round {
+    static let apricot: AssetType = "Round/Apricot"
+    static let orange: AssetType = "Round/Orange"
+    enum Red {
+      static let apple: AssetType = "Round/Apple"
+      enum Double {
+        static let cherry: AssetType = "Round/Double/Cherry"
+      }
+      static let tomato: AssetType = "Round/Tomato"
+    }
+  }
+
+  static let allValues = [
+    Exotic.banana,
+    Exotic.mango,
+    `private`,
+    Round.apricot,
+    Round.orange,
+    Round.Red.apple,
+    Round.Red.Double.cherry,
+    Round.Red.tomato
+  ]
+}
+// swiftlint:enable identifier_name line_length nesting type_body_length type_name
+
 extension Image {
-  convenience init!(asset: Asset) {
+  convenience init!(asset: AssetType) {
     #if os(iOS) || os(tvOS)
     let bundle = Bundle(for: BundleToken.self)
-    self.init(named: asset.rawValue, in: bundle, compatibleWith: nil)
+    self.init(named: asset.value, in: bundle, compatibleWith: nil)
     #elseif os(OSX) || os(watchOS)
-    self.init(named: asset.rawValue)
+    self.init(named: asset.value)
     #endif
   }
 }

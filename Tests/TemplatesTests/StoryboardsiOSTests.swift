@@ -40,8 +40,8 @@ class StoryboardsiOSTests: XCTestCase {
     ]
   }
 
-  func testDefault() {
-    test(template: "default",
+  func testSwift2() {
+    test(template: "swift2",
          contextNames: Contexts.all,
          directory: .storyboards,
          resourceDirectory: .storyboardsiOS,
@@ -50,22 +50,6 @@ class StoryboardsiOSTests: XCTestCase {
 
   func testSwift3() {
     test(template: "swift3",
-         contextNames: Contexts.all,
-         directory: .storyboards,
-         resourceDirectory: .storyboardsiOS,
-         contextVariations: variations)
-  }
-
-  func testLowercase() {
-    test(template: "lowercase",
-         contextNames: Contexts.all,
-         directory: .storyboards,
-         resourceDirectory: .storyboardsiOS,
-         contextVariations: variations)
-  }
-
-  func testUppercase() {
-    test(template: "uppercase",
          contextNames: Contexts.all,
          directory: .storyboards,
          resourceDirectory: .storyboardsiOS,

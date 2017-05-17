@@ -21,54 +21,36 @@ class StringsTests: XCTestCase {
        suffix: ""),
       (context: try StencilContext.enrich(context: context,
                                           parameters: ["enumName=XCTLoc"]),
-       suffix: "-customname")
+       suffix: "-customname"),
+      (context: try StencilContext.enrich(context: context,
+                                          parameters: ["noComments"]),
+       suffix: "-no-comments")
     ]
   }
 
-  func testDefault() {
-    test(template: "default",
+  func testFlatSwift2() {
+    test(template: "flat-swift2",
          contextNames: Contexts.all,
          directory: .strings,
          contextVariations: variations)
   }
 
-  func testSwift3() {
-    test(template: "swift3",
+  func testFlatSwift3() {
+    test(template: "flat-swift3",
          contextNames: Contexts.all,
          directory: .strings,
          contextVariations: variations)
   }
 
-  func testNoCommentsSwift3() {
-    test(template: "no-comments-swift3",
+  func testStructuredSwift2() {
+    test(template: "structured-swift2",
          contextNames: Contexts.all,
          directory: .strings,
          contextVariations: variations)
   }
 
-  func testGenstrings() {
-    test(template: "genstrings",
-         contextNames: Contexts.all,
-         directory: .strings,
-         contextVariations: variations)
-  }
-
-  func testStructured() {
-    test(template: "structured",
-         contextNames: Contexts.all,
-         directory: .strings,
-         contextVariations: variations)
-  }
-
-  func testDotSyntax() {
-    test(template: "dot-syntax",
-         contextNames: Contexts.all,
-         directory: .strings,
-         contextVariations: variations)
-  }
-
-  func testDotSyntaxSwift3() {
-    test(template: "dot-syntax-swift3",
+  func testStructuredSwift3() {
+    test(template: "structured-swift3",
          contextNames: Contexts.all,
          directory: .strings,
          contextVariations: variations)

@@ -2,14 +2,14 @@
 
 | Name      | Description       |
 | --------- | ----------------- |
-| File name | storyboards/swift3.stencil |
-| Invocation example | `swiftgen storyboards -t swift3 …` |
-| Language | Swift 3 |
+| File name | storyboards/swift2.stencil |
+| Invocation example | `swiftgen storyboards -t swift2 …` |
+| Language | Swift 2 |
 | Author | Olivier Halligon |
 
 ## When to use it
 
-- When you need to generate *Swift 3* code
+- When you need to generate *Swift 2* code
 - You want to generate code for UIKit platforms (iOS, tvOS and watchOS)
 
 ## Customization
@@ -30,17 +30,17 @@ enum StoryboardScene {
   enum Dependency: String, StoryboardSceneType {
     static let storyboardName = "Dependency"
 
-    case dependentScene = "Dependent"
+    case DependentScene = "Dependent"
     static func instantiateDependent() -> UIViewController {
-      return StoryboardScene.Dependency.dependentScene.viewController()
+      return StoryboardScene.Dependency.DependentScene.viewController()
     }
   }
   enum Message: String, StoryboardSceneType {
     static let storyboardName = "Message"
 
-    case messagesListScene = "MessagesList"
+    case MessagesListScene = "MessagesList"
     static func instantiateMessagesList() -> UITableViewController {
-      guard let vc = StoryboardScene.Message.messagesListScene.viewController() as? UITableViewController
+      guard let vc = StoryboardScene.Message.MessagesListScene.viewController() as? UITableViewController
       else {
         fatalError("ViewController 'MessagesList' is not of the expected class UITableViewController.")
       }
@@ -50,32 +50,32 @@ enum StoryboardScene {
 }
 enum StoryboardSegue {
   enum Message: String, StoryboardSegueType {
-    case embed
-    case nonCustom
+    case Embed
+    case NonCustom
   }
 }
 ```
 
-[Full generated code](https://github.com/SwiftGen/templates/blob/master/Tests/Expected/Storyboards-iOS/swift3-context-all.swift)
+[Full generated code](https://github.com/SwiftGen/templates/blob/master/Tests/Expected/Storyboards-iOS/swift2-context-all.swift)
 
 ## Usage example
 
 ```swift
 // You can instantiate scenes using the generic `viewController()` method:
-let vc = StoryboardScene.Dependency.dependentScene.viewController()
+let vc = StoryboardScene.Dependency.DependentScene.viewController()
 
 // or the `instantiate...()` method (which will cast to the correct type):
 let vc2 = StoryboardScene.Message.instantiateMessagesList()
 
 // You can perform segues using:
-vc.perform(segue: StoryboardSegue.Message.embed)
+vc.performSegue(StoryboardSegue.Message.Embed)
 
 // or match them (in prepareForSegue):
-override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+override func prepareForSegue(_ segue: UIStoryboardSegue, sender sender: AnyObject?) {
   switch StoryboardSegue.Message(rawValue: segue.identifier!)! {
-  case .embed:
+  case .Embed:
     // Prepare for your custom segue transition
-  case .nonCustom:
+  case .NonCustom:
     // Pass in information to the destination View Controller
   }
 }
