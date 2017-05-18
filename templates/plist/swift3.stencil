@@ -7,45 +7,52 @@ import Foundation
 private let _Plist = Bundle(for: _InfoPlist.self).infoDictionary!
 let InfoPlist = _InfoPlist()
 
+private func castOrFail<T>(_ any: Any?) -> T {
+  guard let t = any as? T else {
+    fatalError("Couldn't cast value to type \(T.self)")
+  }
+  return t
+}
+
 class _InfoPlist {
 {% if stringKeys %}
   subscript(key: StringKey) -> String {
-    return _Plist["\(key)"] as! String
+    return castOrFail(_Plist["\(key)"])
   }
 {% endif %}
 {% if intKeys %}
   subscript(key: IntKey) -> Int {
-    return _Plist["\(key)"] as! Int
+    return castOrFail(_Plist["\(key)"])
   }
   // Int64 for 32bit device compatibility
   // e.g. On 32bit device, Int is Int32 where on 64bit device, it's Int64.
   subscript(key: IntKey) -> Int64 {
-    return _Plist["\(key)"] as! Int64
+    return castOrFail(_Plist["\(key)"])
   }
 {% endif %}
 {% if boolKeys %}
   subscript(key: BoolKey) -> Bool {
-    return _Plist["\(key)"] as! Bool
+    return castOrFail(_Plist["\(key)"])
   }
 {% endif %}
 {% if dictKeys %}
   subscript(key: DictKey) -> [String: Any] {
-    return _Plist["\(key)"] as! [String: Any]
+    return castOrFail(_Plist["\(key)"])
   }
 {% endif %}
 {% if arrayKeys %}
   subscript(key: ArrayKey) -> [Any] {
-    return _Plist["\(key)"] as! [Any]
+    return castOrFail(_Plist["\(key)"])
   }
 {% endif %}
 {% if dataKeys %}
   subscript(key: DataKey) -> Data {
-    return _Plist["\(key)"] as! Data
+    return castOrFail(_Plist["\(key)"])
   }
 {% endif %}
 {% if dateKeys %}
   subscript(key: DateKey) -> Date {
-    return _Plist["\(key)"] as! Date
+    return castOrFail(_Plist["\(key)"])
   }
 {% endif %}
 {% if unknownKeys %}
