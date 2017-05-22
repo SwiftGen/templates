@@ -7,29 +7,29 @@ import Foundation
 // swiftlint:disable explicit_type_interface identifier_name line_length nesting type_body_length type_name
 enum XCTLoc {
   /// Some alert body there
-  static let alertMessage = XCTLoc.tr("alert_message")
+  static let alertMessage = XCTLoc.tr("Localizable", "alert_message")
   /// Title of the alert
-  static let alertTitle = XCTLoc.tr("alert_title")
+  static let alertTitle = XCTLoc.tr("Localizable", "alert_title")
   /// These are %3$@'s %1$d %2$@.
   static func objectOwnership(_ p1: Int, _ p2: String, _ p3: String) -> String {
-    return XCTLoc.tr("ObjectOwnership", p1, p2, p3)
+    return XCTLoc.tr("Localizable", "ObjectOwnership", p1, p2, p3)
   }
   /// Hello, my name is %@ and I'm %d
   static func `private`(_ p1: String, _ p2: Int) -> String {
-    return XCTLoc.tr("private", p1, p2)
+    return XCTLoc.tr("Localizable", "private", p1, p2)
   }
 
   enum Apples {
     /// You have %d apples
     static func count(_ p1: Int) -> String {
-      return XCTLoc.tr("apples.count", p1)
+      return XCTLoc.tr("Localizable", "apples.count", p1)
     }
   }
 
   enum Bananas {
     /// Those %d bananas belong to %@.
     static func owner(_ p1: Int, _ p2: String) -> String {
-      return XCTLoc.tr("bananas.owner", p1, p2)
+      return XCTLoc.tr("Localizable", "bananas.owner", p1, p2)
     }
   }
 
@@ -37,7 +37,7 @@ enum XCTLoc {
 
     enum NavigationBar {
       /// Some Reserved Keyword there
-      static let `self` = XCTLoc.tr("settings.navigation-bar.self")
+      static let `self` = XCTLoc.tr("Localizable", "settings.navigation-bar.self")
 
       enum Title {
 
@@ -59,7 +59,7 @@ enum XCTLoc {
 
                         enum Is {
                           /// DeepSettings
-                          static let deep = XCTLoc.tr("settings.navigation-bar.title.deeper.than.we.can.handle.no.really.this.is.deep")
+                          static let deep = XCTLoc.tr("Localizable", "settings.navigation-bar.title.deeper.than.we.can.handle.no.really.this.is.deep")
                         }
                       }
                     }
@@ -72,24 +72,24 @@ enum XCTLoc {
 
         enum Even {
           /// Settings
-          static let deeper = XCTLoc.tr("settings.navigation-bar.title.even.deeper")
+          static let deeper = XCTLoc.tr("Localizable", "settings.navigation-bar.title.even.deeper")
         }
       }
     }
 
     enum UserProfileSection {
       /// Here you can change some user profile settings.
-      static let footerText = XCTLoc.tr("seTTings.uSer-proFile-sectioN.footer_text")
+      static let footerText = XCTLoc.tr("Localizable", "seTTings.uSer-proFile-sectioN.footer_text")
       /// User Profile Settings
-      static let headerTitle = XCTLoc.tr("SETTINGS.USER_PROFILE_SECTION.HEADER_TITLE")
+      static let headerTitle = XCTLoc.tr("Localizable", "SETTINGS.USER_PROFILE_SECTION.HEADER_TITLE")
     }
   }
 }
 // swiftlint:enable explicit_type_interface identifier_name line_length nesting type_body_length type_name
 
 extension XCTLoc {
-  fileprivate static func tr(_ key: String, _ args: CVarArg...) -> String {
-    let format = NSLocalizedString(key, bundle: Bundle(for: BundleToken.self), comment: "")
+  fileprivate static func tr(_ table: String, _ key: String, _ args: CVarArg...) -> String {
+    let format = NSLocalizedString(key, tableName: table, bundle: Bundle(for: BundleToken.self), comment: "")
     return String(format: format, locale: Locale.current, arguments: args)
   }
 }
