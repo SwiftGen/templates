@@ -1,6 +1,6 @@
 // Generated using SwiftGen, by O.Halligon — https://github.com/SwiftGen/SwiftGen
 
-{% if tables.first.levels %}
+{% if tables.count > 0 %}
 import Foundation
 
 // swiftlint:disable file_length
