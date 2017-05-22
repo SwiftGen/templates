@@ -4,58 +4,46 @@
 import Foundation
 
 // swiftlint:disable file_length
-{% macro recursiveBlock item %}
-  {% for string in item.strings %}
-  {% if not param.noComments %}
-  /// {{string.translation}}
-  {% endif %}
-  case {{string.key|swiftIdentifier|snakeToCamelCase|escapeReservedKeywords}}{% if string.types %}({{string.types|join:", "}}){% endif %}
-  {% endfor %}
-  {% for child in item.children %}
-  {% call recursiveBlock child %}
-  {% endfor %}
+{% macro parametersBlock types %}{% for type in types %}p{{forloop.counter}}: {{type}}{% if not forloop.last %}, {% endif %}{% endfor %}{% endmacro %}
+{% macro argumentsBlock types %}{% for type in types %}p{{forloop.counter}}{% if not forloop.last %}, {% endif %}{% endfor %}{% endmacro %}
+{% macro recursiveBlock table item sp %}
+{{sp}}  {% for string in item.strings %}
+{{sp}}  {% if not param.noComments %}
+{{sp}}  /// {{string.translation}}
+{{sp}}  {% endif %}
+{{sp}}  {% if string.types %}
+{{sp}}  static func {{string.key|swiftIdentifier|snakeToCamelCase|escapeReservedKeywords}}({% call parametersBlock string.types %}) -> String {
+{{sp}}    return {{enumName}}.tr("{{table}}", "{{string.key}}", {% call argumentsBlock string.types %})
+{{sp}}  }
+{{sp}}  {% else %}
+{{sp}}  static let {{string.key|swiftIdentifier|snakeToCamelCase|escapeReservedKeywords}} = {{enumName}}.tr("{{table}}", "{{string.key}}")
+{{sp}}  {% endif %}
+{{sp}}  {% endfor %}
+{{sp}}  {% for child in item.children %}
+{{sp}}  {% call recursiveBlock table child sp %}
+{{sp}}  {% endfor %}
 {% endmacro %}
 
 // swiftlint:disable identifier_name line_length type_body_length
 {% set enumName %}{{param.enumName|default:"L10n"}}{% endset %}
 enum {{enumName}} {
-  {% call recursiveBlock tables.first.levels %}
-}
-
-{% macro parametersBlock types %}{% for type in types %}let p{{forloop.counter}}{% if not forloop.last %}, {% endif %}{% endfor %}{% endmacro %}
-{% macro argumentsBlock types %}{% for type in types %}p{{forloop.counter}}{% if not forloop.last %}, {% endif %}{% endfor %}{% endmacro %}
-{% macro recursiveBlock item %}
-      {% for string in item.strings %}
-      {% if string.types %}
-      case .{{string.key|swiftIdentifier|snakeToCamelCase|escapeReservedKeywords}}({% call parametersBlock string.types %}):
-        return {{enumName}}.tr("{{string.key}}", {% call argumentsBlock string.types %})
-      {% else %}
-      case .{{string.key|swiftIdentifier|snakeToCamelCase|escapeReservedKeywords}}:
-        return {{enumName}}.tr("{{string.key}}")
-      {% endif %}
-      {% endfor %}
-      {% for child in item.children %}
-      {% call recursiveBlock child %}
-      {% endfor %}
-{% endmacro %}
-extension {{enumName}}: CustomStringConvertible {
-  var description: String { return self.string }
-
-  var string: String {
-    switch self {
-      {% call recursiveBlock tables.first.levels %}
-    }
+  {% if tables.count > 1 %}
+  {% for table in tables %}
+  enum {{table.name|swiftIdentifier|snakeToCamelCase}} {
+    {% call recursiveBlock table.name table.levels "  " %}
   }
-
-  private static func tr(key: String, _ args: CVarArgType...) -> String {
-    let format = NSLocalizedString(key, bundle: NSBundle(forClass: BundleToken.self), comment: "")
-    return String(format: format, locale: NSLocale.currentLocale(), arguments: args)
-  }
+  {% endfor %}
+  {% else %}
+  {% call recursiveBlock tables.first.name tables.first.levels "" %}
+  {% endif %}
 }
 // swiftlint:enable identifier_name line_length type_body_length
 
-func tr(key: {{enumName}}) -> String {
-  return key.string
+extension {{enumName}} {
+  private static func tr(table: String, _ key: String, _ args: CVarArgType...) -> String {
+    let format = NSLocalizedString(key, tableName: table, bundle: NSBundle(forClass: BundleToken.self), comment: "")
+    return String(format: format, locale: NSLocale.currentLocale(), arguments: args)
+  }
 }
 
 private final class BundleToken {}
