@@ -11,6 +11,8 @@
 			<dict>
 				<key>baseType</key>
 				<string>ViewController</string>
+				<key>identifier</key>
+				<string></string>
 			</dict>
 			<key>name</key>
 			<string>Message</string>

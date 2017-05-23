@@ -11,6 +11,8 @@
 			<dict>
 				<key>baseType</key>
 				<string>NavigationController</string>
+				<key>identifier</key>
+				<string></string>
 			</dict>
 			<key>name</key>
 			<string>Anonymous</string>

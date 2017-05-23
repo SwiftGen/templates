@@ -17,6 +17,8 @@
 				<string>LocationPickerViewController</string>
 				<key>customModule</key>
 				<string>LocationPicker</string>
+				<key>identifier</key>
+				<string></string>
 			</dict>
 			<key>name</key>
 			<string>AdditionalImport</string>
@@ -48,6 +50,8 @@
 			<dict>
 				<key>baseType</key>
 				<string>NavigationController</string>
+				<key>identifier</key>
+				<string></string>
 			</dict>
 			<key>name</key>
 			<string>Anonymous</string>
@@ -76,6 +80,8 @@
 			<dict>
 				<key>baseType</key>
 				<string>ViewController</string>
+				<key>identifier</key>
+				<string></string>
 			</dict>
 			<key>name</key>
 			<string>Message</string>
@@ -166,6 +172,8 @@
 				<string>CreateAccViewController</string>
 				<key>customModule</key>
 				<string></string>
+				<key>identifier</key>
+				<string>CreateAccount</string>
 			</dict>
 			<key>name</key>
 			<string>Wizard</string>
