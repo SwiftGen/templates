@@ -8,6 +8,8 @@
 		<string>LocationPicker</string>
 		<string>SlackTextViewController</string>
 	</array>
+	<key>platform</key>
+	<string>iOS</string>
 	<key>storyboards</key>
 	<array>
 		<dict>
@@ -22,6 +24,8 @@
 			</dict>
 			<key>name</key>
 			<string>AdditionalImport</string>
+			<key>platform</key>
+			<string>iOS</string>
 			<key>scenes</key>
 			<array>
 				<dict>
@@ -55,6 +59,8 @@
 			</dict>
 			<key>name</key>
 			<string>Anonymous</string>
+			<key>platform</key>
+			<string>iOS</string>
 			<key>scenes</key>
 			<array/>
 			<key>segues</key>
@@ -63,6 +69,8 @@
 		<dict>
 			<key>name</key>
 			<string>Dependency</string>
+			<key>platform</key>
+			<string>iOS</string>
 			<key>scenes</key>
 			<array>
 				<dict>
@@ -85,6 +93,8 @@
 			</dict>
 			<key>name</key>
 			<string>Message</string>
+			<key>platform</key>
+			<string>iOS</string>
 			<key>scenes</key>
 			<array>
 				<dict>
@@ -153,6 +163,8 @@
 		<dict>
 			<key>name</key>
 			<string>Placeholder</string>
+			<key>platform</key>
+			<string>iOS</string>
 			<key>scenes</key>
 			<array>
 				<dict>
@@ -177,6 +189,8 @@
 			</dict>
 			<key>name</key>
 			<string>Wizard</string>
+			<key>platform</key>
+			<string>iOS</string>
 			<key>scenes</key>
 			<array>
 				<dict>
