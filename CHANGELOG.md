@@ -34,6 +34,7 @@ _None_
 * Removed deprecated variables. See [SwiftGenKit#5](https://github.com/SwiftGen/SwiftGenKit/issues/5) for more information.   
   [David Jennes](https://github.com/djbe)
   [#45](https://github.com/SwiftGen/templates/issues/45)
+  [#50](https://github.com/SwiftGen/templates/issues/50)
 
 ## 1.1.0
 
