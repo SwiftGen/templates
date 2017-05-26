@@ -52,9 +52,9 @@ struct {{enumName}}Type: StringLiteralConvertible {
 {% endmacro %}
 {% macro casesBlock images sp %}
 {{sp}}  {% for image in images %}
-{{sp}}  {% if not image.items %}
+{{sp}}  {% if image.value %}
 {{sp}}  static let {{image.name|swiftIdentifier|snakeToCamelCase|escapeReservedKeywords}}: {{enumName}}Type = "{{image.value}}"
-{{sp}}  {% else %}
+{{sp}}  {% elif image.items %}
 {{sp}}  enum {{image.name|swiftIdentifier|snakeToCamelCase|escapeReservedKeywords}} {
 {{sp}}    {% set sp2 %}{{sp}}  {% endset %}
 {{sp}}    {% call casesBlock image.items sp2 %}
@@ -64,9 +64,9 @@ struct {{enumName}}Type: StringLiteralConvertible {
 {% endmacro %}
 {% macro allValuesBlock images prefix isLast sp %}
 {{sp}}  {% for image in images %}
-{{sp}}  {% if not image.items %}
+{{sp}}  {% if image.value %}
 {{sp}}  {{prefix}}{{image.name|swiftIdentifier|snakeToCamelCase|escapeReservedKeywords}}{% if not forloop.last or not isLast %},{% endif %}
-{{sp}}  {% else %}
+{{sp}}  {% elif image.items %}
 {{sp}}  {% set prefix2 %}{{prefix}}{{image.name|swiftIdentifier|snakeToCamelCase|escapeReservedKeywords}}.{% endset %}
 {{sp}}  {% call allValuesBlock image.items prefix2 forloop.last sp %}
 {{sp}}  {% endif %}
