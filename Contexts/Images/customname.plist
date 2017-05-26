@@ -9,6 +9,12 @@
 			<array>
 				<dict>
 					<key>items</key>
+					<array/>
+					<key>name</key>
+					<string>Empty</string>
+				</dict>
+				<dict>
+					<key>items</key>
 					<array>
 						<dict>
 							<key>name</key>

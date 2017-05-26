@@ -9,6 +9,9 @@
 * Fixed `swiftlint` errors for the latest version.  
   [David Jennes](https://github.com/djbe) 
   [#46](https://github.com/SwiftGen/templates/pull/46)
+* Images: fixed issue with catalogs that have an empty folder.  
+  [David Jennes](https://github.com/djbe) 
+  [#51](https://github.com/SwiftGen/templates/pull/51)
 
 ### Breaking Changes
 
