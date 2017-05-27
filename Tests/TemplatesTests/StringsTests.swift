@@ -9,12 +9,12 @@ import XCTest
 
 class StringsTests: XCTestCase {
   enum Contexts {
-    static let all = ["empty", "defaults"]
+    static let all = ["empty", "localizable"]
   }
 
   // generate variations to test customname generation
   let variations: VariationGenerator = { name, context in
-    guard name == "defaults" else { return [(context: context, suffix: "")] }
+    guard name == "localizable" else { return [(context: context, suffix: "")] }
 
     return [
       (context: context,
