@@ -27,7 +27,9 @@
 
 ### New Features
 
-_None_
+* Strings: the templates have been updated to support multiple string tables.  
+  [David Jennes](https://github.com/djbe)
+  [#49](https://github.com/SwiftGen/templates/issues/49)
 
 ### Internal Changes
 
