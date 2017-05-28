@@ -43,6 +43,10 @@ images:
   bundled:
    - allvalues
    - default
+plist:
+  custom:
+  bundled:
+   - default
 storyboards:
   custom:
    - mytemplate

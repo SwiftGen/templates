@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>stringKeys</key>
+	<array>
+		<string>UIUserInterfaceStyle</string>
+		<string>CFBundleShortVersionString</string>
+		<string>CFBundleExecutable</string>
+		<string>CFBundleInfoDictionaryVersion</string>
+		<string>UIMainStoryboardFile</string>
+		<string>CFBundleDevelopmentRegion</string>
+		<string>CFBundlePackageType</string>
+		<string>CFBundleName</string>
+		<string>CFBundleVersion</string>
+		<string>CFBundleIdentifier</string>
+	</array>
+	<key>boolKeys</key>
+	<array>
+		<string>LSRequiresIPhoneOS</string>
+	</array>
+	<key>arrayKeys</key>
+	<array>
+		<string>UIRequiredDeviceCapabilities</string>
+	</array>
+</dict>
+</plist>

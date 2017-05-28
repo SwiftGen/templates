@@ -27,7 +27,9 @@
 
 ### New Features
 
-_None_
+* Add Info.plist templates.  
+  [Toshihiro Suzuki](https://github.com/toshi0383)
+  [#34](https://github.com/SwiftGen/templates/pull/34)
 
 ### Internal Changes
 
