@@ -3,13 +3,6 @@
 <plist version="1.0">
 <dict>
 	<key>tables</key>
-	<array>
-		<dict>
-			<key>levels</key>
-			<dict/>
-			<key>name</key>
-			<string>Localizable</string>
-		</dict>
-	</array>
+	<array/>
 </dict>
 </plist>

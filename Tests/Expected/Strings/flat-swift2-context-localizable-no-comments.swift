@@ -6,58 +6,33 @@ import Foundation
 
 // swiftlint:disable identifier_name line_length type_body_length
 enum L10n {
-  case AlertMessage
-  case AlertTitle
-  case ObjectOwnership(Int, String, String)
-  case Private(String, Int)
-  case ApplesCount(Int)
-  case BananasOwner(Int, String)
-  case SettingsNavigationBarSelf
-  case SettingsNavigationBarTitleDeeperThanWeCanHandleNoReallyThisIsDeep
-  case SettingsNavigationBarTitleEvenDeeper
-  case SeTTingsUSerProFileSectioNFooterText
-  case SettingsUserProfileSectionHeaderTitle
-}
-
-extension L10n: CustomStringConvertible {
-  var description: String { return self.string }
-
-  var string: String {
-    switch self {
-      case .AlertMessage:
-        return L10n.tr("alert_message")
-      case .AlertTitle:
-        return L10n.tr("alert_title")
-      case .ObjectOwnership(let p1, let p2, let p3):
-        return L10n.tr("ObjectOwnership", p1, p2, p3)
-      case .Private(let p1, let p2):
-        return L10n.tr("private", p1, p2)
-      case .ApplesCount(let p1):
-        return L10n.tr("apples.count", p1)
-      case .BananasOwner(let p1, let p2):
-        return L10n.tr("bananas.owner", p1, p2)
-      case .SettingsNavigationBarSelf:
-        return L10n.tr("settings.navigation-bar.self")
-      case .SettingsNavigationBarTitleDeeperThanWeCanHandleNoReallyThisIsDeep:
-        return L10n.tr("settings.navigation-bar.title.deeper.than.we.can.handle.no.really.this.is.deep")
-      case .SettingsNavigationBarTitleEvenDeeper:
-        return L10n.tr("settings.navigation-bar.title.even.deeper")
-      case .SeTTingsUSerProFileSectioNFooterText:
-        return L10n.tr("seTTings.uSer-proFile-sectioN.footer_text")
-      case .SettingsUserProfileSectionHeaderTitle:
-        return L10n.tr("SETTINGS.USER_PROFILE_SECTION.HEADER_TITLE")
-    }
+  static let AlertMessage = L10n.tr("Localizable", "alert_message")
+  static let AlertTitle = L10n.tr("Localizable", "alert_title")
+  static func ObjectOwnership(p1: Int, p2: String, p3: String) -> String {
+    return L10n.tr("Localizable", "ObjectOwnership", p1, p2, p3)
   }
-
-  private static func tr(key: String, _ args: CVarArgType...) -> String {
-    let format = NSLocalizedString(key, bundle: NSBundle(forClass: BundleToken.self), comment: "")
-    return String(format: format, locale: NSLocale.currentLocale(), arguments: args)
+  static func Private(p1: String, p2: Int) -> String {
+    return L10n.tr("Localizable", "private", p1, p2)
   }
+  static func ApplesCount(p1: Int) -> String {
+    return L10n.tr("Localizable", "apples.count", p1)
+  }
+  static func BananasOwner(p1: Int, p2: String) -> String {
+    return L10n.tr("Localizable", "bananas.owner", p1, p2)
+  }
+  static let SettingsNavigationBarSelf = L10n.tr("Localizable", "settings.navigation-bar.self")
+  static let SettingsNavigationBarTitleDeeperThanWeCanHandleNoReallyThisIsDeep = L10n.tr("Localizable", "settings.navigation-bar.title.deeper.than.we.can.handle.no.really.this.is.deep")
+  static let SettingsNavigationBarTitleEvenDeeper = L10n.tr("Localizable", "settings.navigation-bar.title.even.deeper")
+  static let SeTTingsUSerProFileSectioNFooterText = L10n.tr("Localizable", "seTTings.uSer-proFile-sectioN.footer_text")
+  static let SettingsUserProfileSectionHeaderTitle = L10n.tr("Localizable", "SETTINGS.USER_PROFILE_SECTION.HEADER_TITLE")
 }
 // swiftlint:enable identifier_name line_length type_body_length
 
-func tr(key: L10n) -> String {
-  return key.string
+extension L10n {
+  private static func tr(table: String, _ key: String, _ args: CVarArgType...) -> String {
+    let format = NSLocalizedString(key, tableName: table, bundle: NSBundle(forClass: BundleToken.self), comment: "")
+    return String(format: format, locale: NSLocale.currentLocale(), arguments: args)
+  }
 }
 
 private final class BundleToken {}

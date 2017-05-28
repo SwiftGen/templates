@@ -44,8 +44,8 @@ enum L10n {
 
 ```swift
 // Simple strings
-let message = L10n.AlertMessage.string
-let title = tr(.AlertTitle)
+let message = L10n.AlertMessage
+let title = L10n.AlertTitle
 
 // with parameters, note that each argument needs to be of the correct type
 let apples = L10n.ApplesCount(3)

@@ -7,68 +7,43 @@ import Foundation
 // swiftlint:disable identifier_name line_length type_body_length
 enum XCTLoc {
   /// Some alert body there
-  case AlertMessage
+  static let AlertMessage = XCTLoc.tr("Localizable", "alert_message")
   /// Title of the alert
-  case AlertTitle
+  static let AlertTitle = XCTLoc.tr("Localizable", "alert_title")
   /// These are %3$@'s %1$d %2$@.
-  case ObjectOwnership(Int, String, String)
+  static func ObjectOwnership(p1: Int, p2: String, p3: String) -> String {
+    return XCTLoc.tr("Localizable", "ObjectOwnership", p1, p2, p3)
+  }
   /// Hello, my name is %@ and I'm %d
-  case Private(String, Int)
+  static func Private(p1: String, p2: Int) -> String {
+    return XCTLoc.tr("Localizable", "private", p1, p2)
+  }
   /// You have %d apples
-  case ApplesCount(Int)
+  static func ApplesCount(p1: Int) -> String {
+    return XCTLoc.tr("Localizable", "apples.count", p1)
+  }
   /// Those %d bananas belong to %@.
-  case BananasOwner(Int, String)
+  static func BananasOwner(p1: Int, p2: String) -> String {
+    return XCTLoc.tr("Localizable", "bananas.owner", p1, p2)
+  }
   /// Some Reserved Keyword there
-  case SettingsNavigationBarSelf
+  static let SettingsNavigationBarSelf = XCTLoc.tr("Localizable", "settings.navigation-bar.self")
   /// DeepSettings
-  case SettingsNavigationBarTitleDeeperThanWeCanHandleNoReallyThisIsDeep
+  static let SettingsNavigationBarTitleDeeperThanWeCanHandleNoReallyThisIsDeep = XCTLoc.tr("Localizable", "settings.navigation-bar.title.deeper.than.we.can.handle.no.really.this.is.deep")
   /// Settings
-  case SettingsNavigationBarTitleEvenDeeper
+  static let SettingsNavigationBarTitleEvenDeeper = XCTLoc.tr("Localizable", "settings.navigation-bar.title.even.deeper")
   /// Here you can change some user profile settings.
-  case SeTTingsUSerProFileSectioNFooterText
+  static let SeTTingsUSerProFileSectioNFooterText = XCTLoc.tr("Localizable", "seTTings.uSer-proFile-sectioN.footer_text")
   /// User Profile Settings
-  case SettingsUserProfileSectionHeaderTitle
-}
-
-extension XCTLoc: CustomStringConvertible {
-  var description: String { return self.string }
-
-  var string: String {
-    switch self {
-      case .AlertMessage:
-        return XCTLoc.tr("alert_message")
-      case .AlertTitle:
-        return XCTLoc.tr("alert_title")
-      case .ObjectOwnership(let p1, let p2, let p3):
-        return XCTLoc.tr("ObjectOwnership", p1, p2, p3)
-      case .Private(let p1, let p2):
-        return XCTLoc.tr("private", p1, p2)
-      case .ApplesCount(let p1):
-        return XCTLoc.tr("apples.count", p1)
-      case .BananasOwner(let p1, let p2):
-        return XCTLoc.tr("bananas.owner", p1, p2)
-      case .SettingsNavigationBarSelf:
-        return XCTLoc.tr("settings.navigation-bar.self")
-      case .SettingsNavigationBarTitleDeeperThanWeCanHandleNoReallyThisIsDeep:
-        return XCTLoc.tr("settings.navigation-bar.title.deeper.than.we.can.handle.no.really.this.is.deep")
-      case .SettingsNavigationBarTitleEvenDeeper:
-        return XCTLoc.tr("settings.navigation-bar.title.even.deeper")
-      case .SeTTingsUSerProFileSectioNFooterText:
-        return XCTLoc.tr("seTTings.uSer-proFile-sectioN.footer_text")
-      case .SettingsUserProfileSectionHeaderTitle:
-        return XCTLoc.tr("SETTINGS.USER_PROFILE_SECTION.HEADER_TITLE")
-    }
-  }
-
-  private static func tr(key: String, _ args: CVarArgType...) -> String {
-    let format = NSLocalizedString(key, bundle: NSBundle(forClass: BundleToken.self), comment: "")
-    return String(format: format, locale: NSLocale.currentLocale(), arguments: args)
-  }
+  static let SettingsUserProfileSectionHeaderTitle = XCTLoc.tr("Localizable", "SETTINGS.USER_PROFILE_SECTION.HEADER_TITLE")
 }
 // swiftlint:enable identifier_name line_length type_body_length
 
-func tr(key: XCTLoc) -> String {
-  return key.string
+extension XCTLoc {
+  private static func tr(table: String, _ key: String, _ args: CVarArgType...) -> String {
+    let format = NSLocalizedString(key, tableName: table, bundle: NSBundle(forClass: BundleToken.self), comment: "")
+    return String(format: format, locale: NSLocale.currentLocale(), arguments: args)
+  }
 }
 
 private final class BundleToken {}

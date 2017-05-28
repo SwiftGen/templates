@@ -7,68 +7,43 @@ import Foundation
 // swiftlint:disable identifier_name line_length type_body_length
 enum L10n {
   /// Some alert body there
-  case AlertMessage
+  static let AlertMessage = L10n.tr("Localizable", "alert_message")
   /// Title of the alert
-  case AlertTitle
+  static let AlertTitle = L10n.tr("Localizable", "alert_title")
   /// These are %3$@'s %1$d %2$@.
-  case ObjectOwnership(Int, String, String)
+  static func ObjectOwnership(p1: Int, p2: String, p3: String) -> String {
+    return L10n.tr("Localizable", "ObjectOwnership", p1, p2, p3)
+  }
   /// Hello, my name is %@ and I'm %d
-  case Private(String, Int)
+  static func Private(p1: String, p2: Int) -> String {
+    return L10n.tr("Localizable", "private", p1, p2)
+  }
   /// You have %d apples
-  case ApplesCount(Int)
+  static func ApplesCount(p1: Int) -> String {
+    return L10n.tr("Localizable", "apples.count", p1)
+  }
   /// Those %d bananas belong to %@.
-  case BananasOwner(Int, String)
+  static func BananasOwner(p1: Int, p2: String) -> String {
+    return L10n.tr("Localizable", "bananas.owner", p1, p2)
+  }
   /// Some Reserved Keyword there
-  case SettingsNavigationBarSelf
+  static let SettingsNavigationBarSelf = L10n.tr("Localizable", "settings.navigation-bar.self")
   /// DeepSettings
-  case SettingsNavigationBarTitleDeeperThanWeCanHandleNoReallyThisIsDeep
+  static let SettingsNavigationBarTitleDeeperThanWeCanHandleNoReallyThisIsDeep = L10n.tr("Localizable", "settings.navigation-bar.title.deeper.than.we.can.handle.no.really.this.is.deep")
   /// Settings
-  case SettingsNavigationBarTitleEvenDeeper
+  static let SettingsNavigationBarTitleEvenDeeper = L10n.tr("Localizable", "settings.navigation-bar.title.even.deeper")
   /// Here you can change some user profile settings.
-  case SeTTingsUSerProFileSectioNFooterText
+  static let SeTTingsUSerProFileSectioNFooterText = L10n.tr("Localizable", "seTTings.uSer-proFile-sectioN.footer_text")
   /// User Profile Settings
-  case SettingsUserProfileSectionHeaderTitle
-}
-
-extension L10n: CustomStringConvertible {
-  var description: String { return self.string }
-
-  var string: String {
-    switch self {
-      case .AlertMessage:
-        return L10n.tr("alert_message")
-      case .AlertTitle:
-        return L10n.tr("alert_title")
-      case .ObjectOwnership(let p1, let p2, let p3):
-        return L10n.tr("ObjectOwnership", p1, p2, p3)
-      case .Private(let p1, let p2):
-        return L10n.tr("private", p1, p2)
-      case .ApplesCount(let p1):
-        return L10n.tr("apples.count", p1)
-      case .BananasOwner(let p1, let p2):
-        return L10n.tr("bananas.owner", p1, p2)
-      case .SettingsNavigationBarSelf:
-        return L10n.tr("settings.navigation-bar.self")
-      case .SettingsNavigationBarTitleDeeperThanWeCanHandleNoReallyThisIsDeep:
-        return L10n.tr("settings.navigation-bar.title.deeper.than.we.can.handle.no.really.this.is.deep")
-      case .SettingsNavigationBarTitleEvenDeeper:
-        return L10n.tr("settings.navigation-bar.title.even.deeper")
-      case .SeTTingsUSerProFileSectioNFooterText:
-        return L10n.tr("seTTings.uSer-proFile-sectioN.footer_text")
-      case .SettingsUserProfileSectionHeaderTitle:
-        return L10n.tr("SETTINGS.USER_PROFILE_SECTION.HEADER_TITLE")
-    }
-  }
-
-  private static func tr(key: String, _ args: CVarArgType...) -> String {
-    let format = NSLocalizedString(key, bundle: NSBundle(forClass: BundleToken.self), comment: "")
-    return String(format: format, locale: NSLocale.currentLocale(), arguments: args)
-  }
+  static let SettingsUserProfileSectionHeaderTitle = L10n.tr("Localizable", "SETTINGS.USER_PROFILE_SECTION.HEADER_TITLE")
 }
 // swiftlint:enable identifier_name line_length type_body_length
 
-func tr(key: L10n) -> String {
-  return key.string
+extension L10n {
+  private static func tr(table: String, _ key: String, _ args: CVarArgType...) -> String {
+    let format = NSLocalizedString(key, tableName: table, bundle: NSBundle(forClass: BundleToken.self), comment: "")
+    return String(format: format, locale: NSLocale.currentLocale(), arguments: args)
+  }
 }
 
 private final class BundleToken {}
