@@ -93,7 +93,7 @@ namespace :output do
     end
 
     commands = sdks.map do |sdk|
-      %Q(--toolchain #{toolchain[:toolchain]} -sdk #{sdk} swiftc -parse -target #{SDKS[sdk]} -I #{toolchain[:module_path]} "#{MODULE_OUTPUT_PATH}/Definitions.swift" #{f})
+      %Q(--toolchain #{toolchain[:toolchain]} -sdk #{sdk} swiftc -typecheck -target #{SDKS[sdk]} -I #{toolchain[:module_path]} "#{MODULE_OUTPUT_PATH}/Definitions.swift" #{f})
     end
     subtask = File.basename(f, '.*')
 
