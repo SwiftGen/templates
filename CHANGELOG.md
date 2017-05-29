@@ -24,6 +24,9 @@
 * Many deprecated templates have been removed, and others have been renamed to reflect new behaviours. We've prepared a migration guide which you can find here: [Documentation/MigrationGuide](https://github.com/SwiftGen/templates/blob/master/Documentation/MigrationGuide.md).  
   [David Jennes](https://github.com/djbe)
   [#47](https://github.com/SwiftGen/templates/issues/47)
+* Since Swift 2 is no longer actively supported, we now consider those templates as "legacy" and cannot guarantee that there won't be issues with the generated code.  
+  [David Jennes](https://github.com/djbe)
+  [#53](https://github.com/SwiftGen/templates/issues/53)
 
 ### New Features
 
