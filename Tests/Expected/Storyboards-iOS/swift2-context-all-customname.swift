@@ -19,10 +19,10 @@ extension StoryboardSceneType {
   }
 
   static func initialViewController() -> UIViewController {
-    guard let vc = storyboard().instantiateInitialViewController() else {
+    guard let controller = storyboard().instantiateInitialViewController() else {
       fatalError("Failed to instantiate initialViewController for \(self.storyboardName)")
     }
-    return vc
+    return controller
   }
 }
 
@@ -49,29 +49,28 @@ enum XCTStoryboardsScene {
     static let storyboardName = "AdditionalImport"
 
     static func initialViewController() -> LocationPicker.LocationPickerViewController {
-      guard let vc = storyboard().instantiateInitialViewController() as? LocationPicker.LocationPickerViewController else {
+      guard let controller = storyboard().instantiateInitialViewController() as? LocationPicker.LocationPickerViewController else {
         fatalError("Failed to instantiate initialViewController for \(self.storyboardName)")
       }
-      return vc
+      return controller
     }
 
     case PublicScene = "public"
     static func instantiatePublic() -> SlackTextViewController.SLKTextViewController {
-      guard let vc = XCTStoryboardsScene.AdditionalImport.PublicScene.viewController() as? SlackTextViewController.SLKTextViewController
-      else {
+      guard let controller = XCTStoryboardsScene.AdditionalImport.PublicScene.viewController() as? SlackTextViewController.SLKTextViewController else {
         fatalError("ViewController 'public' is not of the expected class SlackTextViewController.SLKTextViewController.")
       }
-      return vc
+      return controller
     }
   }
   enum Anonymous: StoryboardSceneType {
     static let storyboardName = "Anonymous"
 
     static func initialViewController() -> UINavigationController {
-      guard let vc = storyboard().instantiateInitialViewController() as? UINavigationController else {
+      guard let controller = storyboard().instantiateInitialViewController() as? UINavigationController else {
         fatalError("Failed to instantiate initialViewController for \(self.storyboardName)")
       }
-      return vc
+      return controller
     }
   }
   enum Dependency: String, StoryboardSceneType {
@@ -92,29 +91,26 @@ enum XCTStoryboardsScene {
 
     case MessagesListScene = "MessagesList"
     static func instantiateMessagesList() -> UITableViewController {
-      guard let vc = XCTStoryboardsScene.Message.MessagesListScene.viewController() as? UITableViewController
-      else {
+      guard let controller = XCTStoryboardsScene.Message.MessagesListScene.viewController() as? UITableViewController else {
         fatalError("ViewController 'MessagesList' is not of the expected class UITableViewController.")
       }
-      return vc
+      return controller
     }
 
     case NavCtrlScene = "NavCtrl"
     static func instantiateNavCtrl() -> UINavigationController {
-      guard let vc = XCTStoryboardsScene.Message.NavCtrlScene.viewController() as? UINavigationController
-      else {
+      guard let controller = XCTStoryboardsScene.Message.NavCtrlScene.viewController() as? UINavigationController else {
         fatalError("ViewController 'NavCtrl' is not of the expected class UINavigationController.")
       }
-      return vc
+      return controller
     }
 
     case URLChooserScene = "URLChooser"
     static func instantiateURLChooser() -> XXPickerViewController {
-      guard let vc = XCTStoryboardsScene.Message.URLChooserScene.viewController() as? XXPickerViewController
-      else {
+      guard let controller = XCTStoryboardsScene.Message.URLChooserScene.viewController() as? XXPickerViewController else {
         fatalError("ViewController 'URLChooser' is not of the expected class XXPickerViewController.")
       }
-      return vc
+      return controller
     }
   }
   enum Placeholder: String, StoryboardSceneType {
@@ -122,21 +118,20 @@ enum XCTStoryboardsScene {
 
     case NavigationScene = "Navigation"
     static func instantiateNavigation() -> UINavigationController {
-      guard let vc = XCTStoryboardsScene.Placeholder.NavigationScene.viewController() as? UINavigationController
-      else {
+      guard let controller = XCTStoryboardsScene.Placeholder.NavigationScene.viewController() as? UINavigationController else {
         fatalError("ViewController 'Navigation' is not of the expected class UINavigationController.")
       }
-      return vc
+      return controller
     }
   }
   enum Wizard: String, StoryboardSceneType {
     static let storyboardName = "Wizard"
 
     static func initialViewController() -> CreateAccViewController {
-      guard let vc = storyboard().instantiateInitialViewController() as? CreateAccViewController else {
+      guard let controller = storyboard().instantiateInitialViewController() as? CreateAccViewController else {
         fatalError("Failed to instantiate initialViewController for \(self.storyboardName)")
       }
-      return vc
+      return controller
     }
 
     case Accept_CGUScene = "Accept-CGU"
@@ -146,20 +141,18 @@ enum XCTStoryboardsScene {
 
     case CreateAccountScene = "CreateAccount"
     static func instantiateCreateAccount() -> CreateAccViewController {
-      guard let vc = XCTStoryboardsScene.Wizard.CreateAccountScene.viewController() as? CreateAccViewController
-      else {
+      guard let controller = XCTStoryboardsScene.Wizard.CreateAccountScene.viewController() as? CreateAccViewController else {
         fatalError("ViewController 'CreateAccount' is not of the expected class CreateAccViewController.")
       }
-      return vc
+      return controller
     }
 
     case PreferencesScene = "Preferences"
     static func instantiatePreferences() -> UITableViewController {
-      guard let vc = XCTStoryboardsScene.Wizard.PreferencesScene.viewController() as? UITableViewController
-      else {
+      guard let controller = XCTStoryboardsScene.Wizard.PreferencesScene.viewController() as? UITableViewController else {
         fatalError("ViewController 'Preferences' is not of the expected class UITableViewController.")
       }
-      return vc
+      return controller
     }
 
     case Validate_PasswordScene = "Validate_Password"

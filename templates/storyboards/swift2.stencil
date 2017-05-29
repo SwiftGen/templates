@@ -1,17 +1,13 @@
 // Generated using SwiftGen, by O.Halligon — https://github.com/SwiftGen/SwiftGen
 
 {% if storyboards %}
+{% set isAppKit %}{% if platform == "macOS" %}true{% endif %}{% endset %}
+{% set prefix %}{% if isAppKit %}NS{% else %}UI{% endif %}{% endset %}
+{% set controller %}{% if isAppKit %}Controller{% else %}ViewController{% endif %}{% endset %}
+{% set baseType %}{% if isAppKit %}AnyObject{% else %}UIViewController{% endif %}{% endset %}
 // swiftlint:disable sorted_imports
-{% macro className scene %}{% filter removeNewlines %}
-  {% if scene.customClass %}
-    {% if scene.customModule %}{{scene.customModule}}.{% endif %}
-    {{scene.customClass}}
-  {% else %}
-    UI{{scene.baseType}}
-  {% endif %}
-{% endfilter %}{% endmacro %}
 import Foundation
-import UIKit
+import {% if isAppKit %}Cocoa{% else %}UIKit{% endif %}
 {% for module in modules where module != env.PRODUCT_MODULE_NAME and module != param.module %}
 import {{module}}
 {% endfor %}
@@ -24,89 +20,80 @@ protocol StoryboardSceneType {
 }
 
 extension StoryboardSceneType {
-  static func storyboard() -> UIStoryboard {
-    return UIStoryboard(name: self.storyboardName, bundle: NSBundle(forClass: BundleToken.self))
+  static func storyboard() -> {{prefix}}Storyboard {
+    return {{prefix}}Storyboard(name: self.storyboardName, bundle: NSBundle(forClass: BundleToken.self))
   }
 
-  static func initialViewController() -> UIViewController {
-    guard let vc = storyboard().instantiateInitialViewController() else {
-      fatalError("Failed to instantiate initialViewController for \(self.storyboardName)")
+  static func initial{{controller}}() -> {{baseType}} {
+    guard let controller = storyboard().instantiateInitial{{controller}}() else {
+      fatalError("Failed to instantiate initial{{controller}} for \(self.storyboardName)")
     }
-    return vc
+    return controller
   }
 }
 
 extension StoryboardSceneType where Self: RawRepresentable, Self.RawValue == String {
-  func viewController() -> UIViewController {
-    return Self.storyboard().instantiateViewControllerWithIdentifier(self.rawValue)
+  func {{controller|lowerFirstWord}}() -> {{baseType}} {
+    return Self.storyboard().instantiate{{controller}}WithIdentifier(self.rawValue)
   }
-  static func viewController(identifier: Self) -> UIViewController {
-    return identifier.viewController()
+  static func {{controller|lowerFirstWord}}(identifier: Self) -> {{baseType}} {
+    return identifier.{{controller|lowerFirstWord}}()
   }
 }
 
 protocol StoryboardSegueType: RawRepresentable { }
 
-extension UIViewController {
+extension {% if isAppKit %}NSSeguePerforming{% else %}{{baseType}}{% endif %} {
   func performSegue<S: StoryboardSegueType where S.RawValue == String>(segue: S, sender: AnyObject? = nil) {
-    performSegueWithIdentifier(segue.rawValue, sender: sender)
+    performSegueWithIdentifier{% if isAppKit %}?{% endif %}(segue.rawValue, sender: sender)
   }
 }
 
 {# This is where the generation begins, this code depends on what you have in your Storyboards #}
 // swiftlint:disable explicit_type_interface identifier_name line_length type_body_length type_name
 {% set sceneEnumName %}{{param.sceneEnumName|default:"StoryboardScene"}}{% endset %}
+{% macro className scene %}{% filter removeNewlines %}
+  {% if scene.customClass %}
+    {% if scene.customModule %}{{scene.customModule}}.{% endif %}
+    {{scene.customClass}}
+  {% else %}
+    {{prefix}}{{scene.baseType}}
+  {% endif %}
+{% endfilter %}{% endmacro %}
 enum {{sceneEnumName}} {
   {% for storyboard in storyboards %}
   {% set storyboardName %}{{storyboard.name|swiftIdentifier|escapeReservedKeywords}}{% endset %}
-  {% if storyboard.scenes %}
-  enum {{storyboardName}}: String, StoryboardSceneType {
+  enum {{storyboardName}}: {% if storyboard.scenes %}String, {% endif %}StoryboardSceneType {
     static let storyboardName = "{{storyboard.name}}"
-    {% if storyboard.initialScene and storyboard.initialScene.baseType != "ViewController" %}
+    {% if storyboard.initialScene %}{% if isAppKit or storyboard.initialScene.baseType != "ViewController" %}
     {% set initialSceneClass %}{% call className storyboard.initialScene %}{% endset %}
 
     static func initialViewController() -> {{initialSceneClass}} {
-      guard let vc = storyboard().instantiateInitialViewController() as? {{initialSceneClass}} else {
+      guard let controller = storyboard().instantiateInitialViewController() as? {{initialSceneClass}} else {
         fatalError("Failed to instantiate initialViewController for \(self.storyboardName)")
       }
-      return vc
+      return controller
     }
-    {% endif %}
+    {% endif %}{% endif %}
+    {% if storyboard.scenes %}
     {% for scene in storyboard.scenes %}
     {% set sceneID %}{{scene.identifier|swiftIdentifier}}{% endset %}
 
     case {{sceneID}}Scene = "{{scene.identifier}}"
-    {% if scene.baseType != "ViewController" %}
     {% set sceneClass %}{% call className scene %}{% endset %}
     static func instantiate{{sceneID|snakeToCamelCase}}() -> {{sceneClass}} {
-      guard let vc = {{sceneEnumName}}.{{storyboardName}}.{{sceneID}}Scene.viewController() as? {{sceneClass}}
-      else {
-        fatalError("ViewController '{{scene.identifier}}' is not of the expected class {{sceneClass}}.")
+      {% if isAppKit or scene.baseType != "ViewController" %}
+      guard let controller = {{sceneEnumName}}.{{storyboardName}}.{{sceneID}}Scene.{{controller|lowerFirstWord}}() as? {{sceneClass}} else {
+        fatalError("{{controller}} '{{scene.identifier}}' is not of the expected class {{sceneClass}}.")
       }
-      return vc
+      return controller
+      {% else %}
+      return {{sceneEnumName}}.{{storyboardName}}.{{sceneID}}Scene.{{controller|lowerFirstWord}}()
+      {% endif %}
     }
-    {% else %}
-    static func instantiate{{sceneID|snakeToCamelCase}}() -> UIViewController {
-      return {{sceneEnumName}}.{{storyboardName}}.{{sceneID}}Scene.viewController()
-    }
-    {% endif %}
     {% endfor %}
-  }
-  {% else %}
-  enum {{storyboardName}}: StoryboardSceneType {
-    static let storyboardName = "{{storyboard.name}}"
-    {% if storyboard.initialScene and storyboard.initialScene.baseType != "ViewController" %}
-    {% set initialSceneClass %}{% call className storyboard.initialScene %}{% endset %}
-
-    static func initialViewController() -> {{initialSceneClass}} {
-      guard let vc = storyboard().instantiateInitialViewController() as? {{initialSceneClass}} else {
-        fatalError("Failed to instantiate initialViewController for \(self.storyboardName)")
-      }
-      return vc
-    }
     {% endif %}
   }
-  {% endif %}
   {% endfor %}
 }
 

@@ -1,8 +1,8 @@
 // Generated using SwiftGen, by O.Halligon — https://github.com/SwiftGen/SwiftGen
 
 // swiftlint:disable sorted_imports
-import Cocoa
 import Foundation
+import Cocoa
 import FadeSegue
 import PrefsWindowController
 
@@ -18,9 +18,8 @@ extension StoryboardSceneType {
   }
 
   static func initialController() -> Any {
-    guard let controller = storyboard().instantiateInitialController()
-    else {
-      fatalError("Failed to instantiate initialViewController for \(self.storyboardName)")
+    guard let controller = storyboard().instantiateInitialController() else {
+      fatalError("Failed to instantiate initialController for \(self.storyboardName)")
     }
     return controller
   }
@@ -37,15 +36,9 @@ extension StoryboardSceneType where Self: RawRepresentable, Self.RawValue == Str
 
 protocol StoryboardSegueType: RawRepresentable { }
 
-extension NSWindowController {
-  func performSegue<S: StoryboardSegueType>(segue: S, sender: Any? = nil) where S.RawValue == String {
-    performSegue(withIdentifier: segue.rawValue, sender: sender)
-  }
-}
-
-extension NSViewController {
-  func performSegue<S: StoryboardSegueType>(segue: S, sender: Any? = nil) where S.RawValue == String {
-    performSegue(withIdentifier: segue.rawValue, sender: sender)
+extension NSSeguePerforming {
+  func perform<S: StoryboardSegueType>(segue: S, sender: Any? = nil) where S.RawValue == String {
+    performSegue?(withIdentifier: segue.rawValue, sender: sender)
   }
 }
 
@@ -56,11 +49,10 @@ enum XCTStoryboardsScene {
 
     case privateScene = "private"
     static func instantiatePrivate() -> PrefsWindowController.DBPrefsWindowController {
-      guard let vc = XCTStoryboardsScene.AdditionalImport.privateScene.controller() as? PrefsWindowController.DBPrefsWindowController
-      else {
-        fatalError("ViewController 'private' is not of the expected class PrefsWindowController.DBPrefsWindowController.")
+      guard let controller = XCTStoryboardsScene.AdditionalImport.privateScene.controller() as? PrefsWindowController.DBPrefsWindowController else {
+        fatalError("Controller 'private' is not of the expected class PrefsWindowController.DBPrefsWindowController.")
       }
-      return vc
+      return controller
     }
   }
   enum Anonymous: StoryboardSceneType {
@@ -71,11 +63,10 @@ enum XCTStoryboardsScene {
 
     case dependentScene = "Dependent"
     static func instantiateDependent() -> NSViewController {
-      guard let vc = XCTStoryboardsScene.Dependency.dependentScene.controller() as? NSViewController
-      else {
-        fatalError("ViewController 'Dependent' is not of the expected class NSViewController.")
+      guard let controller = XCTStoryboardsScene.Dependency.dependentScene.controller() as? NSViewController else {
+        fatalError("Controller 'Dependent' is not of the expected class NSViewController.")
       }
-      return vc
+      return controller
     }
   }
   enum Message: String, StoryboardSceneType {
@@ -83,56 +74,50 @@ enum XCTStoryboardsScene {
 
     case messageDetailsScene = "MessageDetails"
     static func instantiateMessageDetails() -> NSViewController {
-      guard let vc = XCTStoryboardsScene.Message.messageDetailsScene.controller() as? NSViewController
-      else {
-        fatalError("ViewController 'MessageDetails' is not of the expected class NSViewController.")
+      guard let controller = XCTStoryboardsScene.Message.messageDetailsScene.controller() as? NSViewController else {
+        fatalError("Controller 'MessageDetails' is not of the expected class NSViewController.")
       }
-      return vc
+      return controller
     }
 
     case messageListScene = "MessageList"
     static func instantiateMessageList() -> NSViewController {
-      guard let vc = XCTStoryboardsScene.Message.messageListScene.controller() as? NSViewController
-      else {
-        fatalError("ViewController 'MessageList' is not of the expected class NSViewController.")
+      guard let controller = XCTStoryboardsScene.Message.messageListScene.controller() as? NSViewController else {
+        fatalError("Controller 'MessageList' is not of the expected class NSViewController.")
       }
-      return vc
+      return controller
     }
 
     case messageListFooterScene = "MessageListFooter"
     static func instantiateMessageListFooter() -> NSViewController {
-      guard let vc = XCTStoryboardsScene.Message.messageListFooterScene.controller() as? NSViewController
-      else {
-        fatalError("ViewController 'MessageListFooter' is not of the expected class NSViewController.")
+      guard let controller = XCTStoryboardsScene.Message.messageListFooterScene.controller() as? NSViewController else {
+        fatalError("Controller 'MessageListFooter' is not of the expected class NSViewController.")
       }
-      return vc
+      return controller
     }
 
     case messagesTabScene = "MessagesTab"
     static func instantiateMessagesTab() -> CustomTabViewController {
-      guard let vc = XCTStoryboardsScene.Message.messagesTabScene.controller() as? CustomTabViewController
-      else {
-        fatalError("ViewController 'MessagesTab' is not of the expected class CustomTabViewController.")
+      guard let controller = XCTStoryboardsScene.Message.messagesTabScene.controller() as? CustomTabViewController else {
+        fatalError("Controller 'MessagesTab' is not of the expected class CustomTabViewController.")
       }
-      return vc
+      return controller
     }
 
     case splitMessagesScene = "SplitMessages"
     static func instantiateSplitMessages() -> NSSplitViewController {
-      guard let vc = XCTStoryboardsScene.Message.splitMessagesScene.controller() as? NSSplitViewController
-      else {
-        fatalError("ViewController 'SplitMessages' is not of the expected class NSSplitViewController.")
+      guard let controller = XCTStoryboardsScene.Message.splitMessagesScene.controller() as? NSSplitViewController else {
+        fatalError("Controller 'SplitMessages' is not of the expected class NSSplitViewController.")
       }
-      return vc
+      return controller
     }
 
     case windowCtrlScene = "WindowCtrl"
     static func instantiateWindowCtrl() -> NSWindowController {
-      guard let vc = XCTStoryboardsScene.Message.windowCtrlScene.controller() as? NSWindowController
-      else {
-        fatalError("ViewController 'WindowCtrl' is not of the expected class NSWindowController.")
+      guard let controller = XCTStoryboardsScene.Message.windowCtrlScene.controller() as? NSWindowController else {
+        fatalError("Controller 'WindowCtrl' is not of the expected class NSWindowController.")
       }
-      return vc
+      return controller
     }
   }
   enum Placeholder: String, StoryboardSceneType {
@@ -140,20 +125,18 @@ enum XCTStoryboardsScene {
 
     case dependentScene = "Dependent"
     static func instantiateDependent() -> NSControllerPlaceholder {
-      guard let vc = XCTStoryboardsScene.Placeholder.dependentScene.controller() as? NSControllerPlaceholder
-      else {
-        fatalError("ViewController 'Dependent' is not of the expected class NSControllerPlaceholder.")
+      guard let controller = XCTStoryboardsScene.Placeholder.dependentScene.controller() as? NSControllerPlaceholder else {
+        fatalError("Controller 'Dependent' is not of the expected class NSControllerPlaceholder.")
       }
-      return vc
+      return controller
     }
 
     case windowScene = "Window"
     static func instantiateWindow() -> NSWindowController {
-      guard let vc = XCTStoryboardsScene.Placeholder.windowScene.controller() as? NSWindowController
-      else {
-        fatalError("ViewController 'Window' is not of the expected class NSWindowController.")
+      guard let controller = XCTStoryboardsScene.Placeholder.windowScene.controller() as? NSWindowController else {
+        fatalError("Controller 'Window' is not of the expected class NSWindowController.")
       }
-      return vc
+      return controller
     }
   }
 }

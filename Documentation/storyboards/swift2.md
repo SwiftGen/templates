@@ -10,7 +10,6 @@
 ## When to use it
 
 - When you need to generate *Swift 2* code
-- You want to generate code for UIKit platforms (iOS, tvOS and watchOS)
 - **Warning**: Swift 2 is no longer actively supported, so we cannot guarantee that there won't be issues with the generated code.
 
 ## Customization
@@ -23,6 +22,8 @@ You can customize some elements of this template by overriding the following par
 | `segueEnumName` | `StoryboardSegue` | Allows you to change the name of the generated `enum` containing all storyboard segues. |
 
 ## Generated Code
+
+Note: the generated code may look differently depending on the platform the storyboard file is targeting.
 
 **Extract:**
 

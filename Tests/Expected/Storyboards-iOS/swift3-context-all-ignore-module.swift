@@ -18,10 +18,10 @@ extension StoryboardSceneType {
   }
 
   static func initialViewController() -> UIViewController {
-    guard let vc = storyboard().instantiateInitialViewController() else {
+    guard let controller = storyboard().instantiateInitialViewController() else {
       fatalError("Failed to instantiate initialViewController for \(self.storyboardName)")
     }
-    return vc
+    return controller
   }
 }
 
@@ -48,29 +48,28 @@ enum StoryboardScene {
     static let storyboardName = "AdditionalImport"
 
     static func initialViewController() -> LocationPicker.LocationPickerViewController {
-      guard let vc = storyboard().instantiateInitialViewController() as? LocationPicker.LocationPickerViewController else {
+      guard let controller = storyboard().instantiateInitialViewController() as? LocationPicker.LocationPickerViewController else {
         fatalError("Failed to instantiate initialViewController for \(self.storyboardName)")
       }
-      return vc
+      return controller
     }
 
     case publicScene = "public"
     static func instantiatePublic() -> SlackTextViewController.SLKTextViewController {
-      guard let vc = StoryboardScene.AdditionalImport.publicScene.viewController() as? SlackTextViewController.SLKTextViewController
-      else {
+      guard let controller = StoryboardScene.AdditionalImport.publicScene.viewController() as? SlackTextViewController.SLKTextViewController else {
         fatalError("ViewController 'public' is not of the expected class SlackTextViewController.SLKTextViewController.")
       }
-      return vc
+      return controller
     }
   }
   enum Anonymous: StoryboardSceneType {
     static let storyboardName = "Anonymous"
 
     static func initialViewController() -> UINavigationController {
-      guard let vc = storyboard().instantiateInitialViewController() as? UINavigationController else {
+      guard let controller = storyboard().instantiateInitialViewController() as? UINavigationController else {
         fatalError("Failed to instantiate initialViewController for \(self.storyboardName)")
       }
-      return vc
+      return controller
     }
   }
   enum Dependency: String, StoryboardSceneType {
@@ -91,29 +90,26 @@ enum StoryboardScene {
 
     case messagesListScene = "MessagesList"
     static func instantiateMessagesList() -> UITableViewController {
-      guard let vc = StoryboardScene.Message.messagesListScene.viewController() as? UITableViewController
-      else {
+      guard let controller = StoryboardScene.Message.messagesListScene.viewController() as? UITableViewController else {
         fatalError("ViewController 'MessagesList' is not of the expected class UITableViewController.")
       }
-      return vc
+      return controller
     }
 
     case navCtrlScene = "NavCtrl"
     static func instantiateNavCtrl() -> UINavigationController {
-      guard let vc = StoryboardScene.Message.navCtrlScene.viewController() as? UINavigationController
-      else {
+      guard let controller = StoryboardScene.Message.navCtrlScene.viewController() as? UINavigationController else {
         fatalError("ViewController 'NavCtrl' is not of the expected class UINavigationController.")
       }
-      return vc
+      return controller
     }
 
     case urlChooserScene = "URLChooser"
     static func instantiateUrlChooser() -> XXPickerViewController {
-      guard let vc = StoryboardScene.Message.urlChooserScene.viewController() as? XXPickerViewController
-      else {
+      guard let controller = StoryboardScene.Message.urlChooserScene.viewController() as? XXPickerViewController else {
         fatalError("ViewController 'URLChooser' is not of the expected class XXPickerViewController.")
       }
-      return vc
+      return controller
     }
   }
   enum Placeholder: String, StoryboardSceneType {
@@ -121,21 +117,20 @@ enum StoryboardScene {
 
     case navigationScene = "Navigation"
     static func instantiateNavigation() -> UINavigationController {
-      guard let vc = StoryboardScene.Placeholder.navigationScene.viewController() as? UINavigationController
-      else {
+      guard let controller = StoryboardScene.Placeholder.navigationScene.viewController() as? UINavigationController else {
         fatalError("ViewController 'Navigation' is not of the expected class UINavigationController.")
       }
-      return vc
+      return controller
     }
   }
   enum Wizard: String, StoryboardSceneType {
     static let storyboardName = "Wizard"
 
     static func initialViewController() -> CreateAccViewController {
-      guard let vc = storyboard().instantiateInitialViewController() as? CreateAccViewController else {
+      guard let controller = storyboard().instantiateInitialViewController() as? CreateAccViewController else {
         fatalError("Failed to instantiate initialViewController for \(self.storyboardName)")
       }
-      return vc
+      return controller
     }
 
     case acceptCGUScene = "Accept-CGU"
@@ -145,20 +140,18 @@ enum StoryboardScene {
 
     case createAccountScene = "CreateAccount"
     static func instantiateCreateAccount() -> CreateAccViewController {
-      guard let vc = StoryboardScene.Wizard.createAccountScene.viewController() as? CreateAccViewController
-      else {
+      guard let controller = StoryboardScene.Wizard.createAccountScene.viewController() as? CreateAccViewController else {
         fatalError("ViewController 'CreateAccount' is not of the expected class CreateAccViewController.")
       }
-      return vc
+      return controller
     }
 
     case preferencesScene = "Preferences"
     static func instantiatePreferences() -> UITableViewController {
-      guard let vc = StoryboardScene.Wizard.preferencesScene.viewController() as? UITableViewController
-      else {
+      guard let controller = StoryboardScene.Wizard.preferencesScene.viewController() as? UITableViewController else {
         fatalError("ViewController 'Preferences' is not of the expected class UITableViewController.")
       }
-      return vc
+      return controller
     }
 
     case validatePasswordScene = "Validate_Password"
