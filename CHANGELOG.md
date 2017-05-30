@@ -33,6 +33,9 @@
 * Strings: the templates have been updated to support multiple string tables.  
   [David Jennes](https://github.com/djbe)
   [#49](https://github.com/SwiftGen/templates/issues/49)
+* Colors: the templates have been updated to support multiple color palettes.  
+  [David Jennes](https://github.com/djbe)
+  [#55](https://github.com/SwiftGen/templates/issues/55)
 
 ### Internal Changes
 
