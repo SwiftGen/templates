@@ -2,7 +2,14 @@
 
 {% if storyboards %}
 // swiftlint:disable sorted_imports
-{% macro className scene %}{% if scene.customClass %}{% if scene.customModule %}{{scene.customModule}}.{% endif %}{{scene.customClass}}{% else %}NS{{scene.baseType}}{% endif %}{% endmacro %}
+{% macro className scene %}{% filter removeNewlines %}
+  {% if scene.customClass %}
+    {% if scene.customModule %}{{scene.customModule}}.{% endif %}
+    {{scene.customClass}}
+  {% else %}
+    NS{{scene.baseType}}
+  {% endif %}
+{% endfilter %}{% endmacro %}
 import Cocoa
 import Foundation
 {% for module in modules where module != env.PRODUCT_MODULE_NAME and module != param.module %}
