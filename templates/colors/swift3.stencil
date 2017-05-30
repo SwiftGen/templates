@@ -1,6 +1,6 @@
 // Generated using SwiftGen, by O.Halligon — https://github.com/SwiftGen/SwiftGen
 
-{% if colors %}
+{% if palettes %}
 #if os(OSX)
   import AppKit.NSColor
   typealias Color = NSColor
@@ -24,34 +24,35 @@ extension Color {
 }
 // swiftlint:enable operator_usage_whitespace
 
-{# Note: We don't use a UInt32 rawValue in this template so we can have multiple colors with the same rgbaValue #}
 // swiftlint:disable identifier_name line_length type_body_length
 {% set enumName %}{{param.enumName|default:"ColorName"}}{% endset %}
-enum {{enumName}} {
-  {% for color in colors %}
-  /// <span style="display:block;width:3em;height:2em;border:1px solid black;background:#{{color.red}}{{color.green}}{{color.blue}}"></span>
-  /// Alpha: {{color.alpha|hexToInt|int255toFloat|percent}} <br/> (0x{{color.red}}{{color.green}}{{color.blue}}{{color.alpha}})
-  case {{color.name|swiftIdentifier|snakeToCamelCase|lowerFirstWord|escapeReservedKeywords}}
+struct {{enumName}} {
+  let rgbaValue: UInt32
+  var color: Color { return Color(named: self) }
+
+{% macro rgbaValue color %}0x{{color.red}}{{color.green}}{{color.blue}}{{color.alpha}}{% endmacro %}
+{% macro enumBlock colors sp %}
+{{sp}}  {% for color in colors %}
+{{sp}}  /// <span style="display:block;width:3em;height:2em;border:1px solid black;background:#{{color.red}}{{color.green}}{{color.blue}}"></span>
+{{sp}}  /// Alpha: {{color.alpha|hexToInt|int255toFloat|percent}} <br/> (0x{{color.red}}{{color.green}}{{color.blue}}{{color.alpha}})
+{{sp}}  static let {{color.name|swiftIdentifier|snakeToCamelCase|lowerFirstWord|escapeReservedKeywords}} = {{enumName}}(rgbaValue: {% call rgbaValue color %})
+{{sp}}  {% endfor %}
+{% endmacro %}
+  {% if palettes.count > 1 %}
+  {% for palette in palettes %}
+  enum {{palette.name|swiftIdentifier|titlecase|snakeToCamelCase|escapeReservedKeywords}} {
+    {% call enumBlock palette.colors "  " %}
+  }
   {% endfor %}
-
-  var rgbaValue: UInt32 {
-    switch self {
-    {% for color in colors %}
-    case .{{color.name|swiftIdentifier|snakeToCamelCase|lowerFirstWord|escapeReservedKeywords}}:
-      return 0x{{color.red}}{{color.green}}{{color.blue}}{{color.alpha}}
-    {% endfor %}
-    }
-  }
-
-  var color: Color {
-    return Color(named: self)
-  }
+  {% else %}
+  {% call enumBlock palettes.first.colors "" %}
+  {% endif %}
 }
 // swiftlint:enable identifier_name line_length type_body_length
 
 extension Color {
-  convenience init(named name: {{enumName}}) {
-    self.init(rgbaValue: name.rgbaValue)
+  convenience init(named color: {{enumName}}) {
+    self.init(rgbaValue: color.rgbaValue)
   }
 }
 {% else %}

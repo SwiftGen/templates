@@ -24,41 +24,27 @@ extension Color {
 // swiftlint:enable operator_usage_whitespace
 
 // swiftlint:disable identifier_name line_length type_body_length
-enum XCTColors {
+struct XCTColors {
+  let rgbaValue: UInt32
+  var color: Color { return Color(named: self) }
+
   /// <span style="display:block;width:3em;height:2em;border:1px solid black;background:#339666"></span>
   /// Alpha: 100% <br/> (0x339666ff)
-  case articleBody
+  static let articleBody = XCTColors(rgbaValue: 0x339666ff)
   /// <span style="display:block;width:3em;height:2em;border:1px solid black;background:#ff66cc"></span>
   /// Alpha: 100% <br/> (0xff66ccff)
-  case articleFootnote
+  static let articleFootnote = XCTColors(rgbaValue: 0xff66ccff)
   /// <span style="display:block;width:3em;height:2em;border:1px solid black;background:#33fe66"></span>
   /// Alpha: 100% <br/> (0x33fe66ff)
-  case articleTitle
+  static let articleTitle = XCTColors(rgbaValue: 0x33fe66ff)
   /// <span style="display:block;width:3em;height:2em;border:1px solid black;background:#ffffff"></span>
   /// Alpha: 80% <br/> (0xffffffcc)
-  case `private`
-
-  var rgbaValue: UInt32 {
-    switch self {
-    case .articleBody:
-      return 0x339666ff
-    case .articleFootnote:
-      return 0xff66ccff
-    case .articleTitle:
-      return 0x33fe66ff
-    case .`private`:
-      return 0xffffffcc
-    }
-  }
-
-  var color: Color {
-    return Color(named: self)
-  }
+  static let `private` = XCTColors(rgbaValue: 0xffffffcc)
 }
 // swiftlint:enable identifier_name line_length type_body_length
 
 extension Color {
-  convenience init(named name: XCTColors) {
-    self.init(rgbaValue: name.rgbaValue)
+  convenience init(named color: XCTColors) {
+    self.init(rgbaValue: color.rgbaValue)
   }
 }

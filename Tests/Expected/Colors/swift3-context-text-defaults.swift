@@ -24,56 +24,36 @@ extension Color {
 // swiftlint:enable operator_usage_whitespace
 
 // swiftlint:disable identifier_name line_length type_body_length
-enum ColorName {
+struct ColorName {
+  let rgbaValue: UInt32
+  var color: Color { return Color(named: self) }
+
   /// <span style="display:block;width:3em;height:2em;border:1px solid black;background:#339666"></span>
   /// Alpha: 100% <br/> (0x339666ff)
-  case articleBody
+  static let articleBody = ColorName(rgbaValue: 0x339666ff)
   /// <span style="display:block;width:3em;height:2em;border:1px solid black;background:#ff66cc"></span>
   /// Alpha: 100% <br/> (0xff66ccff)
-  case articleFootnote
+  static let articleFootnote = ColorName(rgbaValue: 0xff66ccff)
   /// <span style="display:block;width:3em;height:2em;border:1px solid black;background:#33fe66"></span>
   /// Alpha: 100% <br/> (0x33fe66ff)
-  case articleTitle
+  static let articleTitle = ColorName(rgbaValue: 0x33fe66ff)
   /// <span style="display:block;width:3em;height:2em;border:1px solid black;background:#ff66cc"></span>
   /// Alpha: 100% <br/> (0xff66ccff)
-  case cyanColor
+  static let cyanColor = ColorName(rgbaValue: 0xff66ccff)
   /// <span style="display:block;width:3em;height:2em;border:1px solid black;background:#ffffff"></span>
   /// Alpha: 80% <br/> (0xffffffcc)
-  case namedValue
+  static let namedValue = ColorName(rgbaValue: 0xffffffcc)
   /// <span style="display:block;width:3em;height:2em;border:1px solid black;background:#ffffff"></span>
   /// Alpha: 80% <br/> (0xffffffcc)
-  case nestedNamedValue
+  static let nestedNamedValue = ColorName(rgbaValue: 0xffffffcc)
   /// <span style="display:block;width:3em;height:2em;border:1px solid black;background:#ffffff"></span>
   /// Alpha: 80% <br/> (0xffffffcc)
-  case `private`
-
-  var rgbaValue: UInt32 {
-    switch self {
-    case .articleBody:
-      return 0x339666ff
-    case .articleFootnote:
-      return 0xff66ccff
-    case .articleTitle:
-      return 0x33fe66ff
-    case .cyanColor:
-      return 0xff66ccff
-    case .namedValue:
-      return 0xffffffcc
-    case .nestedNamedValue:
-      return 0xffffffcc
-    case .`private`:
-      return 0xffffffcc
-    }
-  }
-
-  var color: Color {
-    return Color(named: self)
-  }
+  static let `private` = ColorName(rgbaValue: 0xffffffcc)
 }
 // swiftlint:enable identifier_name line_length type_body_length
 
 extension Color {
-  convenience init(named name: ColorName) {
-    self.init(rgbaValue: name.rgbaValue)
+  convenience init(named color: ColorName) {
+    self.init(rgbaValue: color.rgbaValue)
   }
 }
