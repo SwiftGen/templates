@@ -6,11 +6,15 @@
 	<array>
 		<string>FadeSegue</string>
 	</array>
+	<key>platform</key>
+	<string>macOS</string>
 	<key>storyboards</key>
 	<array>
 		<dict>
 			<key>name</key>
 			<string>Message</string>
+			<key>platform</key>
+			<string>macOS</string>
 			<key>scenes</key>
 			<array>
 				<dict>

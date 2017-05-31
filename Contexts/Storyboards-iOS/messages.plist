@@ -4,6 +4,8 @@
 <dict>
 	<key>modules</key>
 	<array/>
+	<key>platform</key>
+	<string>iOS</string>
 	<key>storyboards</key>
 	<array>
 		<dict>
@@ -11,9 +13,13 @@
 			<dict>
 				<key>baseType</key>
 				<string>ViewController</string>
+				<key>identifier</key>
+				<string></string>
 			</dict>
 			<key>name</key>
 			<string>Message</string>
+			<key>platform</key>
+			<string>iOS</string>
 			<key>scenes</key>
 			<array>
 				<dict>
