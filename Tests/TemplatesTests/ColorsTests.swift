@@ -9,8 +9,7 @@ import XCTest
 
 class ColorsTests: XCTestCase {
   enum Contexts {
-    static let rawOnly = ["empty", "defaults"]
-    static let all = rawOnly + ["text-defaults"]
+    static let all = ["empty", "defaults", "multiple"]
   }
 
   // generate variations to test customname generation
