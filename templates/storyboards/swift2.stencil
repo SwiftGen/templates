@@ -23,13 +23,6 @@ extension StoryboardSceneType {
   static func storyboard() -> {{prefix}}Storyboard {
     return {{prefix}}Storyboard(name: self.storyboardName, bundle: NSBundle(forClass: BundleToken.self))
   }
-
-  static func initial{{controller}}() -> {{baseType}} {
-    guard let controller = storyboard().instantiateInitial{{controller}}() else {
-      fatalError("Failed to instantiate initial{{controller}} for \(self.storyboardName)")
-    }
-    return controller
-  }
 }
 
 extension StoryboardSceneType where Self: RawRepresentable, Self.RawValue == String {
@@ -65,16 +58,17 @@ enum {{sceneEnumName}} {
   {% set storyboardName %}{{storyboard.name|swiftIdentifier|escapeReservedKeywords}}{% endset %}
   enum {{storyboardName}}: {% if storyboard.scenes %}String, {% endif %}StoryboardSceneType {
     static let storyboardName = "{{storyboard.name}}"
-    {% if storyboard.initialScene %}{% if isAppKit or storyboard.initialScene.baseType != "ViewController" %}
-    {% set initialSceneClass %}{% call className storyboard.initialScene %}{% endset %}
+    {% if storyboard.initialScene %}
 
-    static func initialViewController() -> {{initialSceneClass}} {
-      guard let controller = storyboard().instantiateInitialViewController() as? {{initialSceneClass}} else {
+    {% set sceneClass %}{% call className storyboard.initialScene %}{% endset %}
+    {% set castAsClass %}{% if isAppKit or storyboard.initialScene.baseType != "ViewController" %} as? {{sceneClass}}{% endif %}{% endset %}
+    static func initialViewController() -> {{sceneClass}} {
+      guard let controller = storyboard().instantiateInitialViewController(){{castAsClass}} else {
         fatalError("Failed to instantiate initialViewController for \(self.storyboardName)")
       }
       return controller
     }
-    {% endif %}{% endif %}
+    {% endif %}
     {% if storyboard.scenes %}
     {% for scene in storyboard.scenes %}
     {% set sceneID %}{{scene.identifier|swiftIdentifier}}{% endset %}

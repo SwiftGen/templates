@@ -16,13 +16,6 @@ extension StoryboardSceneType {
   static func storyboard() -> NSStoryboard {
     return NSStoryboard(name: self.storyboardName, bundle: NSBundle(forClass: BundleToken.self))
   }
-
-  static func initialController() -> AnyObject {
-    guard let controller = storyboard().instantiateInitialController() else {
-      fatalError("Failed to instantiate initialController for \(self.storyboardName)")
-    }
-    return controller
-  }
 }
 
 extension StoryboardSceneType where Self: RawRepresentable, Self.RawValue == String {

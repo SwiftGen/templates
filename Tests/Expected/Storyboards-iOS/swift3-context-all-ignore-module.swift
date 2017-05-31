@@ -16,13 +16,6 @@ extension StoryboardSceneType {
   static func storyboard() -> UIStoryboard {
     return UIStoryboard(name: self.storyboardName, bundle: Bundle(for: BundleToken.self))
   }
-
-  static func initialViewController() -> UIViewController {
-    guard let controller = storyboard().instantiateInitialViewController() else {
-      fatalError("Failed to instantiate initialViewController for \(self.storyboardName)")
-    }
-    return controller
-  }
 }
 
 extension StoryboardSceneType where Self: RawRepresentable, Self.RawValue == String {
@@ -82,6 +75,13 @@ enum StoryboardScene {
   }
   enum Message: String, StoryboardSceneType {
     static let storyboardName = "Message"
+
+    static func initialViewController() -> UIViewController {
+      guard let controller = storyboard().instantiateInitialViewController() else {
+        fatalError("Failed to instantiate initialViewController for \(self.storyboardName)")
+      }
+      return controller
+    }
 
     case composerScene = "Composer"
     static func instantiateComposer() -> UIViewController {
