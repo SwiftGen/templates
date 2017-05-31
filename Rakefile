@@ -20,10 +20,6 @@ SDKS = {
   :appletvos => 'arm64-apple-tvos10.0'
 }
 TOOLCHAINS = {
-  :swift2 => {
-    :module_path => "#{MODULE_OUTPUT_PATH}/swift2.3",
-    :toolchain => 'com.apple.dt.toolchain.Swift_2_3'
-  },
   :swift3 => {
     :module_path => "#{MODULE_OUTPUT_PATH}/swift3",
     :toolchain => 'com.apple.dt.toolchain.XcodeDefault'
@@ -81,7 +77,8 @@ namespace :output do
     if f.match('swift3')
       toolchain = TOOLCHAINS[:swift3]
     else
-      toolchain = TOOLCHAINS[:swift2]
+      puts "Unable to typecheck Swift 2 file #{f}"
+      return true
     end
 
     if f.match('iOS')
@@ -93,7 +90,7 @@ namespace :output do
     end
 
     commands = sdks.map do |sdk|
-      %Q(--toolchain #{toolchain[:toolchain]} -sdk #{sdk} swiftc -parse -target #{SDKS[sdk]} -I #{toolchain[:module_path]} "#{MODULE_OUTPUT_PATH}/Definitions.swift" #{f})
+      %Q(--toolchain #{toolchain[:toolchain]} -sdk #{sdk} swiftc -typecheck -target #{SDKS[sdk]} -I #{toolchain[:module_path]} "#{MODULE_OUTPUT_PATH}/Definitions.swift" #{f})
     end
     subtask = File.basename(f, '.*')
 
