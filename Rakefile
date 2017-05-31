@@ -6,8 +6,11 @@ WORKSPACE = 'Templates'
 SCHEME_NAME = 'Tests'
 CONFIGURATION = 'Debug'
 
-
-task :default => "xcode:test"
+desc 'Generate Test Output'
+task :generate_output => "xcode:build" do |task|
+  Utils.print_header 'Generating contexts...'
+  Utils.run(%Q(xcodebuild -workspace "#{WORKSPACE}.xcworkspace" -scheme "Generate Output" -configuration "#{CONFIGURATION}" test-without-building), task, xcrun: true, formatter: :xcpretty)
+end
 
 ## [ Output compilation ] #####################################################
 
@@ -103,3 +106,5 @@ namespace :output do
     end
   end
 end
+
+task :default => "xcode:test"

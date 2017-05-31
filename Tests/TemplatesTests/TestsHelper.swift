@@ -180,8 +180,18 @@ extension XCTestCase {
           fatalError("Unable to render template")
         }
 
-        let expected = Fixtures.output(for: outputFile, sub: resourceDir)
-        XCTDiffStrings(result, expected, file: file, line: line)
+        // check if we should generate or not
+        if ProcessInfo().environment["GENERATE_OUTPUT"] == "YES" {
+          let target = Path(#file).parent().parent() + "Expected" + resourceDir.rawValue + outputFile
+          do {
+            try target.write(result)
+          } catch {
+            fatalError("Unable to write output file \(target)")
+          }
+        } else {
+          let expected = Fixtures.output(for: outputFile, sub: resourceDir)
+          XCTDiffStrings(result, expected, file: file, line: line)
+        }
       }
     }
   }
