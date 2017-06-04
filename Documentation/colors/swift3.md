@@ -25,13 +25,16 @@ You can customize some elements of this template by overriding the following par
 **Extract:**
 
 ```swift
-enum ColorName {
+struct ColorName {
+  let rgbaValue: UInt32
+  var color: Color { return Color(named: self) }
+
   /// <span style="display:block;width:3em;height:2em;border:1px solid black;background:#339666"></span>
   /// Alpha: 100% <br/> (0x339666ff)
-  case articleBody
+  static let articleBody = ColorName(rgbaValue: 0x339666ff)
   /// <span style="display:block;width:3em;height:2em;border:1px solid black;background:#ff66cc"></span>
   /// Alpha: 100% <br/> (0xff66ccff)
-  case articleFootnote
+  static let articleFootnote = ColorName(rgbaValue: 0xff66ccff)
 }
 ```
 
@@ -41,7 +44,7 @@ enum ColorName {
 
 ```swift
 // You can create colors with the convenience constructor like this:
-let title = UIColor(named: .articleTitle)
+let title = UIColor(named: .articleBody)
 let footnote = UIColor(named: .articleFootnote)
 
 // Or as an alternative, you can refer to enum instance and call .color on it:

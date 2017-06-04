@@ -45,6 +45,42 @@
 				</dict>
 				<dict>
 					<key>alpha</key>
+					<string>ff</string>
+					<key>blue</key>
+					<string>cc</string>
+					<key>green</key>
+					<string>66</string>
+					<key>name</key>
+					<string>Cyan-Color</string>
+					<key>red</key>
+					<string>ff</string>
+				</dict>
+				<dict>
+					<key>alpha</key>
+					<string>cc</string>
+					<key>blue</key>
+					<string>ff</string>
+					<key>green</key>
+					<string>ff</string>
+					<key>name</key>
+					<string>NamedValue</string>
+					<key>red</key>
+					<string>ff</string>
+				</dict>
+				<dict>
+					<key>alpha</key>
+					<string>cc</string>
+					<key>blue</key>
+					<string>ff</string>
+					<key>green</key>
+					<string>ff</string>
+					<key>name</key>
+					<string>NestedNamedValue</string>
+					<key>red</key>
+					<string>ff</string>
+				</dict>
+				<dict>
+					<key>alpha</key>
 					<string>cc</string>
 					<key>blue</key>
 					<string>ff</string>
@@ -57,7 +93,7 @@
 				</dict>
 			</array>
 			<key>name</key>
-			<string>colors</string>
+			<string>extra</string>
 		</dict>
 	</array>
 </dict>
