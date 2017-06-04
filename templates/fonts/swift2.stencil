@@ -54,9 +54,9 @@ extension Font {
 // swiftlint:disable identifier_name line_length type_body_length
 enum {{param.enumName|default:"FontFamily"}} {
   {% for family in families %}
-  enum {{family.name|swiftIdentifier|snakeToCamelCaseNoPrefix|escapeReservedKeywords}}: String, FontConvertible {
+  enum {{family.name|swiftIdentifier|snakeToCamelCase:"true"|escapeReservedKeywords}}: String, FontConvertible {
     {% for font in family.fonts %}
-    case {{font.style|swiftIdentifier|snakeToCamelCaseNoPrefix|escapeReservedKeywords}} = "{{font.name}}"
+    case {{font.style|swiftIdentifier|snakeToCamelCase:"true"|escapeReservedKeywords}} = "{{font.name}}"
     {% endfor %}
   }
   {% endfor %}
