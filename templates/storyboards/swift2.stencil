@@ -4,7 +4,6 @@
 {% set isAppKit %}{% if platform == "macOS" %}true{% endif %}{% endset %}
 {% set prefix %}{% if isAppKit %}NS{% else %}UI{% endif %}{% endset %}
 {% set controller %}{% if isAppKit %}Controller{% else %}ViewController{% endif %}{% endset %}
-{% set baseType %}{% if isAppKit %}AnyObject{% else %}UIViewController{% endif %}{% endset %}
 // swiftlint:disable sorted_imports
 import Foundation
 import {% if isAppKit %}Cocoa{% else %}UIKit{% endif %}
@@ -15,29 +14,43 @@ import {{module}}
 // swiftlint:disable file_length
 
 {# This first part of the code is static, same every time whatever Storyboard you have #}
-protocol StoryboardSceneType {
+protocol StoryboardType {
   static var storyboardName: String { get }
 }
 
-extension StoryboardSceneType {
-  static func storyboard() -> {{prefix}}Storyboard {
+extension StoryboardType {
+  static var storyboard: {{prefix}}Storyboard {
     return {{prefix}}Storyboard(name: self.storyboardName, bundle: NSBundle(forClass: BundleToken.self))
   }
 }
 
-extension StoryboardSceneType where Self: RawRepresentable, Self.RawValue == String {
-  func {{controller|lowerFirstWord}}() -> {{baseType}} {
-    return Self.storyboard().instantiate{{controller}}WithIdentifier(self.rawValue)
-  }
-  static func {{controller|lowerFirstWord}}(identifier: Self) -> {{baseType}} {
-    return identifier.{{controller|lowerFirstWord}}()
+struct SceneType<T: Any> {
+  let storyboard: StoryboardType.Type
+  let identifier: String
+
+  var controller: T {
+    guard let controller = storyboard.storyboard.instantiate{{controller}}WithIdentifier(identifier) as? T else {
+      fatalError("Controller '\(identifier)' is not of the expected class \(T.self).")
+    }
+    return controller
   }
 }
 
-protocol StoryboardSegueType: RawRepresentable { }
+struct InitialSceneType<T: Any> {
+  let storyboard: StoryboardType.Type
 
-extension {% if isAppKit %}NSSeguePerforming{% else %}{{baseType}}{% endif %} {
-  func performSegue<S: StoryboardSegueType where S.RawValue == String>(segue: S, sender: AnyObject? = nil) {
+  var controller: T {
+    guard let controller = storyboard.storyboard.instantiateInitial{{controller}}() as? T else {
+      fatalError("Controller is not of the expected class \(T.self).")
+    }
+    return controller
+  }
+}
+
+protocol SegueType: RawRepresentable { }
+
+extension {% if isAppKit %}NSSeguePerforming{% else %}UIViewController{% endif %} {
+  func performSegue<S: SegueType where S.RawValue == String>(segue: S, sender: AnyObject? = nil) {
     performSegueWithIdentifier{% if isAppKit %}?{% endif %}(segue.rawValue, sender: sender)
   }
 }
@@ -56,44 +69,26 @@ extension {% if isAppKit %}NSSeguePerforming{% else %}{{baseType}}{% endif %} {
 enum {{sceneEnumName}} {
   {% for storyboard in storyboards %}
   {% set storyboardName %}{{storyboard.name|swiftIdentifier|escapeReservedKeywords}}{% endset %}
-  enum {{storyboardName}}: {% if storyboard.scenes %}String, {% endif %}StoryboardSceneType {
+  enum {{storyboardName}}: StoryboardType {
     static let storyboardName = "{{storyboard.name}}"
     {% if storyboard.initialScene %}
 
     {% set sceneClass %}{% call className storyboard.initialScene %}{% endset %}
-    {% set castAsClass %}{% if isAppKit or storyboard.initialScene.baseType != "ViewController" %} as? {{sceneClass}}{% endif %}{% endset %}
-    static func initialViewController() -> {{sceneClass}} {
-      guard let controller = storyboard().instantiateInitialViewController(){{castAsClass}} else {
-        fatalError("Failed to instantiate initialViewController for \(self.storyboardName)")
-      }
-      return controller
-    }
+    static let initialScene = InitialSceneType<{{sceneClass}}>({{storyboardName}}.self)
     {% endif %}
-    {% if storyboard.scenes %}
     {% for scene in storyboard.scenes %}
-    {% set sceneID %}{{scene.identifier|swiftIdentifier}}{% endset %}
 
-    case {{sceneID}}Scene = "{{scene.identifier}}"
+    {% set sceneID %}{{scene.identifier|swiftIdentifier|escapeReservedKeywords}}{% endset %}
     {% set sceneClass %}{% call className scene %}{% endset %}
-    static func instantiate{{sceneID|snakeToCamelCase}}() -> {{sceneClass}} {
-      {% if isAppKit or scene.baseType != "ViewController" %}
-      guard let controller = {{sceneEnumName}}.{{storyboardName}}.{{sceneID}}Scene.{{controller|lowerFirstWord}}() as? {{sceneClass}} else {
-        fatalError("{{controller}} '{{scene.identifier}}' is not of the expected class {{sceneClass}}.")
-      }
-      return controller
-      {% else %}
-      return {{sceneEnumName}}.{{storyboardName}}.{{sceneID}}Scene.{{controller|lowerFirstWord}}()
-      {% endif %}
-    }
+    static let {{sceneID}} = SceneType<{{sceneClass}}>({{storyboardName}}.self, identifier: "{{scene.identifier}}")
     {% endfor %}
-    {% endif %}
   }
   {% endfor %}
 }
 
 enum {{param.segueEnumName|default:"StoryboardSegue"}} {
   {% for storyboard in storyboards where storyboard.segues %}
-  enum {{storyboard.name|swiftIdentifier|escapeReservedKeywords}}: String, StoryboardSegueType {
+  enum {{storyboard.name|swiftIdentifier|escapeReservedKeywords}}: String, SegueType {
     {% for segue in storyboard.segues %}
     {% set segueID %}{{segue.identifier|swiftIdentifier}}{% endset %}
     case {{segueID|escapeReservedKeywords}}{% if segueID != segue.identifier %} = "{{segue.identifier}}"{% endif %}

@@ -9,170 +9,110 @@ import SlackTextViewController
 
 // swiftlint:disable file_length
 
-protocol StoryboardSceneType {
+protocol StoryboardType {
   static var storyboardName: String { get }
 }
 
-extension StoryboardSceneType {
-  static func storyboard() -> UIStoryboard {
+extension StoryboardType {
+  static var storyboard: UIStoryboard {
     return UIStoryboard(name: self.storyboardName, bundle: Bundle(for: BundleToken.self))
   }
 }
 
-extension StoryboardSceneType where Self: RawRepresentable, Self.RawValue == String {
-  func viewController() -> UIViewController {
-    return Self.storyboard().instantiateViewController(withIdentifier: self.rawValue)
-  }
-  static func viewController(identifier: Self) -> UIViewController {
-    return identifier.viewController()
+struct SceneType<T: Any> {
+  let storyboard: StoryboardType.Type
+  let identifier: String
+
+  var controller: T {
+    guard let controller = storyboard.storyboard.instantiateViewController(withIdentifier: identifier) as? T else {
+      fatalError("Controller '\(identifier)' is not of the expected class \(T.self).")
+    }
+    return controller
   }
 }
 
-protocol StoryboardSegueType: RawRepresentable { }
+struct InitialSceneType<T: Any> {
+  let storyboard: StoryboardType.Type
+
+  var controller: T {
+    guard let controller = storyboard.storyboard.instantiateInitialViewController() as? T else {
+      fatalError("Controller is not of the expected class \(T.self).")
+    }
+    return controller
+  }
+}
+
+protocol SegueType: RawRepresentable { }
 
 extension UIViewController {
-  func perform<S: StoryboardSegueType>(segue: S, sender: Any? = nil) where S.RawValue == String {
+  func perform<S: SegueType>(segue: S, sender: Any? = nil) where S.RawValue == String {
     performSegue(withIdentifier: segue.rawValue, sender: sender)
   }
 }
 
 // swiftlint:disable explicit_type_interface identifier_name line_length type_body_length type_name
 enum XCTStoryboardsScene {
-  enum AdditionalImport: String, StoryboardSceneType {
+  enum AdditionalImport: StoryboardType {
     static let storyboardName = "AdditionalImport"
 
-    static func initialViewController() -> LocationPicker.LocationPickerViewController {
-      guard let controller = storyboard().instantiateInitialViewController() as? LocationPicker.LocationPickerViewController else {
-        fatalError("Failed to instantiate initialViewController for \(self.storyboardName)")
-      }
-      return controller
-    }
+    static let initialScene = InitialSceneType<LocationPicker.LocationPickerViewController>(storyboard: AdditionalImport.self)
 
-    case publicScene = "public"
-    static func instantiatePublic() -> SlackTextViewController.SLKTextViewController {
-      guard let controller = XCTStoryboardsScene.AdditionalImport.publicScene.viewController() as? SlackTextViewController.SLKTextViewController else {
-        fatalError("ViewController 'public' is not of the expected class SlackTextViewController.SLKTextViewController.")
-      }
-      return controller
-    }
+    static let `public` = SceneType<SlackTextViewController.SLKTextViewController>(storyboard: AdditionalImport.self, identifier: "public")
   }
-  enum Anonymous: StoryboardSceneType {
+  enum Anonymous: StoryboardType {
     static let storyboardName = "Anonymous"
 
-    static func initialViewController() -> UINavigationController {
-      guard let controller = storyboard().instantiateInitialViewController() as? UINavigationController else {
-        fatalError("Failed to instantiate initialViewController for \(self.storyboardName)")
-      }
-      return controller
-    }
+    static let initialScene = InitialSceneType<UINavigationController>(storyboard: Anonymous.self)
   }
-  enum Dependency: String, StoryboardSceneType {
+  enum Dependency: StoryboardType {
     static let storyboardName = "Dependency"
 
-    case dependentScene = "Dependent"
-    static func instantiateDependent() -> UIViewController {
-      return XCTStoryboardsScene.Dependency.dependentScene.viewController()
-    }
+    static let dependent = SceneType<UIViewController>(storyboard: Dependency.self, identifier: "Dependent")
   }
-  enum Message: String, StoryboardSceneType {
+  enum Message: StoryboardType {
     static let storyboardName = "Message"
 
-    static func initialViewController() -> UIViewController {
-      guard let controller = storyboard().instantiateInitialViewController() else {
-        fatalError("Failed to instantiate initialViewController for \(self.storyboardName)")
-      }
-      return controller
-    }
+    static let initialScene = InitialSceneType<UIViewController>(storyboard: Message.self)
 
-    case composerScene = "Composer"
-    static func instantiateComposer() -> UIViewController {
-      return XCTStoryboardsScene.Message.composerScene.viewController()
-    }
+    static let composer = SceneType<UIViewController>(storyboard: Message.self, identifier: "Composer")
 
-    case messagesListScene = "MessagesList"
-    static func instantiateMessagesList() -> UITableViewController {
-      guard let controller = XCTStoryboardsScene.Message.messagesListScene.viewController() as? UITableViewController else {
-        fatalError("ViewController 'MessagesList' is not of the expected class UITableViewController.")
-      }
-      return controller
-    }
+    static let messagesList = SceneType<UITableViewController>(storyboard: Message.self, identifier: "MessagesList")
 
-    case navCtrlScene = "NavCtrl"
-    static func instantiateNavCtrl() -> UINavigationController {
-      guard let controller = XCTStoryboardsScene.Message.navCtrlScene.viewController() as? UINavigationController else {
-        fatalError("ViewController 'NavCtrl' is not of the expected class UINavigationController.")
-      }
-      return controller
-    }
+    static let navCtrl = SceneType<UINavigationController>(storyboard: Message.self, identifier: "NavCtrl")
 
-    case urlChooserScene = "URLChooser"
-    static func instantiateUrlChooser() -> XXPickerViewController {
-      guard let controller = XCTStoryboardsScene.Message.urlChooserScene.viewController() as? XXPickerViewController else {
-        fatalError("ViewController 'URLChooser' is not of the expected class XXPickerViewController.")
-      }
-      return controller
-    }
+    static let urlChooser = SceneType<XXPickerViewController>(storyboard: Message.self, identifier: "URLChooser")
   }
-  enum Placeholder: String, StoryboardSceneType {
+  enum Placeholder: StoryboardType {
     static let storyboardName = "Placeholder"
 
-    case navigationScene = "Navigation"
-    static func instantiateNavigation() -> UINavigationController {
-      guard let controller = XCTStoryboardsScene.Placeholder.navigationScene.viewController() as? UINavigationController else {
-        fatalError("ViewController 'Navigation' is not of the expected class UINavigationController.")
-      }
-      return controller
-    }
+    static let navigation = SceneType<UINavigationController>(storyboard: Placeholder.self, identifier: "Navigation")
   }
-  enum Wizard: String, StoryboardSceneType {
+  enum Wizard: StoryboardType {
     static let storyboardName = "Wizard"
 
-    static func initialViewController() -> CreateAccViewController {
-      guard let controller = storyboard().instantiateInitialViewController() as? CreateAccViewController else {
-        fatalError("Failed to instantiate initialViewController for \(self.storyboardName)")
-      }
-      return controller
-    }
+    static let initialScene = InitialSceneType<CreateAccViewController>(storyboard: Wizard.self)
 
-    case acceptCGUScene = "Accept-CGU"
-    static func instantiateAcceptCGU() -> UIViewController {
-      return XCTStoryboardsScene.Wizard.acceptCGUScene.viewController()
-    }
+    static let acceptCGU = SceneType<UIViewController>(storyboard: Wizard.self, identifier: "Accept-CGU")
 
-    case createAccountScene = "CreateAccount"
-    static func instantiateCreateAccount() -> CreateAccViewController {
-      guard let controller = XCTStoryboardsScene.Wizard.createAccountScene.viewController() as? CreateAccViewController else {
-        fatalError("ViewController 'CreateAccount' is not of the expected class CreateAccViewController.")
-      }
-      return controller
-    }
+    static let createAccount = SceneType<CreateAccViewController>(storyboard: Wizard.self, identifier: "CreateAccount")
 
-    case preferencesScene = "Preferences"
-    static func instantiatePreferences() -> UITableViewController {
-      guard let controller = XCTStoryboardsScene.Wizard.preferencesScene.viewController() as? UITableViewController else {
-        fatalError("ViewController 'Preferences' is not of the expected class UITableViewController.")
-      }
-      return controller
-    }
+    static let preferences = SceneType<UITableViewController>(storyboard: Wizard.self, identifier: "Preferences")
 
-    case validatePasswordScene = "Validate_Password"
-    static func instantiateValidatePassword() -> UIViewController {
-      return XCTStoryboardsScene.Wizard.validatePasswordScene.viewController()
-    }
+    static let validatePassword = SceneType<UIViewController>(storyboard: Wizard.self, identifier: "Validate_Password")
   }
 }
 
 enum XCTStoryboardsSegue {
-  enum AdditionalImport: String, StoryboardSegueType {
+  enum AdditionalImport: String, SegueType {
     case `private`
   }
-  enum Message: String, StoryboardSegueType {
+  enum Message: String, SegueType {
     case customBack = "CustomBack"
     case embed = "Embed"
     case nonCustom = "NonCustom"
     case showNavCtrl = "Show-NavCtrl"
   }
-  enum Wizard: String, StoryboardSegueType {
+  enum Wizard: String, SegueType {
     case showPassword = "ShowPassword"
   }
 }
