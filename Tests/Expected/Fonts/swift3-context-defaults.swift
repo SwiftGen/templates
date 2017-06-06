@@ -10,78 +10,75 @@
 
 // swiftlint:disable file_length
 
-protocol FontConvertible {
-  func font(size: CGFloat) -> Font!
-}
+struct FontConvertible {
+  let name: String
+  let family: String
+  let path: String
 
-extension FontConvertible where Self: RawRepresentable, Self.RawValue == String {
   func font(size: CGFloat) -> Font! {
     return Font(font: self, size: size)
   }
 
   func register() {
-    let extensions = ["otf", "ttf"]
     let bundle = Bundle(for: BundleToken.self)
 
-    guard let url = extensions.flatMap({ bundle.url(forResource: rawValue, withExtension: $0) }).first else {
+    guard let url = bundle.url(forResource: path, withExtension: nil) else {
       return
     }
 
     var errorRef: Unmanaged<CFError>?
-    CTFontManagerRegisterFontsForURL(url as CFURL, .none, &errorRef)
+    CTFontManagerRegisterFontsForURL(url as CFURL, .process, &errorRef)
   }
 }
 
 extension Font {
-  convenience init!<FontType: FontConvertible>
-    (font: FontType, size: CGFloat)
-    where FontType: RawRepresentable, FontType.RawValue == String {
-      #if os(iOS) || os(tvOS) || os(watchOS)
-      if UIFont.fontNames(forFamilyName: font.rawValue).isEmpty {
-        font.register()
-      }
-      #elseif os(OSX)
-      if NSFontManager.shared().availableMembers(ofFontFamily: font.rawValue) == nil {
-        font.register()
-      }
-      #endif
+  convenience init!(font: FontConvertible, size: CGFloat) {
+    #if os(iOS) || os(tvOS) || os(watchOS)
+    if UIFont.fontNames(forFamilyName: font.family).isEmpty {
+      font.register()
+    }
+    #elseif os(OSX)
+    if NSFontManager.shared().availableMembers(ofFontFamily: font.family) == nil {
+      font.register()
+    }
+    #endif
 
-      self.init(name: font.rawValue, size: size)
+    self.init(name: font.name, size: size)
   }
 }
 
 // swiftlint:disable identifier_name line_length type_body_length
 enum FontFamily {
-  enum SFNSDisplay: String, FontConvertible {
-    case black = ".SFNSDisplay-Black"
-    case bold = ".SFNSDisplay-Bold"
-    case heavy = ".SFNSDisplay-Heavy"
-    case regular = ".SFNSDisplay-Regular"
+  enum SFNSDisplay {
+    static let black = FontConvertible(name: ".SFNSDisplay-Black", family: ".SF NS Display", path: "SFNSDisplay-Black.otf")
+    static let bold = FontConvertible(name: ".SFNSDisplay-Bold", family: ".SF NS Display", path: "SFNSDisplay-Bold.otf")
+    static let heavy = FontConvertible(name: ".SFNSDisplay-Heavy", family: ".SF NS Display", path: "SFNSDisplay-Heavy.otf")
+    static let regular = FontConvertible(name: ".SFNSDisplay-Regular", family: ".SF NS Display", path: "SFNSDisplay-Regular.otf")
   }
-  enum SFNSText: String, FontConvertible {
-    case bold = ".SFNSText-Bold"
-    case heavy = ".SFNSText-Heavy"
-    case regular = ".SFNSText-Regular"
+  enum SFNSText {
+    static let bold = FontConvertible(name: ".SFNSText-Bold", family: ".SF NS Text", path: "SFNSText-Bold.otf")
+    static let heavy = FontConvertible(name: ".SFNSText-Heavy", family: ".SF NS Text", path: "SFNSText-Heavy.otf")
+    static let regular = FontConvertible(name: ".SFNSText-Regular", family: ".SF NS Text", path: "SFNSText-Regular.otf")
   }
-  enum Avenir: String, FontConvertible {
-    case black = "Avenir-Black"
-    case blackOblique = "Avenir-BlackOblique"
-    case book = "Avenir-Book"
-    case bookOblique = "Avenir-BookOblique"
-    case heavy = "Avenir-Heavy"
-    case heavyOblique = "Avenir-HeavyOblique"
-    case light = "Avenir-Light"
-    case lightOblique = "Avenir-LightOblique"
-    case medium = "Avenir-Medium"
-    case mediumOblique = "Avenir-MediumOblique"
-    case oblique = "Avenir-Oblique"
-    case roman = "Avenir-Roman"
+  enum Avenir {
+    static let black = FontConvertible(name: "Avenir-Black", family: "Avenir", path: "Avenir.ttc")
+    static let blackOblique = FontConvertible(name: "Avenir-BlackOblique", family: "Avenir", path: "Avenir.ttc")
+    static let book = FontConvertible(name: "Avenir-Book", family: "Avenir", path: "Avenir.ttc")
+    static let bookOblique = FontConvertible(name: "Avenir-BookOblique", family: "Avenir", path: "Avenir.ttc")
+    static let heavy = FontConvertible(name: "Avenir-Heavy", family: "Avenir", path: "Avenir.ttc")
+    static let heavyOblique = FontConvertible(name: "Avenir-HeavyOblique", family: "Avenir", path: "Avenir.ttc")
+    static let light = FontConvertible(name: "Avenir-Light", family: "Avenir", path: "Avenir.ttc")
+    static let lightOblique = FontConvertible(name: "Avenir-LightOblique", family: "Avenir", path: "Avenir.ttc")
+    static let medium = FontConvertible(name: "Avenir-Medium", family: "Avenir", path: "Avenir.ttc")
+    static let mediumOblique = FontConvertible(name: "Avenir-MediumOblique", family: "Avenir", path: "Avenir.ttc")
+    static let oblique = FontConvertible(name: "Avenir-Oblique", family: "Avenir", path: "Avenir.ttc")
+    static let roman = FontConvertible(name: "Avenir-Roman", family: "Avenir", path: "Avenir.ttc")
   }
-  enum ZapfDingbats: String, FontConvertible {
-    case regular = "ZapfDingbatsITC"
+  enum ZapfDingbats {
+    static let regular = FontConvertible(name: "ZapfDingbatsITC", family: "Zapf Dingbats", path: "ZapfDingbats.ttf")
   }
-  enum Public: String, FontConvertible {
-    case `internal` = "private"
+  enum Public {
+    static let `internal` = FontConvertible(name: "private", family: "public", path: "class.ttf")
   }
 }
 // swiftlint:enable identifier_name line_length type_body_length
