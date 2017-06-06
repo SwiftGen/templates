@@ -1,6 +1,6 @@
 // Generated using SwiftGen, by O.Halligon — https://github.com/SwiftGen/SwiftGen
 
-{% if storyboards %}
+{% if platform and storyboards %}
 {% set isAppKit %}{% if platform == "macOS" %}true{% endif %}{% endset %}
 {% set prefix %}{% if isAppKit %}NS{% else %}UI{% endif %}{% endset %}
 {% set controller %}{% if isAppKit %}Controller{% else %}ViewController{% endif %}{% endset %}
@@ -99,6 +99,8 @@ enum {{param.segueEnumName|default:"StoryboardSegue"}} {
 // swiftlint:enable explicit_type_interface identifier_name line_length type_body_length type_name
 
 private final class BundleToken {}
+{% elif storyboards %}
+// Mixed AppKit and UIKit storyboard files found, please invoke swiftgen with these separately
 {% else %}
 // No storyboard found
 {% endif %}

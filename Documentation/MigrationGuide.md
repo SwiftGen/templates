@@ -36,9 +36,9 @@ Below is a list of renamed and removed templates, grouped by subcommand. If your
 | --- | --- | ------ |
 | default | swift2 | |
 | lowercase | **deleted** | No longer needed since we prefix classes with their module |
-| osx-default | macOS-swift2 | |
+| osx-default | **deleted** | Unified with the iOS template, just use `swift2` |
 | osx-lowercase | **deleted** | No longer needed since we prefix classes with their module |
-| osx-swift3 | macOS-swift3 | |
+| osx-swift3 | **deleted** | Unified with the iOS template, just use `swift3` |
 | uppercase | **deleted** | No longer needed since we prefix classes with their module |
 
 ### Strings ###

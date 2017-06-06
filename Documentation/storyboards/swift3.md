@@ -28,29 +28,19 @@ Note: the generated code may look differently depending on the platform the stor
 
 ```swift
 enum StoryboardScene {
-  enum Dependency: String, StoryboardSceneType {
+  enum Dependency: StoryboardType {
     static let storyboardName = "Dependency"
 
-    case dependentScene = "Dependent"
-    static func instantiateDependent() -> UIViewController {
-      return StoryboardScene.Dependency.dependentScene.viewController()
-    }
+    static let dependent = SceneType<UIViewController>(storyboard: Dependency.self, identifier: "Dependent")
   }
-  enum Message: String, StoryboardSceneType {
+  enum Message: StoryboardType {
     static let storyboardName = "Message"
 
-    case messagesListScene = "MessagesList"
-    static func instantiateMessagesList() -> UITableViewController {
-      guard let vc = StoryboardScene.Message.messagesListScene.viewController() as? UITableViewController
-      else {
-        fatalError("ViewController 'MessagesList' is not of the expected class UITableViewController.")
-      }
-      return vc
-    }
+    static let messagesList = SceneType<UITableViewController>(storyboard: Message.self, identifier: "MessagesList")
   }
 }
 enum StoryboardSegue {
-  enum Message: String, StoryboardSegueType {
+  enum Message: String, SegueType {
     case embed
     case nonCustom
   }
@@ -62,11 +52,8 @@ enum StoryboardSegue {
 ## Usage example
 
 ```swift
-// You can instantiate scenes using the generic `viewController()` method:
-let vc = StoryboardScene.Dependency.dependentScene.viewController()
-
-// or the `instantiate...()` method (which will cast to the correct type):
-let vc2 = StoryboardScene.Message.instantiateMessagesList()
+// You can instantiate scenes using the `controller` property:
+let vc = StoryboardScene.Dependency.dependent.controller
 
 // You can perform segues using:
 vc.perform(segue: StoryboardSegue.Message.embed)
