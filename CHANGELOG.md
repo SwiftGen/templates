@@ -12,6 +12,9 @@
 * Images: fixed issue with catalogs that have an empty folder.  
   [David Jennes](https://github.com/djbe) 
   [#51](https://github.com/SwiftGen/templates/pull/51)
+* Fonts: fixed font registration mechanism, which was broken in some situations.  
+  [David Jennes](https://github.com/djbe) 
+  [#58](https://github.com/SwiftGen/templates/pull/58)
 
 ### Breaking Changes
 

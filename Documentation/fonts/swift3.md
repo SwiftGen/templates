@@ -26,10 +26,10 @@ You can customize some elements of this template by overriding the following par
 ```swift
 enum FontFamily {
   enum SFNSDisplay: String, FontConvertible {
-    case regular = ".SFNSDisplay-Regular"
+    static let regular = FontConvertible(name: ".SFNSDisplay-Regular", family: ".SF NS Display", path: "SFNSDisplay-Regular.otf")
   }
   enum ZapfDingbats: String, FontConvertible {
-    case regular = "ZapfDingbatsITC"
+    static let regular = FontConvertible(name: "ZapfDingbatsITC", family: "Zapf Dingbats", path: "ZapfDingbats.ttf")
   }
 }
 ```
