@@ -9,6 +9,7 @@
 #endif
 
 // swiftlint:disable file_length
+// swiftlint:disable redundant_string_enum_value
 
 struct AssetType: StringLiteralConvertible {
   private var value: String
