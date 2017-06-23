@@ -72,6 +72,9 @@
 
 ### Internal Changes
 
+* Disable SwiftLint `redundant_string_enum_value` in the images template.  
+  [Tom Baranes](https://github.com/tbaranes)
+  [#61](https://github.com/SwiftGen/templates/pull/61)
 * Switch from Travis CI to Circle CI, clean up the Rakefile in the process.  
   [David Jennes](https://github.com/djbe)
   [#24](https://github.com/SwiftGen/SwiftGenKit/issues/24)

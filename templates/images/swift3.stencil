@@ -10,6 +10,7 @@
 #endif
 
 // swiftlint:disable file_length
+// swiftlint:disable redundant_string_enum_value
 
 {% set enumName %}{{param.enumName|default:"Asset"}}{% endset %}
 struct {{enumName}}Type: ExpressibleByStringLiteral {
