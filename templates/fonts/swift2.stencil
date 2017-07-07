@@ -11,52 +11,49 @@
 
 // swiftlint:disable file_length
 
-protocol FontConvertible {
-  func font(size: CGFloat) -> Font!
-}
+struct FontConvertible {
+  let name: String
+  let family: String
+  let path: String
 
-extension FontConvertible where Self: RawRepresentable, Self.RawValue == String {
   func font(size: CGFloat) -> Font! {
     return Font(font: self, size: size)
   }
 
   func register() {
-    let extensions = ["otf", "ttf"]
     let bundle = NSBundle(forClass: BundleToken.self)
 
-    guard let url = extensions.flatMap({ bundle.URLForResource(rawValue, withExtension: $0) }).first else {
+    guard let url = bundle.URLForResource(path, withExtension: nil) else {
       return
     }
 
     var errorRef: Unmanaged<CFError>?
-    CTFontManagerRegisterFontsForURL(url as CFURL, .None, &errorRef)
+    CTFontManagerRegisterFontsForURL(url as CFURL, .Process, &errorRef)
   }
 }
 
 extension Font {
-  convenience init!<FontType: FontConvertible
-    where FontType: RawRepresentable, FontType.RawValue == String>
-    (font: FontType, size: CGFloat) {
-      #if os(iOS) || os(tvOS) || os(watchOS)
-      if UIFont.fontNamesForFamilyName(font.rawValue).isEmpty {
-        font.register()
-      }
-      #elseif os(OSX)
-      if NSFontManager.sharedFontManager().availableMembersOfFontFamily(font.rawValue) == nil {
-        font.register()
-      }
-      #endif
+  convenience init!(font: FontConvertible, size: CGFloat) {
+    #if os(iOS) || os(tvOS) || os(watchOS)
+    if UIFont.fontNamesForFamilyName(font.family).isEmpty {
+      font.register()
+    }
+    #elseif os(OSX)
+    if NSFontManager.sharedFontManager().availableMembersOfFontFamily(font.family) == nil {
+      font.register()
+    }
+    #endif
 
-      self.init(name: font.rawValue, size: size)
+    self.init(name: font.name, size: size)
   }
 }
 
 // swiftlint:disable identifier_name line_length type_body_length
 enum {{param.enumName|default:"FontFamily"}} {
   {% for family in families %}
-  enum {{family.name|swiftIdentifier|snakeToCamelCase:"true"|escapeReservedKeywords}}: String, FontConvertible {
+  enum {{family.name|swiftIdentifier|snakeToCamelCase:"true"|escapeReservedKeywords}} {
     {% for font in family.fonts %}
-    case {{font.style|swiftIdentifier|snakeToCamelCase:"true"|escapeReservedKeywords}} = "{{font.name}}"
+    static let {{font.style|swiftIdentifier|snakeToCamelCase:"true"|escapeReservedKeywords}} = FontConvertible("{{font.name}}", family: "{{family.name}}", path: "{{font.path}}")
     {% endfor %}
   }
   {% endfor %}

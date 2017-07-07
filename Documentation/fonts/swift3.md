@@ -25,11 +25,14 @@ You can customize some elements of this template by overriding the following par
 
 ```swift
 enum FontFamily {
-  enum SFNSDisplay: String, FontConvertible {
-    case regular = ".SFNSDisplay-Regular"
+  enum SFNSDisplay {
+    static let black = FontConvertible(name: ".SFNSDisplay-Black", family: ".SF NS Display", path: "SFNSDisplay-Black.otf")
+    static let bold = FontConvertible(name: ".SFNSDisplay-Bold", family: ".SF NS Display", path: "SFNSDisplay-Bold.otf")
+    static let heavy = FontConvertible(name: ".SFNSDisplay-Heavy", family: ".SF NS Display", path: "SFNSDisplay-Heavy.otf")
+    static let regular = FontConvertible(name: ".SFNSDisplay-Regular", family: ".SF NS Display", path: "SFNSDisplay-Regular.otf")
   }
-  enum ZapfDingbats: String, FontConvertible {
-    case regular = "ZapfDingbatsITC"
+  enum ZapfDingbats {
+    static let regular = FontConvertible(name: "ZapfDingbatsITC", family: "Zapf Dingbats", path: "ZapfDingbats.ttf")
   }
 }
 ```
