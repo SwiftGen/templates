@@ -69,7 +69,7 @@ See the Stencil dedicated documentation for more information.
 
 SwiftGen comes bundled with commonly used templates for the various type of resources.
 
-For each type of resource (images, fonts, etc…), SwiftGen provides a number of templates for common use cases (at least one for each swift version), that you can select using the `-t` option when invoking SwiftGen (e.g. `swiftgen images -t swift2 path/to/your/Images.xcassets`). The `-t` and `-p` options have the same purpose (selecting a specific template you want to use when asking SwiftGen to generate the output Swift code), `-t` simply selects the template by name (looking for a template with this name among the templates bundled with SwiftGen itself) while `-p` allows you to indicate an arbitrary using a path.
+For each type of resource (images, fonts, etc…), SwiftGen provides a number of templates for common use cases (at least one for each swift version), that you can select using the `-t` option when invoking SwiftGen (e.g. `swiftgen images -t swift2 path/to/your/Images.xcassets`). The `-t` and `-p` options have the same purpose (selecting a specific template you want to use when asking SwiftGen to generate the output Swift code), `-t` simply selects the template by name (looking for a template with this name among the templates bundled with SwiftGen itself) while `-p` allows you to indicate an arbitrary template using a path.
 
 ## Templates documentation
 
@@ -84,7 +84,7 @@ Creating your own templates is just a matter of creating a Stencil template (usi
 The best way to start creating your own template is by duplicating an existing template as a starting point, then modifying the copy to your needs. You can do that easily using the following commands:
 
 ```sh
-# Duplicate the images swift3.stencil template and rediret the output to a new mytemplate.stencil file
+# Duplicate the images swift3.stencil template and redirect the output to a new mytemplate.stencil file
 $ swiftgen templates cat images swift3 > mytemplate.stencil
 # Then modify the duplicated template using your favorite text editor to tweak it to your needs
 $ edit mytemplate.stencil
