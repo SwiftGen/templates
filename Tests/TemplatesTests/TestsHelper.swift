@@ -141,15 +141,12 @@ extension XCTestCase {
    
    - Parameter template: The name of the template (without the `stencil` extension)
    - Parameter contextNames: A list of context names (without the `plist` extension)
-   - Parameter outputPrefix: Prefix for the output files, becomes "{outputPrefix}-context-{contextName}.swift".
-                             Defaults to template name.
    - Parameter directory: The directory to look for files in (correspons to de command)
-   - Parameter resourceDirectory: The directory to look for files in (corresponds to de command)
+   - Parameter resourceDirectory: The directory to look for files in (corresponds to the command)
    - Parameter contextVariations: Optional closure to generate context variations.
    */
   func test(template templateName: String,
             contextNames: [String],
-            outputPrefix: String? = nil,
             directory: Fixtures.Directory,
             resourceDirectory: Fixtures.Directory? = nil,
             file: StaticString = #file,
@@ -161,7 +158,6 @@ extension XCTestCase {
 
     // default values
     let contextVariations = contextVariations ?? { [(context: $1, suffix: "")] }
-    let prefix = outputPrefix ?? templateName
     let resourceDir = resourceDirectory ?? directory
 
     for contextName in contextNames {
@@ -174,7 +170,7 @@ extension XCTestCase {
       }
 
       for (index, (context: context, suffix: suffix)) in variations.enumerated() {
-        let outputFile = "\(prefix)-context-\(contextName)\(suffix).swift"
+        let outputFile = "\(templateName)-context-\(contextName)\(suffix).swift"
         if variations.count > 1 { print(" - Variation #\(index)... (expecting: \(outputFile))") }
         guard let result = try? template.render(context) else {
           fatalError("Unable to render template")

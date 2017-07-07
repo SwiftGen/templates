@@ -10,8 +10,8 @@
 ## When to use it
 
 - When you need to generate *Swift 2* code
-- You want to generate code for UIKit platforms (iOS, tvOS and watchOS)
-- **Warning**: Swift 2 is no longer actively supported, so we cannot guarantee that there won't be issues with the generated code.
+- The generated code supports both UIKit platforms (iOS, tvOS and watchOS) and AppKit platform (macOS)
+- **Warning**: Swift 2 is no longer actively supported, so we won't maintain this template and don't unit-test the generated code for it anymore.
 
 ## Customization
 
@@ -24,33 +24,25 @@ You can customize some elements of this template by overriding the following par
 
 ## Generated Code
 
+Note: the generated code may look differently depending on the platform the storyboard file is targeting.
+
 **Extract:**
 
 ```swift
 enum StoryboardScene {
-  enum Dependency: String, StoryboardSceneType {
+  enum Dependency: StoryboardType {
     static let storyboardName = "Dependency"
 
-    case DependentScene = "Dependent"
-    static func instantiateDependent() -> UIViewController {
-      return StoryboardScene.Dependency.DependentScene.viewController()
-    }
+    static let Dependent = SceneType<UIViewController>(Dependency.self, identifier: "Dependent")
   }
-  enum Message: String, StoryboardSceneType {
+  enum Message: StoryboardType {
     static let storyboardName = "Message"
 
-    case MessagesListScene = "MessagesList"
-    static func instantiateMessagesList() -> UITableViewController {
-      guard let vc = StoryboardScene.Message.MessagesListScene.viewController() as? UITableViewController
-      else {
-        fatalError("ViewController 'MessagesList' is not of the expected class UITableViewController.")
-      }
-      return vc
-    }
+    static let MessagesList = SceneType<UITableViewController>(Message.self, identifier: "MessagesList")
   }
 }
 enum StoryboardSegue {
-  enum Message: String, StoryboardSegueType {
+  enum Message: String, SegueType {
     case Embed
     case NonCustom
   }
@@ -62,11 +54,8 @@ enum StoryboardSegue {
 ## Usage example
 
 ```swift
-// You can instantiate scenes using the generic `viewController()` method:
-let vc = StoryboardScene.Dependency.DependentScene.viewController()
-
-// or the `instantiate...()` method (which will cast to the correct type):
-let vc2 = StoryboardScene.Message.instantiateMessagesList()
+// You can instantiate scenes using the `controller` property:
+let vc = StoryboardScene.Dependency.Dependent.controller
 
 // You can perform segues using:
 vc.performSegue(StoryboardSegue.Message.Embed)
