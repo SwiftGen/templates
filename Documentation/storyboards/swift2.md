@@ -10,7 +10,8 @@
 ## When to use it
 
 - When you need to generate *Swift 2* code
-- **Warning**: Swift 2 is no longer actively supported, so we cannot guarantee that there won't be issues with the generated code.
+- The generated code supports both UIKit platforms (iOS, tvOS and watchOS) and AppKit platform (macOS)
+- **Warning**: Swift 2 is no longer actively supported, so we won't maintain this template and don't unit-test the generated code for it anymore.
 
 ## Customization
 

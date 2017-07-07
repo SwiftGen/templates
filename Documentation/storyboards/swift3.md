@@ -10,6 +10,7 @@
 ## When to use it
 
 - When you need to generate *Swift 3* code
+- The generated code supports both UIKit platforms (iOS, tvOS and watchOS) and AppKit platform (macOS)
 
 ## Customization
 
