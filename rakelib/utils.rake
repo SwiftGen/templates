@@ -49,10 +49,11 @@ class Utils
   end
 
   def self.top_changelog_version(changelog_file = 'CHANGELOG.md')
-    File.read(changelog_file).match(/^## (.*)$/)[1]
+    `grep -m 1 '^## ' "#{changelog_file}" | sed 's/## //'`.strip
   end
 
   def self.top_changelog_entry(changelog_file = 'CHANGELOG.md')
+    tag = self.top_changelog_version
     `sed -n /'^## #{tag}$'/,/'^## '/p "#{changelog_file}"`.gsub(/^## .*$/,'').strip
   end
 
