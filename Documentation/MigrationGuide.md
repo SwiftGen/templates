@@ -1,4 +1,4 @@
-## Deprecated templates in 2.0 (SwiftGen 5.0) ##
+## Deprecated templates in 2.0 (SwiftGen 5.0)
 
 The two general themes for this version are:
 
@@ -7,20 +7,20 @@ The two general themes for this version are:
 
 Below is a list of renamed and removed templates, grouped by subcommand. If your template isn't listed, you don't need to do anything.
 
-### Colors ###
+### Colors
 
 | Old | New | Reason |
 | --- | --- | ------ |
 | default | swift2 | |
 | rawvalues | **deleted** | Seldomly used |
 
-### Fonts ###
+### Fonts
 
 | Old | New | Reason |
 | --- | --- | ------ |
 | default | swift2 | |
 
-### Images ###
+### Images / XCAssets
 
 | Old | New | Reason |
 | --- | --- | ------ |
@@ -30,7 +30,9 @@ Below is a list of renamed and removed templates, grouped by subcommand. If your
 | dot-syntax-swift3 | swift3 | |
 | swift3 | **deleted** | Deprecated by `dot-syntax-swift3` (now called `swift3`) |
 
-### Storyboards ###
+⚠️ The `images` subcommand from SwiftGen 4.x has been renamed `xcassets` in SwiftGen 5.0, so be sure to put those templates in a `xcassets` subfolder and not an `images` subfolder.
+
+### Storyboards
 
 | Old | New | Reason |
 | --- | --- | ------ |
@@ -41,7 +43,7 @@ Below is a list of renamed and removed templates, grouped by subcommand. If your
 | osx-swift3 | **deleted** | Unified with the iOS template, just use `swift3` |
 | uppercase | **deleted** | No longer needed since we prefix classes with their module |
 
-### Strings ###
+### Strings
 
 | Old | New | Reason |
 | --- | --- | ------ |

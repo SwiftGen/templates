@@ -7,7 +7,7 @@
 import StencilSwiftKit
 import XCTest
 
-class ImagesTests: XCTestCase {
+class XCAssetsTests: XCTestCase {
   enum Contexts {
     static let all = ["empty", "defaults"]
   }
@@ -31,14 +31,14 @@ class ImagesTests: XCTestCase {
   func testSwift2() {
     test(template: "swift2",
          contextNames: Contexts.all,
-         directory: .images,
+         directory: .xcassets,
          contextVariations: variations)
   }
 
   func testSwift3() {
     test(template: "swift3",
          contextNames: Contexts.all,
-         directory: .images,
+         directory: .xcassets,
          contextVariations: variations)
   }
 }

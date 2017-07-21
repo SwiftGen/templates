@@ -23,11 +23,11 @@ And that's exactly what templates are for: to allow people to describe how they 
 
 In practice, when SwiftGen parses your various resources (images, fonts, …), it generates a dictionary representation of those resources (an array of image names, an array of dictionaries representing a font with all its variants, etc), that is then used as the input for the template you choose to use.
 
-For example, when parsing images, SwiftGen will generate a dictionary representation like this:
+For example, when parsing an asset catalog, SwiftGen will generate a dictionary representation like this:
 
 ```
 [
-  "images": [
+  "assets": [
     "foo",
     "bar",
     "baz",
@@ -35,14 +35,14 @@ For example, when parsing images, SwiftGen will generate a dictionary representa
 ]
 ```
 
-_(this is a partial example for the sake of simplifying the explanation; see the documentation for the full generated structure)_
+_(this is a partial example for the sake of simplifying the explanation; see the documentation for the full generated structure for each command)_
 
-Then this dictionary is used as input to feed your templates with variables. In your template, you can access the variable named `images` and iterate over each string inside it to generate some Swift code as needed. For example if your template `mytemplate.stencil` looks like this:
+Then this dictionary is used as input to feed your templates with variables. In your template, you can access the variable named `assets` and iterate over each string inside it to generate some Swift code as needed. For example if your template `mytemplate.stencil` looks like this:
 
 ```
 enum Assets: String {
-  {% for imageName in images %}
-  case {{imageName}} = "{{imageName}}"
+  {% for asset in assets %}
+  case {{asset}} = "{{asset}}"
   {% endfor %}
 }
 ```
@@ -57,7 +57,7 @@ enum Assets: String {
 }
 ```
 
-To use that template, you'd simply invoke SwiftGen using `swiftgen images -p path/to/mytemplate.stencil path/to/your/Images.xcassets` and SwiftGen will use that custom template of yours at the specified path.
+To use that template, you'd simply invoke SwiftGen using `swiftgen xcassets -p path/to/mytemplate.stencil path/to/your/Images.xcassets` and SwiftGen will use that custom template of yours at the specified path.
 
 ## Stencil
 
@@ -69,7 +69,7 @@ See the Stencil dedicated documentation for more information.
 
 SwiftGen comes bundled with commonly used templates for the various type of resources.
 
-For each type of resource (images, fonts, etc…), SwiftGen provides a number of templates for common use cases (at least one for each swift version), that you can select using the `-t` option when invoking SwiftGen (e.g. `swiftgen images -t swift2 path/to/your/Images.xcassets`). The `-t` and `-p` options have the same purpose (selecting a specific template you want to use when asking SwiftGen to generate the output Swift code), `-t` simply selects the template by name (looking for a template with this name among the templates bundled with SwiftGen itself) while `-p` allows you to indicate an arbitrary template using a path.
+For each type of resource (images, fonts, etc…), SwiftGen provides a number of templates for common use cases (at least one for each swift version), that you can select using the `-t` option when invoking SwiftGen (e.g. `swiftgen xcassets -t swift2 path/to/your/Images.xcassets`). The `-t` and `-p` options have the same purpose (selecting a specific template you want to use when asking SwiftGen to generate the output Swift code), `-t` simply selects the template by name (looking for a template with this name among the templates bundled with SwiftGen itself) while `-p` allows you to indicate an arbitrary template using a path.
 
 ## Templates documentation
 
@@ -84,12 +84,12 @@ Creating your own templates is just a matter of creating a Stencil template (usi
 The best way to start creating your own template is by duplicating an existing template as a starting point, then modifying the copy to your needs. You can do that easily using the following commands:
 
 ```sh
-# Duplicate the images swift3.stencil template and redirect the output to a new mytemplate.stencil file
-$ swiftgen templates cat images swift3 > mytemplate.stencil
+# Duplicate the xcassets swift3.stencil template and redirect the output to a new mytemplate.stencil file
+$ swiftgen templates cat xcassets swift3 > mytemplate.stencil
 # Then modify the duplicated template using your favorite text editor to tweak it to your needs
 $ edit mytemplate.stencil
 # Then use your new template instead of the swift3 one when invoking SwiftGen
-$ swiftgen images -p mytemplate.stencil path/to/your/Images.xcassets
+$ swiftgen xcassets -p mytemplate.stencil path/to/your/Images.xcassets
 ```
 
 To learn more about creating your own template, see the dedicated documentation in the `documentation/` directory of this repository.
