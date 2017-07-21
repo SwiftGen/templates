@@ -49,4 +49,15 @@ namespace :changelog do
       puts "\u{274C}  Some wrong links found:\n" + all_wrong_links.join("\n")
     end
   end
+
+  desc "Push the CHANGELOG's top section as a GitHub release"
+  task :push_github_release do
+    client = Utils.octokit_client
+    
+    tag = File.read('CHANGELOG.md').match(/^## (.*)$/)[1]
+    changelog = `sed -n /'^## #{tag}$'/,/'^## '/p SwiftGen/CHANGELOG.md`.gsub(/^## .*$/,'').strip
+
+    repo_url = `git remote -v | grep push`.split(' ')[1]
+    client.create_release(repo_url, tag, :body => changelog)
+  end
 end

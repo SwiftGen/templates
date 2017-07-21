@@ -107,4 +107,37 @@ namespace :output do
   end
 end
 
+
+## [ Release a new version ] ##################################################
+
+namespace :release do
+  desc 'Create a new release on GitHub'
+  task :new => [:check_versions, 'xcode:test', 'changelog:push_github_release']
+
+  desc 'Check if all versions from the podspecs and CHANGELOG match'
+  task :check_versions do
+    results = []
+
+    # Check if bundler is installed first, as we'll need it for the cocoapods task (and we prefer to fail early)
+    `which bundler`
+    results << Utils.table_result($?.success?, 'Bundler installed', 'Please install bundler using `gem install bundler` and run `bundle install` first.')
+
+    # Ask version to release
+    print "Version to release: "
+    version = STDIN.gets.strip
+
+    # Check if entry present in CHANGELOG
+    changelog_entry = system(%Q{grep -q '^## #{Regexp.quote(version)}$' CHANGELOG.md})
+    results << Utils.table_result(changelog_entry, "CHANGELOG, Entry added", "Please add an entry for #{version} in CHANGELOG.md")
+
+    changelog_master = system(%q{grep -qi '^## Master' CHANGELOG.md})
+    results << Utils.table_result(!changelog_master, "CHANGELOG, No master", 'Please remove entry for master in CHANGELOG')
+
+    exit 1 unless results.all?
+
+    print "Release version #{version} [Y/n]? "
+    exit 2 unless (STDIN.gets.chomp == 'Y')
+  end
+end
+
 task :default => "xcode:test"

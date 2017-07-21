@@ -6,6 +6,8 @@ require 'json'
 class Utils
   COLUMN_WIDTH = 30
 
+  ## [ Run commands ] #########################################################
+
   # formatter types
   :xcpretty   # pass through xcpretty and store in artifacts
   :raw        # store in artifacts
@@ -25,6 +27,8 @@ class Utils
     end
   end
 
+  ## [ Convenience Helpers ] ##################################################
+
   def self.podspec_version(file = '*')
     JSON.parse(`bundle exec pod ipc spec #{file}.podspec`)["version"]
   end
@@ -35,6 +39,15 @@ class Utils
     pod_vers = root_pods.select { |n| n.start_with?(pod) }.first # "SwiftGen (x.y.z)"
     /\((.*)\)$/.match(pod_vers)[1] # Just the 'x.y.z' part
   end
+
+  def octokit_client
+    token   = File.exist?('.apitoken') && File.read('.apitoken')
+    token ||= File.exist?('../.apitoken') && File.read('../.apitoken')
+    Utils.print_error('No .apitoken file found') unless token
+    Octokit::Client.new(:access_token => token)
+  end
+
+  ## [ Print info/errors ] ####################################################
 
   # print an info header
   def self.print_header(str)
@@ -65,6 +78,7 @@ class Utils
     end
     result
   end
+
 
   ## [ Private helper functions ] ##################################################
 
