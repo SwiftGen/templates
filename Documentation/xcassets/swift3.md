@@ -2,8 +2,8 @@
 
 | Name      | Description       |
 | --------- | ----------------- |
-| File name | images/swift3.stencil |
-| Invocation example | `swiftgen images -t swift3 …` |
+| File name | xcassets/swift3.stencil |
+| Invocation example | `swiftgen xcassets -t swift3 …` |
 | Language | Swift 3 |
 | Author | Olivier Halligon |
 
@@ -19,7 +19,7 @@ You can customize some elements of this template by overriding the following par
 
 | Parameter Name | Default Value | Description |
 | -------------- | ------------- | ----------- |
-| `enumName` | `Asset` | Allows you to change the name of the generated `enum` containing all image names. |
+| `enumName` | `Asset` | Allows you to change the name of the generated `enum` containing all assets. |
 | `noAllValues` | N/A | Setting this parameter will disable generation of the `allValues` constant. |
 
 ## Generated Code
@@ -36,7 +36,7 @@ enum Asset {
 }
 ```
 
-[Full generated code](https://github.com/SwiftGen/templates/blob/master/Tests/Expected/Images/swift3-context-defaults.swift)
+[Full generated code](https://github.com/SwiftGen/templates/blob/master/Tests/Expected/XCAssets/swift3-context-defaults.swift)
 
 ## Usage example
 
