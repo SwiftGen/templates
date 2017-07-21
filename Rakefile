@@ -112,7 +112,7 @@ end
 
 namespace :release do
   desc 'Create a new release on GitHub'
-  task :new => [:check_versions, 'xcode:test', 'changelog:push_github_release']
+  task :new => [:check_versions, 'xcode:test', :create_tag, 'changelog:push_github_release']
 
   desc 'Check if all versions from the podspecs and CHANGELOG match'
   task :check_versions do
@@ -122,9 +122,9 @@ namespace :release do
     `which bundler`
     results << Utils.table_result($?.success?, 'Bundler installed', 'Please install bundler using `gem install bundler` and run `bundle install` first.')
 
-    # Ask version to release
-    print "Version to release: "
-    version = STDIN.gets.strip
+    # Guess version to release
+    version = File.read('CHANGELOG.md').match(/^## (.*)$/)[1]
+    Utils.table_info('Top version in CHANGELOG.md', version)
 
     # Check if entry present in CHANGELOG
     changelog_entry = system(%Q{grep -q '^## #{Regexp.quote(version)}$' CHANGELOG.md})
@@ -137,6 +137,11 @@ namespace :release do
 
     print "Release version #{version} [Y/n]? "
     exit 2 unless (STDIN.gets.chomp == 'Y')
+  end
+
+  task :create_tag do
+    version = File.read('CHANGELOG.md').match(/^## (.*)$/)[1]
+    `git tag #{version} && git push --tags`
   end
 end
 

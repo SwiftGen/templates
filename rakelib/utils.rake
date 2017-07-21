@@ -2,6 +2,7 @@
 # none
 
 require 'json'
+require 'octokit'
 
 class Utils
   COLUMN_WIDTH = 30
@@ -40,11 +41,19 @@ class Utils
     /\((.*)\)$/.match(pod_vers)[1] # Just the 'x.y.z' part
   end
 
-  def octokit_client
+  def self.octokit_client
     token   = File.exist?('.apitoken') && File.read('.apitoken')
     token ||= File.exist?('../.apitoken') && File.read('../.apitoken')
     Utils.print_error('No .apitoken file found') unless token
     Octokit::Client.new(:access_token => token)
+  end
+
+  def self.top_changelog_version(changelog_file = 'CHANGELOG.md')
+    File.read(changelog_file).match(/^## (.*)$/)[1]
+  end
+
+  def self.top_changelog_entry(changelog_file = 'CHANGELOG.md')
+    `sed -n /'^## #{tag}$'/,/'^## '/p "#{changelog_file}"`.gsub(/^## .*$/,'').strip
   end
 
   ## [ Print info/errors ] ####################################################
