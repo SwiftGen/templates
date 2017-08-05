@@ -51,6 +51,6 @@ Below is a list of renamed and removed templates, grouped by subcommand. If your
 | dot-syntax | structured-swift2 | |
 | dot-syntax-swift3 | structured-swift3 | |
 | genstrings | **deleted** | Seldomly used |
-| no-comments-swift3 | **deleted ** | The other templates now support a `noComments` parameter |
+| no-comments-swift3 | **deleted** | The other templates now support a `noComments` parameter |
 | structured | **deleted** | Deprecated by `dot-syntax` (now called `structured-swift2/3`) |
 | swift3 | flat-swift3 | |
