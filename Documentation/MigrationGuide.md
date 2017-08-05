@@ -30,7 +30,7 @@ Below is a list of renamed ("➡️") and removed ("❌") templates, grouped by 
 | `default` | ❌ _deleted_ | Deprecated by `dot-syntax` (now called `swift2`) |
 | `dot-syntax` | ➡️ `swift2` | |
 | `dot-syntax-swift3` | ➡️ `swift3` | |
-| `swift3` | ❌ _deleted_ | Deprecated by `dot-syntax-swift3` (now called `swift3`) |
+| `swift3` | ⚠️ `swift3` | Now integrates the recursive features of the previously named `dot-syntax-swift3` template |
 
 ⚠️ The `images` subcommand from SwiftGen 4.x has been renamed `xcassets` in SwiftGen 5.0, so be sure to put those templates in a `xcassets` subfolder and not an `images` subfolder.
 
