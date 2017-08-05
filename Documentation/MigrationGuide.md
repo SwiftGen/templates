@@ -5,7 +5,7 @@ The two general themes for this version are:
 - Templates now reside in the subfolder corresponding to their subcommand (`colors`, `fonts`, ...) intead of the filename being prefixed with it.
 - The `default` template doesn't exist anymore, templates now specify which swift version they support.
 
-Below is a list of renamed and removed templates, grouped by subcommand. If your template hasn't been renamed or removed, you don't need to do anything. You still might want to review the documentation for that template, as there might be new features you may be interested in.
+Below is a list of renamed ("➡️") and removed ("❌") templates, grouped by subcommand. If your template hasn't been renamed or removed, you don't need to do anything ("✅"). You still might want to review the documentation for that template, as there might be new features you may be interested in.
 
 ### Colors
 
@@ -26,7 +26,7 @@ Below is a list of renamed and removed templates, grouped by subcommand. If your
 
 | Old | New | Reason |
 | --- | --- | ------ |
-| `all-values` | ❌ _deleted_ | The other templates by default now generate an `allValues` static constant |
+| `allvalues` | ➡️ `swift2`/`swift3` | All templates by default now generate an `allValues` static constant |
 | `default` | ❌ _deleted_ | Deprecated by `dot-syntax` (now called `swift2`) |
 | `dot-syntax` | ➡️ `swift2` | |
 | `dot-syntax-swift3` | ➡️ `swift3` | |
@@ -40,9 +40,9 @@ Below is a list of renamed and removed templates, grouped by subcommand. If your
 | --- | --- | ------ |
 | `default` | ➡️ `swift2` | |
 | `lowercase` | ❌ _deleted_ | No longer needed since we prefix classes with their module |
-| `osx-default` | ❌ _deleted_ | Unified with the iOS template, just use `swift2` |
+| `osx-default` | ➡️ `swift2` | Unified with the iOS template, just use `swift2` |
 | `osx-lowercase` | ❌ _deleted_ | No longer needed since we prefix classes with their module |
-| `osx-swift3` | ❌ _deleted_ | Unified with the iOS template, just use `swift3` |
+| `osx-swift3` | ➡️ `swift3` | Unified with the iOS template, just use `swift3` |
 | `swift3` | ✅ `swift3` | |
 | `uppercase` | ❌ _deleted_ | No longer needed since we prefix classes with their module |
 
