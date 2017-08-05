@@ -27,7 +27,7 @@ Below is a list of renamed ("➡️") and removed ("❌") templates, grouped by 
 | Old | New | Reason |
 | --- | --- | ------ |
 | `allvalues` | ➡️ `swift2`/`swift3` | All templates by default now generate an `allValues` static constant |
-| `default` | ❌ _deleted_ | Deprecated by `dot-syntax` (now called `swift2`) |
+| `default` | ⚠️ `swift2` | Now integrates the recursive features of the previously named `dot-syntax` template |
 | `dot-syntax` | ➡️ `swift2` | |
 | `dot-syntax-swift3` | ➡️ `swift3` | |
 | `swift3` | ⚠️ `swift3` | Now integrates the recursive features of the previously named `dot-syntax-swift3` template |
