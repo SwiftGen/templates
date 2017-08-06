@@ -51,7 +51,7 @@
   [#50](https://github.com/SwiftGen/templates/issues/50)
 * We can now re-generate the output files used for testing by using the "Generate Output" Xcode scheme.  
   [David Jennes](https://github.com/djbe)
-  [#56](https://github.com/SwiftGen/SwiftGenKit/issues/56)
+  [#56](https://github.com/SwiftGen/templates/issues/56)
 
 ## 1.1.0
 
