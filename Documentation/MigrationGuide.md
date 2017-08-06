@@ -1,3 +1,7 @@
+# Templates 2.0 Migration Guide
+
+If you're moving from SwiftGen 4.x to SwiftGen 5.0, you'll need to be aware that some templates have been renamed, removed or merged with others. Follow this Migration Guide to use the new name for SwiftGen 5.x of the templates you were previously using with SwiftGen 4.x.
+
 ## Deprecated templates in 2.0 (SwiftGen 5.0)
 
 The two general themes for this version are:
