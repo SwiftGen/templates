@@ -77,3 +77,5 @@ It should now become:
 ```swift
 StoryboardScene.Message.messageList.instantiate()
 ```
+
+💡 Tip: to help you do this transition, you may be interested in using the ["compatibility template"](https://github.com/SwiftGen/templates/wiki/SwiftGen-5.0-Migration:-compatibility-template) we suggest here. It will allow you to generate compatibility code for the old storyboard function calls, generating **depreciation warnings + renaming fix-its** for that SwiftGen 4.x API. This way you could then **use Xcode's "Fix all in scope" feature** to let Xcode do the renaming and migration for you!
