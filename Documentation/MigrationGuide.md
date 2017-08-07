@@ -61,3 +61,19 @@ Below is a list of renamed ("➡️") and removed ("❌") templates, grouped by 
 | `no-comments-swift3` | ❌ _deleted_ | The other templates now support a `noComments` parameter |
 | `structured` | ❌ _deleted_ | Deprecated by `dot-syntax` (now called `structured-swift2/3`) |
 | `swift3` | ➡️ `flat-swift3` | |
+
+## Functionality changes in 2.0 (SwiftGen 5.0)
+
+### Storyboards
+
+You'll probably notice that your old codebase won't work with the new generated code. This is because we use a new, swiftier way of generating types for storyboard scenes. What it boils down to is that, if you had the following line in your code base:
+
+```swift
+StoryboardScene.Message.instantiateMessageList()
+```
+
+It should now become:
+
+```swift
+StoryboardScene.Message.messageList.instantiate()
+```
