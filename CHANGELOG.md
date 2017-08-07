@@ -66,7 +66,7 @@
 * Fix the `images` templates so that they work on watchOS again.  
   [David Jennes](https://github.com/djbe)
   [SwiftGen/SwiftGen#275](https://github.com/SwiftGen/SwiftGen/issues/275)
-  [#30](https://github.com/SwiftGen/SwiftGenKit/issues/30)
+  [#30](https://github.com/SwiftGen/templates/issues/30)
 
 ### New Features
 
@@ -80,8 +80,8 @@
 
 * Switch from Travis CI to Circle CI, clean up the Rakefile in the process.  
   [David Jennes](https://github.com/djbe)
-  [#24](https://github.com/SwiftGen/SwiftGenKit/issues/24)
-  [#40](https://github.com/SwiftGen/SwiftGenKit/issues/40)
+  [#24](https://github.com/SwiftGen/templates/issues/24)
+  [#40](https://github.com/SwiftGen/templates/issues/40)
 * Disable SwiftLint `conditional_returns_on_newline` in the font template.  
   [Tom Baranes](https://github.com/tbaranes)
   [#33](https://github.com/SwiftGen/templates/pull/33)
