@@ -54,8 +54,8 @@ enum StoryboardSegue {
 ## Usage example
 
 ```swift
-// You can instantiate scenes using the `controller` property:
-let vc = StoryboardScene.Dependency.Dependent.controller
+// You can instantiate scenes using the `instantiate` method:
+let vc = StoryboardScene.Dependency.Dependent.instantiate()
 
 // You can perform segues using:
 vc.performSegue(StoryboardSegue.Message.Embed)
