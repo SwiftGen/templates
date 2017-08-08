@@ -47,7 +47,7 @@ Below is a list of renamed ("➡️") and removed ("❌") templates, grouped by 
 | `osx-default` | ➡️ `swift2` | Unified with the iOS template, just use `swift2` |
 | `osx-lowercase` | ❌ _deleted_ | No longer needed since we prefix classes with their module |
 | `osx-swift3` | ➡️ `swift3` | Unified with the iOS template, just use `swift3` |
-| `swift3` | ✅ `swift3` | |
+| `swift3` | ⚠️ `swift3` | You'll probably need to adapt your call sites. See below. |
 | `uppercase` | ❌ _deleted_ | No longer needed since we prefix classes with their module |
 
 ### Strings
