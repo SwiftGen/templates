@@ -47,7 +47,7 @@ Below is a list of renamed ("➡️") and removed ("❌") templates, grouped by 
 | `osx-default` | ➡️ `swift2` | Unified with the iOS template, just use `swift2` |
 | `osx-lowercase` | ❌ _deleted_ | No longer needed since we prefix classes with their module |
 | `osx-swift3` | ➡️ `swift3` | Unified with the iOS template, just use `swift3` |
-| `swift3` | ✅ `swift3` | |
+| `swift3` | ⚠️ `swift3` | You'll probably need to adapt your call sites. See below. |
 | `uppercase` | ❌ _deleted_ | No longer needed since we prefix classes with their module |
 
 ### Strings
@@ -61,3 +61,21 @@ Below is a list of renamed ("➡️") and removed ("❌") templates, grouped by 
 | `no-comments-swift3` | ❌ _deleted_ | The other templates now support a `noComments` parameter |
 | `structured` | ❌ _deleted_ | Deprecated by `dot-syntax` (now called `structured-swift2/3`) |
 | `swift3` | ➡️ `flat-swift3` | |
+
+## Functionality changes in 2.0 (SwiftGen 5.0)
+
+### Storyboards
+
+You'll probably notice that your old codebase won't work with the new generated code. This is because we use a new, swiftier way of generating types for storyboard scenes. What it boils down to is that, if you had the following line in your code base:
+
+```swift
+StoryboardScene.Message.instantiateMessageList()
+```
+
+It should now become:
+
+```swift
+StoryboardScene.Message.messageList.instantiate()
+```
+
+💡 Tip: to help you do this transition, you may be interested in using the ["compatibility template"](https://github.com/SwiftGen/templates/wiki/SwiftGen-5.0-Migration:-compatibility-template) we suggest here. It will allow you to generate compatibility code for the old storyboard function calls, generating **depreciation warnings + renaming fix-its** for that SwiftGen 4.x API. This way you could then **use Xcode's "Fix all in scope" feature** to let Xcode do the renaming and migration for you!

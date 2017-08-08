@@ -6,12 +6,6 @@ WORKSPACE = 'Templates'
 SCHEME_NAME = 'Tests'
 CONFIGURATION = 'Debug'
 
-desc 'Generate Test Output'
-task :generate_output => "xcode:build" do |task|
-  Utils.print_header 'Generating contexts...'
-  Utils.run(%Q(xcodebuild -workspace "#{WORKSPACE}.xcworkspace" -scheme "Generate Output" -configuration "#{CONFIGURATION}" test-without-building), task, xcrun: true, formatter: :xcpretty)
-end
-
 ## [ Output compilation ] #####################################################
 
 MODULE_INPUT_PATH = 'Fixtures/stub-env/Modules'
@@ -30,6 +24,12 @@ TOOLCHAINS = {
 }
 
 namespace :output do
+  desc 'Generate Test Output'
+  task :generate => "xcode:build" do |task|
+    Utils.print_header 'Generating expected test output files...'
+    Utils.run(%Q(xcodebuild -workspace "#{WORKSPACE}.xcworkspace" -scheme "Generate Output" -configuration "#{CONFIGURATION}" test-without-building), task, xcrun: true, formatter: :xcpretty)
+  end
+
   desc 'Compile modules'
   task :modules do |task|
     Utils.print_header 'Compile output modules'
@@ -58,12 +58,20 @@ namespace :output do
   task :compile => :modules do |task|
     Utils.print_header 'Compiling template output files'
 
-    exit Dir.glob('Tests/Expected/**/*.swift').map { |f|
+    failures = []
+    Dir.glob('Tests/Expected/**/*.swift').each do |f|
       Utils.print_info "Compiling #{f}…\n"
-      compile_file(f, task)
-    }.reduce(true) { |result, status|
-      result && status
-    }
+      failures << f unless compile_file(f, task)
+    end
+    
+    Utils.print_header 'Compilation report'
+    if failures.empty?
+      Utils.print_info 'All files compiled successfully!'
+    else
+      Utils.print_error 'The following files failed to compile'
+      failures.each { |f| Utils.print_error " - #{f}" }
+    end
+    exit failures.empty?
   end
 
   def compile_module(m, sdk, task)

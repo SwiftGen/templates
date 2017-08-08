@@ -21,7 +21,7 @@ struct SceneType<T: Any> {
   let storyboard: StoryboardType.Type
   let identifier: String
 
-  var controller: T {
+  func instantiate() -> T {
     guard let controller = storyboard.storyboard.instantiateController(withIdentifier: identifier) as? T else {
       fatalError("Controller '\(identifier)' is not of the expected class \(T.self).")
     }
@@ -32,7 +32,7 @@ struct SceneType<T: Any> {
 struct InitialSceneType<T: Any> {
   let storyboard: StoryboardType.Type
 
-  var controller: T {
+  func instantiate() -> T {
     guard let controller = storyboard.storyboard.instantiateInitialController() as? T else {
       fatalError("Controller is not of the expected class \(T.self).")
     }
