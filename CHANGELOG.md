@@ -18,7 +18,9 @@ _None_
 
 ### Internal Changes
 
-_None_
+* Ensure `swiftlint` is run using `bundler`.  
+  [David Jennes](https://github.com/djbe) 
+  [#66](https://github.com/SwiftGen/templates/pull/66)
 
 ## 2.0.0
 
