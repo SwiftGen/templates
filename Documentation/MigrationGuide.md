@@ -6,7 +6,7 @@ If you're moving from SwiftGen 4.x to SwiftGen 5.0, you'll need to be aware that
 
 The two general themes for this version are:
 
-- Templates now reside in the subfolder corresponding to their subcommand (`colors`, `fonts`, ...) intead of the filename being prefixed with it.
+- Templates now reside in the subfolder corresponding to their subcommand (`colors`, `fonts`, ...) instead of the filename being prefixed with it.
 - The `default` template doesn't exist anymore, templates now specify which swift version they support.
 
 Below is a list of renamed ("➡️") and removed ("❌") templates, grouped by subcommand. If your template hasn't been renamed or removed, you don't need to do anything ("✅"). You still might want to review the documentation for that template, as there might be new features you may be interested in.
