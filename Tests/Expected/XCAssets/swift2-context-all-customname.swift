@@ -2,15 +2,20 @@
 
 #if os(OSX)
   import AppKit.NSImage
+  typealias Color = NSColor
   typealias Image = NSImage
 #elseif os(iOS) || os(tvOS) || os(watchOS)
   import UIKit.UIImage
+  typealias Color = UIColor
   typealias Image = UIImage
 #endif
 
 // swiftlint:disable file_length
 
-struct XCTImagesType: StringLiteralConvertible {
+@available(*, deprecated, renamed: "XCTImageAsset")
+typealias XCTAssetsType = XCTImageAsset
+
+struct XCTImageAsset {
   private var value: String
 
   var image: Image {
@@ -25,58 +30,61 @@ struct XCTImagesType: StringLiteralConvertible {
     guard let result = image else { fatalError("Unable to load image \(value).") }
     return result
   }
+}
 
-  init(stringLiteral value: String) {
-    self.value = value
-  }
+struct XCTColorAsset {
+  fileprivate var value: String
 
-  init(extendedGraphemeClusterLiteral value: String) {
-    self.init(stringLiteral: value)
-  }
-
-  init(unicodeScalarLiteral value: String) {
-    self.init(stringLiteral: value)
+  @available(iOS 11.0, tvOS 11.0, watchOS 4.0, OSX 10.13, *)
+  var color: Color {
+    return Color(asset: self)
   }
 }
 
 // swiftlint:disable identifier_name line_length nesting type_body_length type_name
-enum XCTImages {
+enum XCTAssets {
   enum Colors {
     enum _24Vision {
-      static let Background: XCTImagesType = "24Vision/Background"
-      static let Primary: XCTImagesType = "24Vision/Primary"
+      static let Background = XCTColorAsset(value: "24Vision/Background")
+      static let Primary = XCTColorAsset(value: "24Vision/Primary")
     }
     enum Vengo {
-      static let Primary: XCTImagesType = "Vengo/Primary"
-      static let Tint: XCTImagesType = "Vengo/Tint"
+      static let Primary = XCTColorAsset(value: "Vengo/Primary")
+      static let Tint = XCTColorAsset(value: "Vengo/Tint")
     }
 
-    static let allValues = [
+    static let allColors: [XCTColorAsset] = [
       _24Vision.Background,
       _24Vision.Primary,
       Vengo.Primary,
       Vengo.Tint
     ]
+    static let allImages: [XCTImageAsset] = [
+    ]
+    @available(*, deprecated, renamed: "allImages")
+    static let allValues: [XCTAssetsType] = allImages
   }
   enum Images {
     enum Exotic {
-      static let Banana: XCTImagesType = "Exotic/Banana"
-      static let Mango: XCTImagesType = "Exotic/Mango"
+      static let Banana = XCTImageAsset(value: "Exotic/Banana")
+      static let Mango = XCTImageAsset(value: "Exotic/Mango")
     }
-    static let Private: XCTImagesType = "private"
+    static let Private = XCTImageAsset(value: "private")
     enum Round {
-      static let Apricot: XCTImagesType = "Round/Apricot"
-      static let Orange: XCTImagesType = "Round/Orange"
+      static let Apricot = XCTImageAsset(value: "Round/Apricot")
+      static let Orange = XCTImageAsset(value: "Round/Orange")
       enum Red {
-        static let Apple: XCTImagesType = "Round/Apple"
+        static let Apple = XCTImageAsset(value: "Round/Apple")
         enum Double {
-          static let Cherry: XCTImagesType = "Round/Double/Cherry"
+          static let Cherry = XCTImageAsset(value: "Round/Double/Cherry")
         }
-        static let Tomato: XCTImagesType = "Round/Tomato"
+        static let Tomato = XCTImageAsset(value: "Round/Tomato")
       }
     }
 
-    static let allValues = [
+    static let allColors: [XCTColorAsset] = [
+    ]
+    static let allImages: [XCTImageAsset] = [
       Exotic.Banana,
       Exotic.Mango,
       Private,
@@ -86,16 +94,35 @@ enum XCTImages {
       Round.Red.Double.Cherry,
       Round.Red.Tomato
     ]
+    @available(*, deprecated, renamed: "allImages")
+    static let allValues: [XCTAssetsType] = allImages
   }
 }
 // swiftlint:enable identifier_name line_length nesting type_body_length type_name
 
 extension Image {
-  convenience init!(asset: XCTImagesType) {
+  @available(iOS 1.0, tvOS 1.0, watchOS 1.0, *)
+  @available(OSX, deprecated,
+    message: "This initializer is unsafe on macOS, please use the XCTImageAsset.image property")
+  convenience init!(asset: XCTImageAsset) {
     #if os(iOS) || os(tvOS)
     let bundle = NSBundle(forClass: BundleToken.self)
     self.init(named: asset.value, inBundle: bundle, compatibleWithTraitCollection: nil)
     #elseif os(OSX) || os(watchOS)
+    self.init(named: asset.value)
+    #endif
+  }
+}
+
+extension Color {
+  @available(iOS 11.0, tvOS 11.0, watchOS 4.0, OSX 10.13, *)
+  convenience init!(asset: XCTColorAsset) {
+    let bundle = NSBundle(forClass: BundleToken.self)
+    #if os(iOS) || os(tvOS)
+    self.init(named: asset.value, inBundle: bundle, compatibleWithTraitCollection: nil)
+    #elseif os(OSX)
+    self.init(named: asset.value, bundle: bundle)
+    #elseif os(watchOS)
     self.init(named: asset.value)
     #endif
   }

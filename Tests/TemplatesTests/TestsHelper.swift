@@ -172,8 +172,12 @@ extension XCTestCase {
       for (index, (context: context, suffix: suffix)) in variations.enumerated() {
         let outputFile = "\(templateName)-context-\(contextName)\(suffix).swift"
         if variations.count > 1 { print(" - Variation #\(index)... (expecting: \(outputFile))") }
-        guard let result = try? template.render(context) else {
-          fatalError("Unable to render template")
+
+        let result: String
+        do {
+          result = try template.render(context)
+        } catch let error {
+          fatalError("Unable to render template: \(error)")
         }
 
         // check if we should generate or not
