@@ -41,7 +41,7 @@ class StringsTests: XCTestCase {
          directory: .strings,
          contextVariations: variations)
   }
-  
+
   func testFlatSwift4() {
     test(template: "flat-swift4",
          contextNames: Contexts.all,
@@ -62,7 +62,7 @@ class StringsTests: XCTestCase {
          directory: .strings,
          contextVariations: variations)
   }
-  
+
   func testStructuredSwift4() {
     test(template: "structured-swift4",
          contextNames: Contexts.all,

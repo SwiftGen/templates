@@ -41,7 +41,7 @@ class XCAssetsTests: XCTestCase {
          directory: .xcassets,
          contextVariations: variations)
   }
-  
+
   func testSwift4() {
     test(template: "swift4",
          contextNames: Contexts.all,
