@@ -40,7 +40,7 @@ enum XCTLoc {
 // swiftlint:enable identifier_name line_length type_body_length
 
 extension XCTLoc {
-  fileprivate static func tr(_ table: String, _ key: String, _ args: CVarArg...) -> String {
+  private static func tr(_ table: String, _ key: String, _ args: CVarArg...) -> String {
     let format = NSLocalizedString(key, tableName: table, bundle: Bundle(for: BundleToken.self), comment: "")
     return String(format: format, locale: Locale.current, arguments: args)
   }
