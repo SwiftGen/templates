@@ -55,4 +55,12 @@ class StoryboardsiOSTests: XCTestCase {
          resourceDirectory: .storyboardsiOS,
          contextVariations: variations)
   }
+  
+  func testSwift4() {
+    test(template: "swift4",
+         contextNames: Contexts.all,
+         directory: .storyboards,
+         resourceDirectory: .storyboardsiOS,
+         contextVariations: variations)
+  }
 }

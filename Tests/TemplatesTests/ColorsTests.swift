@@ -38,4 +38,11 @@ class ColorsTests: XCTestCase {
          directory: .colors,
          contextVariations: variations)
   }
+  
+  func testSwift4() {
+    test(template: "swift4",
+         contextNames: Contexts.all,
+         directory: .colors,
+         contextVariations: variations)
+  }
 }
