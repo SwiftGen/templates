@@ -14,7 +14,8 @@ protocol StoryboardType {
 
 extension StoryboardType {
   static var storyboard: UIStoryboard {
-    return UIStoryboard(name: self.storyboardName, bundle: Bundle(for: BundleToken.self))
+    let name = self.storyboardName
+    return UIStoryboard(name: name, bundle: Bundle(for: BundleToken.self))
   }
 }
 
@@ -23,6 +24,7 @@ struct SceneType<T: Any> {
   let identifier: String
 
   func instantiate() -> T {
+    let identifier = self.identifier
     guard let controller = storyboard.storyboard.instantiateViewController(withIdentifier: identifier) as? T else {
       fatalError("ViewController '\(identifier)' is not of the expected class \(T.self).")
     }
@@ -45,7 +47,8 @@ protocol SegueType: RawRepresentable { }
 
 extension UIViewController {
   func perform<S: SegueType>(segue: S, sender: Any? = nil) where S.RawValue == String {
-    performSegue(withIdentifier: segue.rawValue, sender: sender)
+    let identifier = segue.rawValue
+    performSegue(withIdentifier: identifier, sender: sender)
   }
 }
 

@@ -20,7 +20,8 @@ protocol StoryboardType {
 
 extension StoryboardType {
   static var storyboard: {{prefix}}Storyboard {
-    return {{prefix}}Storyboard(name: self.storyboardName, bundle: Bundle(for: BundleToken.self))
+    let name = {% if isAppKit %}NSStoryboard.Name({% endif %}self.storyboardName{% if isAppKit %}){% endif %}
+    return {{prefix}}Storyboard(name: name, bundle: Bundle(for: BundleToken.self))
   }
 }
 
@@ -29,6 +30,7 @@ struct SceneType<T: Any> {
   let identifier: String
 
   func instantiate() -> T {
+    let identifier = {% if isAppKit %}NSStoryboard.SceneIdentifier({% endif %}self.identifier{% if isAppKit %}){% endif %}
     guard let controller = storyboard.storyboard.instantiate{{controller}}(withIdentifier: identifier) as? T else {
       fatalError("{{controller}} '\(identifier)' is not of the expected class \(T.self).")
     }
@@ -51,7 +53,8 @@ protocol SegueType: RawRepresentable { }
 
 extension {% if isAppKit %}NSSeguePerforming{% else %}UIViewController{% endif %} {
   func perform<S: SegueType>(segue: S, sender: Any? = nil) where S.RawValue == String {
-    performSegue{% if isAppKit %}?{% endif %}(withIdentifier: segue.rawValue, sender: sender)
+    let identifier = {% if isAppKit %}NSStoryboardSegue.Identifier({% endif %}segue.rawValue{% if isAppKit %}){% endif %}
+    performSegue{% if isAppKit %}?{% endif %}(withIdentifier: identifier, sender: sender)
   }
 }
 

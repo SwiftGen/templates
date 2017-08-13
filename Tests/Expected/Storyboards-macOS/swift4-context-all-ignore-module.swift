@@ -13,7 +13,8 @@ protocol StoryboardType {
 
 extension StoryboardType {
   static var storyboard: NSStoryboard {
-    return NSStoryboard(name: self.storyboardName, bundle: Bundle(for: BundleToken.self))
+    let name = NSStoryboard.Name(self.storyboardName)
+    return NSStoryboard(name: name, bundle: Bundle(for: BundleToken.self))
   }
 }
 
@@ -22,6 +23,7 @@ struct SceneType<T: Any> {
   let identifier: String
 
   func instantiate() -> T {
+    let identifier = NSStoryboard.SceneIdentifier(self.identifier)
     guard let controller = storyboard.storyboard.instantiateController(withIdentifier: identifier) as? T else {
       fatalError("Controller '\(identifier)' is not of the expected class \(T.self).")
     }
@@ -44,7 +46,8 @@ protocol SegueType: RawRepresentable { }
 
 extension NSSeguePerforming {
   func perform<S: SegueType>(segue: S, sender: Any? = nil) where S.RawValue == String {
-    performSegue?(withIdentifier: segue.rawValue, sender: sender)
+    let identifier = NSStoryboardSegue.Identifier(segue.rawValue)
+    performSegue?(withIdentifier: identifier, sender: sender)
   }
 }
 

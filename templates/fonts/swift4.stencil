@@ -39,7 +39,7 @@ extension Font {
       font.register()
     }
     #elseif os(OSX)
-    if NSFontManager.shared().availableMembers(ofFontFamily: font.family) == nil {
+    if NSFontManager.shared.availableMembers(ofFontFamily: font.family) == nil {
       font.register()
     }
     #endif

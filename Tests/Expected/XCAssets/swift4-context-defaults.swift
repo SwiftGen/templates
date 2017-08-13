@@ -18,7 +18,7 @@ struct AssetType: ExpressibleByStringLiteral {
     #if os(iOS) || os(tvOS)
     let image = Image(named: value, in: bundle, compatibleWith: nil)
     #elseif os(OSX)
-    let image = bundle.image(forResource: value)
+    let image = bundle.image(forResource: NSImage.Name(value))
     #elseif os(watchOS)
     let image = Image(named: value)
     #endif
@@ -76,7 +76,9 @@ extension Image {
     #if os(iOS) || os(tvOS)
     let bundle = Bundle(for: BundleToken.self)
     self.init(named: asset.value, in: bundle, compatibleWith: nil)
-    #elseif os(OSX) || os(watchOS)
+    #elseif os(OSX)
+    self.init(named: NSImage.Name(asset.value))
+    #elseif os(watchOS)
     self.init(named: asset.value)
     #endif
   }
