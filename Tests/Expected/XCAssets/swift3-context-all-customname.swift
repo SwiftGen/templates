@@ -41,33 +41,52 @@ struct XCTImagesType: ExpressibleByStringLiteral {
 
 // swiftlint:disable identifier_name line_length nesting type_body_length type_name
 enum XCTImages {
-  enum Exotic {
-    static let banana: XCTImagesType = "Exotic/Banana"
-    static let mango: XCTImagesType = "Exotic/Mango"
-  }
-  static let `private`: XCTImagesType = "private"
-  enum Round {
-    static let apricot: XCTImagesType = "Round/Apricot"
-    static let orange: XCTImagesType = "Round/Orange"
-    enum Red {
-      static let apple: XCTImagesType = "Round/Apple"
-      enum Double {
-        static let cherry: XCTImagesType = "Round/Double/Cherry"
-      }
-      static let tomato: XCTImagesType = "Round/Tomato"
+  enum Colors {
+    enum _24Vision {
+      static let background: XCTImagesType = "24Vision/Background"
+      static let primary: XCTImagesType = "24Vision/Primary"
     }
-  }
+    enum Vengo {
+      static let primary: XCTImagesType = "Vengo/Primary"
+      static let tint: XCTImagesType = "Vengo/Tint"
+    }
 
-  static let allValues = [
-    Exotic.banana,
-    Exotic.mango,
-    `private`,
-    Round.apricot,
-    Round.orange,
-    Round.Red.apple,
-    Round.Red.Double.cherry,
-    Round.Red.tomato
-  ]
+    static let allValues = [
+      _24Vision.background,
+      _24Vision.primary,
+      Vengo.primary,
+      Vengo.tint
+    ]
+  }
+  enum Images {
+    enum Exotic {
+      static let banana: XCTImagesType = "Exotic/Banana"
+      static let mango: XCTImagesType = "Exotic/Mango"
+    }
+    static let `private`: XCTImagesType = "private"
+    enum Round {
+      static let apricot: XCTImagesType = "Round/Apricot"
+      static let orange: XCTImagesType = "Round/Orange"
+      enum Red {
+        static let apple: XCTImagesType = "Round/Apple"
+        enum Double {
+          static let cherry: XCTImagesType = "Round/Double/Cherry"
+        }
+        static let tomato: XCTImagesType = "Round/Tomato"
+      }
+    }
+
+    static let allValues = [
+      Exotic.banana,
+      Exotic.mango,
+      `private`,
+      Round.apricot,
+      Round.orange,
+      Round.Red.apple,
+      Round.Red.Double.cherry,
+      Round.Red.tomato
+    ]
+  }
 }
 // swiftlint:enable identifier_name line_length nesting type_body_length type_name
 

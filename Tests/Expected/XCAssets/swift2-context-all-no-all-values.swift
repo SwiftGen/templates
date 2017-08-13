@@ -10,7 +10,7 @@
 
 // swiftlint:disable file_length
 
-struct XCTImagesType: StringLiteralConvertible {
+struct AssetType: StringLiteralConvertible {
   private var value: String
 
   var image: Image {
@@ -40,39 +40,40 @@ struct XCTImagesType: StringLiteralConvertible {
 }
 
 // swiftlint:disable identifier_name line_length nesting type_body_length type_name
-enum XCTImages {
-  enum Exotic {
-    static let Banana: XCTImagesType = "Exotic/Banana"
-    static let Mango: XCTImagesType = "Exotic/Mango"
-  }
-  static let Private: XCTImagesType = "private"
-  enum Round {
-    static let Apricot: XCTImagesType = "Round/Apricot"
-    static let Orange: XCTImagesType = "Round/Orange"
-    enum Red {
-      static let Apple: XCTImagesType = "Round/Apple"
-      enum Double {
-        static let Cherry: XCTImagesType = "Round/Double/Cherry"
-      }
-      static let Tomato: XCTImagesType = "Round/Tomato"
+enum Asset {
+  enum Colors {
+    enum _24Vision {
+      static let Background: AssetType = "24Vision/Background"
+      static let Primary: AssetType = "24Vision/Primary"
+    }
+    enum Vengo {
+      static let Primary: AssetType = "Vengo/Primary"
+      static let Tint: AssetType = "Vengo/Tint"
     }
   }
-
-  static let allValues = [
-    Exotic.Banana,
-    Exotic.Mango,
-    Private,
-    Round.Apricot,
-    Round.Orange,
-    Round.Red.Apple,
-    Round.Red.Double.Cherry,
-    Round.Red.Tomato
-  ]
+  enum Images {
+    enum Exotic {
+      static let Banana: AssetType = "Exotic/Banana"
+      static let Mango: AssetType = "Exotic/Mango"
+    }
+    static let Private: AssetType = "private"
+    enum Round {
+      static let Apricot: AssetType = "Round/Apricot"
+      static let Orange: AssetType = "Round/Orange"
+      enum Red {
+        static let Apple: AssetType = "Round/Apple"
+        enum Double {
+          static let Cherry: AssetType = "Round/Double/Cherry"
+        }
+        static let Tomato: AssetType = "Round/Tomato"
+      }
+    }
+  }
 }
 // swiftlint:enable identifier_name line_length nesting type_body_length type_name
 
 extension Image {
-  convenience init!(asset: XCTImagesType) {
+  convenience init!(asset: AssetType) {
     #if os(iOS) || os(tvOS)
     let bundle = NSBundle(forClass: BundleToken.self)
     self.init(named: asset.value, inBundle: bundle, compatibleWithTraitCollection: nil)

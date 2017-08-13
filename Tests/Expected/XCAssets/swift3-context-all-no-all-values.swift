@@ -18,7 +18,7 @@ struct AssetType: ExpressibleByStringLiteral {
     #if os(iOS) || os(tvOS)
     let image = Image(named: value, in: bundle, compatibleWith: nil)
     #elseif os(OSX)
-    let image = bundle.image(forResource: NSImage.Name(value))
+    let image = bundle.image(forResource: value)
     #elseif os(watchOS)
     let image = Image(named: value)
     #endif
@@ -41,20 +41,32 @@ struct AssetType: ExpressibleByStringLiteral {
 
 // swiftlint:disable identifier_name line_length nesting type_body_length type_name
 enum Asset {
-  enum Exotic {
-    static let banana: AssetType = "Exotic/Banana"
-    static let mango: AssetType = "Exotic/Mango"
+  enum Colors {
+    enum _24Vision {
+      static let background: AssetType = "24Vision/Background"
+      static let primary: AssetType = "24Vision/Primary"
+    }
+    enum Vengo {
+      static let primary: AssetType = "Vengo/Primary"
+      static let tint: AssetType = "Vengo/Tint"
+    }
   }
-  static let `private`: AssetType = "private"
-  enum Round {
-    static let apricot: AssetType = "Round/Apricot"
-    static let orange: AssetType = "Round/Orange"
-    enum Red {
-      static let apple: AssetType = "Round/Apple"
-      enum Double {
-        static let cherry: AssetType = "Round/Double/Cherry"
+  enum Images {
+    enum Exotic {
+      static let banana: AssetType = "Exotic/Banana"
+      static let mango: AssetType = "Exotic/Mango"
+    }
+    static let `private`: AssetType = "private"
+    enum Round {
+      static let apricot: AssetType = "Round/Apricot"
+      static let orange: AssetType = "Round/Orange"
+      enum Red {
+        static let apple: AssetType = "Round/Apple"
+        enum Double {
+          static let cherry: AssetType = "Round/Double/Cherry"
+        }
+        static let tomato: AssetType = "Round/Tomato"
       }
-      static let tomato: AssetType = "Round/Tomato"
     }
   }
 }
@@ -65,9 +77,7 @@ extension Image {
     #if os(iOS) || os(tvOS)
     let bundle = Bundle(for: BundleToken.self)
     self.init(named: asset.value, in: bundle, compatibleWith: nil)
-    #elseif os(OSX)
-    self.init(named: NSImage.Name(asset.value))
-    #elseif os(watchOS)
+    #elseif os(OSX) || os(watchOS)
     self.init(named: asset.value)
     #endif
   }

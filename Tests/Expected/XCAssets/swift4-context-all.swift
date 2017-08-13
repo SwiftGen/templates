@@ -41,33 +41,52 @@ struct AssetType: ExpressibleByStringLiteral {
 
 // swiftlint:disable identifier_name line_length nesting type_body_length type_name
 enum Asset {
-  enum Exotic {
-    static let banana: AssetType = "Exotic/Banana"
-    static let mango: AssetType = "Exotic/Mango"
-  }
-  static let `private`: AssetType = "private"
-  enum Round {
-    static let apricot: AssetType = "Round/Apricot"
-    static let orange: AssetType = "Round/Orange"
-    enum Red {
-      static let apple: AssetType = "Round/Apple"
-      enum Double {
-        static let cherry: AssetType = "Round/Double/Cherry"
-      }
-      static let tomato: AssetType = "Round/Tomato"
+  enum Colors {
+    enum _24Vision {
+      static let background: AssetType = "24Vision/Background"
+      static let primary: AssetType = "24Vision/Primary"
     }
-  }
+    enum Vengo {
+      static let primary: AssetType = "Vengo/Primary"
+      static let tint: AssetType = "Vengo/Tint"
+    }
 
-  static let allValues = [
-    Exotic.banana,
-    Exotic.mango,
-    `private`,
-    Round.apricot,
-    Round.orange,
-    Round.Red.apple,
-    Round.Red.Double.cherry,
-    Round.Red.tomato
-  ]
+    static let allValues = [
+      _24Vision.background,
+      _24Vision.primary,
+      Vengo.primary,
+      Vengo.tint
+    ]
+  }
+  enum Images {
+    enum Exotic {
+      static let banana: AssetType = "Exotic/Banana"
+      static let mango: AssetType = "Exotic/Mango"
+    }
+    static let `private`: AssetType = "private"
+    enum Round {
+      static let apricot: AssetType = "Round/Apricot"
+      static let orange: AssetType = "Round/Orange"
+      enum Red {
+        static let apple: AssetType = "Round/Apple"
+        enum Double {
+          static let cherry: AssetType = "Round/Double/Cherry"
+        }
+        static let tomato: AssetType = "Round/Tomato"
+      }
+    }
+
+    static let allValues = [
+      Exotic.banana,
+      Exotic.mango,
+      `private`,
+      Round.apricot,
+      Round.orange,
+      Round.Red.apple,
+      Round.Red.Double.cherry,
+      Round.Red.tomato
+    ]
+  }
 }
 // swiftlint:enable identifier_name line_length nesting type_body_length type_name
 
