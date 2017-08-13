@@ -15,6 +15,9 @@
 
 {% set enumName %}{{param.enumName|default:"Asset"}}{% endset %}
 {% set imageType %}{{param.imageTypeName|default:"ImageAsset"}}{% endset %}
+@available(*, deprecated, renamed: {{imageType}})
+typealias {{enumName}}Type = {{imageType}}
+
 struct {{imageType}} {
   fileprivate var value: String
 
@@ -45,17 +48,23 @@ struct {{colorType}} {
 {{sp}}  {% call casesBlock assets sp %}
 {{sp}}  {% if not param.noAllValues %}
 
-{{sp}}  static let allValues = [
+{{sp}}  static let allColors: [{{colorType}}] = [
 {{sp}}    {% set sp2 %}{{sp}}  {% endset %}
-{{sp}}    {% call allValuesBlock assets "" false sp2 %}
+{{sp}}    {% call allValuesBlock assets "color" "" false sp2 %}
 {{sp}}  ]
+{{sp}}  static let allImages: [{{imageType}}] = [
+{{sp}}    {% set sp2 %}{{sp}}  {% endset %}
+{{sp}}    {% call allValuesBlock assets "image" "" false sp2 %}
+{{sp}}  ]
+{{sp}}  @available(*, deprecated, renamed: "allImages")
+{{sp}}  static let allValues: [{{enumName}}Type] = allImages
 {{sp}}  {% endif %}
 {% endmacro %}
 {% macro casesBlock assets sp %}
 {{sp}}  {% for asset in assets %}
-{{sp}}  {% elif asset.type == "color" %}
+{{sp}}  {% if asset.type == "color" %}
 {{sp}}  static let {{asset.name|swiftIdentifier|snakeToCamelCase|lowerFirstWord|escapeReservedKeywords}} = {{colorType}}(value: "{{asset.value}}")
-{{sp}}  {% if asset.type == "image" %}
+{{sp}}  {% elif asset.type == "image" %}
 {{sp}}  static let {{asset.name|swiftIdentifier|snakeToCamelCase|lowerFirstWord|escapeReservedKeywords}} = {{imageType}}(value: "{{asset.value}}")
 {{sp}}  {% elif asset.items %}
 {{sp}}  enum {{asset.name|swiftIdentifier|snakeToCamelCase|escapeReservedKeywords}} {
@@ -65,13 +74,13 @@ struct {{colorType}} {
 {{sp}}  {% endif %}
 {{sp}}  {% endfor %}
 {% endmacro %}
-{% macro allValuesBlock assets prefix isLast sp %}
+{% macro allValuesBlock assets filter prefix isLast sp %}
 {{sp}}  {% for asset in assets %}
-{{sp}}  {% if asset.value %}
+{{sp}}  {% if asset.type == filter %}
 {{sp}}  {{prefix}}{{asset.name|swiftIdentifier|snakeToCamelCase|lowerFirstWord|escapeReservedKeywords}}{% if not forloop.last or not isLast %},{% endif %}
 {{sp}}  {% elif asset.items %}
 {{sp}}  {% set prefix2 %}{{prefix}}{{asset.name|swiftIdentifier|snakeToCamelCase|escapeReservedKeywords}}.{% endset %}
-{{sp}}  {% call allValuesBlock asset.items prefix2 forloop.last sp %}
+{{sp}}  {% call allValuesBlock asset.items filter prefix2 forloop.last sp %}
 {{sp}}  {% endif %}
 {{sp}}  {% endfor %}
 {% endmacro %}
@@ -91,6 +100,9 @@ enum {{enumName}} {
 // swiftlint:enable identifier_name line_length nesting type_body_length type_name
 
 extension Image {
+  @available(iOS 1.0, tvOS 1.0, watchOS 1.0, *)
+  @available(OSX, deprecated,
+    message: "This initializer is unsafe on macOS, please use the {{imageType}}.image property")
   convenience init!(asset: {{imageType}}) {
     #if os(iOS) || os(tvOS)
     let bundle = Bundle(for: BundleToken.self)
