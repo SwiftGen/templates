@@ -18,7 +18,13 @@ SDKS = {
 }
 TOOLCHAINS = {
   :swift3 => {
+    :version => 3,
     :module_path => "#{MODULE_OUTPUT_PATH}/swift3",
+    :toolchain => 'com.apple.dt.toolchain.XcodeDefault'
+  },
+  :swift4 => {
+    :version => 4,
+    :module_path => "#{MODULE_OUTPUT_PATH}/swift4",
     :toolchain => 'com.apple.dt.toolchain.XcodeDefault'
   }
 }
@@ -78,7 +84,7 @@ namespace :output do
     target = SDKS[sdk]
     subtask = File.basename(m, '.*')
     commands = TOOLCHAINS.map do |key, toolchain|
-      %Q(--toolchain #{toolchain[:toolchain]} -sdk #{sdk} swiftc -emit-module "#{MODULE_INPUT_PATH}/#{m}.swift" -module-name "#{m}" -emit-module-path "#{toolchain[:module_path]}" -target "#{target}")
+      %Q(--toolchain #{toolchain[:toolchain]} -sdk #{sdk} swiftc -swift-version #{toolchain[:version]} -emit-module "#{MODULE_INPUT_PATH}/#{m}.swift" -module-name "#{m}" -emit-module-path "#{toolchain[:module_path]}" -target "#{target}")
     end
 
     Utils.run(commands, task, subtask, xcrun: true)
@@ -87,6 +93,8 @@ namespace :output do
   def compile_file(f, task)
     if f.match('swift3')
       toolchain = TOOLCHAINS[:swift3]
+    elsif f.match('swift4')
+      toolchain = TOOLCHAINS[:swift4]
     else
       puts "Unable to typecheck Swift 2 file #{f}"
       return true
@@ -101,7 +109,7 @@ namespace :output do
     end
 
     commands = sdks.map do |sdk|
-      %Q(--toolchain #{toolchain[:toolchain]} -sdk #{sdk} swiftc -typecheck -target #{SDKS[sdk]} -I #{toolchain[:module_path]} "#{MODULE_OUTPUT_PATH}/Definitions.swift" #{f})
+      %Q(--toolchain #{toolchain[:toolchain]} -sdk #{sdk} swiftc -swift-version #{toolchain[:version]} -typecheck -target #{SDKS[sdk]} -I #{toolchain[:module_path]} "#{MODULE_OUTPUT_PATH}/Definitions.swift" #{f})
     end
     subtask = File.basename(f, '.*')
 

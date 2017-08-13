@@ -42,6 +42,13 @@ class StringsTests: XCTestCase {
          contextVariations: variations)
   }
 
+  func testFlatSwift4() {
+    test(template: "flat-swift4",
+         contextNames: Contexts.all,
+         directory: .strings,
+         contextVariations: variations)
+  }
+
   func testStructuredSwift2() {
     test(template: "structured-swift2",
          contextNames: Contexts.all,
@@ -51,6 +58,13 @@ class StringsTests: XCTestCase {
 
   func testStructuredSwift3() {
     test(template: "structured-swift3",
+         contextNames: Contexts.all,
+         directory: .strings,
+         contextVariations: variations)
+  }
+
+  func testStructuredSwift4() {
+    test(template: "structured-swift4",
          contextNames: Contexts.all,
          directory: .strings,
          contextVariations: variations)

@@ -14,7 +14,9 @@ _None_
 
 ### New Features
 
-_None_
+* Swift 4 templates.  
+  [David Jennes](https://github.com/djbe) 
+  [#67](https://github.com/SwiftGen/templates/pull/67)
 
 ### Internal Changes
 
