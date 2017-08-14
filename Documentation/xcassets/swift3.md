@@ -20,6 +20,8 @@ You can customize some elements of this template by overriding the following par
 | Parameter Name | Default Value | Description |
 | -------------- | ------------- | ----------- |
 | `enumName` | `Asset` | Allows you to change the name of the generated `enum` containing all assets. |
+| `colorTypeName` | `ImageAsset` | Allows you to change the name of the generated color container type. |
+| `imageTypeName` | `ImageAsset` | Allows you to change the name of the generated image container type. |
 | `noAllValues` | N/A | Setting this parameter will disable generation of the `allValues` constant. |
 
 ## Generated Code
@@ -29,10 +31,14 @@ You can customize some elements of this template by overriding the following par
 ```swift
 enum Asset {
   enum Exotic {
-    static let banana: AssetType = "Exotic/Banana"
-    static let mango: AssetType = "Exotic/Mango"
+    static let banana = ImageAsset(value: "Exotic/Banana")
+    static let mango = ImageAsset(value: "Exotic/Mango")
   }
-  static let `private`: AssetType = "private"
+  static let `private` = ImageAsset(value: "private")
+  enum Theme {
+  	static let primary = ColorAsset(value: "Theme/Primary")
+  	static let background = ColorAsset(value: "Theme/Background")
+  }
 }
 ```
 
@@ -41,11 +47,19 @@ enum Asset {
 ## Usage example
 
 ```swift
-// You can create new images with the convenience constructor like this:
-let bananaImage = UIImage(asset: Asset.Exotic.banana)
-let privateImage = UIImage(asset: Asset.private)
+// You can create new images by referring to the enum instance and calling `.image` on it:
+let bananaImage = Asset.Exotic.banana.image
+let privateImage = Asset.private.image
 
-// Or as an alternative, you can refer to enum instance and call .image on it:
-let sameBananaImage = Asset.Exotic.banana.image
-let samePrivateImage = Asset.private.image
+// Or as an alternative, you use the convenience constructor like this:
+let sameBananaImage = UIImage(asset: Asset.Exotic.banana)
+let samePrivateImage = UIImage(asset: Asset.private)
+
+// similarly, you can create colors by referring to the enum instance and calling `.color` on it:
+let primaryColor = Asset.Theme.primary.color
+let backgroundColor = Asset.Theme.background.color
+
+// Or as an alternative, you use the convenience constructor like this:
+let samePrimaryColor = UIColor(asset: Asset.Theme.primary)
+let sameBackgroundColor = UIColor(asset: Asset.Theme.background)
 ```
