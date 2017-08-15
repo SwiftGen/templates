@@ -44,7 +44,7 @@ struct {{enumName}}Type: StringLiteralConvertible {
 {{sp}}  {% call casesBlock images sp %}
 {{sp}}  {% if not param.noAllValues %}
 
-{{sp}}  static let allValues = [
+{{sp}}  static let allValues: [{{enumName}}Type] = [
 {{sp}}    {% set sp2 %}{{sp}}  {% endset %}
 {{sp}}    {% call allValuesBlock images "" false sp2 %}
 {{sp}}  ]
