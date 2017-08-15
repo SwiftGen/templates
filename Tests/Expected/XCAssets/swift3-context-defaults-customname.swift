@@ -58,7 +58,7 @@ enum XCTImages {
     }
   }
 
-  static let allValues = [
+  static let allValues: [XCTImagesType] = [
     Exotic.banana,
     Exotic.mango,
     `private`,

@@ -58,7 +58,7 @@ enum Asset {
     }
   }
 
-  static let allValues = [
+  static let allValues: [AssetType] = [
     Exotic.Banana,
     Exotic.Mango,
     Private,
