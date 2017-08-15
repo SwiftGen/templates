@@ -20,7 +20,7 @@ You can customize some elements of this template by overriding the following par
 | Parameter Name | Default Value | Description |
 | -------------- | ------------- | ----------- |
 | `enumName` | `Asset` | Allows you to change the name of the generated `enum` containing all assets. |
-| `colorTypeName` | `ImageAsset` | Allows you to change the name of the generated color container type. |
+| `colorTypeName` | `ColorAsset` | Allows you to change the name of the generated color container type. |
 | `imageTypeName` | `ImageAsset` | Allows you to change the name of the generated image container type. |
 | `noAllValues` | N/A | Setting this parameter will disable generation of the `allValues` constant. |
 
