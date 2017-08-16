@@ -50,35 +50,35 @@ extension Font {
 // swiftlint:disable identifier_name line_length type_body_length
 enum CustomFamily {
   enum SFNSDisplay {
-    static let Black = FontConvertible(".SFNSDisplay-Black", family: ".SF NS Display", path: "Fonts/SFNSDisplay-Black.otf")
-    static let Bold = FontConvertible(".SFNSDisplay-Bold", family: ".SF NS Display", path: "Fonts/SFNSDisplay-Bold.otf")
-    static let Heavy = FontConvertible(".SFNSDisplay-Heavy", family: ".SF NS Display", path: "Fonts/SFNSDisplay-Heavy.otf")
-    static let Regular = FontConvertible(".SFNSDisplay-Regular", family: ".SF NS Display", path: "Fonts/SFNSDisplay-Regular.otf")
+    static let Black = FontConvertible(".SFNSDisplay-Black", family: ".SF NS Display", path: "SFNSDisplay-Black.otf")
+    static let Bold = FontConvertible(".SFNSDisplay-Bold", family: ".SF NS Display", path: "SFNSDisplay-Bold.otf")
+    static let Heavy = FontConvertible(".SFNSDisplay-Heavy", family: ".SF NS Display", path: "SFNSDisplay-Heavy.otf")
+    static let Regular = FontConvertible(".SFNSDisplay-Regular", family: ".SF NS Display", path: "SFNSDisplay-Regular.otf")
   }
   enum SFNSText {
-    static let Bold = FontConvertible(".SFNSText-Bold", family: ".SF NS Text", path: "Fonts/SFNSText-Bold.otf")
-    static let Heavy = FontConvertible(".SFNSText-Heavy", family: ".SF NS Text", path: "Fonts/SFNSText-Heavy.otf")
-    static let Regular = FontConvertible(".SFNSText-Regular", family: ".SF NS Text", path: "Fonts/SFNSText-Regular.otf")
+    static let Bold = FontConvertible(".SFNSText-Bold", family: ".SF NS Text", path: "SFNSText-Bold.otf")
+    static let Heavy = FontConvertible(".SFNSText-Heavy", family: ".SF NS Text", path: "SFNSText-Heavy.otf")
+    static let Regular = FontConvertible(".SFNSText-Regular", family: ".SF NS Text", path: "SFNSText-Regular.otf")
   }
   enum Avenir {
-    static let Black = FontConvertible("Avenir-Black", family: "Avenir", path: "Fonts/Avenir.ttc")
-    static let BlackOblique = FontConvertible("Avenir-BlackOblique", family: "Avenir", path: "Fonts/Avenir.ttc")
-    static let Book = FontConvertible("Avenir-Book", family: "Avenir", path: "Fonts/Avenir.ttc")
-    static let BookOblique = FontConvertible("Avenir-BookOblique", family: "Avenir", path: "Fonts/Avenir.ttc")
-    static let Heavy = FontConvertible("Avenir-Heavy", family: "Avenir", path: "Fonts/Avenir.ttc")
-    static let HeavyOblique = FontConvertible("Avenir-HeavyOblique", family: "Avenir", path: "Fonts/Avenir.ttc")
-    static let Light = FontConvertible("Avenir-Light", family: "Avenir", path: "Fonts/Avenir.ttc")
-    static let LightOblique = FontConvertible("Avenir-LightOblique", family: "Avenir", path: "Fonts/Avenir.ttc")
-    static let Medium = FontConvertible("Avenir-Medium", family: "Avenir", path: "Fonts/Avenir.ttc")
-    static let MediumOblique = FontConvertible("Avenir-MediumOblique", family: "Avenir", path: "Fonts/Avenir.ttc")
-    static let Oblique = FontConvertible("Avenir-Oblique", family: "Avenir", path: "Fonts/Avenir.ttc")
-    static let Roman = FontConvertible("Avenir-Roman", family: "Avenir", path: "Fonts/Avenir.ttc")
+    static let Black = FontConvertible("Avenir-Black", family: "Avenir", path: "Avenir.ttc")
+    static let BlackOblique = FontConvertible("Avenir-BlackOblique", family: "Avenir", path: "Avenir.ttc")
+    static let Book = FontConvertible("Avenir-Book", family: "Avenir", path: "Avenir.ttc")
+    static let BookOblique = FontConvertible("Avenir-BookOblique", family: "Avenir", path: "Avenir.ttc")
+    static let Heavy = FontConvertible("Avenir-Heavy", family: "Avenir", path: "Avenir.ttc")
+    static let HeavyOblique = FontConvertible("Avenir-HeavyOblique", family: "Avenir", path: "Avenir.ttc")
+    static let Light = FontConvertible("Avenir-Light", family: "Avenir", path: "Avenir.ttc")
+    static let LightOblique = FontConvertible("Avenir-LightOblique", family: "Avenir", path: "Avenir.ttc")
+    static let Medium = FontConvertible("Avenir-Medium", family: "Avenir", path: "Avenir.ttc")
+    static let MediumOblique = FontConvertible("Avenir-MediumOblique", family: "Avenir", path: "Avenir.ttc")
+    static let Oblique = FontConvertible("Avenir-Oblique", family: "Avenir", path: "Avenir.ttc")
+    static let Roman = FontConvertible("Avenir-Roman", family: "Avenir", path: "Avenir.ttc")
   }
   enum ZapfDingbats {
-    static let Regular = FontConvertible("ZapfDingbatsITC", family: "Zapf Dingbats", path: "Fonts/ZapfDingbats.ttf")
+    static let Regular = FontConvertible("ZapfDingbatsITC", family: "Zapf Dingbats", path: "ZapfDingbats.ttf")
   }
   enum Public {
-    static let Internal = FontConvertible("private", family: "public", path: "Fonts/class.ttf")
+    static let Internal = FontConvertible("private", family: "public", path: "class.ttf")
   }
 }
 // swiftlint:enable identifier_name line_length type_body_length
