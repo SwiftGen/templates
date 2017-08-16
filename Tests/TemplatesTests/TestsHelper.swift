@@ -24,11 +24,9 @@ func diff(_ result: String, _ expected: String) -> String? {
   let lhsLines = result.components(separatedBy: nl)
   let rhsLines = expected.components(separatedBy: nl)
 
-  for (idx, pair) in zip(lhsLines, rhsLines).enumerated() {
-    if pair.0 != pair.1 {
-      firstDiff = idx
-      break
-    }
+  for (idx, pair) in zip(lhsLines, rhsLines).enumerated() where pair.0 != pair.1 {
+    firstDiff = idx
+    break
   }
   if firstDiff == nil && lhsLines.count != rhsLines.count {
     firstDiff = min(lhsLines.count, rhsLines.count)
@@ -70,7 +68,8 @@ class Fixtures {
   enum Directory: String {
     case colors = "Colors"
     case fonts = "Fonts"
-    case images = "Images"
+    case xcassets = "XCAssets"
+    case storyboards = "Storyboards"
     case storyboardsiOS = "Storyboards-iOS"
     case storyboardsMacOS = "Storyboards-macOS"
     case strings = "Strings"
@@ -110,8 +109,8 @@ class Fixtures {
     return data
   }
 
-  static func template(for name: String) -> String {
-    return string(for: name, subDirectory: "templates")
+  static func template(for name: String, sub: Directory) -> String {
+    return string(for: name, subDirectory: "templates/\(sub.rawValue.lowercased())")
   }
 
   static func output(for name: String, sub: Directory) -> String {
@@ -142,24 +141,28 @@ extension XCTestCase {
    
    - Parameter template: The name of the template (without the `stencil` extension)
    - Parameter contextNames: A list of context names (without the `plist` extension)
-   - Parameter outputPrefix: Prefix for the output files, becomes "{outputPrefix}-context-{contextName}.swift"
    - Parameter directory: The directory to look for files in (correspons to de command)
+   - Parameter resourceDirectory: The directory to look for files in (corresponds to the command)
    - Parameter contextVariations: Optional closure to generate context variations.
    */
   func test(template templateName: String,
             contextNames: [String],
-            outputPrefix: String,
             directory: Fixtures.Directory,
+            resourceDirectory: Fixtures.Directory? = nil,
             file: StaticString = #file,
             line: UInt = #line,
             contextVariations: VariationGenerator? = nil) {
-    let template = StencilSwiftTemplate(templateString: Fixtures.template(for: "\(templateName).stencil"),
+    let templateString = Fixtures.template(for: "\(templateName).stencil", sub: directory)
+    let template = StencilSwiftTemplate(templateString: templateString,
                                         environment: stencilSwiftEnvironment())
+
+    // default values
     let contextVariations = contextVariations ?? { [(context: $1, suffix: "")] }
+    let resourceDir = resourceDirectory ?? directory
 
     for contextName in contextNames {
       print("Testing context '\(contextName)'...")
-      let context = Fixtures.context(for: "\(contextName).plist", sub: directory)
+      let context = Fixtures.context(for: "\(contextName).plist", sub: resourceDir)
 
       // generate context variations
       guard let variations = try? contextVariations(contextName, context) else {
@@ -167,14 +170,24 @@ extension XCTestCase {
       }
 
       for (index, (context: context, suffix: suffix)) in variations.enumerated() {
-        let outputFile = "\(outputPrefix)-context-\(contextName)\(suffix).swift"
+        let outputFile = "\(templateName)-context-\(contextName)\(suffix).swift"
         if variations.count > 1 { print(" - Variation #\(index)... (expecting: \(outputFile))") }
         guard let result = try? template.render(context) else {
           fatalError("Unable to render template")
         }
 
-        let expected = Fixtures.output(for: outputFile, sub: directory)
-        XCTDiffStrings(result, expected, file: file, line: line)
+        // check if we should generate or not
+        if ProcessInfo().environment["GENERATE_OUTPUT"] == "YES" {
+          let target = Path(#file).parent().parent() + "Expected" + resourceDir.rawValue + outputFile
+          do {
+            try target.write(result)
+          } catch {
+            fatalError("Unable to write output file \(target)")
+          }
+        } else {
+          let expected = Fixtures.output(for: outputFile, sub: resourceDir)
+          XCTDiffStrings(result, expected, file: file, line: line)
+        }
       }
     }
   }

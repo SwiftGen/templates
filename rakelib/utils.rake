@@ -1,7 +1,14 @@
 # Used constants:
 # none
 
+require 'json'
+require 'octokit'
+
 class Utils
+  COLUMN_WIDTH = 30
+
+  ## [ Run commands ] #########################################################
+
   # formatter types
   :xcpretty   # pass through xcpretty and store in artifacts
   :raw        # store in artifacts
@@ -21,6 +28,37 @@ class Utils
     end
   end
 
+  ## [ Convenience Helpers ] ##################################################
+
+  def self.podspec_version(file = '*')
+    JSON.parse(`bundle exec pod ipc spec #{file}.podspec`)["version"]
+  end
+
+  def self.podfile_lock_version(pod)
+    require 'yaml'
+    root_pods = YAML.load_file('Podfile.lock')['PODS'].map { |n| n.is_a?(Hash) ? n.keys.first : n }
+    pod_vers = root_pods.select { |n| n.start_with?(pod) }.first # "SwiftGen (x.y.z)"
+    /\((.*)\)$/.match(pod_vers)[1] # Just the 'x.y.z' part
+  end
+
+  def self.octokit_client
+    token   = File.exist?('.apitoken') && File.read('.apitoken')
+    token ||= File.exist?('../.apitoken') && File.read('../.apitoken')
+    Utils.print_error('No .apitoken file found') unless token
+    Octokit::Client.new(:access_token => token)
+  end
+
+  def self.top_changelog_version(changelog_file = 'CHANGELOG.md')
+    `grep -m 1 '^## ' "#{changelog_file}" | sed 's/## //'`.strip
+  end
+
+  def self.top_changelog_entry(changelog_file = 'CHANGELOG.md')
+    tag = self.top_changelog_version
+    `sed -n /'^## #{tag}$'/,/'^## '/p "#{changelog_file}"`.gsub(/^## .*$/,'').strip
+  end
+
+  ## [ Print info/errors ] ####################################################
+
   # print an info header
   def self.print_header(str)
     puts "== #{str.chomp} ==".format(:yellow, :bold)
@@ -35,6 +73,22 @@ class Utils
   def self.print_error(str)
     puts str.chomp.format(:red)
   end
+
+  # format an info message in a 2 column table
+  def self.table_info(label, msg)
+    puts "#{label.ljust(COLUMN_WIDTH)} 👉  #{msg}"
+  end
+
+  # format a result message in a 2 column table
+  def self.table_result(result, label, error_msg)
+    if result
+      puts "#{label.ljust(COLUMN_WIDTH)} ✅"
+    else
+      puts "#{label.ljust(COLUMN_WIDTH)} ❌  - #{error_msg}"
+    end
+    result
+  end
+
 
   ## [ Private helper functions ] ##################################################
 
@@ -68,9 +122,10 @@ class Utils
 
   # select the xcode version we want/support
   def self.version_select
-    xcodes = `mdfind "kMDItemCFBundleIdentifier = 'com.apple.dt.Xcode' && kMDItemVersion = '8.*'"`.chomp.split("\n")
+    version = '9.*'
+    xcodes = `mdfind "kMDItemCFBundleIdentifier = 'com.apple.dt.Xcode' && kMDItemVersion = '#{version}'"`.chomp.split("\n")
     if xcodes.empty?
-      raise "\n[!!!] You need to have Xcode 8.x to compile SwiftGen.\n\n"
+      raise "\n[!!!] SwiftGen requires Xcode #{version}, but we were not able to find it. If it's already installed update your Spotlight index with 'mdimport /Applications/Xcode*'\n\n"
     end
     
     # Order by version and get the latest one
@@ -80,7 +135,6 @@ class Utils
   end
   private_class_method :version_select
 end
-
 
 class String
   # colorization

@@ -1,164 +1,94 @@
 // Generated using SwiftGen, by O.Halligon — https://github.com/SwiftGen/SwiftGen
 
+// swiftlint:disable sorted_imports
 import Foundation
 import Cocoa
 import PrefsWindowController
 
 // swiftlint:disable file_length
-// swiftlint:disable line_length
-// swiftlint:disable type_body_length
 
-protocol StoryboardSceneType {
+protocol StoryboardType {
   static var storyboardName: String { get }
 }
 
-extension StoryboardSceneType {
-  static func storyboard() -> NSStoryboard {
+extension StoryboardType {
+  static var storyboard: NSStoryboard {
     return NSStoryboard(name: self.storyboardName, bundle: Bundle(for: BundleToken.self))
   }
+}
 
-  static func initialController() -> Any {
-    guard let controller = storyboard().instantiateInitialController()
-    else {
-      fatalError("Failed to instantiate initialViewController for \(self.storyboardName)")
+struct SceneType<T: Any> {
+  let storyboard: StoryboardType.Type
+  let identifier: String
+
+  func instantiate() -> T {
+    guard let controller = storyboard.storyboard.instantiateController(withIdentifier: identifier) as? T else {
+      fatalError("Controller '\(identifier)' is not of the expected class \(T.self).")
     }
     return controller
   }
 }
 
-extension StoryboardSceneType where Self: RawRepresentable, Self.RawValue == String {
-  func controller() -> Any {
-    return Self.storyboard().instantiateController(withIdentifier: self.rawValue)
-  }
-  static func controller(identifier: Self) -> Any {
-    return identifier.controller()
-  }
-}
+struct InitialSceneType<T: Any> {
+  let storyboard: StoryboardType.Type
 
-protocol StoryboardSegueType: RawRepresentable { }
-
-extension NSWindowController {
-  func performSegue<S: StoryboardSegueType>(segue: S, sender: Any? = nil) where S.RawValue == String {
-    performSegue(withIdentifier: segue.rawValue, sender: sender)
+  func instantiate() -> T {
+    guard let controller = storyboard.storyboard.instantiateInitialController() as? T else {
+      fatalError("Controller is not of the expected class \(T.self).")
+    }
+    return controller
   }
 }
 
-extension NSViewController {
-  func performSegue<S: StoryboardSegueType>(segue: S, sender: Any? = nil) where S.RawValue == String {
-    performSegue(withIdentifier: segue.rawValue, sender: sender)
+protocol SegueType: RawRepresentable { }
+
+extension NSSeguePerforming {
+  func perform<S: SegueType>(segue: S, sender: Any? = nil) where S.RawValue == String {
+    performSegue?(withIdentifier: segue.rawValue, sender: sender)
   }
 }
 
+// swiftlint:disable explicit_type_interface identifier_name line_length type_body_length type_name
 enum StoryboardScene {
-  enum AdditionalImport: String, StoryboardSceneType {
+  enum AdditionalImport: StoryboardType {
     static let storyboardName = "AdditionalImport"
 
-    case privateScene = "private"
-    static func instantiatePrivate() -> PrefsWindowController.DBPrefsWindowController {
-      guard let vc = StoryboardScene.AdditionalImport.privateScene.controller() as? PrefsWindowController.DBPrefsWindowController
-      else {
-        fatalError("ViewController 'private' is not of the expected class PrefsWindowController.DBPrefsWindowController.")
-      }
-      return vc
-    }
+    static let `private` = SceneType<PrefsWindowController.DBPrefsWindowController>(storyboard: AdditionalImport.self, identifier: "private")
   }
-  enum Anonymous: StoryboardSceneType {
+  enum Anonymous: StoryboardType {
     static let storyboardName = "Anonymous"
   }
-  enum Dependency: String, StoryboardSceneType {
+  enum Dependency: StoryboardType {
     static let storyboardName = "Dependency"
 
-    case dependentScene = "Dependent"
-    static func instantiateDependent() -> NSViewController {
-      guard let vc = StoryboardScene.Dependency.dependentScene.controller() as? NSViewController
-      else {
-        fatalError("ViewController 'Dependent' is not of the expected class NSViewController.")
-      }
-      return vc
-    }
+    static let dependent = SceneType<NSViewController>(storyboard: Dependency.self, identifier: "Dependent")
   }
-  enum Message: String, StoryboardSceneType {
+  enum Message: StoryboardType {
     static let storyboardName = "Message"
 
-    case messageDetailsScene = "MessageDetails"
-    static func instantiateMessageDetails() -> NSViewController {
-      guard let vc = StoryboardScene.Message.messageDetailsScene.controller() as? NSViewController
-      else {
-        fatalError("ViewController 'MessageDetails' is not of the expected class NSViewController.")
-      }
-      return vc
-    }
+    static let messageDetails = SceneType<NSViewController>(storyboard: Message.self, identifier: "MessageDetails")
 
-    case messageListScene = "MessageList"
-    static func instantiateMessageList() -> NSViewController {
-      guard let vc = StoryboardScene.Message.messageListScene.controller() as? NSViewController
-      else {
-        fatalError("ViewController 'MessageList' is not of the expected class NSViewController.")
-      }
-      return vc
-    }
+    static let messageList = SceneType<NSViewController>(storyboard: Message.self, identifier: "MessageList")
 
-    case messageListFooterScene = "MessageListFooter"
-    static func instantiateMessageListFooter() -> NSViewController {
-      guard let vc = StoryboardScene.Message.messageListFooterScene.controller() as? NSViewController
-      else {
-        fatalError("ViewController 'MessageListFooter' is not of the expected class NSViewController.")
-      }
-      return vc
-    }
+    static let messageListFooter = SceneType<NSViewController>(storyboard: Message.self, identifier: "MessageListFooter")
 
-    case messagesTabScene = "MessagesTab"
-    static func instantiateMessagesTab() -> CustomTabViewController {
-      guard let vc = StoryboardScene.Message.messagesTabScene.controller() as? CustomTabViewController
-      else {
-        fatalError("ViewController 'MessagesTab' is not of the expected class CustomTabViewController.")
-      }
-      return vc
-    }
+    static let messagesTab = SceneType<CustomTabViewController>(storyboard: Message.self, identifier: "MessagesTab")
 
-    case splitMessagesScene = "SplitMessages"
-    static func instantiateSplitMessages() -> NSSplitViewController {
-      guard let vc = StoryboardScene.Message.splitMessagesScene.controller() as? NSSplitViewController
-      else {
-        fatalError("ViewController 'SplitMessages' is not of the expected class NSSplitViewController.")
-      }
-      return vc
-    }
+    static let splitMessages = SceneType<NSSplitViewController>(storyboard: Message.self, identifier: "SplitMessages")
 
-    case windowCtrlScene = "WindowCtrl"
-    static func instantiateWindowCtrl() -> NSWindowController {
-      guard let vc = StoryboardScene.Message.windowCtrlScene.controller() as? NSWindowController
-      else {
-        fatalError("ViewController 'WindowCtrl' is not of the expected class NSWindowController.")
-      }
-      return vc
-    }
+    static let windowCtrl = SceneType<NSWindowController>(storyboard: Message.self, identifier: "WindowCtrl")
   }
-  enum Placeholder: String, StoryboardSceneType {
+  enum Placeholder: StoryboardType {
     static let storyboardName = "Placeholder"
 
-    case dependentScene = "Dependent"
-    static func instantiateDependent() -> NSControllerPlaceholder {
-      guard let vc = StoryboardScene.Placeholder.dependentScene.controller() as? NSControllerPlaceholder
-      else {
-        fatalError("ViewController 'Dependent' is not of the expected class NSControllerPlaceholder.")
-      }
-      return vc
-    }
+    static let dependent = SceneType<NSControllerPlaceholder>(storyboard: Placeholder.self, identifier: "Dependent")
 
-    case windowScene = "Window"
-    static func instantiateWindow() -> NSWindowController {
-      guard let vc = StoryboardScene.Placeholder.windowScene.controller() as? NSWindowController
-      else {
-        fatalError("ViewController 'Window' is not of the expected class NSWindowController.")
-      }
-      return vc
-    }
+    static let window = SceneType<NSWindowController>(storyboard: Placeholder.self, identifier: "Window")
   }
 }
 
 enum StoryboardSegue {
-  enum Message: String, StoryboardSegueType {
+  enum Message: String, SegueType {
     case embed = "Embed"
     case modal = "Modal"
     case popover = "Popover"
@@ -167,5 +97,6 @@ enum StoryboardSegue {
     case `public`
   }
 }
+// swiftlint:enable explicit_type_interface identifier_name line_length type_body_length type_name
 
 private final class BundleToken {}

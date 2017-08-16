@@ -23,11 +23,11 @@ And that's exactly what templates are for: to allow people to describe how they 
 
 In practice, when SwiftGen parses your various resources (images, fonts, …), it generates a dictionary representation of those resources (an array of image names, an array of dictionaries representing a font with all its variants, etc), that is then used as the input for the template you choose to use.
 
-For example, when parsing images, SwiftGen will generate a dictionary representation like this:
+For example, when parsing an asset catalog, SwiftGen will generate a dictionary representation like this:
 
 ```
 [
-  "images": [
+  "assets": [
     "foo",
     "bar",
     "baz",
@@ -35,14 +35,14 @@ For example, when parsing images, SwiftGen will generate a dictionary representa
 ]
 ```
 
-_(this is a partial example for the sake of simplifying the explanation; see the documentation for the full generated structure)_
+_(this is a partial example for the sake of simplifying the explanation; see the documentation for the full generated structure for each command)_
 
-Then this dictionary is used as input to feed your templates with variables. In your template, you can access the variable named `images` and iterate over each string inside it to generate some Swift code as needed. For example if your template `mytemplate.stencil` looks like this:
+Then this dictionary is used as input to feed your templates with variables. In your template, you can access the variable named `assets` and iterate over each string inside it to generate some Swift code as needed. For example if your template `mytemplate.stencil` looks like this:
 
 ```
 enum Assets: String {
-  {% for imageName in images %}
-  case {{imageName}} = "{{imageName}}"
+  {% for asset in assets %}
+  case {{asset}} = "{{asset}}"
   {% endfor %}
 }
 ```
@@ -57,7 +57,7 @@ enum Assets: String {
 }
 ```
 
-To use that template, you'd simply invoke SwiftGen using `swiftgen images -p path/to/mytemplate.stencil path/to/your/Images.xcassets` and SwiftGen will use that custom template of yours instead of the default template.
+To use that template, you'd simply invoke SwiftGen using `swiftgen xcassets -p path/to/mytemplate.stencil path/to/your/Images.xcassets` and SwiftGen will use that custom template of yours at the specified path.
 
 ## Stencil
 
@@ -69,13 +69,13 @@ See the Stencil dedicated documentation for more information.
 
 SwiftGen comes bundled with commonly used templates for the various type of resources.
 
-For each type of resource (images, fonts, etc…), SwiftGen provides a default template (`images-default.stencil`, `fonts-default.stencil`, …) as well as some alternate templates people commonly use (`images-swift2.stencil` to generate Swift2-compatible code for images for example), that you can select using the `-t` option when invoking SwiftGen (e.g. `swiftgen images -t swift2 path/to/your/Images.xcassets`). The `-t` and `-p` options have the same purpose (selecting a specific template you want to use when asking SwiftGen to generate the output Swift code), `-t` simply selects the template by name (looking for a template with this name among the templates bundled with SwiftGen itself) while `-p` allows you to indicate an arbitrary using a path.
+For each type of resource (images, fonts, etc…), SwiftGen provides a number of templates for common use cases (at least one for each swift version), that you can select using the `-t` option when invoking SwiftGen (e.g. `swiftgen xcassets -t swift2 path/to/your/Images.xcassets`). The `-t` and `-p` options have the same purpose (selecting a specific template you want to use when asking SwiftGen to generate the output Swift code), `-t` simply selects the template by name (looking for a template with this name among the templates bundled with SwiftGen itself) while `-p` allows you to indicate an arbitrary template using a path.
 
 ## Templates documentation
 
-You can find the documentation for each template — including its name, typical use case, what can be customized in it, how the typical generated output will look like, etc — in the `documentation/` directory in this repository.
+You can find the documentation for each template — including its name, typical use case, what can be customized in it, how the typical generated output will look like, etc — in the [Documentation](https://github.com/SwiftGen/templates/tree/master/Documentation) directory in this repository.
 
-This can help you choose which template is right for you, in case the default template doesn't fit your need but an template bundled with SwiftGen fits better.
+This can help you choose which template is right for you depending on your needs and use case. Keep in mind that some templates can be customized by providing parameters such as `--param enumName=MyEnum`. Each template documents the supported parameters and their purpose.
 
 ## Creating your own templates
 
@@ -84,12 +84,12 @@ Creating your own templates is just a matter of creating a Stencil template (usi
 The best way to start creating your own template is by duplicating an existing template as a starting point, then modifying the copy to your needs. You can do that easily using the following commands:
 
 ```sh
-# Duplicate the images-default.stencil template and rediret the output to a new mytemplate.stencil file
-$ swiftgen templates cat images-default >mytemplate.stencil
-# Then modify the duplicated template using your favorite text editor to tweat it to your needs
+# Duplicate the xcassets swift3.stencil template and redirect the output to a new mytemplate.stencil file
+$ swiftgen templates cat xcassets swift3 > mytemplate.stencil
+# Then modify the duplicated template using your favorite text editor to tweak it to your needs
 $ edit mytemplate.stencil
-# Then use your new template instead of the default one when invoking SwiftGen
-$ swiftgen images -p mytemplate.stencil path/to/your/Images.xcassets
+# Then use your new template instead of the swift3 one when invoking SwiftGen
+$ swiftgen xcassets -p mytemplate.stencil path/to/your/Images.xcassets
 ```
 
 To learn more about creating your own template, see the dedicated documentation in the `documentation/` directory of this repository.

@@ -2,26 +2,17 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>extraImports</key>
-	<array/>
 	<key>modules</key>
 	<array/>
-	<key>param</key>
-	<dict>
-		<key>sceneEnumName</key>
-		<string>StoryboardScene</string>
-		<key>segueEnumName</key>
-		<string>StoryboardSegue</string>
-	</dict>
-	<key>sceneEnumName</key>
-	<string>StoryboardScene</string>
-	<key>segueEnumName</key>
-	<string>StoryboardSegue</string>
+	<key>platform</key>
+	<string>macOS</string>
 	<key>storyboards</key>
 	<array>
 		<dict>
 			<key>name</key>
 			<string>Anonymous</string>
+			<key>platform</key>
+			<string>macOS</string>
 			<key>scenes</key>
 			<array/>
 			<key>segues</key>

@@ -6,7 +6,6 @@
 
 import StencilSwiftKit
 import XCTest
-import StencilSwiftKit
 
 class StoryboardsMacOSTests: XCTestCase {
   enum Contexts {
@@ -17,55 +16,51 @@ class StoryboardsMacOSTests: XCTestCase {
   let variations: VariationGenerator = { name, context in
     guard name == "all" else { return [(context: context, suffix: "")] }
 
-    do {
-      return [
-        (context: context,
-         suffix: ""),
-        (context: try StencilContext.enrich(context: context,
-                                            parameters: ["sceneEnumName=XCTStoryboardsScene",
-                                                         "segueEnumName=XCTStoryboardsSegue"]),
-         suffix: "-customname"),
-        (context: try StencilContext.enrich(context: context,
-                                            parameters: [],
-                                            environment: ["PRODUCT_MODULE_NAME": "Test"]),
-         suffix: ""),
-        (context: try StencilContext.enrich(context: context,
-                                            parameters: [],
-                                            environment: ["PRODUCT_MODULE_NAME": "FadeSegue"]),
-         suffix: "-ignore-module"),
-        (context: try StencilContext.enrich(context: context,
-                                            parameters: ["module=Test"]),
-         suffix: ""),
-        (context: try StencilContext.enrich(context: context,
-                                            parameters: ["module=FadeSegue"]),
-         suffix: "-ignore-module")
-      ]
-    } catch {
-      fatalError("Unable to create context variations")
-    }
+    return [
+      (context: context,
+       suffix: ""),
+      (context: try StencilContext.enrich(context: context,
+                                          parameters: ["sceneEnumName=XCTStoryboardsScene",
+                                                       "segueEnumName=XCTStoryboardsSegue"]),
+       suffix: "-customname"),
+      (context: try StencilContext.enrich(context: context,
+                                          parameters: [],
+                                          environment: ["PRODUCT_MODULE_NAME": "Test"]),
+       suffix: ""),
+      (context: try StencilContext.enrich(context: context,
+                                          parameters: [],
+                                          environment: ["PRODUCT_MODULE_NAME": "FadeSegue"]),
+       suffix: "-ignore-module"),
+      (context: try StencilContext.enrich(context: context,
+                                          parameters: ["module=Test"]),
+       suffix: ""),
+      (context: try StencilContext.enrich(context: context,
+                                          parameters: ["module=FadeSegue"]),
+       suffix: "-ignore-module")
+    ]
   }
 
-  func testDefault() {
-    test(template: "storyboards-osx-default",
+  func testSwift2() {
+    test(template: "swift2",
          contextNames: Contexts.all,
-         outputPrefix: "default",
-         directory: .storyboardsMacOS,
+         directory: .storyboards,
+         resourceDirectory: .storyboardsMacOS,
          contextVariations: variations)
   }
 
   func testSwift3() {
-    test(template: "storyboards-osx-swift3",
+    test(template: "swift3",
          contextNames: Contexts.all,
-         outputPrefix: "swift3",
-         directory: .storyboardsMacOS,
+         directory: .storyboards,
+         resourceDirectory: .storyboardsMacOS,
          contextVariations: variations)
   }
 
-  func testLowercase() {
-    test(template: "storyboards-osx-lowercase",
+  func testSwift4() {
+    test(template: "swift4",
          contextNames: Contexts.all,
-         outputPrefix: "lowercase",
-         directory: .storyboardsMacOS,
+         directory: .storyboards,
+         resourceDirectory: .storyboardsMacOS,
          contextVariations: variations)
   }
 }

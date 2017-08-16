@@ -2,29 +2,14 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>extraImports</key>
-	<array>
-		<string>CustomSegue</string>
-		<string>LocationPicker</string>
-		<string>SlackTextViewController</string>
-	</array>
 	<key>modules</key>
 	<array>
 		<string>CustomSegue</string>
 		<string>LocationPicker</string>
 		<string>SlackTextViewController</string>
 	</array>
-	<key>param</key>
-	<dict>
-		<key>sceneEnumName</key>
-		<string>StoryboardScene</string>
-		<key>segueEnumName</key>
-		<string>StoryboardSegue</string>
-	</dict>
-	<key>sceneEnumName</key>
-	<string>StoryboardScene</string>
-	<key>segueEnumName</key>
-	<string>StoryboardSegue</string>
+	<key>platform</key>
+	<string>iOS</string>
 	<key>storyboards</key>
 	<array>
 		<dict>
@@ -34,9 +19,13 @@
 				<string>LocationPickerViewController</string>
 				<key>customModule</key>
 				<string>LocationPicker</string>
+				<key>identifier</key>
+				<string></string>
 			</dict>
 			<key>name</key>
 			<string>AdditionalImport</string>
+			<key>platform</key>
+			<string>iOS</string>
 			<key>scenes</key>
 			<array>
 				<dict>
@@ -65,11 +54,13 @@
 			<dict>
 				<key>baseType</key>
 				<string>NavigationController</string>
-				<key>isBaseViewController</key>
-				<false/>
+				<key>identifier</key>
+				<string></string>
 			</dict>
 			<key>name</key>
 			<string>Anonymous</string>
+			<key>platform</key>
+			<string>iOS</string>
 			<key>scenes</key>
 			<array/>
 			<key>segues</key>
@@ -78,6 +69,8 @@
 		<dict>
 			<key>name</key>
 			<string>Dependency</string>
+			<key>platform</key>
+			<string>iOS</string>
 			<key>scenes</key>
 			<array>
 				<dict>
@@ -85,8 +78,6 @@
 					<string>ViewController</string>
 					<key>identifier</key>
 					<string>Dependent</string>
-					<key>isBaseViewController</key>
-					<true/>
 				</dict>
 			</array>
 			<key>segues</key>
@@ -97,11 +88,13 @@
 			<dict>
 				<key>baseType</key>
 				<string>ViewController</string>
-				<key>isBaseViewController</key>
-				<true/>
+				<key>identifier</key>
+				<string></string>
 			</dict>
 			<key>name</key>
 			<string>Message</string>
+			<key>platform</key>
+			<string>iOS</string>
 			<key>scenes</key>
 			<array>
 				<dict>
@@ -109,8 +102,6 @@
 					<string>ViewController</string>
 					<key>identifier</key>
 					<string>Composer</string>
-					<key>isBaseViewController</key>
-					<true/>
 				</dict>
 				<dict>
 					<key>baseType</key>
@@ -172,6 +163,8 @@
 		<dict>
 			<key>name</key>
 			<string>Placeholder</string>
+			<key>platform</key>
+			<string>iOS</string>
 			<key>scenes</key>
 			<array>
 				<dict>
@@ -191,9 +184,13 @@
 				<string>CreateAccViewController</string>
 				<key>customModule</key>
 				<string></string>
+				<key>identifier</key>
+				<string>CreateAccount</string>
 			</dict>
 			<key>name</key>
 			<string>Wizard</string>
+			<key>platform</key>
+			<string>iOS</string>
 			<key>scenes</key>
 			<array>
 				<dict>
@@ -201,8 +198,6 @@
 					<string>ViewController</string>
 					<key>identifier</key>
 					<string>Accept-CGU</string>
-					<key>isBaseViewController</key>
-					<true/>
 				</dict>
 				<dict>
 					<key>customClass</key>
@@ -223,8 +218,6 @@
 					<string>ViewController</string>
 					<key>identifier</key>
 					<string>Validate_Password</string>
-					<key>isBaseViewController</key>
-					<true/>
 				</dict>
 			</array>
 			<key>segues</key>

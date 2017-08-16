@@ -12,7 +12,7 @@
 		DD1F70E41E29A8290058A059 /* FontsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD5F34EC1E231E8B00AEB5DA /* FontsTests.swift */; };
 		DD1F70E61E29AA940058A059 /* Expected in Resources */ = {isa = PBXBuildFile; fileRef = DD1F70E51E29AA940058A059 /* Expected */; };
 		DD1F70E71E29B1640058A059 /* ColorsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD5F34EB1E231E8B00AEB5DA /* ColorsTests.swift */; };
-		DD1F70E81E29BCB10058A059 /* ImagesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD5F34ED1E231E8B00AEB5DA /* ImagesTests.swift */; };
+		DD1F70E81E29BCB10058A059 /* XCAssetsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD5F34ED1E231E8B00AEB5DA /* XCAssetsTests.swift */; };
 		DD1F70EE1E2A976A0058A059 /* StoryboardsiOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD1F70EC1E2A976A0058A059 /* StoryboardsiOSTests.swift */; };
 		DD1F70EF1E2A976A0058A059 /* StoryboardsMacOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD1F70ED1E2A976A0058A059 /* StoryboardsMacOSTests.swift */; };
 		DD1F70F01E2AA14D0058A059 /* StringsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD5F34EF1E231E8B00AEB5DA /* StringsTests.swift */; };
@@ -33,7 +33,7 @@
 		DD5F34E71E231E6B00AEB5DA /* TestsHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TestsHelper.swift; path = Tests/TemplatesTests/TestsHelper.swift; sourceTree = SOURCE_ROOT; };
 		DD5F34EB1E231E8B00AEB5DA /* ColorsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorsTests.swift; sourceTree = "<group>"; };
 		DD5F34EC1E231E8B00AEB5DA /* FontsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FontsTests.swift; sourceTree = "<group>"; };
-		DD5F34ED1E231E8B00AEB5DA /* ImagesTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImagesTests.swift; sourceTree = "<group>"; };
+		DD5F34ED1E231E8B00AEB5DA /* XCAssetsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XCAssetsTests.swift; sourceTree = "<group>"; };
 		DD5F34EF1E231E8B00AEB5DA /* StringsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringsTests.swift; sourceTree = "<group>"; };
 		DD5F34F91E231F0400AEB5DA /* Contexts */ = {isa = PBXFileReference; lastKnownFileType = text; name = Contexts; path = ../Contexts; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -105,7 +105,7 @@
 			children = (
 				DD5F34EB1E231E8B00AEB5DA /* ColorsTests.swift */,
 				DD5F34EC1E231E8B00AEB5DA /* FontsTests.swift */,
-				DD5F34ED1E231E8B00AEB5DA /* ImagesTests.swift */,
+				DD5F34ED1E231E8B00AEB5DA /* XCAssetsTests.swift */,
 				DD1F70EC1E2A976A0058A059 /* StoryboardsiOSTests.swift */,
 				DD1F70ED1E2A976A0058A059 /* StoryboardsMacOSTests.swift */,
 				DD5F34EF1E231E8B00AEB5DA /* StringsTests.swift */,
@@ -145,7 +145,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0800;
-				LastUpgradeCheck = 0800;
+				LastUpgradeCheck = 0900;
 				ORGANIZATIONNAME = SwiftGen;
 				TargetAttributes = {
 					09A87B4F1BCCA2C600D9B9F5 = {
@@ -192,13 +192,16 @@
 			files = (
 			);
 			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Tests-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		DD3EE1BB1E65E43E00EA1599 /* ⚠️ SwiftLint */ = {
@@ -213,7 +216,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "if [[ ! $CI ]]; then\n    rake lint:tests\n    rake lint:output\nfi";
+			shellScript = "if [[ ! $CI ]]; then\n  [[ -r ~/.profile ]] && source ~/.profile\n  if [[ `which bundler` ]]; then\n    bundle exec rake lint:tests\n    bundle exec rake lint:output\n  else\n    echo \"warning: bundler not found, can't lint code. Please install bundler then run bundle install.\"\n  fi\nfi";
 		};
 		DE127EA8748200EF28090721 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -221,9 +224,16 @@
 			files = (
 			);
 			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Tests/Pods-Tests-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/PathKit/PathKit.framework",
+				"${BUILT_PRODUCTS_DIR}/Stencil/Stencil.framework",
+				"${BUILT_PRODUCTS_DIR}/StencilSwiftKit/StencilSwiftKit.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PathKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Stencil.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/StencilSwiftKit.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -255,7 +265,7 @@
 				DD1F70EF1E2A976A0058A059 /* StoryboardsMacOSTests.swift in Sources */,
 				DD1F70E41E29A8290058A059 /* FontsTests.swift in Sources */,
 				DD1F70EE1E2A976A0058A059 /* StoryboardsiOSTests.swift in Sources */,
-				DD1F70E81E29BCB10058A059 /* ImagesTests.swift in Sources */,
+				DD1F70E81E29BCB10058A059 /* XCAssetsTests.swift in Sources */,
 				DD1F70F01E2AA14D0058A059 /* StringsTests.swift in Sources */,
 				DD5F34E91E231E6B00AEB5DA /* TestsHelper.swift in Sources */,
 				DD1F70E71E29B1640058A059 /* ColorsTests.swift in Sources */,
@@ -273,14 +283,20 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -319,14 +335,20 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;

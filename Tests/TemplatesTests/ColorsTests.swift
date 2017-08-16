@@ -9,8 +9,7 @@ import XCTest
 
 class ColorsTests: XCTestCase {
   enum Contexts {
-    static let rawOnly = ["empty", "defaults"]
-    static let all = rawOnly + ["text-defaults"]
+    static let all = ["empty", "defaults", "multiple"]
   }
 
   // generate variations to test customname generation
@@ -26,26 +25,23 @@ class ColorsTests: XCTestCase {
     ]
   }
 
-  func testDefault() {
-    test(template: "colors-default",
+  func testSwift2() {
+    test(template: "swift2",
          contextNames: Contexts.all,
-         outputPrefix: "default",
-         directory: .colors,
-         contextVariations: variations)
-  }
-
-  func testRawValue() {
-    test(template: "colors-rawValue",
-         contextNames: Contexts.rawOnly,
-         outputPrefix: "rawValue",
          directory: .colors,
          contextVariations: variations)
   }
 
   func testSwift3() {
-    test(template: "colors-swift3",
+    test(template: "swift3",
          contextNames: Contexts.all,
-         outputPrefix: "swift3",
+         directory: .colors,
+         contextVariations: variations)
+  }
+
+  func testSwift4() {
+    test(template: "swift4",
+         contextNames: Contexts.all,
          directory: .colors,
          contextVariations: variations)
   }

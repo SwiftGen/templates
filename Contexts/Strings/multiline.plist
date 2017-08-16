@@ -2,119 +2,17 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>enumName</key>
-	<string>L10n</string>
-	<key>param</key>
-	<dict>
-		<key>enumName</key>
-		<string>L10n</string>
-	</dict>
-	<key>strings</key>
-	<array>
-		<dict>
-			<key>key</key>
-			<string>MULTILINE</string>
-			<key>keytail</key>
-			<string>MULTILINE</string>
-			<key>translation</key>
-			<string>multi\nline</string>
-		</dict>
-		<dict>
-			<key>key</key>
-			<string>multiLine\nKey</string>
-			<key>keytail</key>
-			<string>multiLine
-Key</string>
-			<key>translation</key>
-			<string>test</string>
-		</dict>
-		<dict>
-			<key>key</key>
-			<string>MULTILINE2</string>
-			<key>keytail</key>
-			<string>MULTILINE2</string>
-			<key>translation</key>
-			<string>another\nmulti\n    line</string>
-		</dict>
-		<dict>
-			<key>key</key>
-			<string>SINGLELINE</string>
-			<key>keytail</key>
-			<string>SINGLELINE</string>
-			<key>translation</key>
-			<string>single line</string>
-		</dict>
-		<dict>
-			<key>key</key>
-			<string>SINGLELINE2</string>
-			<key>keytail</key>
-			<string>SINGLELINE2</string>
-			<key>translation</key>
-			<string>another single line</string>
-		</dict>
-	</array>
-	<key>structuredStrings</key>
-	<dict>
-		<key>strings</key>
-		<array>
-			<dict>
-				<key>key</key>
-				<string>MULTILINE</string>
-				<key>keytail</key>
-				<string>MULTILINE</string>
-				<key>translation</key>
-				<string>multi\nline</string>
-			</dict>
-			<dict>
-				<key>key</key>
-				<string>multiLine\nKey</string>
-				<key>keytail</key>
-				<string>multiLine
-Key</string>
-				<key>translation</key>
-				<string>test</string>
-			</dict>
-			<dict>
-				<key>key</key>
-				<string>MULTILINE2</string>
-				<key>keytail</key>
-				<string>MULTILINE2</string>
-				<key>translation</key>
-				<string>another\nmulti\n    line</string>
-			</dict>
-			<dict>
-				<key>key</key>
-				<string>SINGLELINE</string>
-				<key>keytail</key>
-				<string>SINGLELINE</string>
-				<key>translation</key>
-				<string>single line</string>
-			</dict>
-			<dict>
-				<key>key</key>
-				<string>SINGLELINE2</string>
-				<key>keytail</key>
-				<string>SINGLELINE2</string>
-				<key>translation</key>
-				<string>another single line</string>
-			</dict>
-		</array>
-	</dict>
-	<key>tableName</key>
-	<string>Localizable</string>
 	<key>tables</key>
 	<array>
 		<dict>
-			<key>name</key>
-			<string>Localizable</string>
-			<key>strings</key>
+			<key>levels</key>
 			<dict>
 				<key>strings</key>
 				<array>
 					<dict>
 						<key>key</key>
 						<string>MULTILINE</string>
-						<key>keytail</key>
+						<key>name</key>
 						<string>MULTILINE</string>
 						<key>translation</key>
 						<string>multi\nline</string>
@@ -122,7 +20,7 @@ Key</string>
 					<dict>
 						<key>key</key>
 						<string>multiLine\nKey</string>
-						<key>keytail</key>
+						<key>name</key>
 						<string>multiLine
 Key</string>
 						<key>translation</key>
@@ -131,7 +29,7 @@ Key</string>
 					<dict>
 						<key>key</key>
 						<string>MULTILINE2</string>
-						<key>keytail</key>
+						<key>name</key>
 						<string>MULTILINE2</string>
 						<key>translation</key>
 						<string>another\nmulti\n    line</string>
@@ -139,7 +37,7 @@ Key</string>
 					<dict>
 						<key>key</key>
 						<string>SINGLELINE</string>
-						<key>keytail</key>
+						<key>name</key>
 						<string>SINGLELINE</string>
 						<key>translation</key>
 						<string>single line</string>
@@ -147,13 +45,15 @@ Key</string>
 					<dict>
 						<key>key</key>
 						<string>SINGLELINE2</string>
-						<key>keytail</key>
+						<key>name</key>
 						<string>SINGLELINE2</string>
 						<key>translation</key>
 						<string>another single line</string>
 					</dict>
 				</array>
 			</dict>
+			<key>name</key>
+			<string>LocMultiline</string>
 		</dict>
 	</array>
 </dict>

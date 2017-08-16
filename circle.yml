@@ -1,14 +1,16 @@
 machine:
   xcode:
-    version: 8.2
+    version: 9.0
+  pre:
+  - sudo launchctl load -w /System/Library/LaunchDaemons/com.apple.metadata.mds.plist
 
 dependencies:
   post:
-    - rake lint:install
+    - bundle exec rake lint:install
 
 test:
   override:
-    - rake lint:tests
-    - rake xcode:test
-    - rake output:compile
-    - rake lint:output
+    - bundle exec rake lint:tests
+    - bundle exec rake xcode:test
+    - bundle exec rake output:compile
+    - bundle exec rake lint:output

@@ -9,74 +9,63 @@ import XCTest
 
 class StringsTests: XCTestCase {
   enum Contexts {
-    static let all = ["empty", "defaults"]
+    static let all = ["empty", "localizable", "multiple"]
   }
 
   // generate variations to test customname generation
   let variations: VariationGenerator = { name, context in
-    guard name == "defaults" else { return [(context: context, suffix: "")] }
+    guard name == "localizable" else { return [(context: context, suffix: "")] }
 
     return [
       (context: context,
        suffix: ""),
       (context: try StencilContext.enrich(context: context,
                                           parameters: ["enumName=XCTLoc"]),
-       suffix: "-customname")
+       suffix: "-customname"),
+      (context: try StencilContext.enrich(context: context,
+                                          parameters: ["noComments"]),
+       suffix: "-no-comments")
     ]
   }
 
-  func testDefault() {
-    test(template: "strings-default",
+  func testFlatSwift2() {
+    test(template: "flat-swift2",
          contextNames: Contexts.all,
-         outputPrefix: "default",
          directory: .strings,
          contextVariations: variations)
   }
 
-  func testSwift3() {
-    test(template: "strings-swift3",
+  func testFlatSwift3() {
+    test(template: "flat-swift3",
          contextNames: Contexts.all,
-         outputPrefix: "swift3",
          directory: .strings,
          contextVariations: variations)
   }
 
-  func testNoCommentsSwift3() {
-    test(template: "strings-no-comments-swift3",
+  func testFlatSwift4() {
+    test(template: "flat-swift4",
          contextNames: Contexts.all,
-         outputPrefix: "no-comments-swift3",
          directory: .strings,
          contextVariations: variations)
   }
 
-  func testGenstrings() {
-    test(template: "strings-genstrings",
+  func testStructuredSwift2() {
+    test(template: "structured-swift2",
          contextNames: Contexts.all,
-         outputPrefix: "genstrings",
          directory: .strings,
          contextVariations: variations)
   }
 
-  func testStructured() {
-    test(template: "strings-structured",
+  func testStructuredSwift3() {
+    test(template: "structured-swift3",
          contextNames: Contexts.all,
-         outputPrefix: "structured",
          directory: .strings,
          contextVariations: variations)
   }
 
-  func testDotSyntax() {
-    test(template: "strings-dot-syntax",
+  func testStructuredSwift4() {
+    test(template: "structured-swift4",
          contextNames: Contexts.all,
-         outputPrefix: "dot-syntax",
-         directory: .strings,
-         contextVariations: variations)
-  }
-
-  func testDotSyntaxSwift3() {
-    test(template: "strings-dot-syntax-swift3",
-         contextNames: Contexts.all,
-         outputPrefix: "dot-syntax-swift3",
          directory: .strings,
          contextVariations: variations)
   }

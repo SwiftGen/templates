@@ -12,16 +12,18 @@ public extension Extension {
     registerTag("macro", parser: MacroNode.parse)
     registerTag("call", parser: CallNode.parse)
     registerTag("map", parser: MapNode.parse)
-    registerFilter("swiftIdentifier", filter: StringFilters.stringToSwiftIdentifier)
-    registerFilter("join", filter: ArrayFilters.join)
-    registerFilter("lowerFirstWord", filter: StringFilters.lowerFirstWord)
-    registerFilter("snakeToCamelCase", filter: StringFilters.snakeToCamelCase)
-    registerFilter("snakeToCamelCaseNoPrefix", filter: StringFilters.snakeToCamelCaseNoPrefix)
-    registerFilter("titlecase", filter: StringFilters.titlecase)
-    registerFilter("hexToInt", filter: NumFilters.hexToInt)
-    registerFilter("int255toFloat", filter: NumFilters.int255toFloat)
-    registerFilter("percent", filter: NumFilters.percent)
-    registerFilter("escapeReservedKeywords", filter: StringFilters.escapeReservedKeywords)
+
+    registerFilter("camelToSnakeCase", filter: Filters.Strings.camelToSnakeCase)
+    registerFilter("escapeReservedKeywords", filter: Filters.Strings.escapeReservedKeywords)
+    registerFilter("lowerFirstWord", filter: Filters.Strings.lowerFirstWord)
+    registerFilter("removeNewlines", filter: Filters.Strings.removeNewlines)
+    registerFilter("snakeToCamelCase", filter: Filters.Strings.snakeToCamelCase)
+    registerFilter("swiftIdentifier", filter: Filters.Strings.swiftIdentifier)
+    registerFilter("titlecase", filter: Filters.Strings.titlecase)
+
+    registerFilter("hexToInt", filter: Filters.Numbers.hexToInt)
+    registerFilter("int255toFloat", filter: Filters.Numbers.int255toFloat)
+    registerFilter("percent", filter: Filters.Numbers.percent)
   }
 }
 
