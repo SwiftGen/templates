@@ -19,25 +19,25 @@
 typealias {{enumName}}Type = {{imageType}}
 
 struct {{imageType}} {
-  fileprivate var value: String
+  fileprivate var name: String
 
   var image: Image {
     let bundle = Bundle(for: BundleToken.self)
     #if os(iOS) || os(tvOS)
-    let image = Image(named: value, in: bundle, compatibleWith: nil)
+    let image = Image(named: name, in: bundle, compatibleWith: nil)
     #elseif os(OSX)
-    let image = bundle.image(forResource: NSImage.Name(value))
+    let image = bundle.image(forResource: NSImage.Name(name))
     #elseif os(watchOS)
-    let image = Image(named: value)
+    let image = Image(named: name)
     #endif
-    guard let result = image else { fatalError("Unable to load image \(value).") }
+    guard let result = image else { fatalError("Unable to load image named \(name).") }
     return result
   }
 }
 
 {% set colorType %}{{param.colorTypeName|default:"ColorAsset"}}{% endset %}
 struct {{colorType}} {
-  fileprivate var value: String
+  fileprivate var name: String
 
   @available(iOS 11.0, tvOS 11.0, watchOS 4.0, OSX 10.13, *)
   var color: Color {
@@ -63,9 +63,9 @@ struct {{colorType}} {
 {% macro casesBlock assets sp %}
 {{sp}}  {% for asset in assets %}
 {{sp}}  {% if asset.type == "color" %}
-{{sp}}  static let {{asset.name|swiftIdentifier|snakeToCamelCase|lowerFirstWord|escapeReservedKeywords}} = {{colorType}}(value: "{{asset.value}}")
+{{sp}}  static let {{asset.name|swiftIdentifier|snakeToCamelCase|lowerFirstWord|escapeReservedKeywords}} = {{colorType}}(name: "{{asset.value}}")
 {{sp}}  {% elif asset.type == "image" %}
-{{sp}}  static let {{asset.name|swiftIdentifier|snakeToCamelCase|lowerFirstWord|escapeReservedKeywords}} = {{imageType}}(value: "{{asset.value}}")
+{{sp}}  static let {{asset.name|swiftIdentifier|snakeToCamelCase|lowerFirstWord|escapeReservedKeywords}} = {{imageType}}(name: "{{asset.value}}")
 {{sp}}  {% elif asset.items %}
 {{sp}}  enum {{asset.name|swiftIdentifier|snakeToCamelCase|escapeReservedKeywords}} {
 {{sp}}    {% set sp2 %}{{sp}}  {% endset %}
@@ -106,11 +106,11 @@ extension Image {
   convenience init!(asset: {{imageType}}) {
     #if os(iOS) || os(tvOS)
     let bundle = Bundle(for: BundleToken.self)
-    self.init(named: asset.value, in: bundle, compatibleWith: nil)
+    self.init(named: asset.name, in: bundle, compatibleWith: nil)
     #elseif os(OSX)
-    self.init(named: NSImage.Name(asset.value))
+    self.init(named: NSImage.Name(asset.name))
     #elseif os(watchOS)
-    self.init(named: asset.value)
+    self.init(named: asset.name)
     #endif
   }
 }
@@ -120,11 +120,11 @@ extension Color {
   convenience init!(asset: {{colorType}}) {
     let bundle = Bundle(for: BundleToken.self)
     #if os(iOS) || os(tvOS)
-    self.init(named: asset.value, in: bundle, compatibleWith: nil)
+    self.init(named: asset.name, in: bundle, compatibleWith: nil)
     #elseif os(OSX)
-    self.init(named: NSColor.Name(asset.value), bundle: bundle)
+    self.init(named: NSColor.Name(asset.name), bundle: bundle)
     #elseif os(watchOS)
-    self.init(named: asset.value)
+    self.init(named: asset.name)
     #endif
   }
 }

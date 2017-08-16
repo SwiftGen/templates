@@ -16,24 +16,24 @@
 typealias AssetType = ImageAsset
 
 struct ImageAsset {
-  fileprivate var value: String
+  fileprivate var name: String
 
   var image: Image {
     let bundle = Bundle(for: BundleToken.self)
     #if os(iOS) || os(tvOS)
-    let image = Image(named: value, in: bundle, compatibleWith: nil)
+    let image = Image(named: name, in: bundle, compatibleWith: nil)
     #elseif os(OSX)
-    let image = bundle.image(forResource: NSImage.Name(value))
+    let image = bundle.image(forResource: NSImage.Name(name))
     #elseif os(watchOS)
-    let image = Image(named: value)
+    let image = Image(named: name)
     #endif
-    guard let result = image else { fatalError("Unable to load image \(value).") }
+    guard let result = image else { fatalError("Unable to load image named \(name).") }
     return result
   }
 }
 
 struct ColorAsset {
-  fileprivate var value: String
+  fileprivate var name: String
 
   @available(iOS 11.0, tvOS 11.0, watchOS 4.0, OSX 10.13, *)
   var color: Color {
@@ -45,29 +45,29 @@ struct ColorAsset {
 enum Asset {
   enum Colors {
     enum _24Vision {
-      static let background = ColorAsset(value: "24Vision/Background")
-      static let primary = ColorAsset(value: "24Vision/Primary")
+      static let background = ColorAsset(name: "24Vision/Background")
+      static let primary = ColorAsset(name: "24Vision/Primary")
     }
     enum Vengo {
-      static let primary = ColorAsset(value: "Vengo/Primary")
-      static let tint = ColorAsset(value: "Vengo/Tint")
+      static let primary = ColorAsset(name: "Vengo/Primary")
+      static let tint = ColorAsset(name: "Vengo/Tint")
     }
   }
   enum Images {
     enum Exotic {
-      static let banana = ImageAsset(value: "Exotic/Banana")
-      static let mango = ImageAsset(value: "Exotic/Mango")
+      static let banana = ImageAsset(name: "Exotic/Banana")
+      static let mango = ImageAsset(name: "Exotic/Mango")
     }
-    static let `private` = ImageAsset(value: "private")
+    static let `private` = ImageAsset(name: "private")
     enum Round {
-      static let apricot = ImageAsset(value: "Round/Apricot")
-      static let orange = ImageAsset(value: "Round/Orange")
+      static let apricot = ImageAsset(name: "Round/Apricot")
+      static let orange = ImageAsset(name: "Round/Orange")
       enum Red {
-        static let apple = ImageAsset(value: "Round/Apple")
+        static let apple = ImageAsset(name: "Round/Apple")
         enum Double {
-          static let cherry = ImageAsset(value: "Round/Double/Cherry")
+          static let cherry = ImageAsset(name: "Round/Double/Cherry")
         }
-        static let tomato = ImageAsset(value: "Round/Tomato")
+        static let tomato = ImageAsset(name: "Round/Tomato")
       }
     }
   }
@@ -81,11 +81,11 @@ extension Image {
   convenience init!(asset: ImageAsset) {
     #if os(iOS) || os(tvOS)
     let bundle = Bundle(for: BundleToken.self)
-    self.init(named: asset.value, in: bundle, compatibleWith: nil)
+    self.init(named: asset.name, in: bundle, compatibleWith: nil)
     #elseif os(OSX)
-    self.init(named: NSImage.Name(asset.value))
+    self.init(named: NSImage.Name(asset.name))
     #elseif os(watchOS)
-    self.init(named: asset.value)
+    self.init(named: asset.name)
     #endif
   }
 }
@@ -95,11 +95,11 @@ extension Color {
   convenience init!(asset: ColorAsset) {
     let bundle = Bundle(for: BundleToken.self)
     #if os(iOS) || os(tvOS)
-    self.init(named: asset.value, in: bundle, compatibleWith: nil)
+    self.init(named: asset.name, in: bundle, compatibleWith: nil)
     #elseif os(OSX)
-    self.init(named: NSColor.Name(asset.value), bundle: bundle)
+    self.init(named: NSColor.Name(asset.name), bundle: bundle)
     #elseif os(watchOS)
-    self.init(named: asset.value)
+    self.init(named: asset.name)
     #endif
   }
 }

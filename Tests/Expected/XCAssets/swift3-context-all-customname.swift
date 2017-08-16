@@ -16,24 +16,24 @@
 typealias XCTAssetsType = XCTImageAsset
 
 struct XCTImageAsset {
-  fileprivate var value: String
+  fileprivate var name: String
 
   var image: Image {
     let bundle = Bundle(for: BundleToken.self)
     #if os(iOS) || os(tvOS)
-    let image = Image(named: value, in: bundle, compatibleWith: nil)
+    let image = Image(named: name, in: bundle, compatibleWith: nil)
     #elseif os(OSX)
-    let image = bundle.image(forResource: value)
+    let image = bundle.image(forResource: name)
     #elseif os(watchOS)
-    let image = Image(named: value)
+    let image = Image(named: name)
     #endif
-    guard let result = image else { fatalError("Unable to load image \(value).") }
+    guard let result = image else { fatalError("Unable to load image named \(name).") }
     return result
   }
 }
 
 struct XCTColorAsset {
-  fileprivate var value: String
+  fileprivate var name: String
 
   @available(iOS 11.0, tvOS 11.0, watchOS 4.0, OSX 10.13, *)
   var color: Color {
@@ -45,12 +45,12 @@ struct XCTColorAsset {
 enum XCTAssets {
   enum Colors {
     enum _24Vision {
-      static let background = XCTColorAsset(value: "24Vision/Background")
-      static let primary = XCTColorAsset(value: "24Vision/Primary")
+      static let background = XCTColorAsset(name: "24Vision/Background")
+      static let primary = XCTColorAsset(name: "24Vision/Primary")
     }
     enum Vengo {
-      static let primary = XCTColorAsset(value: "Vengo/Primary")
-      static let tint = XCTColorAsset(value: "Vengo/Tint")
+      static let primary = XCTColorAsset(name: "Vengo/Primary")
+      static let tint = XCTColorAsset(name: "Vengo/Tint")
     }
 
     static let allColors: [XCTColorAsset] = [
@@ -66,19 +66,19 @@ enum XCTAssets {
   }
   enum Images {
     enum Exotic {
-      static let banana = XCTImageAsset(value: "Exotic/Banana")
-      static let mango = XCTImageAsset(value: "Exotic/Mango")
+      static let banana = XCTImageAsset(name: "Exotic/Banana")
+      static let mango = XCTImageAsset(name: "Exotic/Mango")
     }
-    static let `private` = XCTImageAsset(value: "private")
+    static let `private` = XCTImageAsset(name: "private")
     enum Round {
-      static let apricot = XCTImageAsset(value: "Round/Apricot")
-      static let orange = XCTImageAsset(value: "Round/Orange")
+      static let apricot = XCTImageAsset(name: "Round/Apricot")
+      static let orange = XCTImageAsset(name: "Round/Orange")
       enum Red {
-        static let apple = XCTImageAsset(value: "Round/Apple")
+        static let apple = XCTImageAsset(name: "Round/Apple")
         enum Double {
-          static let cherry = XCTImageAsset(value: "Round/Double/Cherry")
+          static let cherry = XCTImageAsset(name: "Round/Double/Cherry")
         }
-        static let tomato = XCTImageAsset(value: "Round/Tomato")
+        static let tomato = XCTImageAsset(name: "Round/Tomato")
       }
     }
 
@@ -107,9 +107,9 @@ extension Image {
   convenience init!(asset: XCTImageAsset) {
     #if os(iOS) || os(tvOS)
     let bundle = Bundle(for: BundleToken.self)
-    self.init(named: asset.value, in: bundle, compatibleWith: nil)
+    self.init(named: asset.name, in: bundle, compatibleWith: nil)
     #elseif os(OSX) || os(watchOS)
-    self.init(named: asset.value)
+    self.init(named: asset.name)
     #endif
   }
 }
@@ -119,11 +119,11 @@ extension Color {
   convenience init!(asset: XCTColorAsset) {
     let bundle = Bundle(for: BundleToken.self)
     #if os(iOS) || os(tvOS)
-    self.init(named: asset.value, in: bundle, compatibleWith: nil)
+    self.init(named: asset.name, in: bundle, compatibleWith: nil)
     #elseif os(OSX)
-    self.init(named: asset.value, bundle: bundle)
+    self.init(named: asset.name, bundle: bundle)
     #elseif os(watchOS)
-    self.init(named: asset.value)
+    self.init(named: asset.name)
     #endif
   }
 }
