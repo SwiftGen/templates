@@ -44,13 +44,13 @@ class StoryboardsMacOSTests: XCTestCase {
       (context: try StencilContext.enrich(context: context,
                                           parameters: ["ignoreTargetModule"],
                                           environment: ["PRODUCT_MODULE_NAME": "PrefsWindowController"]),
-       suffix: "-ignore-target-module"),
+       suffix: "-ignore-module-need-extra-definitions"),
       (context: try StencilContext.enrich(context: context,
                                           parameters: ["module=Test", "ignoreTargetModule"]),
        suffix: ""),
       (context: try StencilContext.enrich(context: context,
                                           parameters: ["module=PrefsWindowController", "ignoreTargetModule"]),
-       suffix: "-ignore-target-module")
+       suffix: "-ignore-module-need-extra-definitions")
     ]
   }
 

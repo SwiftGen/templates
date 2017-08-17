@@ -108,8 +108,14 @@ namespace :output do
       sdks = [:iphoneos, :macosx, :appletvos, :watchos]
     end
 
+    if f.match('extra-definitions')
+      definitions = %Q("#{MODULE_OUTPUT_PATH}/Definitions.swift" "#{MODULE_OUTPUT_PATH}/ExtraDefinitions.swift")
+    else
+      definitions = %Q("#{MODULE_OUTPUT_PATH}/Definitions.swift")
+    end
+
     commands = sdks.map do |sdk|
-      %Q(--toolchain #{toolchain[:toolchain]} -sdk #{sdk} swiftc -swift-version #{toolchain[:version]} -typecheck -target #{SDKS[sdk]} -I #{toolchain[:module_path]} "#{MODULE_OUTPUT_PATH}/Definitions.swift" #{f})
+      %Q(--toolchain #{toolchain[:toolchain]} -sdk #{sdk} swiftc -swift-version #{toolchain[:version]} -typecheck -target #{SDKS[sdk]} -I #{toolchain[:module_path]} #{definitions} #{f})
     end
     subtask = File.basename(f, '.*')
 
