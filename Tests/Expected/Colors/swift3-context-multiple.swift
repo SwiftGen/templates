@@ -57,13 +57,13 @@ struct ColorName {
     static let cyanColor = ColorName(rgbaValue: 0xff66ccff)// #colorLiteral(red: 1.0, green: 0.4, blue: 0.8, alpha: 1.0)
     /// <span style="display:block;width:3em;height:2em;border:1px solid black;background:#ffffff"></span>
     /// Alpha: 80% <br/> (0xffffffcc)
-    static let namedValue = ColorName(rgbaValue: 0xffffffcc) // #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+    static let namedValue = ColorName(rgbaValue: 0xffffffcc) // #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 0.8)
     /// <span style="display:block;width:3em;height:2em;border:1px solid black;background:#ffffff"></span>
     /// Alpha: 80% <br/> (0xffffffcc)
-    static let nestedNamedValue = ColorName(rgbaValue: 0xffffffcc) // #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+    static let nestedNamedValue = ColorName(rgbaValue: 0xffffffcc) // #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 0.8)
     /// <span style="display:block;width:3em;height:2em;border:1px solid black;background:#ffffff"></span>
     /// Alpha: 80% <br/> (0xffffffcc)
-    static let `private` = ColorName(rgbaValue: 0xffffffcc) // #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+    static let `private` = ColorName(rgbaValue: 0xffffffcc) // #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 0.8)
   }
 }
 // swiftlint:enable identifier_name line_length type_body_length

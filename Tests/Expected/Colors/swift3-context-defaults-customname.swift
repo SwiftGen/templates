@@ -39,7 +39,7 @@ struct XCTColors {
   static let articleTitle = XCTColors(rgbaValue: 0x33fe66ff) // #colorLiteral(red: 0.2, green: 0.996078, blue: 0.4, alpha: 1.0)
   /// <span style="display:block;width:3em;height:2em;border:1px solid black;background:#ffffff"></span>
   /// Alpha: 80% <br/> (0xffffffcc)
-  static let `private` = XCTColors(rgbaValue: 0xffffffcc) // #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+  static let `private` = XCTColors(rgbaValue: 0xffffffcc) // #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 0.8)
 }
 // swiftlint:enable identifier_name line_length type_body_length
 
