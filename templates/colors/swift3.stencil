@@ -35,7 +35,7 @@ struct {{enumName}} {
 {{sp}}  {% for color in colors %}
 {{sp}}  /// <span style="display:block;width:3em;height:2em;border:1px solid black;background:#{{color.red}}{{color.green}}{{color.blue}}"></span>
 {{sp}}  /// Alpha: {{color.alpha|hexToInt|int255toFloat|percent}} <br/> (0x{{color.red}}{{color.green}}{{color.blue}}{{color.alpha}})
-{{sp}}  static let {{color.name|swiftIdentifier|snakeToCamelCase|lowerFirstWord|escapeReservedKeywords}} = {{enumName}}(rgbaValue: {% call rgbaValue color %})
+{{sp}}  static let {{color.name|swiftIdentifier|snakeToCamelCase|lowerFirstWord|escapeReservedKeywords}} = {{enumName}}(rgbaValue: {% call rgbaValue color %}) // #colorLiteral(red: {{color.red|hexToInt|int255toFloat}}, green: {{color.green|hexToInt|int255toFloat}}, blue: {{color.blue|hexToInt|int255toFloat}}, alpha: {{color.alpha|hexToInt|int255toFloat}})
 {{sp}}  {% endfor %}
 {% endmacro %}
   {% if palettes.count > 1 %}
