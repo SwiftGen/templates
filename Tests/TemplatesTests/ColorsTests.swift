@@ -45,4 +45,18 @@ class ColorsTests: XCTestCase {
          directory: .colors,
          contextVariations: variations)
   }
+
+  func testLiteralsSwift3() {
+    test(template: "literals-swift3",
+         contextNames: Contexts.all,
+         directory: .colors,
+         contextVariations: variations)
+  }
+
+  func testLiteralsSwift4() {
+    test(template: "literals-swift4",
+         contextNames: Contexts.all,
+         directory: .colors,
+         contextVariations: variations)
+  }
 }

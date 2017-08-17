@@ -1,0 +1,40 @@
+// Generated using SwiftGen, by O.Halligon — https://github.com/SwiftGen/SwiftGen
+
+{% if palettes %}
+#if os(OSX)
+  import AppKit.NSColor
+  typealias Color = NSColor
+#elseif os(iOS) || os(tvOS) || os(watchOS)
+  import UIKit.UIColor
+  typealias Color = UIColor
+#endif
+
+// swiftlint:disable file_length
+
+{% set enumName %}{{param.enumName|default:"ColorName"}}{% endset %}
+{% if enumName != 'Color' %}enum {{enumName}} { }{% endif %}
+
+// swiftlint:disable identifier_name line_length type_body_length
+extension {{enumName}} {
+{% macro h2f hex %}{{hex|hexToInt|int255toFloat}}{% endmacro %}
+{% macro h2p hex %}{{hex|hexToInt|int255toFloat|percent}}{% endmacro %}
+{% macro enumBlock colors sp %}
+{{sp}}  {% for color in colors %}
+{{sp}}  /// 0x{{color.red}}{{color.green}}{{color.blue}}{{color.alpha}} (r: {% call h2p color.red %}, g: {% call h2p color.green %}, b: {% call h2p color.blue %}, a: {% call h2p color.alpha %})
+{{sp}}  static let {{color.name|swiftIdentifier|snakeToCamelCase|lowerFirstWord|escapeReservedKeywords}} = #colorLiteral(red: {% call h2f color.red %}, green: {% call h2f color.green %}, blue: {% call h2f color.blue %}, alpha: {% call h2f color.alpha %})
+{{sp}}  {% endfor %}
+{% endmacro %}
+  {% if palettes.count > 1 %}
+  {% for palette in palettes %}
+  enum {{palette.name|swiftIdentifier|titlecase|snakeToCamelCase|escapeReservedKeywords}} {
+    {% call enumBlock palette.colors "  " %}
+  }
+  {% endfor %}
+  {% else %}
+  {% call enumBlock palettes.first.colors "" %}
+  {% endif %}
+}
+// swiftlint:enable identifier_name line_length type_body_length
+{% else %}
+// No color found
+{% endif %}
