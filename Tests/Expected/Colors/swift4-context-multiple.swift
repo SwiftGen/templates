@@ -31,7 +31,7 @@ struct ColorName {
   enum Colors {
     /// <span style="display:block;width:3em;height:2em;border:1px solid black;background:#339666"></span>
     /// Alpha: 100% <br/> (0x339666ff)
-    static let articleBody = ColorName(rgbaValue: 0x339666ff)
+    static let articleBody = ColorName(rgbaValue: 0x339666ff) // #colorLiteral(red: 0.2, green: 0.588235, blue: 0.4, alpha: 1.0)
     /// <span style="display:block;width:3em;height:2em;border:1px solid black;background:#ff66cc"></span>
     /// Alpha: 100% <br/> (0xff66ccff)
     static let articleFootnote = ColorName(rgbaValue: 0xff66ccff)
@@ -45,25 +45,25 @@ struct ColorName {
   enum Extra {
     /// <span style="display:block;width:3em;height:2em;border:1px solid black;background:#339666"></span>
     /// Alpha: 100% <br/> (0x339666ff)
-    static let articleBody = ColorName(rgbaValue: 0x339666ff)
+    static let articleBody = ColorName(rgbaValue: 0x339666ff) // #colorLiteral(red: 0.2, green: 0.588235, blue: 0.4, alpha: 1.0)
     /// <span style="display:block;width:3em;height:2em;border:1px solid black;background:#ff66cc"></span>
     /// Alpha: 100% <br/> (0xff66ccff)
     static let articleFootnote = ColorName(rgbaValue: 0xff66ccff)
     /// <span style="display:block;width:3em;height:2em;border:1px solid black;background:#33fe66"></span>
     /// Alpha: 100% <br/> (0x33fe66ff)
-    static let articleTitle = ColorName(rgbaValue: 0x33fe66ff)
+    static let articleTitle = ColorName(rgbaValue: 0x33fe66ff) // #colorLiteral(red: 0.2, green: 0.996078, blue: 0.4, alpha: 1.0)
     /// <span style="display:block;width:3em;height:2em;border:1px solid black;background:#ff66cc"></span>
     /// Alpha: 100% <br/> (0xff66ccff)
-    static let cyanColor = ColorName(rgbaValue: 0xff66ccff)
+    static let cyanColor = ColorName(rgbaValue: 0xff66ccff)// #colorLiteral(red: 1.0, green: 0.4, blue: 0.8, alpha: 1.0)
     /// <span style="display:block;width:3em;height:2em;border:1px solid black;background:#ffffff"></span>
     /// Alpha: 80% <br/> (0xffffffcc)
-    static let namedValue = ColorName(rgbaValue: 0xffffffcc)
+    static let namedValue = ColorName(rgbaValue: 0xffffffcc) // #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
     /// <span style="display:block;width:3em;height:2em;border:1px solid black;background:#ffffff"></span>
     /// Alpha: 80% <br/> (0xffffffcc)
-    static let nestedNamedValue = ColorName(rgbaValue: 0xffffffcc)
+    static let nestedNamedValue = ColorName(rgbaValue: 0xffffffcc) // #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
     /// <span style="display:block;width:3em;height:2em;border:1px solid black;background:#ffffff"></span>
     /// Alpha: 80% <br/> (0xffffffcc)
-    static let `private` = ColorName(rgbaValue: 0xffffffcc)
+    static let `private` = ColorName(rgbaValue: 0xffffffcc) // #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
   }
 }
 // swiftlint:enable identifier_name line_length type_body_length
