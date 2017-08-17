@@ -23,6 +23,9 @@ _None_
 * Fonts: the path to fonts will now default to just the font filename, but you can disable this behaviour by enabling the `preservePath` parameter.  
   [David Jennes](https://github.com/djbe) 
   [#71](https://github.com/SwiftGen/templates/pull/71)
+* Colors: new template that uses `#colorLiteral`s.  
+  [David Jennes](https://github.com/djbe) 
+  [#72](https://github.com/SwiftGen/templates/pull/72)
 
 ### Internal Changes
 
