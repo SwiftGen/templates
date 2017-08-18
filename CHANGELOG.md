@@ -17,6 +17,9 @@ _None_
 * Swift 4 templates.  
   [David Jennes](https://github.com/djbe) 
   [#67](https://github.com/SwiftGen/templates/pull/67)
+* XCAssets: Added support for named colors.  
+  [David Jennes](https://github.com/djbe) 
+  [#68](https://github.com/SwiftGen/templates/pull/68)
 
 ### Internal Changes
 
