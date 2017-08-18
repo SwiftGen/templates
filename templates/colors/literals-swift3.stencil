@@ -1,18 +1,18 @@
 // Generated using SwiftGen, by O.Halligon — https://github.com/SwiftGen/SwiftGen
 
 {% if palettes %}
+{% set enumName %}{{param.enumName|default:"ColorName"}}{% endset %}
 #if os(OSX)
   import AppKit.NSColor
   typealias Color = NSColor
+  {% if enumName != 'NSColor' %}enum {{enumName}} { }{% endif %}
 #elseif os(iOS) || os(tvOS) || os(watchOS)
   import UIKit.UIColor
   typealias Color = UIColor
+  {% if enumName != 'UIColor' %}enum {{enumName}} { }{% endif %}
 #endif
 
 // swiftlint:disable file_length
-
-{% set enumName %}{{param.enumName|default:"ColorName"}}{% endset %}
-{% if enumName != 'Color' %}enum {{enumName}} { }{% endif %}
 
 // swiftlint:disable identifier_name line_length type_body_length
 extension {{enumName}} {

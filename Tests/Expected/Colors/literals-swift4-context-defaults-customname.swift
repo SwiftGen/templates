@@ -3,14 +3,14 @@
 #if os(OSX)
   import AppKit.NSColor
   typealias Color = NSColor
+  enum XCTColors { }
 #elseif os(iOS) || os(tvOS) || os(watchOS)
   import UIKit.UIColor
   typealias Color = UIColor
+  enum XCTColors { }
 #endif
 
 // swiftlint:disable file_length
-
-enum XCTColors { }
 
 // swiftlint:disable identifier_name line_length type_body_length
 extension XCTColors {
