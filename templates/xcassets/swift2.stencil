@@ -48,14 +48,16 @@ struct {{colorType}} {
 {{sp}}  {% call casesBlock assets sp %}
 {{sp}}  {% if not param.noAllValues %}
 
+{{sp}}  // swiftlint:disable trailing_comma
 {{sp}}  static let allColors: [{{colorType}}] = [
 {{sp}}    {% set sp2 %}{{sp}}  {% endset %}
-{{sp}}    {% call allValuesBlock assets "color" "" false sp2 %}
+{{sp}}    {% call allValuesBlock assets "color" "" sp2 %}
 {{sp}}  ]
 {{sp}}  static let allImages: [{{imageType}}] = [
 {{sp}}    {% set sp2 %}{{sp}}  {% endset %}
-{{sp}}    {% call allValuesBlock assets "image" "" false sp2 %}
+{{sp}}    {% call allValuesBlock assets "image" "" sp2 %}
 {{sp}}  ]
+{{sp}}  // swiftlint:enable trailing_comma
 {{sp}}  @available(*, deprecated, renamed: "allImages")
 {{sp}}  static let allValues: [{{enumName}}Type] = allImages
 {{sp}}  {% endif %}
@@ -74,13 +76,13 @@ struct {{colorType}} {
 {{sp}}  {% endif %}
 {{sp}}  {% endfor %}
 {% endmacro %}
-{% macro allValuesBlock assets filter prefix isLast sp %}
+{% macro allValuesBlock assets filter prefix sp %}
 {{sp}}  {% for asset in assets %}
 {{sp}}  {% if asset.type == filter %}
-{{sp}}  {{prefix}}{{asset.name|swiftIdentifier|snakeToCamelCase|escapeReservedKeywords}}{% if not forloop.last or not isLast %},{% endif %}
+{{sp}}  {{prefix}}{{asset.name|swiftIdentifier|snakeToCamelCase|escapeReservedKeywords}},
 {{sp}}  {% elif asset.items %}
 {{sp}}  {% set prefix2 %}{{prefix}}{{asset.name|swiftIdentifier|snakeToCamelCase|escapeReservedKeywords}}.{% endset %}
-{{sp}}  {% call allValuesBlock asset.items filter prefix2 forloop.last sp %}
+{{sp}}  {% call allValuesBlock asset.items filter prefix2 sp %}
 {{sp}}  {% endif %}
 {{sp}}  {% endfor %}
 {% endmacro %}

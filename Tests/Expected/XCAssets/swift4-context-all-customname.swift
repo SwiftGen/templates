@@ -54,15 +54,17 @@ enum XCTAssets {
       static let tint = XCTColorAsset(name: "Vengo/Tint")
     }
 
+    // swiftlint:disable trailing_comma
     static let allColors: [XCTColorAsset] = [
       _24Vision.background,
       _24Vision.primary,
       Vengo.primary,
-      Vengo.tint
+      Vengo.tint,
     ]
     static let allImages: [XCTImageAsset] = [
       orange,
     ]
+    // swiftlint:enable trailing_comma
     @available(*, deprecated, renamed: "allImages")
     static let allValues: [XCTAssetsType] = allImages
   }
@@ -83,6 +85,7 @@ enum XCTAssets {
       }
     }
 
+    // swiftlint:disable trailing_comma
     static let allColors: [XCTColorAsset] = [
     ]
     static let allImages: [XCTImageAsset] = [
@@ -92,8 +95,9 @@ enum XCTAssets {
       Round.apricot,
       Round.Red.apple,
       Round.Red.Double.cherry,
-      Round.Red.tomato
+      Round.Red.tomato,
     ]
+    // swiftlint:enable trailing_comma
     @available(*, deprecated, renamed: "allImages")
     static let allValues: [XCTAssetsType] = allImages
   }

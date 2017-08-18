@@ -54,15 +54,17 @@ enum Asset {
       static let tint = ColorAsset(name: "Vengo/Tint")
     }
 
+    // swiftlint:disable trailing_comma
     static let allColors: [ColorAsset] = [
       _24Vision.background,
       _24Vision.primary,
       Vengo.primary,
-      Vengo.tint
+      Vengo.tint,
     ]
     static let allImages: [ImageAsset] = [
       orange,
     ]
+    // swiftlint:enable trailing_comma
     @available(*, deprecated, renamed: "allImages")
     static let allValues: [AssetType] = allImages
   }
@@ -83,6 +85,7 @@ enum Asset {
       }
     }
 
+    // swiftlint:disable trailing_comma
     static let allColors: [ColorAsset] = [
     ]
     static let allImages: [ImageAsset] = [
@@ -92,8 +95,9 @@ enum Asset {
       Round.apricot,
       Round.Red.apple,
       Round.Red.Double.cherry,
-      Round.Red.tomato
+      Round.Red.tomato,
     ]
+    // swiftlint:enable trailing_comma
     @available(*, deprecated, renamed: "allImages")
     static let allValues: [AssetType] = allImages
   }
