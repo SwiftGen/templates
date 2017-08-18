@@ -60,14 +60,6 @@
 							<string>Round/Apricot</string>
 						</dict>
 						<dict>
-							<key>name</key>
-							<string>Orange</string>
-							<key>type</key>
-							<string>image</string>
-							<key>value</key>
-							<string>Round/Orange</string>
-						</dict>
-						<dict>
 							<key>items</key>
 							<array>
 								<dict>

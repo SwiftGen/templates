@@ -48,6 +48,7 @@ enum XCTAssets {
       static let Background = XCTColorAsset(name: "24Vision/Background")
       static let Primary = XCTColorAsset(name: "24Vision/Primary")
     }
+    static let Orange = XCTImageAsset(name: "Orange")
     enum Vengo {
       static let Primary = XCTColorAsset(name: "Vengo/Primary")
       static let Tint = XCTColorAsset(name: "Vengo/Tint")
@@ -60,6 +61,7 @@ enum XCTAssets {
       Vengo.Tint
     ]
     static let allImages: [XCTImageAsset] = [
+      Orange,
     ]
     @available(*, deprecated, renamed: "allImages")
     static let allValues: [XCTAssetsType] = allImages
@@ -72,7 +74,6 @@ enum XCTAssets {
     static let Private = XCTImageAsset(name: "private")
     enum Round {
       static let Apricot = XCTImageAsset(name: "Round/Apricot")
-      static let Orange = XCTImageAsset(name: "Round/Orange")
       enum Red {
         static let Apple = XCTImageAsset(name: "Round/Apple")
         enum Double {
@@ -89,7 +90,6 @@ enum XCTAssets {
       Exotic.Mango,
       Private,
       Round.Apricot,
-      Round.Orange,
       Round.Red.Apple,
       Round.Red.Double.Cherry,
       Round.Red.Tomato

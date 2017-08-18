@@ -48,6 +48,7 @@ enum Asset {
       static let background = ColorAsset(name: "24Vision/Background")
       static let primary = ColorAsset(name: "24Vision/Primary")
     }
+    static let orange = ImageAsset(name: "Orange")
     enum Vengo {
       static let primary = ColorAsset(name: "Vengo/Primary")
       static let tint = ColorAsset(name: "Vengo/Tint")
@@ -61,7 +62,6 @@ enum Asset {
     static let `private` = ImageAsset(name: "private")
     enum Round {
       static let apricot = ImageAsset(name: "Round/Apricot")
-      static let orange = ImageAsset(name: "Round/Orange")
       enum Red {
         static let apple = ImageAsset(name: "Round/Apple")
         enum Double {
