@@ -17,10 +17,9 @@
 // swiftlint:disable identifier_name line_length type_body_length
 extension {{enumName}} {
 {% macro h2f hex %}{{hex|hexToInt|int255toFloat}}{% endmacro %}
-{% macro h2p hex %}{{hex|hexToInt|int255toFloat|percent}}{% endmacro %}
 {% macro enumBlock colors sp %}
 {{sp}}  {% for color in colors %}
-{{sp}}  /// 0x{{color.red}}{{color.green}}{{color.blue}}{{color.alpha}} (r: {% call h2p color.red %}, g: {% call h2p color.green %}, b: {% call h2p color.blue %}, a: {% call h2p color.alpha %})
+{{sp}}  /// 0x{{color.red}}{{color.green}}{{color.blue}}{{color.alpha}} (r: {{color.red|hexToInt}}, g: {{color.green|hexToInt}}, b: {{color.blue|hexToInt}}, a: {{color.alpha|hexToInt}})
 {{sp}}  static let {{color.name|swiftIdentifier|snakeToCamelCase|lowerFirstWord|escapeReservedKeywords}} = #colorLiteral(red: {% call h2f color.red %}, green: {% call h2f color.green %}, blue: {% call h2f color.blue %}, alpha: {% call h2f color.alpha %})
 {{sp}}  {% endfor %}
 {% endmacro %}

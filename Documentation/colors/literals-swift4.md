@@ -27,9 +27,9 @@ You can customize some elements of this template by overriding the following par
 
 ```swift
 extension ColorName {
-  /// 0x339666ff (r: 20%, g: 58%, b: 40%, a: 100%)
+  /// 0x339666ff (r: 51, g: 150, b: 102, a: 255)
   static let articleBody = #colorLiteral(red: 0.2, green: 0.588235, blue: 0.4, alpha: 1.0)
-  /// 0xff66ccff (r: 100%, g: 40%, b: 80%, a: 100%)
+  /// 0xff66ccff (r: 255, g: 102, b: 204, a: 255)
   static let articleFootnote = #colorLiteral(red: 1.0, green: 0.4, blue: 0.8, alpha: 1.0)
 }
 ```
