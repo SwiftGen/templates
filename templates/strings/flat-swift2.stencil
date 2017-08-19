@@ -37,7 +37,7 @@ import Foundation
 enum {{enumName}} {
   {% if tables.count > 1 %}
   {% for table in tables %}
-  enum {{table.name|swiftIdentifier:"pretty"}} {
+  enum {{table.name|swiftIdentifier:"pretty"|escapeReservedKeywords}} {
     {% call recursiveBlock table.name table.levels "  " %}
   }
   {% endfor %}
