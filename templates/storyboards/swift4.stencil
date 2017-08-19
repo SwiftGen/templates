@@ -71,7 +71,7 @@ extension {% if isAppKit %}NSSeguePerforming{% else %}UIViewController{% endif %
 {% endfilter %}{% endmacro %}
 enum {{sceneEnumName}} {
   {% for storyboard in storyboards %}
-  {% set storyboardName %}{{storyboard.name|swiftIdentifier|escapeReservedKeywords}}{% endset %}
+  {% set storyboardName %}{{storyboard.name|swiftIdentifier:"pretty"|escapeReservedKeywords}}{% endset %}
   enum {{storyboardName}}: StoryboardType {
     static let storyboardName = "{{storyboard.name}}"
     {% if storyboard.initialScene %}
@@ -81,7 +81,7 @@ enum {{sceneEnumName}} {
     {% endif %}
     {% for scene in storyboard.scenes %}
 
-    {% set sceneID %}{{scene.identifier|swiftIdentifier|snakeToCamelCase|lowerFirstWord|escapeReservedKeywords}}{% endset %}
+    {% set sceneID %}{{scene.identifier|swiftIdentifier:"pretty"|lowerFirstWord|escapeReservedKeywords}}{% endset %}
     {% set sceneClass %}{% call className scene %}{% endset %}
     static let {{sceneID}} = SceneType<{{sceneClass}}>(storyboard: {{storyboardName}}.self, identifier: "{{scene.identifier}}")
     {% endfor %}
@@ -91,9 +91,9 @@ enum {{sceneEnumName}} {
 
 enum {{param.segueEnumName|default:"StoryboardSegue"}} {
   {% for storyboard in storyboards where storyboard.segues %}
-  enum {{storyboard.name|swiftIdentifier|escapeReservedKeywords}}: String, SegueType {
+  enum {{storyboard.name|swiftIdentifier:"pretty"|escapeReservedKeywords}}: String, SegueType {
     {% for segue in storyboard.segues %}
-    {% set segueID %}{{segue.identifier|swiftIdentifier|snakeToCamelCase|lowerFirstWord}}{% endset %}
+    {% set segueID %}{{segue.identifier|swiftIdentifier:"pretty"|lowerFirstWord}}{% endset %}
     case {{segueID|escapeReservedKeywords}}{% if segueID != segue.identifier %} = "{{segue.identifier}}"{% endif %}
     {% endfor %}
   }

@@ -65,11 +65,11 @@ struct {{colorType}} {
 {% macro casesBlock assets sp %}
 {{sp}}  {% for asset in assets %}
 {{sp}}  {% if asset.type == "color" %}
-{{sp}}  static let {{asset.name|swiftIdentifier|snakeToCamelCase|escapeReservedKeywords}} = {{colorType}}(name: "{{asset.value}}")
+{{sp}}  static let {{asset.name|swiftIdentifier:"pretty"|escapeReservedKeywords}} = {{colorType}}(name: "{{asset.value}}")
 {{sp}}  {% elif asset.type == "image" %}
-{{sp}}  static let {{asset.name|swiftIdentifier|snakeToCamelCase|escapeReservedKeywords}} = {{imageType}}(name: "{{asset.value}}")
+{{sp}}  static let {{asset.name|swiftIdentifier:"pretty"|escapeReservedKeywords}} = {{imageType}}(name: "{{asset.value}}")
 {{sp}}  {% elif asset.items %}
-{{sp}}  enum {{asset.name|swiftIdentifier|snakeToCamelCase|escapeReservedKeywords}} {
+{{sp}}  enum {{asset.name|swiftIdentifier:"pretty"|escapeReservedKeywords}} {
 {{sp}}    {% set sp2 %}{{sp}}  {% endset %}
 {{sp}}    {% call casesBlock asset.items sp2 %}
 {{sp}}  }
@@ -79,9 +79,9 @@ struct {{colorType}} {
 {% macro allValuesBlock assets filter prefix sp %}
 {{sp}}  {% for asset in assets %}
 {{sp}}  {% if asset.type == filter %}
-{{sp}}  {{prefix}}{{asset.name|swiftIdentifier|snakeToCamelCase|escapeReservedKeywords}},
+{{sp}}  {{prefix}}{{asset.name|swiftIdentifier:"pretty"|escapeReservedKeywords}},
 {{sp}}  {% elif asset.items %}
-{{sp}}  {% set prefix2 %}{{prefix}}{{asset.name|swiftIdentifier|snakeToCamelCase|escapeReservedKeywords}}.{% endset %}
+{{sp}}  {% set prefix2 %}{{prefix}}{{asset.name|swiftIdentifier:"pretty"|escapeReservedKeywords}}.{% endset %}
 {{sp}}  {% call allValuesBlock asset.items filter prefix2 sp %}
 {{sp}}  {% endif %}
 {{sp}}  {% endfor %}
@@ -91,7 +91,7 @@ struct {{colorType}} {
 enum {{enumName}} {
   {% if catalogs.count > 1 %}
   {% for catalog in catalogs %}
-  enum {{catalog.name|swiftIdentifier|titlecase|snakeToCamelCase|escapeReservedKeywords}} {
+  enum {{catalog.name|swiftIdentifier:"pretty"|escapeReservedKeywords}} {
     {% call enumBlock catalog.assets "  " %}
   }
   {% endfor %}

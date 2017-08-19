@@ -20,16 +20,16 @@ import Foundation
 {{sp}}  /// {{string.translation}}
 {{sp}}  {% endif %}
 {{sp}}  {% if string.types %}
-{{sp}}  static func {{string.name|swiftIdentifier|snakeToCamelCase|escapeReservedKeywords}}({% call parametersBlock string.types %}) -> String {
+{{sp}}  static func {{string.name|swiftIdentifier:"pretty"|escapeReservedKeywords}}({% call parametersBlock string.types %}) -> String {
 {{sp}}    return {{enumName}}.tr("{{table}}", "{{string.key}}", {% call argumentsBlock string.types %})
 {{sp}}  }
 {{sp}}  {% else %}
-{{sp}}  static let {{string.name|swiftIdentifier|snakeToCamelCase|escapeReservedKeywords}} = {{enumName}}.tr("{{table}}", "{{string.key}}")
+{{sp}}  static let {{string.name|swiftIdentifier:"pretty"|escapeReservedKeywords}} = {{enumName}}.tr("{{table}}", "{{string.key}}")
 {{sp}}  {% endif %}
 {{sp}}  {% endfor %}
 {{sp}}  {% for child in item.children %}
 
-{{sp}}  enum {{child.name|swiftIdentifier|snakeToCamelCase}} {
+{{sp}}  enum {{child.name|swiftIdentifier:"pretty"}} {
 {{sp}}    {% set sp2 %}{{sp}}  {% endset %}
 {{sp}}    {% call recursiveBlock table child sp2 %}
 {{sp}}  }
@@ -41,7 +41,7 @@ import Foundation
 enum {{enumName}} {
   {% if tables.count > 1 %}
   {% for table in tables %}
-  enum {{table.name|swiftIdentifier|snakeToCamelCase}} {
+  enum {{table.name|swiftIdentifier:"pretty"}} {
   	{% call recursiveBlock table.name table.levels "  " %}
   }
   {% endfor %}

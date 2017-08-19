@@ -92,13 +92,13 @@ enum XCTStoryboardsScene {
 
     static let initialScene = InitialSceneType<CreateAccViewController>(Wizard.self)
 
-    static let Accept_CGU = SceneType<UIViewController>(Wizard.self, identifier: "Accept-CGU")
+    static let AcceptCGU = SceneType<UIViewController>(Wizard.self, identifier: "Accept-CGU")
 
     static let CreateAccount = SceneType<CreateAccViewController>(Wizard.self, identifier: "CreateAccount")
 
     static let Preferences = SceneType<UITableViewController>(Wizard.self, identifier: "Preferences")
 
-    static let Validate_Password = SceneType<UIViewController>(Wizard.self, identifier: "Validate_Password")
+    static let ValidatePassword = SceneType<UIViewController>(Wizard.self, identifier: "Validate_Password")
   }
 }
 
@@ -110,7 +110,7 @@ enum XCTStoryboardsSegue {
     case CustomBack
     case Embed
     case NonCustom
-    case Show_NavCtrl = "Show-NavCtrl"
+    case ShowNavCtrl = "Show-NavCtrl"
   }
   enum Wizard: String, SegueType {
     case ShowPassword
