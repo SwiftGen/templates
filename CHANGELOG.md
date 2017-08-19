@@ -6,7 +6,9 @@
 
 ### Bug Fixes
 
-_None_
+* Templates now use the "pretty" mode of the `swiftIdentifier` filter, fixing some issues with identifiers starting with a number.  
+  [David Jennes](https://github.com/djbe) 
+  [#74](https://github.com/SwiftGen/templates/pull/74)
 
 ### Breaking Changes
 
