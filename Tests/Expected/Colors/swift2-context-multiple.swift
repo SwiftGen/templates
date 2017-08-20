@@ -54,7 +54,7 @@ struct ColorName {
     static let ArticleTitle = ColorName(rgbaValue: 0x33fe66ff)
     /// <span style="display:block;width:3em;height:2em;border:1px solid black;background:#ff66cc"></span>
     /// Alpha: 100% <br/> (0xff66ccff)
-    static let Cyan_Color = ColorName(rgbaValue: 0xff66ccff)
+    static let CyanColor = ColorName(rgbaValue: 0xff66ccff)
     /// <span style="display:block;width:3em;height:2em;border:1px solid black;background:#ffffff"></span>
     /// Alpha: 80% <br/> (0xffffffcc)
     static let NamedValue = ColorName(rgbaValue: 0xffffffcc)

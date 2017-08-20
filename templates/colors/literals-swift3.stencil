@@ -20,12 +20,12 @@ extension {{enumName}} {
 {% macro enumBlock colors sp %}
 {{sp}}  {% for color in colors %}
 {{sp}}  /// 0x{{color.red}}{{color.green}}{{color.blue}}{{color.alpha}} (r: {{color.red|hexToInt}}, g: {{color.green|hexToInt}}, b: {{color.blue|hexToInt}}, a: {{color.alpha|hexToInt}})
-{{sp}}  static let {{color.name|swiftIdentifier|snakeToCamelCase|lowerFirstWord|escapeReservedKeywords}} = #colorLiteral(red: {% call h2f color.red %}, green: {% call h2f color.green %}, blue: {% call h2f color.blue %}, alpha: {% call h2f color.alpha %})
+{{sp}}  static let {{color.name|swiftIdentifier:"pretty"|lowerFirstWord|escapeReservedKeywords}} = #colorLiteral(red: {% call h2f color.red %}, green: {% call h2f color.green %}, blue: {% call h2f color.blue %}, alpha: {% call h2f color.alpha %})
 {{sp}}  {% endfor %}
 {% endmacro %}
   {% if palettes.count > 1 %}
   {% for palette in palettes %}
-  enum {{palette.name|swiftIdentifier|titlecase|snakeToCamelCase|escapeReservedKeywords}} {
+  enum {{palette.name|swiftIdentifier:"pretty"|escapeReservedKeywords}} {
     {% call enumBlock palette.colors "  " %}
   }
   {% endfor %}

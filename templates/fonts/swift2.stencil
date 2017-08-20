@@ -58,9 +58,9 @@ extension Font {
 {% endfilter %}{% endmacro %}
 enum {{param.enumName|default:"FontFamily"}} {
   {% for family in families %}
-  enum {{family.name|swiftIdentifier|snakeToCamelCase:"true"|escapeReservedKeywords}} {
+  enum {{family.name|swiftIdentifier:"pretty"|escapeReservedKeywords}} {
     {% for font in family.fonts %}
-    static let {{font.style|swiftIdentifier|snakeToCamelCase:"true"|escapeReservedKeywords}} = FontConvertible("{{font.name}}", family: "{{family.name}}", path: "{% call transformPath font.path %}")
+    static let {{font.style|swiftIdentifier:"pretty"|escapeReservedKeywords}} = FontConvertible("{{font.name}}", family: "{{family.name}}", path: "{% call transformPath font.path %}")
     {% endfor %}
   }
   {% endfor %}
