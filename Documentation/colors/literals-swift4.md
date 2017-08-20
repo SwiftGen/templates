@@ -41,7 +41,7 @@ extension ColorName {
 ## Usage example
 
 ```swift
-// To reference a color, simpy reference it's static instance by name:
+// To reference a color, simpy reference its static instance by name:
 let title = ColorName.articleBody
 let footnote = ColorName.articleFootnote
 ```
