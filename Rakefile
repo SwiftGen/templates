@@ -11,10 +11,10 @@ CONFIGURATION = 'Debug'
 MODULE_INPUT_PATH = 'Fixtures/stub-env/Modules'
 MODULE_OUTPUT_PATH = 'Fixtures/stub-env'
 SDKS = {
-  :macosx => 'x86_64-apple-macosx10.12',
-  :iphoneos => 'armv7s-apple-ios10.0',
-  :watchos => 'armv7k-apple-watchos3.0',
-  :appletvos => 'arm64-apple-tvos10.0'
+  :macosx => 'x86_64-apple-macosx10.13',
+  :iphoneos => 'arm64-apple-ios11.0',
+  :watchos => 'armv7k-apple-watchos4.0',
+  :appletvos => 'arm64-apple-tvos11.0'
 }
 TOOLCHAINS = {
   :swift3 => {
