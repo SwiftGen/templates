@@ -14,6 +14,22 @@ _None_
 
 ### New Features
 
+_None_
+
+### Internal Changes
+
+_None_
+
+## 2.1.0
+
+### Bug Fixes
+
+* Templates now use the "pretty" mode of the `swiftIdentifier` filter, fixing some issues with identifiers starting with a number.  
+  [David Jennes](https://github.com/djbe) 
+  [#74](https://github.com/SwiftGen/templates/pull/74)
+
+### New Features
+
 * Swift 4 templates.  
   [David Jennes](https://github.com/djbe) 
   [#67](https://github.com/SwiftGen/templates/pull/67)
