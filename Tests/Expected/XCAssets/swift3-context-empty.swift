@@ -1,3 +1,3 @@
 // Generated using SwiftGen, by O.Halligon — https://github.com/SwiftGen/SwiftGen
 
-// No image found
+// No assets found

@@ -9,18 +9,20 @@ import XCTest
 
 class XCAssetsTests: XCTestCase {
   enum Contexts {
-    static let all = ["empty", "defaults"]
+    static let all = ["empty", "all"]
   }
 
   // generate variations to test customname generation
   let variations: VariationGenerator = { name, context in
-    guard name == "defaults" else { return [(context: context, suffix: "")] }
+    guard name == "all" else { return [(context: context, suffix: "")] }
 
     return [
       (context: context,
        suffix: ""),
       (context: try StencilContext.enrich(context: context,
-                                          parameters: ["enumName=XCTImages"]),
+                                          parameters: ["enumName=XCTAssets",
+                                                       "colorTypeName=XCTColorAsset",
+                                                       "imageTypeName=XCTImageAsset"]),
        suffix: "-customname"),
       (context: try StencilContext.enrich(context: context,
                                           parameters: ["noAllValues"]),

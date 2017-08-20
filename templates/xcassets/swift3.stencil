@@ -3,72 +3,86 @@
 {% if catalogs %}
 #if os(OSX)
   import AppKit.NSImage
+  typealias Color = NSColor
   typealias Image = NSImage
 #elseif os(iOS) || os(tvOS) || os(watchOS)
   import UIKit.UIImage
+  typealias Color = UIColor
   typealias Image = UIImage
 #endif
 
 // swiftlint:disable file_length
 
 {% set enumName %}{{param.enumName|default:"Asset"}}{% endset %}
-struct {{enumName}}Type: ExpressibleByStringLiteral {
-  fileprivate var value: String
+{% set imageType %}{{param.imageTypeName|default:"ImageAsset"}}{% endset %}
+@available(*, deprecated, renamed: "{{imageType}}")
+typealias {{enumName}}Type = {{imageType}}
+
+struct {{imageType}} {
+  fileprivate var name: String
 
   var image: Image {
     let bundle = Bundle(for: BundleToken.self)
     #if os(iOS) || os(tvOS)
-    let image = Image(named: value, in: bundle, compatibleWith: nil)
+    let image = Image(named: name, in: bundle, compatibleWith: nil)
     #elseif os(OSX)
-    let image = bundle.image(forResource: value)
+    let image = bundle.image(forResource: name)
     #elseif os(watchOS)
-    let image = Image(named: value)
+    let image = Image(named: name)
     #endif
-    guard let result = image else { fatalError("Unable to load image \(value).") }
+    guard let result = image else { fatalError("Unable to load image named \(name).") }
     return result
   }
+}
 
-  init(stringLiteral value: String) {
-    self.value = value
-  }
+{% set colorType %}{{param.colorTypeName|default:"ColorAsset"}}{% endset %}
+struct {{colorType}} {
+  fileprivate var name: String
 
-  init(extendedGraphemeClusterLiteral value: String) {
-    self.init(stringLiteral: value)
-  }
-
-  init(unicodeScalarLiteral value: String) {
-    self.init(stringLiteral: value)
+  @available(iOS 11.0, tvOS 11.0, watchOS 4.0, OSX 10.13, *)
+  var color: Color {
+    return Color(asset: self)
   }
 }
-{% macro enumBlock images sp %}
-{{sp}}  {% call casesBlock images sp %}
+{% macro enumBlock assets sp %}
+{{sp}}  {% call casesBlock assets sp %}
 {{sp}}  {% if not param.noAllValues %}
 
-{{sp}}  static let allValues = [
+{{sp}}  // swiftlint:disable trailing_comma
+{{sp}}  static let allColors: [{{colorType}}] = [
 {{sp}}    {% set sp2 %}{{sp}}  {% endset %}
-{{sp}}    {% call allValuesBlock images "" false sp2 %}
+{{sp}}    {% call allValuesBlock assets "color" "" sp2 %}
 {{sp}}  ]
+{{sp}}  static let allImages: [{{imageType}}] = [
+{{sp}}    {% set sp2 %}{{sp}}  {% endset %}
+{{sp}}    {% call allValuesBlock assets "image" "" sp2 %}
+{{sp}}  ]
+{{sp}}  // swiftlint:enable trailing_comma
+{{sp}}  @available(*, deprecated, renamed: "allImages")
+{{sp}}  static let allValues: [{{enumName}}Type] = allImages
 {{sp}}  {% endif %}
 {% endmacro %}
-{% macro casesBlock images sp %}
-{{sp}}  {% for image in images %}
-{{sp}}  {% if image.value %}
-{{sp}}  static let {{image.name|swiftIdentifier|snakeToCamelCase|lowerFirstWord|escapeReservedKeywords}}: {{enumName}}Type = "{{image.value}}"
-{{sp}}  {% elif image.items %}
-{{sp}}  enum {{image.name|swiftIdentifier|snakeToCamelCase|escapeReservedKeywords}} {
+{% macro casesBlock assets sp %}
+{{sp}}  {% for asset in assets %}
+{{sp}}  {% if asset.type == "color" %}
+{{sp}}  static let {{asset.name|swiftIdentifier|snakeToCamelCase|lowerFirstWord|escapeReservedKeywords}} = {{colorType}}(name: "{{asset.value}}")
+{{sp}}  {% elif asset.type == "image" %}
+{{sp}}  static let {{asset.name|swiftIdentifier|snakeToCamelCase|lowerFirstWord|escapeReservedKeywords}} = {{imageType}}(name: "{{asset.value}}")
+{{sp}}  {% elif asset.items %}
+{{sp}}  enum {{asset.name|swiftIdentifier|snakeToCamelCase|escapeReservedKeywords}} {
 {{sp}}    {% set sp2 %}{{sp}}  {% endset %}
-{{sp}}    {% call casesBlock image.items sp2 %}
+{{sp}}    {% call casesBlock asset.items sp2 %}
 {{sp}}  }
 {{sp}}  {% endif %}
 {{sp}}  {% endfor %}
 {% endmacro %}
-{% macro allValuesBlock images prefix isLast sp %}
-{{sp}}  {% for image in images %}
-{{sp}}  {% if image.value %}
-{{sp}}  {{prefix}}{{image.name|swiftIdentifier|snakeToCamelCase|lowerFirstWord|escapeReservedKeywords}}{% if not forloop.last or not isLast %},{% endif %}
-{{sp}}  {% elif image.items %}
-{{sp}}  {% set prefix2 %}{{prefix}}{{image.name|swiftIdentifier|snakeToCamelCase|escapeReservedKeywords}}.{% endset %}
-{{sp}}  {% call allValuesBlock image.items prefix2 forloop.last sp %}
+{% macro allValuesBlock assets filter prefix sp %}
+{{sp}}  {% for asset in assets %}
+{{sp}}  {% if asset.type == filter %}
+{{sp}}  {{prefix}}{{asset.name|swiftIdentifier|snakeToCamelCase|lowerFirstWord|escapeReservedKeywords}},
+{{sp}}  {% elif asset.items %}
+{{sp}}  {% set prefix2 %}{{prefix}}{{asset.name|swiftIdentifier|snakeToCamelCase|escapeReservedKeywords}}.{% endset %}
+{{sp}}  {% call allValuesBlock asset.items filter prefix2 sp %}
 {{sp}}  {% endif %}
 {{sp}}  {% endfor %}
 {% endmacro %}
@@ -88,17 +102,34 @@ enum {{enumName}} {
 // swiftlint:enable identifier_name line_length nesting type_body_length type_name
 
 extension Image {
-  convenience init!(asset: {{enumName}}Type) {
+  @available(iOS 1.0, tvOS 1.0, watchOS 1.0, *)
+  @available(OSX, deprecated,
+    message: "This initializer is unsafe on macOS, please use the {{imageType}}.image property")
+  convenience init!(asset: {{imageType}}) {
     #if os(iOS) || os(tvOS)
     let bundle = Bundle(for: BundleToken.self)
-    self.init(named: asset.value, in: bundle, compatibleWith: nil)
+    self.init(named: asset.name, in: bundle, compatibleWith: nil)
     #elseif os(OSX) || os(watchOS)
-    self.init(named: asset.value)
+    self.init(named: asset.name)
+    #endif
+  }
+}
+
+extension Color {
+  @available(iOS 11.0, tvOS 11.0, watchOS 4.0, OSX 10.13, *)
+  convenience init!(asset: {{colorType}}) {
+    let bundle = Bundle(for: BundleToken.self)
+    #if os(iOS) || os(tvOS)
+    self.init(named: asset.name, in: bundle, compatibleWith: nil)
+    #elseif os(OSX)
+    self.init(named: asset.name, bundle: bundle)
+    #elseif os(watchOS)
+    self.init(named: asset.name)
     #endif
   }
 }
 
 private final class BundleToken {}
 {% else %}
-// No image found
+// No assets found
 {% endif %}

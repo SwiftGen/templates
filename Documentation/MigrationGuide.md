@@ -1,3 +1,11 @@
+# Templates 2.1 Migration Guide
+
+## Functionality changes in 2.1 (SwiftGen 5.1)
+
+### XCAssets
+
+The static `allValues` constant has been deprecated in favor of the `allImages` and `allColors` constants. This is because we've added support for named colors in asset catalogs.
+
 # Templates 2.0 Migration Guide
 
 If you're moving from SwiftGen 4.x to SwiftGen 5.0, you'll need to be aware that some templates have been renamed, removed or merged with others. Follow this Migration Guide to use the new name for SwiftGen 5.x of the templates you were previously using with SwiftGen 4.x.

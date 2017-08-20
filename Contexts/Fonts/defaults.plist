@@ -11,7 +11,7 @@
 					<key>name</key>
 					<string>.SFNSDisplay-Black</string>
 					<key>path</key>
-					<string>SFNSDisplay-Black.otf</string>
+					<string>Fonts/SFNSDisplay-Black.otf</string>
 					<key>style</key>
 					<string>Black</string>
 				</dict>
@@ -19,7 +19,7 @@
 					<key>name</key>
 					<string>.SFNSDisplay-Bold</string>
 					<key>path</key>
-					<string>SFNSDisplay-Bold.otf</string>
+					<string>Fonts/SFNSDisplay-Bold.otf</string>
 					<key>style</key>
 					<string>Bold</string>
 				</dict>
@@ -27,7 +27,7 @@
 					<key>name</key>
 					<string>.SFNSDisplay-Heavy</string>
 					<key>path</key>
-					<string>SFNSDisplay-Heavy.otf</string>
+					<string>Fonts/SFNSDisplay-Heavy.otf</string>
 					<key>style</key>
 					<string>Heavy</string>
 				</dict>
@@ -35,7 +35,7 @@
 					<key>name</key>
 					<string>.SFNSDisplay-Regular</string>
 					<key>path</key>
-					<string>SFNSDisplay-Regular.otf</string>
+					<string>Fonts/SFNSDisplay-Regular.otf</string>
 					<key>style</key>
 					<string>Regular</string>
 				</dict>
@@ -50,7 +50,7 @@
 					<key>name</key>
 					<string>.SFNSText-Bold</string>
 					<key>path</key>
-					<string>SFNSText-Bold.otf</string>
+					<string>Fonts/SFNSText-Bold.otf</string>
 					<key>style</key>
 					<string>Bold</string>
 				</dict>
@@ -58,7 +58,7 @@
 					<key>name</key>
 					<string>.SFNSText-Heavy</string>
 					<key>path</key>
-					<string>SFNSText-Heavy.otf</string>
+					<string>Fonts/SFNSText-Heavy.otf</string>
 					<key>style</key>
 					<string>Heavy</string>
 				</dict>
@@ -66,7 +66,7 @@
 					<key>name</key>
 					<string>.SFNSText-Regular</string>
 					<key>path</key>
-					<string>SFNSText-Regular.otf</string>
+					<string>Fonts/SFNSText-Regular.otf</string>
 					<key>style</key>
 					<string>Regular</string>
 				</dict>
@@ -81,7 +81,7 @@
 					<key>name</key>
 					<string>Avenir-Black</string>
 					<key>path</key>
-					<string>Avenir.ttc</string>
+					<string>Fonts/Avenir.ttc</string>
 					<key>style</key>
 					<string>Black</string>
 				</dict>
@@ -89,7 +89,7 @@
 					<key>name</key>
 					<string>Avenir-BlackOblique</string>
 					<key>path</key>
-					<string>Avenir.ttc</string>
+					<string>Fonts/Avenir.ttc</string>
 					<key>style</key>
 					<string>Black Oblique</string>
 				</dict>
@@ -97,7 +97,7 @@
 					<key>name</key>
 					<string>Avenir-Book</string>
 					<key>path</key>
-					<string>Avenir.ttc</string>
+					<string>Fonts/Avenir.ttc</string>
 					<key>style</key>
 					<string>Book</string>
 				</dict>
@@ -105,7 +105,7 @@
 					<key>name</key>
 					<string>Avenir-BookOblique</string>
 					<key>path</key>
-					<string>Avenir.ttc</string>
+					<string>Fonts/Avenir.ttc</string>
 					<key>style</key>
 					<string>Book Oblique</string>
 				</dict>
@@ -113,7 +113,7 @@
 					<key>name</key>
 					<string>Avenir-Heavy</string>
 					<key>path</key>
-					<string>Avenir.ttc</string>
+					<string>Fonts/Avenir.ttc</string>
 					<key>style</key>
 					<string>Heavy</string>
 				</dict>
@@ -121,7 +121,7 @@
 					<key>name</key>
 					<string>Avenir-HeavyOblique</string>
 					<key>path</key>
-					<string>Avenir.ttc</string>
+					<string>Fonts/Avenir.ttc</string>
 					<key>style</key>
 					<string>Heavy Oblique</string>
 				</dict>
@@ -129,7 +129,7 @@
 					<key>name</key>
 					<string>Avenir-Light</string>
 					<key>path</key>
-					<string>Avenir.ttc</string>
+					<string>Fonts/Avenir.ttc</string>
 					<key>style</key>
 					<string>Light</string>
 				</dict>
@@ -137,7 +137,7 @@
 					<key>name</key>
 					<string>Avenir-LightOblique</string>
 					<key>path</key>
-					<string>Avenir.ttc</string>
+					<string>Fonts/Avenir.ttc</string>
 					<key>style</key>
 					<string>Light Oblique</string>
 				</dict>
@@ -145,7 +145,7 @@
 					<key>name</key>
 					<string>Avenir-Medium</string>
 					<key>path</key>
-					<string>Avenir.ttc</string>
+					<string>Fonts/Avenir.ttc</string>
 					<key>style</key>
 					<string>Medium</string>
 				</dict>
@@ -153,7 +153,7 @@
 					<key>name</key>
 					<string>Avenir-MediumOblique</string>
 					<key>path</key>
-					<string>Avenir.ttc</string>
+					<string>Fonts/Avenir.ttc</string>
 					<key>style</key>
 					<string>Medium Oblique</string>
 				</dict>
@@ -161,7 +161,7 @@
 					<key>name</key>
 					<string>Avenir-Oblique</string>
 					<key>path</key>
-					<string>Avenir.ttc</string>
+					<string>Fonts/Avenir.ttc</string>
 					<key>style</key>
 					<string>Oblique</string>
 				</dict>
@@ -169,7 +169,7 @@
 					<key>name</key>
 					<string>Avenir-Roman</string>
 					<key>path</key>
-					<string>Avenir.ttc</string>
+					<string>Fonts/Avenir.ttc</string>
 					<key>style</key>
 					<string>Roman</string>
 				</dict>
@@ -184,7 +184,7 @@
 					<key>name</key>
 					<string>ZapfDingbatsITC</string>
 					<key>path</key>
-					<string>ZapfDingbats.ttf</string>
+					<string>Fonts/ZapfDingbats.ttf</string>
 					<key>style</key>
 					<string>Regular</string>
 				</dict>
@@ -199,7 +199,7 @@
 					<key>name</key>
 					<string>private</string>
 					<key>path</key>
-					<string>class.ttf</string>
+					<string>Fonts/class.ttf</string>
 					<key>style</key>
 					<string>internal</string>
 				</dict>

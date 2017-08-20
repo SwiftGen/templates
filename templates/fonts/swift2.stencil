@@ -49,11 +49,18 @@ extension Font {
 }
 
 // swiftlint:disable identifier_name line_length type_body_length
+{% macro transformPath path %}{% filter removeNewlines %}
+  {% if param.preservePath %}
+    {{path}}
+  {% else %}
+    {{path|basename}}
+  {% endif %}
+{% endfilter %}{% endmacro %}
 enum {{param.enumName|default:"FontFamily"}} {
   {% for family in families %}
   enum {{family.name|swiftIdentifier|snakeToCamelCase:"true"|escapeReservedKeywords}} {
     {% for font in family.fonts %}
-    static let {{font.style|swiftIdentifier|snakeToCamelCase:"true"|escapeReservedKeywords}} = FontConvertible("{{font.name}}", family: "{{family.name}}", path: "{{font.path}}")
+    static let {{font.style|swiftIdentifier|snakeToCamelCase:"true"|escapeReservedKeywords}} = FontConvertible("{{font.name}}", family: "{{family.name}}", path: "{% call transformPath font.path %}")
     {% endfor %}
   }
   {% endfor %}
