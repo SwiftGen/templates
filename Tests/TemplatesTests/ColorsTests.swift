@@ -13,36 +13,52 @@ class ColorsTests: XCTestCase {
   }
 
   // generate variations to test customname generation
-  let variations: VariationGenerator = { name, context in
-    guard name == "defaults" else { return [(context: context, suffix: "")] }
+  func variations(customName: String) -> VariationGenerator {
+    return { name, context in
+      guard name == "defaults" else { return [(context: context, suffix: "")] }
 
-    return [
-      (context: context,
-       suffix: ""),
-      (context: try StencilContext.enrich(context: context,
-                                          parameters: ["enumName=XCTColors"]),
-       suffix: "-customname")
-    ]
+      return [
+        (context: context,
+         suffix: ""),
+        (context: try StencilContext.enrich(context: context,
+                                            parameters: ["enumName=\(customName)"]),
+         suffix: "-customname")
+      ]
+    }
   }
 
   func testSwift2() {
     test(template: "swift2",
          contextNames: Contexts.all,
          directory: .colors,
-         contextVariations: variations)
+         contextVariations: variations(customName: "XCTColors"))
   }
 
   func testSwift3() {
     test(template: "swift3",
          contextNames: Contexts.all,
          directory: .colors,
-         contextVariations: variations)
+         contextVariations: variations(customName: "XCTColors"))
   }
 
   func testSwift4() {
     test(template: "swift4",
          contextNames: Contexts.all,
          directory: .colors,
-         contextVariations: variations)
+         contextVariations: variations(customName: "XCTColors"))
+  }
+
+  func testLiteralsSwift3() {
+    test(template: "literals-swift3",
+         contextNames: Contexts.all,
+         directory: .colors,
+         contextVariations: variations(customName: "UIColor"))
+  }
+
+  func testLiteralsSwift4() {
+    test(template: "literals-swift4",
+         contextNames: Contexts.all,
+         directory: .colors,
+         contextVariations: variations(customName: "UIColor"))
   }
 }
