@@ -2,12 +2,10 @@
 
 #if os(OSX)
   import AppKit.NSImage
-  typealias Color = NSColor
-  typealias Image = NSImage
+  typealias XCTImage = NSImage
 #elseif os(iOS) || os(tvOS) || os(watchOS)
   import UIKit.UIImage
-  typealias Color = UIColor
-  typealias Image = UIImage
+  typealias XCTImage = UIImage
 #endif
 
 // swiftlint:disable file_length
@@ -18,14 +16,14 @@ typealias XCTAssetsType = XCTImageAsset
 struct XCTImageAsset {
   private var name: String
 
-  var image: Image {
+  var image: XCTImage {
     let bundle = NSBundle(forClass: BundleToken.self)
     #if os(iOS) || os(tvOS)
-    let image = Image(named: name, inBundle: bundle, compatibleWithTraitCollection: nil)
+    let image = XCTImage(named: name, inBundle: bundle, compatibleWithTraitCollection: nil)
     #elseif os(OSX)
     let image = bundle.imageForResource(name)
     #elseif os(watchOS)
-    let image = Image(named: name)
+    let image = XCTImage(named: name)
     #endif
     guard let result = image else { fatalError("Unable to load image named \(name).") }
     return result
@@ -34,11 +32,6 @@ struct XCTImageAsset {
 
 struct XCTColorAsset {
   fileprivate var name: String
-
-  @available(iOS 11.0, tvOS 11.0, watchOS 4.0, OSX 10.13, *)
-  var color: Color {
-    return Color(asset: self)
-  }
 }
 
 // swiftlint:disable identifier_name line_length nesting type_body_length type_name
@@ -104,7 +97,7 @@ enum XCTAssets {
 }
 // swiftlint:enable identifier_name line_length nesting type_body_length type_name
 
-extension Image {
+extension XCTImage {
   @available(iOS 1.0, tvOS 1.0, watchOS 1.0, *)
   @available(OSX, deprecated,
     message: "This initializer is unsafe on macOS, please use the XCTImageAsset.image property")
@@ -113,20 +106,6 @@ extension Image {
     let bundle = NSBundle(forClass: BundleToken.self)
     self.init(named: asset.name, inBundle: bundle, compatibleWithTraitCollection: nil)
     #elseif os(OSX) || os(watchOS)
-    self.init(named: asset.name)
-    #endif
-  }
-}
-
-extension Color {
-  @available(iOS 11.0, tvOS 11.0, watchOS 4.0, OSX 10.13, *)
-  convenience init!(asset: XCTColorAsset) {
-    let bundle = NSBundle(forClass: BundleToken.self)
-    #if os(iOS) || os(tvOS)
-    self.init(named: asset.name, inBundle: bundle, compatibleWithTraitCollection: nil)
-    #elseif os(OSX)
-    self.init(named: asset.name, bundle: bundle)
-    #elseif os(watchOS)
     self.init(named: asset.name)
     #endif
   }

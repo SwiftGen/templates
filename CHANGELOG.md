@@ -6,7 +6,12 @@
 
 ### Bug Fixes
 
-_None_
+* Colors and XCAssets: fix a naming conflict of `typealias`es.  
+  [David Jennes](https://github.com/djbe) 
+  [#76](https://github.com/SwiftGen/templates/pull/76)
+* XCAssets: fix a compatibility issue with the swift 3 template on Xcode 8.  
+  [David Jennes](https://github.com/djbe) 
+  [#76](https://github.com/SwiftGen/templates/pull/76)
 
 ### Breaking Changes
 

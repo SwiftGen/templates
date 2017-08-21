@@ -1,14 +1,16 @@
 // Generated using SwiftGen, by O.Halligon — https://github.com/SwiftGen/SwiftGen
 
 {% if catalogs %}
+{% set colorAlias %}{{param.colorAliasName|default:"AssetColorTypeAlias"}}{% endset %}
+{% set imageAlias %}{{param.imageAliasName|default:"Image"}}{% endset %}
 #if os(OSX)
   import AppKit.NSImage
-  typealias Color = NSColor
-  typealias Image = NSImage
+  typealias {{colorAlias}} = NSColor
+  typealias {{imageAlias}} = NSImage
 #elseif os(iOS) || os(tvOS) || os(watchOS)
   import UIKit.UIImage
-  typealias Color = UIColor
-  typealias Image = UIImage
+  typealias {{colorAlias}} = UIColor
+  typealias {{imageAlias}} = UIImage
 #endif
 
 // swiftlint:disable file_length
@@ -21,14 +23,14 @@ typealias {{enumName}}Type = {{imageType}}
 struct {{imageType}} {
   fileprivate var name: String
 
-  var image: Image {
+  var image: {{imageAlias}} {
     let bundle = Bundle(for: BundleToken.self)
     #if os(iOS) || os(tvOS)
-    let image = Image(named: name, in: bundle, compatibleWith: nil)
+    let image = {{imageAlias}}(named: name, in: bundle, compatibleWith: nil)
     #elseif os(OSX)
     let image = bundle.image(forResource: name)
     #elseif os(watchOS)
-    let image = Image(named: name)
+    let image = {{imageAlias}}(named: name)
     #endif
     guard let result = image else { fatalError("Unable to load image named \(name).") }
     return result
@@ -39,10 +41,12 @@ struct {{imageType}} {
 struct {{colorType}} {
   fileprivate var name: String
 
+  #if swift(>=3.2)
   @available(iOS 11.0, tvOS 11.0, watchOS 4.0, OSX 10.13, *)
-  var color: Color {
-    return Color(asset: self)
+  var color: {{colorAlias}} {
+    return {{colorAlias}}(asset: self)
   }
+  #endif
 }
 {% macro enumBlock assets sp %}
 {{sp}}  {% call casesBlock assets sp %}
@@ -101,7 +105,7 @@ enum {{enumName}} {
 }
 // swiftlint:enable identifier_name line_length nesting type_body_length type_name
 
-extension Image {
+extension {{imageAlias}} {
   @available(iOS 1.0, tvOS 1.0, watchOS 1.0, *)
   @available(OSX, deprecated,
     message: "This initializer is unsafe on macOS, please use the {{imageType}}.image property")
@@ -115,7 +119,8 @@ extension Image {
   }
 }
 
-extension Color {
+extension {{colorAlias}} {
+  #if swift(>=3.2)
   @available(iOS 11.0, tvOS 11.0, watchOS 4.0, OSX 10.13, *)
   convenience init!(asset: {{colorType}}) {
     let bundle = Bundle(for: BundleToken.self)
@@ -127,6 +132,7 @@ extension Color {
     self.init(named: asset.name)
     #endif
   }
+  #endif
 }
 
 private final class BundleToken {}

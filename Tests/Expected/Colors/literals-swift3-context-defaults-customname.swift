@@ -1,12 +1,10 @@
 // Generated using SwiftGen, by O.Halligon — https://github.com/SwiftGen/SwiftGen
 
 #if os(OSX)
-  import AppKit.NSColor
-  typealias Color = NSColor
+  import AppKit
   enum UIColor { }
 #elseif os(iOS) || os(tvOS) || os(watchOS)
-  import UIKit.UIColor
-  typealias Color = UIColor
+  import UIKit
 #endif
 
 // swiftlint:disable file_length
