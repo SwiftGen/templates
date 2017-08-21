@@ -2,11 +2,11 @@
 
 #if os(OSX)
   import AppKit.NSImage
-  typealias Color = NSColor
+  typealias AssetColorTypeAlias = NSColor
   typealias Image = NSImage
 #elseif os(iOS) || os(tvOS) || os(watchOS)
   import UIKit.UIImage
-  typealias Color = UIColor
+  typealias AssetColorTypeAlias = UIColor
   typealias Image = UIImage
 #endif
 
@@ -36,8 +36,8 @@ struct XCTColorAsset {
   fileprivate var name: String
 
   @available(iOS 11.0, tvOS 11.0, watchOS 4.0, OSX 10.13, *)
-  var color: Color {
-    return Color(asset: self)
+  var color: AssetColorTypeAlias {
+    return AssetColorTypeAlias(asset: self)
   }
 }
 
@@ -120,7 +120,7 @@ extension Image {
   }
 }
 
-extension Color {
+extension AssetColorTypeAlias {
   @available(iOS 11.0, tvOS 11.0, watchOS 4.0, OSX 10.13, *)
   convenience init!(asset: XCTColorAsset) {
     let bundle = Bundle(for: BundleToken.self)

@@ -2,11 +2,9 @@
 
 #if os(OSX)
   import AppKit.NSImage
-  typealias Color = NSColor
   typealias Image = NSImage
 #elseif os(iOS) || os(tvOS) || os(watchOS)
   import UIKit.UIImage
-  typealias Color = UIColor
   typealias Image = UIImage
 #endif
 

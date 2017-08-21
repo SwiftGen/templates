@@ -3,12 +3,10 @@
 {% if palettes %}
 {% set enumName %}{{param.enumName|default:"ColorName"}}{% endset %}
 #if os(OSX)
-  import AppKit.NSColor
-  typealias Color = NSColor
+  import AppKit
   {% if enumName != 'NSColor' %}enum {{enumName}} { }{% endif %}
 #elseif os(iOS) || os(tvOS) || os(watchOS)
-  import UIKit.UIColor
-  typealias Color = UIColor
+  import UIKit
   {% if enumName != 'UIColor' %}enum {{enumName}} { }{% endif %}
 #endif
 
