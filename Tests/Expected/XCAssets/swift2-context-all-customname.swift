@@ -2,10 +2,10 @@
 
 #if os(OSX)
   import AppKit.NSImage
-  typealias Image = NSImage
+  typealias XCTImage = NSImage
 #elseif os(iOS) || os(tvOS) || os(watchOS)
   import UIKit.UIImage
-  typealias Image = UIImage
+  typealias XCTImage = UIImage
 #endif
 
 // swiftlint:disable file_length
@@ -16,14 +16,14 @@ typealias XCTAssetsType = XCTImageAsset
 struct XCTImageAsset {
   private var name: String
 
-  var image: Image {
+  var image: XCTImage {
     let bundle = NSBundle(forClass: BundleToken.self)
     #if os(iOS) || os(tvOS)
-    let image = Image(named: name, inBundle: bundle, compatibleWithTraitCollection: nil)
+    let image = XCTImage(named: name, inBundle: bundle, compatibleWithTraitCollection: nil)
     #elseif os(OSX)
     let image = bundle.imageForResource(name)
     #elseif os(watchOS)
-    let image = Image(named: name)
+    let image = XCTImage(named: name)
     #endif
     guard let result = image else { fatalError("Unable to load image named \(name).") }
     return result
@@ -97,7 +97,7 @@ enum XCTAssets {
 }
 // swiftlint:enable identifier_name line_length nesting type_body_length type_name
 
-extension Image {
+extension XCTImage {
   @available(iOS 1.0, tvOS 1.0, watchOS 1.0, *)
   @available(OSX, deprecated,
     message: "This initializer is unsafe on macOS, please use the XCTImageAsset.image property")

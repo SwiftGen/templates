@@ -2,12 +2,12 @@
 
 #if os(OSX)
   import AppKit.NSImage
-  typealias AssetColorTypeAlias = NSColor
-  typealias Image = NSImage
+  typealias XCTColor = NSColor
+  typealias XCTImage = NSImage
 #elseif os(iOS) || os(tvOS) || os(watchOS)
   import UIKit.UIImage
-  typealias AssetColorTypeAlias = UIColor
-  typealias Image = UIImage
+  typealias XCTColor = UIColor
+  typealias XCTImage = UIImage
 #endif
 
 // swiftlint:disable file_length
@@ -18,14 +18,14 @@ typealias XCTAssetsType = XCTImageAsset
 struct XCTImageAsset {
   fileprivate var name: String
 
-  var image: Image {
+  var image: XCTImage {
     let bundle = Bundle(for: BundleToken.self)
     #if os(iOS) || os(tvOS)
-    let image = Image(named: name, in: bundle, compatibleWith: nil)
+    let image = XCTImage(named: name, in: bundle, compatibleWith: nil)
     #elseif os(OSX)
     let image = bundle.image(forResource: name)
     #elseif os(watchOS)
-    let image = Image(named: name)
+    let image = XCTImage(named: name)
     #endif
     guard let result = image else { fatalError("Unable to load image named \(name).") }
     return result
@@ -37,8 +37,8 @@ struct XCTColorAsset {
 
   #if swift(>=3.2)
   @available(iOS 11.0, tvOS 11.0, watchOS 4.0, OSX 10.13, *)
-  var color: AssetColorTypeAlias {
-    return AssetColorTypeAlias(asset: self)
+  var color: XCTColor {
+    return XCTColor(asset: self)
   }
   #endif
 }
@@ -106,7 +106,7 @@ enum XCTAssets {
 }
 // swiftlint:enable identifier_name line_length nesting type_body_length type_name
 
-extension Image {
+extension XCTImage {
   @available(iOS 1.0, tvOS 1.0, watchOS 1.0, *)
   @available(OSX, deprecated,
     message: "This initializer is unsafe on macOS, please use the XCTImageAsset.image property")
@@ -120,7 +120,7 @@ extension Image {
   }
 }
 
-extension AssetColorTypeAlias {
+extension XCTColor {
   #if swift(>=3.2)
   @available(iOS 11.0, tvOS 11.0, watchOS 4.0, OSX 10.13, *)
   convenience init!(asset: XCTColorAsset) {
