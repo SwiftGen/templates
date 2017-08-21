@@ -2,7 +2,7 @@
 
 ---
 
-## Master
+## 2.1.1
 
 ### Bug Fixes
 
@@ -12,18 +12,6 @@
 * XCAssets: fix a compatibility issue with the swift 3 template on Xcode 8.  
   [David Jennes](https://github.com/djbe) 
   [#76](https://github.com/SwiftGen/templates/pull/76)
-
-### Breaking Changes
-
-_None_
-
-### New Features
-
-_None_
-
-### Internal Changes
-
-_None_
 
 ## 2.1.0
 
