@@ -38,11 +38,6 @@ struct {{imageType}} {
 {% set colorType %}{{param.colorTypeName|default:"ColorAsset"}}{% endset %}
 struct {{colorType}} {
   fileprivate var name: String
-
-  @available(iOS 11.0, tvOS 11.0, watchOS 4.0, OSX 10.13, *)
-  var color: Color {
-    return Color(asset: self)
-  }
 }
 {% macro enumBlock assets sp %}
 {{sp}}  {% call casesBlock assets sp %}
@@ -110,20 +105,6 @@ extension Image {
     let bundle = NSBundle(forClass: BundleToken.self)
     self.init(named: asset.name, inBundle: bundle, compatibleWithTraitCollection: nil)
     #elseif os(OSX) || os(watchOS)
-    self.init(named: asset.name)
-    #endif
-  }
-}
-
-extension Color {
-  @available(iOS 11.0, tvOS 11.0, watchOS 4.0, OSX 10.13, *)
-  convenience init!(asset: {{colorType}}) {
-    let bundle = NSBundle(forClass: BundleToken.self)
-    #if os(iOS) || os(tvOS)
-    self.init(named: asset.name, inBundle: bundle, compatibleWithTraitCollection: nil)
-    #elseif os(OSX)
-    self.init(named: asset.name, bundle: bundle)
-    #elseif os(watchOS)
     self.init(named: asset.name)
     #endif
   }
