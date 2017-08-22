@@ -2,6 +2,26 @@
 
 ---
 
+## Master
+
+### Bug Fixes
+
+* Fix code which checks is font already registered.
+  [Vladimir Burdukov](https://github.com/chipp)
+  [#77](https://github.com/SwiftGen/templates/pull/77)
+
+### Breaking Changes
+
+_None_
+
+### New Features
+
+_None_
+
+### Internal Changes
+
+_None_
+
 ## 2.1.1
 
 ### Bug Fixes
