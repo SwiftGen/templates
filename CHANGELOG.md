@@ -6,7 +6,7 @@
 
 ### Bug Fixes
 
-* Fix code which checks is font already registered.
+* Fonts: fix code which checks if a font is already registered.  
   [Vladimir Burdukov](https://github.com/chipp)
   [#77](https://github.com/SwiftGen/templates/pull/77)
 
