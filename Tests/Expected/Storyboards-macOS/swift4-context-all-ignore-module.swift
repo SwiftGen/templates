@@ -111,7 +111,7 @@ extension CustomTabViewController {
     case popover(destination: NSViewController)
     case sheet(destination: NSViewController)
     case show(destination: NSViewController)
-    case `public`(destination: NSViewController)
+    case `public`(destination: NSViewController, segue: FadeSegue.FadeSegue)
     case unnamedSegue
 
     // swiftlint:disable cyclomatic_complexity
@@ -143,10 +143,13 @@ extension CustomTabViewController {
         }
         self = .show(destination: vc)
       case "public":
+        guard let segue = segue as? FadeSegue.FadeSegue else {
+          fatalError("Segue 'public' is not of the expected type FadeSegue.FadeSegue.")
+        }
         guard let vc = segue.destinationController as? NSViewController else {
           fatalError("Destination of segue 'public' is not of the expected type NSViewController.")
         }
-        self = .`public`(destination: vc)
+        self = .`public`(destination: vc, segue: segue)
       case "":
         self = .unnamedSegue
       default:

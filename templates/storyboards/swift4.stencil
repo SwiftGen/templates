@@ -91,6 +91,9 @@ enum {{sceneEnumName}} {
 
 {% set segueEnumName %}{{param.segueEnumName|default:"StoryboardSegue"}}{% endset %}
 {% set unnamedSegue %}{{param.unnamedSegueCaseName|default:"unnamedSegue"}}{% endset %}
+{% macro segueClassName segue %}{% filter removeNewlines %}
+  {% if segue.customModule %}{{segue.customModule}}.{% endif %}{{segue.customClass}}
+{% endfilter %}{% endmacro %}
 {% for scene in customSceneTypes where scene.segues %}
 {% set sceneClass %}{% call className scene %}{% endset %}
 extension {{sceneClass}} {
@@ -110,7 +113,13 @@ extension {{sceneClass}} {
     {% set hasUnnamedSegue %}{% for segue in scene.segues where not scene.identifier %}1{% endfor %}{% endset %}
     {% for segue in scene.segues where segue.identifier %}
     {% set segueID %}{{segue.identifier|swiftIdentifier:"pretty"|lowerFirstWord}}{% endset %}
-    case {{segueID|escapeReservedKeywords}}{% if segue.destination %}(destination: {% call className segue.destination %}){% endif %}
+    case {{segueID|escapeReservedKeywords}}{% filter removeNewlines:"leading" %}
+      {% if segue.customClass or segue.destination %}(
+        {% if segue.destination %}destination: {% call className segue.destination %}{% endif %}
+        {% if segue.customClass and segue.destination %}, {% endif %}
+        {% if segue.customClass %}segue: {% call segueClassName segue %}{% endif %}
+      ){% endif %}
+    {% endfilter %}
     {% endfor %}
     {% if hasUnnamedSegue %}
     case {{unnamedSegue}}
@@ -121,6 +130,12 @@ extension {{sceneClass}} {
       switch segue.identifier{% if isAppKit %}?.rawValue{% endif %} ?? "" {
       {% for segue in scene.segues where segue.identifier %}
       case "{{segue.identifier}}":
+        {% if segue.customClass %}
+        {% set segueClass %}{% call segueClassName segue %}{% endset %}
+        guard let segue = segue as? {{segueClass}} else {
+          fatalError("Segue '{{segue.identifier}}' is not of the expected type {{segueClass}}.")
+        }
+        {% endif %}
         {% if segue.destination %}
         {% set destinationClass %}{% call className segue.destination %}{% endset %}
         {% if destinationClass != "UIViewController" %}
@@ -132,7 +147,13 @@ extension {{sceneClass}} {
         {% endif %}
         {% endif %}
         {% set segueID %}{{segue.identifier|swiftIdentifier:"pretty"|lowerFirstWord}}{% endset %}
-        self = .{{segueID|escapeReservedKeywords}}{% if segue.destination %}(destination: vc){%endif %}
+        self = .{{segueID|escapeReservedKeywords}}{% filter removeNewlines:"leading" %}
+          {% if segue.customClass or segue.destination %}(
+            {% if segue.destination %}destination: vc{% endif %}
+            {% if segue.customClass and segue.destination %}, {% endif %}
+            {% if segue.customClass %}segue: segue{% endif %}
+          ){%endif %}
+        {% endfilter %}
       {% endfor %}
       {% if hasUnnamedSegue %}
       case "":
