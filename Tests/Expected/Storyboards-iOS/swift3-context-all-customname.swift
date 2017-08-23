@@ -113,7 +113,7 @@ extension LocationPicker.LocationPickerViewController {
 
   enum TypedXCTStoryboardsSegue {
     case `private`(destination: SlackTextViewController.SLKTextViewController)
-    case unnamedSegue
+    case customUnnamedSegue
 
     // swiftlint:disable cyclomatic_complexity
     init(segue: UIStoryboardSegue) {
@@ -124,7 +124,7 @@ extension LocationPicker.LocationPickerViewController {
         }
         self = .`private`(destination: vc)
       case "":
-        self = .unnamedSegue
+        self = .customUnnamedSegue
       default:
         fatalError("Unrecognized segue '\(segue.identifier ?? "")' in LocationPicker.LocationPickerViewController")
       }

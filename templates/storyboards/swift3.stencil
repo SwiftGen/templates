@@ -87,6 +87,7 @@ enum {{sceneEnumName}} {
 }
 
 {% set segueEnumName %}{{param.segueEnumName|default:"StoryboardSegue"}}{% endset %}
+{% set unnamedSegue %}{{param.unnamedSegueCaseName|default:"unnamedSegue"}}{% endset %}
 {% for storyboard in storyboards %}
 {% for scene in storyboard.scenes where scene.segues and not scene.baseType%}
 {% set sceneClass %}{% call className scene %}{% endset %}
@@ -109,7 +110,7 @@ extension {{sceneClass}} {
     case {{segueID|escapeReservedKeywords}}{% if segue.destination %}(destination: {% call className segue.destination %}){% endif %}
     {% endfor %}
     {% if hasUnnamedSegue %}
-    case unnamedSegue
+    case {{unnamedSegue}}
     {% endif %}
 
     // swiftlint:disable cyclomatic_complexity
@@ -132,7 +133,7 @@ extension {{sceneClass}} {
       {% endfor %}
       {% if hasUnnamedSegue %}
       case "":
-        self = .unnamedSegue
+        self = .{{unnamedSegue}}
       {% endif %}
       default:
         fatalError("Unrecognized segue '\(segue.identifier ?? "")' in {{sceneClass}}")
