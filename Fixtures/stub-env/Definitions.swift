@@ -5,6 +5,10 @@
   }
   class XXPickerViewController: UIViewController {
   }
+  class CustomSegueClass: UIStoryboardSegue {
+  }
+  class CustomSegueClass2: UIStoryboardSegue {
+  }
 #elseif os(OSX)
   import Cocoa
 

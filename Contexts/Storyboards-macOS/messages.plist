@@ -91,7 +91,7 @@
 				</dict>
 				<dict>
 					<key>customClass</key>
-					<string>FadeSegue</string>
+					<string>SlowFadeSegue</string>
 					<key>customModule</key>
 					<string>FadeSegue</string>
 					<key>destination</key>
@@ -228,7 +228,7 @@
 				</dict>
 				<dict>
 					<key>customClass</key>
-					<string>FadeSegue</string>
+					<string>SlowFadeSegue</string>
 					<key>customModule</key>
 					<string>FadeSegue</string>
 					<key>destination</key>
