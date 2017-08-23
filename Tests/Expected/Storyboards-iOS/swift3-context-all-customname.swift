@@ -102,6 +102,81 @@ enum XCTStoryboardsScene {
   }
 }
 
+extension CreateAccViewController {
+  enum XCTStoryboardsSegue: String {
+    case showPassword = "ShowPassword"
+  }
+
+  func perform(segue: XCTStoryboardsSegue, sender: Any? = nil) {
+    performSegue(withIdentifier: segue.rawValue, sender: sender)
+  }
+
+  enum TypedXCTStoryboardsSegue {
+    case showPassword(destination: UIViewController)
+    case customUnnamedSegue
+
+    // swiftlint:disable cyclomatic_complexity
+    init(segue: UIStoryboardSegue) {
+      switch segue.identifier ?? "" {
+      case "ShowPassword":
+        let vc = segue.destination
+        self = .showPassword(destination: vc)
+      case "":
+        self = .customUnnamedSegue
+      default:
+        fatalError("Unrecognized segue '\(segue.identifier ?? "")' in CreateAccViewController")
+      }
+    }
+    // swiftlint:enable cyclomatic_complexity
+  }
+}
+
+extension XXPickerViewController {
+  enum XCTStoryboardsSegue: String {
+    case customBack = "CustomBack"
+    case embed = "Embed"
+    case nonCustom = "NonCustom"
+    case showNavCtrl = "Show-NavCtrl"
+  }
+
+  func perform(segue: XCTStoryboardsSegue, sender: Any? = nil) {
+    performSegue(withIdentifier: segue.rawValue, sender: sender)
+  }
+
+  enum TypedXCTStoryboardsSegue {
+    case customBack(destination: UIViewController)
+    case embed(destination: UIViewController)
+    case nonCustom(destination: UIViewController)
+    case showNavCtrl(destination: UINavigationController)
+    case customUnnamedSegue
+
+    // swiftlint:disable cyclomatic_complexity
+    init(segue: UIStoryboardSegue) {
+      switch segue.identifier ?? "" {
+      case "CustomBack":
+        let vc = segue.destination
+        self = .customBack(destination: vc)
+      case "Embed":
+        let vc = segue.destination
+        self = .embed(destination: vc)
+      case "NonCustom":
+        let vc = segue.destination
+        self = .nonCustom(destination: vc)
+      case "Show-NavCtrl":
+        guard let vc = segue.destination as? UINavigationController else {
+          fatalError("Destination of segue 'Show-NavCtrl' is not of the expected type UINavigationController.")
+        }
+        self = .showNavCtrl(destination: vc)
+      case "":
+        self = .customUnnamedSegue
+      default:
+        fatalError("Unrecognized segue '\(segue.identifier ?? "")' in XXPickerViewController")
+      }
+    }
+    // swiftlint:enable cyclomatic_complexity
+  }
+}
+
 extension LocationPicker.LocationPickerViewController {
   enum XCTStoryboardsSegue: String {
     case `private`
@@ -144,6 +219,7 @@ extension SlackTextViewController.SLKTextViewController {
 
   enum TypedXCTStoryboardsSegue {
     case `private`(destination: SlackTextViewController.SLKTextViewController)
+    case customUnnamedSegue
 
     // swiftlint:disable cyclomatic_complexity
     init(segue: UIStoryboardSegue) {
@@ -153,77 +229,10 @@ extension SlackTextViewController.SLKTextViewController {
           fatalError("Destination of segue 'private' is not of the expected type SlackTextViewController.SLKTextViewController.")
         }
         self = .`private`(destination: vc)
+      case "":
+        self = .customUnnamedSegue
       default:
         fatalError("Unrecognized segue '\(segue.identifier ?? "")' in SlackTextViewController.SLKTextViewController")
-      }
-    }
-    // swiftlint:enable cyclomatic_complexity
-  }
-}
-
-extension XXPickerViewController {
-  enum XCTStoryboardsSegue: String {
-    case customBack = "CustomBack"
-    case embed = "Embed"
-    case nonCustom = "NonCustom"
-    case showNavCtrl = "Show-NavCtrl"
-  }
-
-  func perform(segue: XCTStoryboardsSegue, sender: Any? = nil) {
-    performSegue(withIdentifier: segue.rawValue, sender: sender)
-  }
-
-  enum TypedXCTStoryboardsSegue {
-    case customBack(destination: UIViewController)
-    case embed(destination: UIViewController)
-    case nonCustom(destination: UIViewController)
-    case showNavCtrl(destination: UINavigationController)
-
-    // swiftlint:disable cyclomatic_complexity
-    init(segue: UIStoryboardSegue) {
-      switch segue.identifier ?? "" {
-      case "CustomBack":
-        let vc = segue.destination
-        self = .customBack(destination: vc)
-      case "Embed":
-        let vc = segue.destination
-        self = .embed(destination: vc)
-      case "NonCustom":
-        let vc = segue.destination
-        self = .nonCustom(destination: vc)
-      case "Show-NavCtrl":
-        guard let vc = segue.destination as? UINavigationController else {
-          fatalError("Destination of segue 'Show-NavCtrl' is not of the expected type UINavigationController.")
-        }
-        self = .showNavCtrl(destination: vc)
-      default:
-        fatalError("Unrecognized segue '\(segue.identifier ?? "")' in XXPickerViewController")
-      }
-    }
-    // swiftlint:enable cyclomatic_complexity
-  }
-}
-
-extension CreateAccViewController {
-  enum XCTStoryboardsSegue: String {
-    case showPassword = "ShowPassword"
-  }
-
-  func perform(segue: XCTStoryboardsSegue, sender: Any? = nil) {
-    performSegue(withIdentifier: segue.rawValue, sender: sender)
-  }
-
-  enum TypedXCTStoryboardsSegue {
-    case showPassword(destination: UIViewController)
-
-    // swiftlint:disable cyclomatic_complexity
-    init(segue: UIStoryboardSegue) {
-      switch segue.identifier ?? "" {
-      case "ShowPassword":
-        let vc = segue.destination
-        self = .showPassword(destination: vc)
-      default:
-        fatalError("Unrecognized segue '\(segue.identifier ?? "")' in CreateAccViewController")
       }
     }
     // swiftlint:enable cyclomatic_complexity

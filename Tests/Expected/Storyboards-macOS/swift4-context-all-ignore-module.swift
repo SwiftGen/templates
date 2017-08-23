@@ -112,6 +112,7 @@ extension CustomTabViewController {
     case sheet(destination: NSViewController)
     case show(destination: NSViewController)
     case `public`(destination: NSViewController)
+    case unnamedSegue
 
     // swiftlint:disable cyclomatic_complexity
     init(segue: NSStoryboardSegue) {
@@ -146,6 +147,8 @@ extension CustomTabViewController {
           fatalError("Destination of segue 'public' is not of the expected type NSViewController.")
         }
         self = .`public`(destination: vc)
+      case "":
+        self = .unnamedSegue
       default:
         fatalError("Unrecognized segue '\(segue.identifier?.rawValue ?? "")' in CustomTabViewController")
       }

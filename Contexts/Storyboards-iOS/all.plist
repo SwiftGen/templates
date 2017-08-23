@@ -2,6 +2,155 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>customSceneTypes</key>
+	<array>
+		<dict>
+			<key>customClass</key>
+			<string>CreateAccViewController</string>
+			<key>customModule</key>
+			<string></string>
+			<key>segues</key>
+			<array>
+				<dict>
+					<key>customClass</key>
+					<string></string>
+					<key>customModule</key>
+					<string></string>
+					<key>destination</key>
+					<dict>
+						<key>baseType</key>
+						<string>ViewController</string>
+					</dict>
+					<key>identifier</key>
+					<string>ShowPassword</string>
+				</dict>
+			</array>
+		</dict>
+		<dict>
+			<key>customClass</key>
+			<string>XXPickerViewController</string>
+			<key>customModule</key>
+			<string></string>
+			<key>segues</key>
+			<array>
+				<dict>
+					<key>customClass</key>
+					<string></string>
+					<key>customModule</key>
+					<string></string>
+					<key>destination</key>
+					<dict>
+						<key>customClass</key>
+						<string>XXPickerViewController</string>
+						<key>customModule</key>
+						<string></string>
+					</dict>
+					<key>identifier</key>
+					<string></string>
+				</dict>
+				<dict>
+					<key>customClass</key>
+					<string>CustomSegueClass2</string>
+					<key>customModule</key>
+					<string></string>
+					<key>destination</key>
+					<dict>
+						<key>baseType</key>
+						<string>ViewController</string>
+					</dict>
+					<key>identifier</key>
+					<string>CustomBack</string>
+				</dict>
+				<dict>
+					<key>customClass</key>
+					<string></string>
+					<key>customModule</key>
+					<string></string>
+					<key>destination</key>
+					<dict>
+						<key>baseType</key>
+						<string>ViewController</string>
+					</dict>
+					<key>identifier</key>
+					<string>Embed</string>
+				</dict>
+				<dict>
+					<key>customClass</key>
+					<string></string>
+					<key>customModule</key>
+					<string></string>
+					<key>destination</key>
+					<dict>
+						<key>baseType</key>
+						<string>ViewController</string>
+					</dict>
+					<key>identifier</key>
+					<string>NonCustom</string>
+				</dict>
+				<dict>
+					<key>customClass</key>
+					<string>CustomSegueClass</string>
+					<key>customModule</key>
+					<string></string>
+					<key>destination</key>
+					<dict>
+						<key>baseType</key>
+						<string>NavigationController</string>
+					</dict>
+					<key>identifier</key>
+					<string>Show-NavCtrl</string>
+				</dict>
+			</array>
+		</dict>
+		<dict>
+			<key>customClass</key>
+			<string>LocationPickerViewController</string>
+			<key>customModule</key>
+			<string>LocationPicker</string>
+			<key>segues</key>
+			<array>
+				<dict>
+					<key>customClass</key>
+					<string>SlideDownSegue</string>
+					<key>customModule</key>
+					<string>CustomSegue</string>
+					<key>destination</key>
+					<dict>
+						<key>customClass</key>
+						<string>SLKTextViewController</string>
+						<key>customModule</key>
+						<string>SlackTextViewController</string>
+					</dict>
+					<key>identifier</key>
+					<string>private</string>
+				</dict>
+			</array>
+		</dict>
+		<dict>
+			<key>customClass</key>
+			<string>SLKTextViewController</string>
+			<key>customModule</key>
+			<string>SlackTextViewController</string>
+			<key>segues</key>
+			<array>
+				<dict>
+					<key>customClass</key>
+					<string>SlideDownSegue</string>
+					<key>customModule</key>
+					<string>CustomSegue</string>
+					<key>destination</key>
+					<dict>
+						<key>customClass</key>
+						<string>SLKTextViewController</string>
+						<key>customModule</key>
+						<string>SlackTextViewController</string>
+					</dict>
+					<key>identifier</key>
+					<string>private</string>
+				</dict>
+			</array>
+		</dict>
+	</array>
 	<key>modules</key>
 	<array>
 		<string>CustomSegue</string>
@@ -21,24 +170,6 @@
 				<string>LocationPicker</string>
 				<key>identifier</key>
 				<string></string>
-				<key>segues</key>
-				<array>
-					<dict>
-						<key>customClass</key>
-						<string>SlideDownSegue</string>
-						<key>customModule</key>
-						<string>CustomSegue</string>
-						<key>destination</key>
-						<dict>
-							<key>customClass</key>
-							<string>SLKTextViewController</string>
-							<key>customModule</key>
-							<string>SlackTextViewController</string>
-						</dict>
-						<key>identifier</key>
-						<string>private</string>
-					</dict>
-				</array>
 			</dict>
 			<key>name</key>
 			<string>AdditionalImport</string>
@@ -48,55 +179,11 @@
 			<array>
 				<dict>
 					<key>customClass</key>
-					<string>LocationPickerViewController</string>
-					<key>customModule</key>
-					<string>LocationPicker</string>
-					<key>identifier</key>
-					<string></string>
-					<key>segues</key>
-					<array>
-						<dict>
-							<key>customClass</key>
-							<string>SlideDownSegue</string>
-							<key>customModule</key>
-							<string>CustomSegue</string>
-							<key>destination</key>
-							<dict>
-								<key>customClass</key>
-								<string>SLKTextViewController</string>
-								<key>customModule</key>
-								<string>SlackTextViewController</string>
-							</dict>
-							<key>identifier</key>
-							<string>private</string>
-						</dict>
-					</array>
-				</dict>
-				<dict>
-					<key>customClass</key>
 					<string>SLKTextViewController</string>
 					<key>customModule</key>
 					<string>SlackTextViewController</string>
 					<key>identifier</key>
 					<string>public</string>
-					<key>segues</key>
-					<array>
-						<dict>
-							<key>customClass</key>
-							<string>SlideDownSegue</string>
-							<key>customModule</key>
-							<string>CustomSegue</string>
-							<key>destination</key>
-							<dict>
-								<key>customClass</key>
-								<string>SLKTextViewController</string>
-								<key>customModule</key>
-								<string>SlackTextViewController</string>
-							</dict>
-							<key>identifier</key>
-							<string>private</string>
-						</dict>
-					</array>
 				</dict>
 			</array>
 			<key>segues</key>
@@ -125,96 +212,13 @@
 				<string>NavigationController</string>
 				<key>identifier</key>
 				<string></string>
-				<key>segues</key>
-				<array>
-					<dict>
-						<key>customClass</key>
-						<string></string>
-						<key>customModule</key>
-						<string></string>
-						<key>destination</key>
-						<dict>
-							<key>baseType</key>
-							<string>ViewController</string>
-						</dict>
-						<key>identifier</key>
-						<string></string>
-					</dict>
-				</array>
 			</dict>
 			<key>name</key>
 			<string>Anonymous</string>
 			<key>platform</key>
 			<string>iOS</string>
 			<key>scenes</key>
-			<array>
-				<dict>
-					<key>baseType</key>
-					<string>TableViewController</string>
-					<key>identifier</key>
-					<string></string>
-					<key>segues</key>
-					<array>
-						<dict>
-							<key>customClass</key>
-							<string></string>
-							<key>customModule</key>
-							<string></string>
-							<key>destination</key>
-							<dict>
-								<key>baseType</key>
-								<string>ViewController</string>
-							</dict>
-							<key>identifier</key>
-							<string></string>
-						</dict>
-					</array>
-				</dict>
-				<dict>
-					<key>baseType</key>
-					<string>ViewController</string>
-					<key>identifier</key>
-					<string></string>
-					<key>segues</key>
-					<array>
-						<dict>
-							<key>customClass</key>
-							<string></string>
-							<key>customModule</key>
-							<string></string>
-							<key>destination</key>
-							<dict>
-								<key>baseType</key>
-								<string>ViewController</string>
-							</dict>
-							<key>identifier</key>
-							<string></string>
-						</dict>
-					</array>
-				</dict>
-				<dict>
-					<key>baseType</key>
-					<string>NavigationController</string>
-					<key>identifier</key>
-					<string></string>
-					<key>segues</key>
-					<array>
-						<dict>
-							<key>customClass</key>
-							<string></string>
-							<key>customModule</key>
-							<string></string>
-							<key>destination</key>
-							<dict>
-								<key>baseType</key>
-								<string>ViewController</string>
-							</dict>
-							<key>identifier</key>
-							<string></string>
-						</dict>
-					</array>
-				</dict>
-			</array>
+			<array/>
 			<key>segues</key>
 			<array/>
 		</dict>
@@ -230,8 +234,6 @@
 					<string>ViewController</string>
 					<key>identifier</key>
 					<string>Dependent</string>
-					<key>segues</key>
-					<array/>
 				</dict>
 			</array>
 			<key>segues</key>
@@ -244,76 +246,6 @@
 				<string>ViewController</string>
 				<key>identifier</key>
 				<string></string>
-				<key>segues</key>
-				<array>
-					<dict>
-						<key>customClass</key>
-						<string></string>
-						<key>customModule</key>
-						<string></string>
-						<key>destination</key>
-						<dict>
-							<key>customClass</key>
-							<string>XXPickerViewController</string>
-							<key>customModule</key>
-							<string></string>
-						</dict>
-						<key>identifier</key>
-						<string></string>
-					</dict>
-					<dict>
-						<key>customClass</key>
-						<string>CustomSegueClass2</string>
-						<key>customModule</key>
-						<string></string>
-						<key>destination</key>
-						<dict>
-							<key>baseType</key>
-							<string>ViewController</string>
-						</dict>
-						<key>identifier</key>
-						<string>CustomBack</string>
-					</dict>
-					<dict>
-						<key>customClass</key>
-						<string></string>
-						<key>customModule</key>
-						<string></string>
-						<key>destination</key>
-						<dict>
-							<key>baseType</key>
-							<string>ViewController</string>
-						</dict>
-						<key>identifier</key>
-						<string>Embed</string>
-					</dict>
-					<dict>
-						<key>customClass</key>
-						<string></string>
-						<key>customModule</key>
-						<string></string>
-						<key>destination</key>
-						<dict>
-							<key>baseType</key>
-							<string>ViewController</string>
-						</dict>
-						<key>identifier</key>
-						<string>NonCustom</string>
-					</dict>
-					<dict>
-						<key>customClass</key>
-						<string>CustomSegueClass</string>
-						<key>customModule</key>
-						<string></string>
-						<key>destination</key>
-						<dict>
-							<key>baseType</key>
-							<string>NavigationController</string>
-						</dict>
-						<key>identifier</key>
-						<string>Show-NavCtrl</string>
-					</dict>
-				</array>
 			</dict>
 			<key>name</key>
 			<string>Message</string>
@@ -325,457 +257,19 @@
 					<key>baseType</key>
 					<string>ViewController</string>
 					<key>identifier</key>
-					<string></string>
-					<key>segues</key>
-					<array>
-						<dict>
-							<key>customClass</key>
-							<string></string>
-							<key>customModule</key>
-							<string></string>
-							<key>destination</key>
-							<dict>
-								<key>customClass</key>
-								<string>XXPickerViewController</string>
-								<key>customModule</key>
-								<string></string>
-							</dict>
-							<key>identifier</key>
-							<string></string>
-						</dict>
-						<dict>
-							<key>customClass</key>
-							<string>CustomSegueClass2</string>
-							<key>customModule</key>
-							<string></string>
-							<key>destination</key>
-							<dict>
-								<key>baseType</key>
-								<string>ViewController</string>
-							</dict>
-							<key>identifier</key>
-							<string>CustomBack</string>
-						</dict>
-						<dict>
-							<key>customClass</key>
-							<string></string>
-							<key>customModule</key>
-							<string></string>
-							<key>destination</key>
-							<dict>
-								<key>baseType</key>
-								<string>ViewController</string>
-							</dict>
-							<key>identifier</key>
-							<string>Embed</string>
-						</dict>
-						<dict>
-							<key>customClass</key>
-							<string></string>
-							<key>customModule</key>
-							<string></string>
-							<key>destination</key>
-							<dict>
-								<key>baseType</key>
-								<string>ViewController</string>
-							</dict>
-							<key>identifier</key>
-							<string>NonCustom</string>
-						</dict>
-						<dict>
-							<key>customClass</key>
-							<string>CustomSegueClass</string>
-							<key>customModule</key>
-							<string></string>
-							<key>destination</key>
-							<dict>
-								<key>baseType</key>
-								<string>NavigationController</string>
-							</dict>
-							<key>identifier</key>
-							<string>Show-NavCtrl</string>
-						</dict>
-					</array>
-				</dict>
-				<dict>
-					<key>baseType</key>
-					<string>ViewController</string>
-					<key>identifier</key>
-					<string></string>
-					<key>segues</key>
-					<array>
-						<dict>
-							<key>customClass</key>
-							<string></string>
-							<key>customModule</key>
-							<string></string>
-							<key>destination</key>
-							<dict>
-								<key>customClass</key>
-								<string>XXPickerViewController</string>
-								<key>customModule</key>
-								<string></string>
-							</dict>
-							<key>identifier</key>
-							<string></string>
-						</dict>
-						<dict>
-							<key>customClass</key>
-							<string>CustomSegueClass2</string>
-							<key>customModule</key>
-							<string></string>
-							<key>destination</key>
-							<dict>
-								<key>baseType</key>
-								<string>ViewController</string>
-							</dict>
-							<key>identifier</key>
-							<string>CustomBack</string>
-						</dict>
-						<dict>
-							<key>customClass</key>
-							<string></string>
-							<key>customModule</key>
-							<string></string>
-							<key>destination</key>
-							<dict>
-								<key>baseType</key>
-								<string>ViewController</string>
-							</dict>
-							<key>identifier</key>
-							<string>Embed</string>
-						</dict>
-						<dict>
-							<key>customClass</key>
-							<string></string>
-							<key>customModule</key>
-							<string></string>
-							<key>destination</key>
-							<dict>
-								<key>baseType</key>
-								<string>ViewController</string>
-							</dict>
-							<key>identifier</key>
-							<string>NonCustom</string>
-						</dict>
-						<dict>
-							<key>customClass</key>
-							<string>CustomSegueClass</string>
-							<key>customModule</key>
-							<string></string>
-							<key>destination</key>
-							<dict>
-								<key>baseType</key>
-								<string>NavigationController</string>
-							</dict>
-							<key>identifier</key>
-							<string>Show-NavCtrl</string>
-						</dict>
-					</array>
-				</dict>
-				<dict>
-					<key>baseType</key>
-					<string>ViewController</string>
-					<key>identifier</key>
-					<string></string>
-					<key>segues</key>
-					<array>
-						<dict>
-							<key>customClass</key>
-							<string></string>
-							<key>customModule</key>
-							<string></string>
-							<key>destination</key>
-							<dict>
-								<key>customClass</key>
-								<string>XXPickerViewController</string>
-								<key>customModule</key>
-								<string></string>
-							</dict>
-							<key>identifier</key>
-							<string></string>
-						</dict>
-						<dict>
-							<key>customClass</key>
-							<string>CustomSegueClass2</string>
-							<key>customModule</key>
-							<string></string>
-							<key>destination</key>
-							<dict>
-								<key>baseType</key>
-								<string>ViewController</string>
-							</dict>
-							<key>identifier</key>
-							<string>CustomBack</string>
-						</dict>
-						<dict>
-							<key>customClass</key>
-							<string></string>
-							<key>customModule</key>
-							<string></string>
-							<key>destination</key>
-							<dict>
-								<key>baseType</key>
-								<string>ViewController</string>
-							</dict>
-							<key>identifier</key>
-							<string>Embed</string>
-						</dict>
-						<dict>
-							<key>customClass</key>
-							<string></string>
-							<key>customModule</key>
-							<string></string>
-							<key>destination</key>
-							<dict>
-								<key>baseType</key>
-								<string>ViewController</string>
-							</dict>
-							<key>identifier</key>
-							<string>NonCustom</string>
-						</dict>
-						<dict>
-							<key>customClass</key>
-							<string>CustomSegueClass</string>
-							<key>customModule</key>
-							<string></string>
-							<key>destination</key>
-							<dict>
-								<key>baseType</key>
-								<string>NavigationController</string>
-							</dict>
-							<key>identifier</key>
-							<string>Show-NavCtrl</string>
-						</dict>
-					</array>
-				</dict>
-				<dict>
-					<key>baseType</key>
-					<string>ViewController</string>
-					<key>identifier</key>
 					<string>Composer</string>
-					<key>segues</key>
-					<array>
-						<dict>
-							<key>customClass</key>
-							<string></string>
-							<key>customModule</key>
-							<string></string>
-							<key>destination</key>
-							<dict>
-								<key>customClass</key>
-								<string>XXPickerViewController</string>
-								<key>customModule</key>
-								<string></string>
-							</dict>
-							<key>identifier</key>
-							<string></string>
-						</dict>
-						<dict>
-							<key>customClass</key>
-							<string>CustomSegueClass2</string>
-							<key>customModule</key>
-							<string></string>
-							<key>destination</key>
-							<dict>
-								<key>baseType</key>
-								<string>ViewController</string>
-							</dict>
-							<key>identifier</key>
-							<string>CustomBack</string>
-						</dict>
-						<dict>
-							<key>customClass</key>
-							<string></string>
-							<key>customModule</key>
-							<string></string>
-							<key>destination</key>
-							<dict>
-								<key>baseType</key>
-								<string>ViewController</string>
-							</dict>
-							<key>identifier</key>
-							<string>Embed</string>
-						</dict>
-						<dict>
-							<key>customClass</key>
-							<string></string>
-							<key>customModule</key>
-							<string></string>
-							<key>destination</key>
-							<dict>
-								<key>baseType</key>
-								<string>ViewController</string>
-							</dict>
-							<key>identifier</key>
-							<string>NonCustom</string>
-						</dict>
-						<dict>
-							<key>customClass</key>
-							<string>CustomSegueClass</string>
-							<key>customModule</key>
-							<string></string>
-							<key>destination</key>
-							<dict>
-								<key>baseType</key>
-								<string>NavigationController</string>
-							</dict>
-							<key>identifier</key>
-							<string>Show-NavCtrl</string>
-						</dict>
-					</array>
 				</dict>
 				<dict>
 					<key>baseType</key>
 					<string>TableViewController</string>
 					<key>identifier</key>
 					<string>MessagesList</string>
-					<key>segues</key>
-					<array>
-						<dict>
-							<key>customClass</key>
-							<string></string>
-							<key>customModule</key>
-							<string></string>
-							<key>destination</key>
-							<dict>
-								<key>customClass</key>
-								<string>XXPickerViewController</string>
-								<key>customModule</key>
-								<string></string>
-							</dict>
-							<key>identifier</key>
-							<string></string>
-						</dict>
-						<dict>
-							<key>customClass</key>
-							<string>CustomSegueClass2</string>
-							<key>customModule</key>
-							<string></string>
-							<key>destination</key>
-							<dict>
-								<key>baseType</key>
-								<string>ViewController</string>
-							</dict>
-							<key>identifier</key>
-							<string>CustomBack</string>
-						</dict>
-						<dict>
-							<key>customClass</key>
-							<string></string>
-							<key>customModule</key>
-							<string></string>
-							<key>destination</key>
-							<dict>
-								<key>baseType</key>
-								<string>ViewController</string>
-							</dict>
-							<key>identifier</key>
-							<string>Embed</string>
-						</dict>
-						<dict>
-							<key>customClass</key>
-							<string></string>
-							<key>customModule</key>
-							<string></string>
-							<key>destination</key>
-							<dict>
-								<key>baseType</key>
-								<string>ViewController</string>
-							</dict>
-							<key>identifier</key>
-							<string>NonCustom</string>
-						</dict>
-						<dict>
-							<key>customClass</key>
-							<string>CustomSegueClass</string>
-							<key>customModule</key>
-							<string></string>
-							<key>destination</key>
-							<dict>
-								<key>baseType</key>
-								<string>NavigationController</string>
-							</dict>
-							<key>identifier</key>
-							<string>Show-NavCtrl</string>
-						</dict>
-					</array>
 				</dict>
 				<dict>
 					<key>baseType</key>
 					<string>NavigationController</string>
 					<key>identifier</key>
 					<string>NavCtrl</string>
-					<key>segues</key>
-					<array>
-						<dict>
-							<key>customClass</key>
-							<string></string>
-							<key>customModule</key>
-							<string></string>
-							<key>destination</key>
-							<dict>
-								<key>customClass</key>
-								<string>XXPickerViewController</string>
-								<key>customModule</key>
-								<string></string>
-							</dict>
-							<key>identifier</key>
-							<string></string>
-						</dict>
-						<dict>
-							<key>customClass</key>
-							<string>CustomSegueClass2</string>
-							<key>customModule</key>
-							<string></string>
-							<key>destination</key>
-							<dict>
-								<key>baseType</key>
-								<string>ViewController</string>
-							</dict>
-							<key>identifier</key>
-							<string>CustomBack</string>
-						</dict>
-						<dict>
-							<key>customClass</key>
-							<string></string>
-							<key>customModule</key>
-							<string></string>
-							<key>destination</key>
-							<dict>
-								<key>baseType</key>
-								<string>ViewController</string>
-							</dict>
-							<key>identifier</key>
-							<string>Embed</string>
-						</dict>
-						<dict>
-							<key>customClass</key>
-							<string></string>
-							<key>customModule</key>
-							<string></string>
-							<key>destination</key>
-							<dict>
-								<key>baseType</key>
-								<string>ViewController</string>
-							</dict>
-							<key>identifier</key>
-							<string>NonCustom</string>
-						</dict>
-						<dict>
-							<key>customClass</key>
-							<string>CustomSegueClass</string>
-							<key>customModule</key>
-							<string></string>
-							<key>destination</key>
-							<dict>
-								<key>baseType</key>
-								<string>NavigationController</string>
-							</dict>
-							<key>identifier</key>
-							<string>Show-NavCtrl</string>
-						</dict>
-					</array>
 				</dict>
 				<dict>
 					<key>customClass</key>
@@ -784,76 +278,6 @@
 					<string></string>
 					<key>identifier</key>
 					<string>URLChooser</string>
-					<key>segues</key>
-					<array>
-						<dict>
-							<key>customClass</key>
-							<string></string>
-							<key>customModule</key>
-							<string></string>
-							<key>destination</key>
-							<dict>
-								<key>customClass</key>
-								<string>XXPickerViewController</string>
-								<key>customModule</key>
-								<string></string>
-							</dict>
-							<key>identifier</key>
-							<string></string>
-						</dict>
-						<dict>
-							<key>customClass</key>
-							<string>CustomSegueClass2</string>
-							<key>customModule</key>
-							<string></string>
-							<key>destination</key>
-							<dict>
-								<key>baseType</key>
-								<string>ViewController</string>
-							</dict>
-							<key>identifier</key>
-							<string>CustomBack</string>
-						</dict>
-						<dict>
-							<key>customClass</key>
-							<string></string>
-							<key>customModule</key>
-							<string></string>
-							<key>destination</key>
-							<dict>
-								<key>baseType</key>
-								<string>ViewController</string>
-							</dict>
-							<key>identifier</key>
-							<string>Embed</string>
-						</dict>
-						<dict>
-							<key>customClass</key>
-							<string></string>
-							<key>customModule</key>
-							<string></string>
-							<key>destination</key>
-							<dict>
-								<key>baseType</key>
-								<string>ViewController</string>
-							</dict>
-							<key>identifier</key>
-							<string>NonCustom</string>
-						</dict>
-						<dict>
-							<key>customClass</key>
-							<string>CustomSegueClass</string>
-							<key>customModule</key>
-							<string></string>
-							<key>destination</key>
-							<dict>
-								<key>baseType</key>
-								<string>NavigationController</string>
-							</dict>
-							<key>identifier</key>
-							<string>Show-NavCtrl</string>
-						</dict>
-					</array>
 				</dict>
 			</array>
 			<key>segues</key>
@@ -924,22 +348,6 @@
 					<string>NavigationController</string>
 					<key>identifier</key>
 					<string>Navigation</string>
-					<key>segues</key>
-					<array>
-						<dict>
-							<key>customClass</key>
-							<string></string>
-							<key>customModule</key>
-							<string></string>
-							<key>destination</key>
-							<dict>
-								<key>baseType</key>
-								<string>ViewController</string>
-							</dict>
-							<key>identifier</key>
-							<string></string>
-						</dict>
-					</array>
 				</dict>
 			</array>
 			<key>segues</key>
@@ -954,22 +362,6 @@
 				<string></string>
 				<key>identifier</key>
 				<string>CreateAccount</string>
-				<key>segues</key>
-				<array>
-					<dict>
-						<key>customClass</key>
-						<string></string>
-						<key>customModule</key>
-						<string></string>
-						<key>destination</key>
-						<dict>
-							<key>baseType</key>
-							<string>ViewController</string>
-						</dict>
-						<key>identifier</key>
-						<string>ShowPassword</string>
-					</dict>
-				</array>
 			</dict>
 			<key>name</key>
 			<string>Wizard</string>
@@ -982,22 +374,6 @@
 					<string>ViewController</string>
 					<key>identifier</key>
 					<string>Accept-CGU</string>
-					<key>segues</key>
-					<array>
-						<dict>
-							<key>customClass</key>
-							<string></string>
-							<key>customModule</key>
-							<string></string>
-							<key>destination</key>
-							<dict>
-								<key>baseType</key>
-								<string>ViewController</string>
-							</dict>
-							<key>identifier</key>
-							<string>ShowPassword</string>
-						</dict>
-					</array>
 				</dict>
 				<dict>
 					<key>customClass</key>
@@ -1006,66 +382,18 @@
 					<string></string>
 					<key>identifier</key>
 					<string>CreateAccount</string>
-					<key>segues</key>
-					<array>
-						<dict>
-							<key>customClass</key>
-							<string></string>
-							<key>customModule</key>
-							<string></string>
-							<key>destination</key>
-							<dict>
-								<key>baseType</key>
-								<string>ViewController</string>
-							</dict>
-							<key>identifier</key>
-							<string>ShowPassword</string>
-						</dict>
-					</array>
 				</dict>
 				<dict>
 					<key>baseType</key>
 					<string>TableViewController</string>
 					<key>identifier</key>
 					<string>Preferences</string>
-					<key>segues</key>
-					<array>
-						<dict>
-							<key>customClass</key>
-							<string></string>
-							<key>customModule</key>
-							<string></string>
-							<key>destination</key>
-							<dict>
-								<key>baseType</key>
-								<string>ViewController</string>
-							</dict>
-							<key>identifier</key>
-							<string>ShowPassword</string>
-						</dict>
-					</array>
 				</dict>
 				<dict>
 					<key>baseType</key>
 					<string>ViewController</string>
 					<key>identifier</key>
 					<string>Validate_Password</string>
-					<key>segues</key>
-					<array>
-						<dict>
-							<key>customClass</key>
-							<string></string>
-							<key>customModule</key>
-							<string></string>
-							<key>destination</key>
-							<dict>
-								<key>baseType</key>
-								<string>ViewController</string>
-							</dict>
-							<key>identifier</key>
-							<string>ShowPassword</string>
-						</dict>
-					</array>
 				</dict>
 			</array>
 			<key>segues</key>
