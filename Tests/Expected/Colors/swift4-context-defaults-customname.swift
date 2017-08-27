@@ -2,16 +2,16 @@
 
 #if os(OSX)
   import AppKit.NSColor
-  typealias Color = NSColor
+  typealias XCTColor = NSColor
 #elseif os(iOS) || os(tvOS) || os(watchOS)
   import UIKit.UIColor
-  typealias Color = UIColor
+  typealias XCTColor = UIColor
 #endif
 
 // swiftlint:disable file_length
 
 // swiftlint:disable operator_usage_whitespace
-extension Color {
+extension XCTColor {
   convenience init(rgbaValue: UInt32) {
     let red   = CGFloat((rgbaValue >> 24) & 0xff) / 255.0
     let green = CGFloat((rgbaValue >> 16) & 0xff) / 255.0
@@ -26,7 +26,7 @@ extension Color {
 // swiftlint:disable identifier_name line_length type_body_length
 struct XCTColors {
   let rgbaValue: UInt32
-  var color: Color { return Color(named: self) }
+  var color: XCTColor { return XCTColor(named: self) }
 
   /// <span style="display:block;width:3em;height:2em;border:1px solid black;background:#339666"></span>
   /// Alpha: 100% <br/> (0x339666ff)
@@ -43,7 +43,7 @@ struct XCTColors {
 }
 // swiftlint:enable identifier_name line_length type_body_length
 
-extension Color {
+extension XCTColor {
   convenience init(named color: XCTColors) {
     self.init(rgbaValue: color.rgbaValue)
   }

@@ -1,18 +1,19 @@
 // Generated using SwiftGen, by O.Halligon — https://github.com/SwiftGen/SwiftGen
 
 {% if palettes %}
+{% set colorAlias %}{{param.colorAliasName|default:"Color"}}{% endset %}
 #if os(OSX)
   import AppKit.NSColor
-  typealias Color = NSColor
+  typealias {{colorAlias}} = NSColor
 #elseif os(iOS) || os(tvOS) || os(watchOS)
   import UIKit.UIColor
-  typealias Color = UIColor
+  typealias {{colorAlias}} = UIColor
 #endif
 
 // swiftlint:disable file_length
 
 // swiftlint:disable operator_usage_whitespace
-extension Color {
+extension {{colorAlias}} {
   convenience init(rgbaValue: UInt32) {
     let red   = CGFloat((rgbaValue >> 24) & 0xff) / 255.0
     let green = CGFloat((rgbaValue >> 16) & 0xff) / 255.0
@@ -28,7 +29,7 @@ extension Color {
 {% set enumName %}{{param.enumName|default:"ColorName"}}{% endset %}
 struct {{enumName}} {
   let rgbaValue: UInt32
-  var color: Color { return Color(named: self) }
+  var color: {{colorAlias}} { return {{colorAlias}}(named: self) }
 
 {% macro rgbaValue color %}0x{{color.red}}{{color.green}}{{color.blue}}{{color.alpha}}{% endmacro %}
 {% macro enumBlock colors sp %}
@@ -50,7 +51,7 @@ struct {{enumName}} {
 }
 // swiftlint:enable identifier_name line_length type_body_length
 
-extension Color {
+extension {{colorAlias}} {
   convenience init(named color: {{enumName}}) {
     self.init(rgbaValue: color.rgbaValue)
   }

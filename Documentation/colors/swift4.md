@@ -19,6 +19,7 @@ You can customize some elements of this template by overriding the following par
 | Parameter Name | Default Value | Description |
 | -------------- | ------------- | ----------- |
 | `enumName` | `ColorName` | Allows you to change the name of the generated `enum` containing all colors. |
+| `colorAliasName` | `Color` | Allows you to change the name of the generated `typealias` for the platform specific color type. |
 
 ## Generated Code
 

@@ -2,11 +2,9 @@
 
 #if os(OSX)
   import AppKit.NSImage
-  typealias Color = NSColor
   typealias Image = NSImage
 #elseif os(iOS) || os(tvOS) || os(watchOS)
   import UIKit.UIImage
-  typealias Color = UIColor
   typealias Image = UIImage
 #endif
 
@@ -34,11 +32,6 @@ struct ImageAsset {
 
 struct ColorAsset {
   fileprivate var name: String
-
-  @available(iOS 11.0, tvOS 11.0, watchOS 4.0, OSX 10.13, *)
-  var color: Color {
-    return Color(asset: self)
-  }
 }
 
 // swiftlint:disable identifier_name line_length nesting type_body_length type_name
@@ -83,20 +76,6 @@ extension Image {
     let bundle = NSBundle(forClass: BundleToken.self)
     self.init(named: asset.name, inBundle: bundle, compatibleWithTraitCollection: nil)
     #elseif os(OSX) || os(watchOS)
-    self.init(named: asset.name)
-    #endif
-  }
-}
-
-extension Color {
-  @available(iOS 11.0, tvOS 11.0, watchOS 4.0, OSX 10.13, *)
-  convenience init!(asset: ColorAsset) {
-    let bundle = NSBundle(forClass: BundleToken.self)
-    #if os(iOS) || os(tvOS)
-    self.init(named: asset.name, inBundle: bundle, compatibleWithTraitCollection: nil)
-    #elseif os(OSX)
-    self.init(named: asset.name, bundle: bundle)
-    #elseif os(watchOS)
     self.init(named: asset.name)
     #endif
   }

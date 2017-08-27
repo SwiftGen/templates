@@ -20,6 +20,8 @@ You can customize some elements of this template by overriding the following par
 | Parameter Name | Default Value | Description |
 | -------------- | ------------- | ----------- |
 | `enumName` | `Asset` | Allows you to change the name of the generated `enum` containing all assets. |
+| `colorAliasName` | `AssetColorTypeAlias` | Allows you to change the name of the generated `typealias` for the platform specific color type. |
+| `imageAliasName` | `Image` | Allows you to change the name of the generated `typealias` for the platform specific image type. |
 | `colorTypeName` | `ColorAsset` | Allows you to change the name of the struct type representing a color. |
 | `imageTypeName` | `ImageAsset` | Allows you to change the name of the struct type representing an image. |
 | `noAllValues` | N/A | Setting this parameter will disable generation of the `allColors` and `allImages` constants. |

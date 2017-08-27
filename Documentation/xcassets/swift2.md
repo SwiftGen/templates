@@ -21,6 +21,7 @@ You can customize some elements of this template by overriding the following par
 | Parameter Name | Default Value | Description |
 | -------------- | ------------- | ----------- |
 | `enumName` | `Asset` | Allows you to change the name of the generated `enum` containing all assets. |
+| `imageAliasName` | `Image` | Allows you to change the name of the generated `typealias` for the platform specific image type. |
 | `colorTypeName` | `ColorAsset` | Allows you to change the name of the struct type representing a color. |
 | `imageTypeName` | `ImageAsset` | Allows you to change the name of the struct type representing an image. |
 | `noAllValues` | N/A | Setting this parameter will disable generation of the `allColors` and `allImages` constants. |
@@ -55,12 +56,6 @@ let privateImage = Asset.Private.image
 // Or as an alternative, you use the convenience constructor like this:
 let sameBananaImage = UIImage(asset: Asset.Exotic.Banana)
 let samePrivateImage = UIImage(asset: Asset.Private)
-
-// similarly, you can create colors by referring to the enum instance and calling `.color` on it:
-let primaryColor = Asset.Theme.Primary.color
-let backgroundColor = Asset.Theme.Background.color
-
-// Or as an alternative, you use the convenience constructor like this:
-let samePrimaryColor = UIColor(asset: Asset.Theme.Primary)
-let sameBackgroundColor = UIColor(asset: Asset.Theme.Background)
 ```
+
+Note: This swift 2 template does not support named colors. To use those, you'll need to use a more recent swift version.

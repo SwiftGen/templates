@@ -2,7 +2,7 @@
 
 This document describes how to make your own templates for SwiftGen, so it can generate code more to your liking and code following your own coding conventions. For in depth documentation of the bundled templates, we refer you to the documentation for [each specific template](https://github.com/SwiftGen/templates/tree/master/Documentation).
 
-## Templates files on disk
+## Templates files on disk (Search Path priority)
 
 When you invoke SwiftGen, you can specify templates by name or by path.
 
@@ -21,10 +21,10 @@ For example `swiftgen xcassets -t foo DIR` will search for a template named `foo
 
 ## List installed templates
 
-The `swiftgen templates` command will list all the installed templates (as YAML output) for each subcommand, both for bundled templates and custom templates.
+The `swiftgen templates list` command will list all the installed templates (as YAML output) for each subcommand, both for bundled templates and custom templates.
 
 ```bash
-$ swiftgen templates
+$ swiftgen templates list
 colors:
   custom:
   bundled:
@@ -50,6 +50,17 @@ xcassets:
    - swift2
    - swift3
 ```
+
+## Printing a template, creating a new template
+
+You can use the `swiftgen templates cat <subcommand> <templatename>` command to print the template of that given name for that given subcommand to `stdout`. e.g. `swiftgen templates cat fonts swift3` will print to your terminal the template that would be used if you invoke `swiftgen fonts -t swift3 …`.
+
+You can use this feature to easily create a new template from an existing one.
+In particular, the easiest way to create your own templates is to:
+
+* duplicate an existing template by dumping it into a new file like this: `swiftgen templates cat fonts swift3 >my-custom-fonts-template.stencil`
+* then edit the new `my-custom-fonts-template.stencil` file to make your modifications to that template
+* Once you've done this you can then simply use `swiftgen fonts -p my-custom-fonts-template.stencil …` to use you customized template!
 
 ## Templates Format, Nodes and Filters
 

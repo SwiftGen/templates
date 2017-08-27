@@ -6,7 +6,9 @@
 
 ### Bug Fixes
 
-_None_
+* Fonts: fix code which checks if a font is already registered.  
+  [Vladimir Burdukov](https://github.com/chipp)
+  [#77](https://github.com/SwiftGen/templates/pull/77)
 
 ### Breaking Changes
 
@@ -19,6 +21,17 @@ _None_
 ### Internal Changes
 
 _None_
+
+## 2.1.1
+
+### Bug Fixes
+
+* Colors and XCAssets: fix a naming conflict of `typealias`es.  
+  [David Jennes](https://github.com/djbe) 
+  [#76](https://github.com/SwiftGen/templates/pull/76)
+* XCAssets: fix a compatibility issue with the swift 3 template on Xcode 8.  
+  [David Jennes](https://github.com/djbe) 
+  [#76](https://github.com/SwiftGen/templates/pull/76)
 
 ## 2.1.0
 

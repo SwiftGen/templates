@@ -21,7 +21,8 @@ class ColorsTests: XCTestCase {
         (context: context,
          suffix: ""),
         (context: try StencilContext.enrich(context: context,
-                                            parameters: ["enumName=\(customName)"]),
+                                            parameters: ["enumName=\(customName)",
+                                                         "colorAliasName=XCTColor"]),
          suffix: "-customname")
       ]
     }
