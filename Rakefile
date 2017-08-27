@@ -5,7 +5,7 @@
 WORKSPACE = 'Templates'.freeze
 SCHEME_NAME = 'Tests'.freeze
 CONFIGURATION = 'Debug'.freeze
-MIN_XCODE_VERSION = 9.0.freeze
+MIN_XCODE_VERSION = 9.0
 
 ## [ Output compilation ] #####################################################
 
@@ -91,8 +91,8 @@ namespace :output do
     subtask = File.basename(m, '.*')
     commands = TOOLCHAINS.map do |_key, toolchain|
       %(--toolchain #{toolchain[:toolchain]} -sdk #{sdk} swiftc -swift-version #{toolchain[:version]} ) +
-      %(-emit-module "#{MODULE_INPUT_PATH}/#{m}.swift" -module-name "#{m}" ) +
-      %(-emit-module-path "#{toolchain[:module_path]}" -target "#{target}")
+        %(-emit-module "#{MODULE_INPUT_PATH}/#{m}.swift" -module-name "#{m}" ) +
+        %(-emit-module-path "#{toolchain[:module_path]}" -target "#{target}")
     end
 
     Utils.run(commands, task, subtask, xcrun: true)
