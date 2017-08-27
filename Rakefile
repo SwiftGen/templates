@@ -5,6 +5,7 @@
 WORKSPACE = 'Templates'.freeze
 SCHEME_NAME = 'Tests'.freeze
 CONFIGURATION = 'Debug'.freeze
+MIN_XCODE_VERSION = 9.0.freeze
 
 ## [ Output compilation ] #####################################################
 
