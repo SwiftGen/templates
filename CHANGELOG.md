@@ -16,7 +16,9 @@ _None_
 
 ### New Features
 
-_None_
+* Storyboards: Added a new `ignoreTargetModule` parameter if you're using storyboards in multiple targets, to avoid issues with the generated code.  
+  [Julien Quéré](https://github.com/juli1quere)
+  [#36](https://github.com/SwiftGen/templates/pull/36)
 
 ### Internal Changes
 

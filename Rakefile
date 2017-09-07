@@ -2,38 +2,44 @@
 
 ## [ Constants ] ##############################################################
 
-WORKSPACE = 'Templates'
-SCHEME_NAME = 'Tests'
-CONFIGURATION = 'Debug'
+WORKSPACE = 'Templates'.freeze
+SCHEME_NAME = 'Tests'.freeze
+CONFIGURATION = 'Debug'.freeze
+MIN_XCODE_VERSION = 9.0
 
 ## [ Output compilation ] #####################################################
 
-MODULE_INPUT_PATH = 'Fixtures/stub-env/Modules'
-MODULE_OUTPUT_PATH = 'Fixtures/stub-env'
+MODULE_INPUT_PATH = 'Fixtures/stub-env/Modules'.freeze
+MODULE_OUTPUT_PATH = 'Fixtures/stub-env'.freeze
 SDKS = {
-  :macosx => 'x86_64-apple-macosx10.13',
-  :iphoneos => 'arm64-apple-ios11.0',
-  :watchos => 'armv7k-apple-watchos4.0',
-  :appletvos => 'arm64-apple-tvos11.0'
-}
+  macosx: 'x86_64-apple-macosx10.13',
+  iphoneos: 'arm64-apple-ios11.0',
+  watchos: 'armv7k-apple-watchos4.0',
+  appletvos: 'arm64-apple-tvos11.0'
+}.freeze
 TOOLCHAINS = {
-  :swift3 => {
-    :version => 3,
-    :module_path => "#{MODULE_OUTPUT_PATH}/swift3",
-    :toolchain => 'com.apple.dt.toolchain.XcodeDefault'
+  swift3: {
+    version: 3,
+    module_path: "#{MODULE_OUTPUT_PATH}/swift3",
+    toolchain: 'com.apple.dt.toolchain.XcodeDefault'
   },
-  :swift4 => {
-    :version => 4,
-    :module_path => "#{MODULE_OUTPUT_PATH}/swift4",
-    :toolchain => 'com.apple.dt.toolchain.XcodeDefault'
+  swift4: {
+    version: 4,
+    module_path: "#{MODULE_OUTPUT_PATH}/swift4",
+    toolchain: 'com.apple.dt.toolchain.XcodeDefault'
   }
-}
+}.freeze
 
 namespace :output do
   desc 'Generate Test Output'
-  task :generate => "xcode:build" do |task|
+  task :generate => 'xcode:build' do |task|
     Utils.print_header 'Generating expected test output files...'
-    Utils.run(%Q(xcodebuild -workspace "#{WORKSPACE}.xcworkspace" -scheme "Generate Output" -configuration "#{CONFIGURATION}" test-without-building), task, xcrun: true, formatter: :xcpretty)
+    Utils.run(
+      %(xcodebuild -workspace "#{WORKSPACE}.xcworkspace" -scheme "Generate Output" -configuration "#{CONFIGURATION}" test-without-building),
+      task,
+      xcrun: true,
+      formatter: :xcpretty
+    )
   end
 
   desc 'Compile modules'
@@ -41,14 +47,14 @@ namespace :output do
     Utils.print_header 'Compile output modules'
 
     # macOS
-    modules = ['FadeSegue', 'PrefsWindowController']
+    modules = %w[FadeSegue PrefsWindowController]
     modules.each do |m|
       Utils.print_info "Compiling module #{m}… (macos)"
       compile_module(m, :macosx, task)
     end
 
     # iOS
-    modules = ['CustomSegue', 'LocationPicker', 'SlackTextViewController']
+    modules = %w[CustomSegue LocationPicker SlackTextViewController]
     modules.each do |m|
       Utils.print_info "Compiling module #{m}… (ios)"
       compile_module(m, :iphoneos, task)
@@ -69,7 +75,7 @@ namespace :output do
       Utils.print_info "Compiling #{f}…\n"
       failures << f unless compile_file(f, task)
     end
-    
+
     Utils.print_header 'Compilation report'
     if failures.empty?
       Utils.print_info 'All files compiled successfully!'
@@ -83,33 +89,50 @@ namespace :output do
   def compile_module(m, sdk, task)
     target = SDKS[sdk]
     subtask = File.basename(m, '.*')
-    commands = TOOLCHAINS.map do |key, toolchain|
-      %Q(--toolchain #{toolchain[:toolchain]} -sdk #{sdk} swiftc -swift-version #{toolchain[:version]} -emit-module "#{MODULE_INPUT_PATH}/#{m}.swift" -module-name "#{m}" -emit-module-path "#{toolchain[:module_path]}" -target "#{target}")
+    commands = TOOLCHAINS.map do |_key, toolchain|
+      %(--toolchain #{toolchain[:toolchain]} -sdk #{sdk} swiftc -swift-version #{toolchain[:version]} ) +
+        %(-emit-module "#{MODULE_INPUT_PATH}/#{m}.swift" -module-name "#{m}" ) +
+        %(-emit-module-path "#{toolchain[:module_path]}" -target "#{target}")
     end
 
     Utils.run(commands, task, subtask, xcrun: true)
   end
 
-  def compile_file(f, task)
-    if f.match('swift3')
-      toolchain = TOOLCHAINS[:swift3]
-    elsif f.match('swift4')
-      toolchain = TOOLCHAINS[:swift4]
+  def toolchain(f)
+    if f.include?('swift3')
+      TOOLCHAINS[:swift3]
+    elsif f.include?('swift4')
+      TOOLCHAINS[:swift4]
+    end
+  end
+
+  def sdks(f)
+    if f.include?('iOS')
+      [:iphoneos]
+    elsif f.include?('macOS')
+      [:macosx]
     else
+      %i[iphoneos macosx appletvos watchos]
+    end
+  end
+
+  def compile_file(f, task)
+    toolchain = toolchain(f)
+    if toolchain.nil?
       puts "Unable to typecheck Swift 2 file #{f}"
       return true
     end
+    sdks = sdks(f)
 
-    if f.match('iOS')
-      sdks = [:iphoneos]
-    elsif f.match('macOS')
-      sdks = [:macosx]
+    if f.match('extra-definitions')
+      definitions = %("#{MODULE_OUTPUT_PATH}/Definitions.swift" "#{MODULE_OUTPUT_PATH}/ExtraDefinitions.swift")
     else
-      sdks = [:iphoneos, :macosx, :appletvos, :watchos]
+      definitions = %("#{MODULE_OUTPUT_PATH}/Definitions.swift")
     end
 
     commands = sdks.map do |sdk|
-      %Q(--toolchain #{toolchain[:toolchain]} -sdk #{sdk} swiftc -swift-version #{toolchain[:version]} -typecheck -target #{SDKS[sdk]} -I #{toolchain[:module_path]} "#{MODULE_OUTPUT_PATH}/Definitions.swift" #{f})
+      %(--toolchain #{toolchain[:toolchain]} -sdk #{sdk} swiftc -swift-version #{toolchain[:version]} ) +
+        %(-typecheck -target #{SDKS[sdk]} -I #{toolchain[:module_path]} #{definitions} #{f})
     end
     subtask = File.basename(f, '.*')
 
@@ -123,7 +146,6 @@ namespace :output do
   end
 end
 
-
 ## [ Release a new version ] ##################################################
 
 namespace :release do
@@ -136,23 +158,35 @@ namespace :release do
 
     # Check if bundler is installed first, as we'll need it for the cocoapods task (and we prefer to fail early)
     `which bundler`
-    results << Utils.table_result($?.success?, 'Bundler installed', 'Please install bundler using `gem install bundler` and run `bundle install` first.')
+    results << Utils.table_result(
+      $CHILD_STATUS.success?,
+      'Bundler installed',
+      'Please install bundler using `gem install bundler` and run `bundle install` first.'
+    )
 
     # Guess version to release
     version = File.read('CHANGELOG.md').match(/^## (.*)$/)[1]
     Utils.table_info('Top version in CHANGELOG.md', version)
 
     # Check if entry present in CHANGELOG
-    changelog_entry = system(%Q{grep -q '^## #{Regexp.quote(version)}$' CHANGELOG.md})
-    results << Utils.table_result(changelog_entry, "CHANGELOG, Entry added", "Please add an entry for #{version} in CHANGELOG.md")
+    changelog_entry = system(%(grep -q '^## #{Regexp.quote(version)}$' CHANGELOG.md))
+    results << Utils.table_result(
+      changelog_entry,
+      'CHANGELOG, Entry added',
+      "Please add an entry for #{version} in CHANGELOG.md"
+    )
 
-    changelog_master = system(%q{grep -qi '^## Master' CHANGELOG.md})
-    results << Utils.table_result(!changelog_master, "CHANGELOG, No master", 'Please remove entry for master in CHANGELOG')
+    changelog_master = system("grep -qi '^## Master' CHANGELOG.md")
+    results << Utils.table_result(
+      !changelog_master,
+      'CHANGELOG, No master',
+      'Please remove entry for master in CHANGELOG'
+    )
 
     exit 1 unless results.all?
 
     print "Release version #{version} [Y/n]? "
-    exit 2 unless (STDIN.gets.chomp == 'Y')
+    exit 2 unless STDIN.gets.chomp == 'Y'
   end
 
   task :create_tag do
@@ -161,4 +195,4 @@ namespace :release do
   end
 end
 
-task :default => "xcode:test"
+task :default => 'xcode:test'
