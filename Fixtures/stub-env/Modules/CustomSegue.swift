@@ -1,4 +1,4 @@
 import UIKit
 
-public class CustomSegue: UIStoryboardSegue {
+public class SlideDownSegue: UIStoryboardSegue {
 }

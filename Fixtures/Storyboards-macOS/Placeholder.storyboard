@@ -1,8 +1,7 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="13189.4" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
-        <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="10117"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="13189.4"/>
     </dependencies>
     <scenes>
         <!--Window Controller-->
@@ -14,6 +13,9 @@
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
                         <rect key="contentRect" x="163" y="199" width="480" height="270"/>
                         <rect key="screenRect" x="0.0" y="0.0" width="1280" height="777"/>
+                        <connections>
+                            <outlet property="delegate" destination="3Gn-1I-HiJ" id="FBU-wo-hqm"/>
+                        </connections>
                     </window>
                     <connections>
                         <segue destination="EIJ-iL-tpR" kind="relationship" relationship="window.shadowedContentViewController" id="wUy-rT-OAp"/>
@@ -23,10 +25,10 @@
             </objects>
             <point key="canvasLocation" x="262" y="234"/>
         </scene>
-        <!--Dependency-osx-->
+        <!--Dependent-->
         <scene sceneID="jeB-5h-7HV">
             <objects>
-                <controllerPlaceholder storyboardIdentifier="Dependent" storyboardName="Dependency-osx" id="EIJ-iL-tpR" sceneMemberID="viewController"/>
+                <controllerPlaceholder storyboardIdentifier="Dependent" storyboardName="Dependency" referencedIdentifier="Dependent" id="EIJ-iL-tpR" sceneMemberID="viewController"/>
                 <customObject id="s9D-CE-7EV" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="715.5" y="228"/>

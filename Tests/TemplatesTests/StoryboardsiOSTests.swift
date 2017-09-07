@@ -21,7 +21,8 @@ class StoryboardsiOSTests: XCTestCase {
        suffix: ""),
       (context: try StencilContext.enrich(context: context,
                                           parameters: ["sceneEnumName=XCTStoryboardsScene",
-                                                       "segueEnumName=XCTStoryboardsSegue"]),
+                                                       "segueEnumName=XCTStoryboardsSegue",
+                                                       "unnamedSegueCaseName=customUnnamedSegue"]),
        suffix: "-customname"),
       (context: try StencilContext.enrich(context: context,
                                           parameters: [],
@@ -44,13 +45,13 @@ class StoryboardsiOSTests: XCTestCase {
       (context: try StencilContext.enrich(context: context,
                                           parameters: ["ignoreTargetModule"],
                                           environment: ["PRODUCT_MODULE_NAME": "SlackTextViewController"]),
-       suffix: "-ignore-module-need-extra-definitions"),
+       suffix: "-ignore-target-module"),
       (context: try StencilContext.enrich(context: context,
                                           parameters: ["module=Test", "ignoreTargetModule"]),
        suffix: ""),
       (context: try StencilContext.enrich(context: context,
                                           parameters: ["module=SlackTextViewController", "ignoreTargetModule"]),
-       suffix: "-ignore-module-need-extra-definitions")
+       suffix: "-ignore-target-module")
     ]
   }
 

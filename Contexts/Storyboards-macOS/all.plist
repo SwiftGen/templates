@@ -2,6 +2,117 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>customSceneTypes</key>
+	<array>
+		<dict>
+			<key>customClass</key>
+			<string>CustomTabViewController</string>
+			<key>customModule</key>
+			<string></string>
+			<key>segues</key>
+			<array>
+				<dict>
+					<key>customClass</key>
+					<string></string>
+					<key>customModule</key>
+					<string></string>
+					<key>destination</key>
+					<dict>
+						<key>baseType</key>
+						<string>SplitViewController</string>
+					</dict>
+					<key>identifier</key>
+					<string></string>
+				</dict>
+				<dict>
+					<key>customClass</key>
+					<string></string>
+					<key>customModule</key>
+					<string></string>
+					<key>destination</key>
+					<dict>
+						<key>baseType</key>
+						<string>ViewController</string>
+					</dict>
+					<key>identifier</key>
+					<string>Embed</string>
+				</dict>
+				<dict>
+					<key>customClass</key>
+					<string></string>
+					<key>customModule</key>
+					<string></string>
+					<key>destination</key>
+					<dict>
+						<key>baseType</key>
+						<string>ViewController</string>
+					</dict>
+					<key>identifier</key>
+					<string>Modal</string>
+				</dict>
+				<dict>
+					<key>customClass</key>
+					<string></string>
+					<key>customModule</key>
+					<string></string>
+					<key>destination</key>
+					<dict>
+						<key>baseType</key>
+						<string>ViewController</string>
+					</dict>
+					<key>identifier</key>
+					<string>Popover</string>
+				</dict>
+				<dict>
+					<key>customClass</key>
+					<string></string>
+					<key>customModule</key>
+					<string></string>
+					<key>destination</key>
+					<dict>
+						<key>baseType</key>
+						<string>ViewController</string>
+					</dict>
+					<key>identifier</key>
+					<string>Sheet</string>
+				</dict>
+				<dict>
+					<key>customClass</key>
+					<string></string>
+					<key>customModule</key>
+					<string></string>
+					<key>destination</key>
+					<dict>
+						<key>baseType</key>
+						<string>ViewController</string>
+					</dict>
+					<key>identifier</key>
+					<string>Show</string>
+				</dict>
+				<dict>
+					<key>customClass</key>
+					<string>SlowFadeSegue</string>
+					<key>customModule</key>
+					<string>FadeSegue</string>
+					<key>destination</key>
+					<dict>
+						<key>baseType</key>
+						<string>ViewController</string>
+					</dict>
+					<key>identifier</key>
+					<string>public</string>
+				</dict>
+			</array>
+		</dict>
+		<dict>
+			<key>customClass</key>
+			<string>DBPrefsWindowController</string>
+			<key>customModule</key>
+			<string>PrefsWindowController</string>
+			<key>segues</key>
+			<array/>
+		</dict>
+	</array>
 	<key>modules</key>
 	<array>
 		<string>FadeSegue</string>
@@ -110,6 +221,11 @@
 					<string></string>
 					<key>customModule</key>
 					<string></string>
+					<key>destination</key>
+					<dict>
+						<key>baseType</key>
+						<string>ViewController</string>
+					</dict>
 					<key>identifier</key>
 					<string>Embed</string>
 				</dict>
@@ -118,6 +234,11 @@
 					<string></string>
 					<key>customModule</key>
 					<string></string>
+					<key>destination</key>
+					<dict>
+						<key>baseType</key>
+						<string>ViewController</string>
+					</dict>
 					<key>identifier</key>
 					<string>Modal</string>
 				</dict>
@@ -126,6 +247,11 @@
 					<string></string>
 					<key>customModule</key>
 					<string></string>
+					<key>destination</key>
+					<dict>
+						<key>baseType</key>
+						<string>ViewController</string>
+					</dict>
 					<key>identifier</key>
 					<string>Popover</string>
 				</dict>
@@ -134,6 +260,11 @@
 					<string></string>
 					<key>customModule</key>
 					<string></string>
+					<key>destination</key>
+					<dict>
+						<key>baseType</key>
+						<string>ViewController</string>
+					</dict>
 					<key>identifier</key>
 					<string>Sheet</string>
 				</dict>
@@ -142,14 +273,24 @@
 					<string></string>
 					<key>customModule</key>
 					<string></string>
+					<key>destination</key>
+					<dict>
+						<key>baseType</key>
+						<string>ViewController</string>
+					</dict>
 					<key>identifier</key>
 					<string>Show</string>
 				</dict>
 				<dict>
 					<key>customClass</key>
-					<string>FadeSegue</string>
+					<string>SlowFadeSegue</string>
 					<key>customModule</key>
 					<string>FadeSegue</string>
+					<key>destination</key>
+					<dict>
+						<key>baseType</key>
+						<string>ViewController</string>
+					</dict>
 					<key>identifier</key>
 					<string>public</string>
 				</dict>

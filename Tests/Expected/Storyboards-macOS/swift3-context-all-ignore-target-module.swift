@@ -13,8 +13,7 @@ protocol StoryboardType {
 
 extension StoryboardType {
   static var storyboard: NSStoryboard {
-    let name = NSStoryboard.Name(self.storyboardName)
-    return NSStoryboard(name: name, bundle: Bundle(for: BundleToken.self))
+    return NSStoryboard(name: self.storyboardName, bundle: Bundle(for: BundleToken.self))
   }
 }
 
@@ -23,7 +22,6 @@ struct SceneType<T: Any> {
   let identifier: String
 
   func instantiate() -> T {
-    let identifier = NSStoryboard.SceneIdentifier(self.identifier)
     guard let controller = storyboard.storyboard.instantiateController(withIdentifier: identifier) as? T else {
       fatalError("Controller '\(identifier)' is not of the expected class \(T.self).")
     }
@@ -46,8 +44,7 @@ protocol SegueType: RawRepresentable { }
 
 extension NSSeguePerforming {
   func perform<S: SegueType>(segue: S, sender: Any? = nil) where S.RawValue == String {
-    let identifier = NSStoryboardSegue.Identifier(segue.rawValue)
-    performSegue?(withIdentifier: identifier, sender: sender)
+    performSegue?(withIdentifier: segue.rawValue, sender: sender)
   }
 }
 
@@ -87,6 +84,75 @@ enum StoryboardScene {
     static let dependent = SceneType<NSControllerPlaceholder>(storyboard: Placeholder.self, identifier: "Dependent")
 
     static let window = SceneType<NSWindowController>(storyboard: Placeholder.self, identifier: "Window")
+  }
+}
+
+extension CustomTabViewController {
+  enum StoryboardSegue: String {
+    case embed = "Embed"
+    case modal = "Modal"
+    case popover = "Popover"
+    case sheet = "Sheet"
+    case show = "Show"
+    case `public`
+  }
+
+  func perform(segue: StoryboardSegue, sender: Any? = nil) {
+    performSegue(withIdentifier: segue.rawValue, sender: sender)
+  }
+
+  enum TypedStoryboardSegue {
+    case embed(destination: NSViewController)
+    case modal(destination: NSViewController)
+    case popover(destination: NSViewController)
+    case sheet(destination: NSViewController)
+    case show(destination: NSViewController)
+    case `public`(destination: NSViewController, segue: FadeSegue.SlowFadeSegue)
+    case unnamedSegue
+
+    // swiftlint:disable cyclomatic_complexity
+    init(segue: NSStoryboardSegue) {
+      switch segue.identifier ?? "" {
+      case "Embed":
+        guard let vc = segue.destinationController as? NSViewController else {
+          fatalError("Destination of segue 'Embed' is not of the expected type NSViewController.")
+        }
+        self = .embed(destination: vc)
+      case "Modal":
+        guard let vc = segue.destinationController as? NSViewController else {
+          fatalError("Destination of segue 'Modal' is not of the expected type NSViewController.")
+        }
+        self = .modal(destination: vc)
+      case "Popover":
+        guard let vc = segue.destinationController as? NSViewController else {
+          fatalError("Destination of segue 'Popover' is not of the expected type NSViewController.")
+        }
+        self = .popover(destination: vc)
+      case "Sheet":
+        guard let vc = segue.destinationController as? NSViewController else {
+          fatalError("Destination of segue 'Sheet' is not of the expected type NSViewController.")
+        }
+        self = .sheet(destination: vc)
+      case "Show":
+        guard let vc = segue.destinationController as? NSViewController else {
+          fatalError("Destination of segue 'Show' is not of the expected type NSViewController.")
+        }
+        self = .show(destination: vc)
+      case "public":
+        guard let segue = segue as? FadeSegue.SlowFadeSegue else {
+          fatalError("Segue 'public' is not of the expected type FadeSegue.SlowFadeSegue.")
+        }
+        guard let vc = segue.destinationController as? NSViewController else {
+          fatalError("Destination of segue 'public' is not of the expected type NSViewController.")
+        }
+        self = .`public`(destination: vc, segue: segue)
+      case "":
+        self = .unnamedSegue
+      default:
+        fatalError("Unrecognized segue '\(segue.identifier ?? "")' in CustomTabViewController")
+      }
+    }
+    // swiftlint:enable cyclomatic_complexity
   }
 }
 

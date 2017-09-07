@@ -2,6 +2,155 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>customSceneTypes</key>
+	<array>
+		<dict>
+			<key>customClass</key>
+			<string>CreateAccViewController</string>
+			<key>customModule</key>
+			<string></string>
+			<key>segues</key>
+			<array>
+				<dict>
+					<key>customClass</key>
+					<string></string>
+					<key>customModule</key>
+					<string></string>
+					<key>destination</key>
+					<dict>
+						<key>baseType</key>
+						<string>ViewController</string>
+					</dict>
+					<key>identifier</key>
+					<string>ShowPassword</string>
+				</dict>
+			</array>
+		</dict>
+		<dict>
+			<key>customClass</key>
+			<string>XXPickerViewController</string>
+			<key>customModule</key>
+			<string></string>
+			<key>segues</key>
+			<array>
+				<dict>
+					<key>customClass</key>
+					<string></string>
+					<key>customModule</key>
+					<string></string>
+					<key>destination</key>
+					<dict>
+						<key>customClass</key>
+						<string>XXPickerViewController</string>
+						<key>customModule</key>
+						<string></string>
+					</dict>
+					<key>identifier</key>
+					<string></string>
+				</dict>
+				<dict>
+					<key>customClass</key>
+					<string>CustomSegueClass2</string>
+					<key>customModule</key>
+					<string></string>
+					<key>destination</key>
+					<dict>
+						<key>baseType</key>
+						<string>ViewController</string>
+					</dict>
+					<key>identifier</key>
+					<string>CustomBack</string>
+				</dict>
+				<dict>
+					<key>customClass</key>
+					<string></string>
+					<key>customModule</key>
+					<string></string>
+					<key>destination</key>
+					<dict>
+						<key>baseType</key>
+						<string>ViewController</string>
+					</dict>
+					<key>identifier</key>
+					<string>Embed</string>
+				</dict>
+				<dict>
+					<key>customClass</key>
+					<string></string>
+					<key>customModule</key>
+					<string></string>
+					<key>destination</key>
+					<dict>
+						<key>baseType</key>
+						<string>ViewController</string>
+					</dict>
+					<key>identifier</key>
+					<string>NonCustom</string>
+				</dict>
+				<dict>
+					<key>customClass</key>
+					<string>CustomSegueClass</string>
+					<key>customModule</key>
+					<string></string>
+					<key>destination</key>
+					<dict>
+						<key>baseType</key>
+						<string>NavigationController</string>
+					</dict>
+					<key>identifier</key>
+					<string>Show-NavCtrl</string>
+				</dict>
+			</array>
+		</dict>
+		<dict>
+			<key>customClass</key>
+			<string>LocationPickerViewController</string>
+			<key>customModule</key>
+			<string>LocationPicker</string>
+			<key>segues</key>
+			<array>
+				<dict>
+					<key>customClass</key>
+					<string>SlideDownSegue</string>
+					<key>customModule</key>
+					<string>CustomSegue</string>
+					<key>destination</key>
+					<dict>
+						<key>customClass</key>
+						<string>SLKTextViewController</string>
+						<key>customModule</key>
+						<string>SlackTextViewController</string>
+					</dict>
+					<key>identifier</key>
+					<string>private</string>
+				</dict>
+			</array>
+		</dict>
+		<dict>
+			<key>customClass</key>
+			<string>SLKTextViewController</string>
+			<key>customModule</key>
+			<string>SlackTextViewController</string>
+			<key>segues</key>
+			<array>
+				<dict>
+					<key>customClass</key>
+					<string>SlideDownSegue</string>
+					<key>customModule</key>
+					<string>CustomSegue</string>
+					<key>destination</key>
+					<dict>
+						<key>customClass</key>
+						<string>SLKTextViewController</string>
+						<key>customModule</key>
+						<string>SlackTextViewController</string>
+					</dict>
+					<key>identifier</key>
+					<string>private</string>
+				</dict>
+			</array>
+		</dict>
+	</array>
 	<key>modules</key>
 	<array>
 		<string>CustomSegue</string>
@@ -44,6 +193,13 @@
 					<string>SlideDownSegue</string>
 					<key>customModule</key>
 					<string>CustomSegue</string>
+					<key>destination</key>
+					<dict>
+						<key>customClass</key>
+						<string>SLKTextViewController</string>
+						<key>customModule</key>
+						<string>SlackTextViewController</string>
+					</dict>
 					<key>identifier</key>
 					<string>private</string>
 				</dict>
@@ -131,6 +287,11 @@
 					<string>CustomSegueClass2</string>
 					<key>customModule</key>
 					<string></string>
+					<key>destination</key>
+					<dict>
+						<key>baseType</key>
+						<string>ViewController</string>
+					</dict>
 					<key>identifier</key>
 					<string>CustomBack</string>
 				</dict>
@@ -139,6 +300,11 @@
 					<string></string>
 					<key>customModule</key>
 					<string></string>
+					<key>destination</key>
+					<dict>
+						<key>baseType</key>
+						<string>ViewController</string>
+					</dict>
 					<key>identifier</key>
 					<string>Embed</string>
 				</dict>
@@ -147,6 +313,11 @@
 					<string></string>
 					<key>customModule</key>
 					<string></string>
+					<key>destination</key>
+					<dict>
+						<key>baseType</key>
+						<string>ViewController</string>
+					</dict>
 					<key>identifier</key>
 					<string>NonCustom</string>
 				</dict>
@@ -155,6 +326,11 @@
 					<string>CustomSegueClass</string>
 					<key>customModule</key>
 					<string></string>
+					<key>destination</key>
+					<dict>
+						<key>baseType</key>
+						<string>NavigationController</string>
+					</dict>
 					<key>identifier</key>
 					<string>Show-NavCtrl</string>
 				</dict>
@@ -227,6 +403,11 @@
 					<string></string>
 					<key>customModule</key>
 					<string></string>
+					<key>destination</key>
+					<dict>
+						<key>baseType</key>
+						<string>ViewController</string>
+					</dict>
 					<key>identifier</key>
 					<string>ShowPassword</string>
 				</dict>
