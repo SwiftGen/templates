@@ -83,7 +83,7 @@ enum {{sceneEnumName}} {
     {% set sceneClass %}{% call className storyboard.initialScene %}{% endset %}
     static let initialScene = InitialSceneType<{{sceneClass}}>(storyboard: {{storyboardName}}.self)
     {% endif %}
-    {% for scene in storyboard.scenes %}
+    {% for scene in storyboard.scenes where scene.identifier %}
 
     {% set sceneID %}{{scene.identifier|swiftIdentifier:"pretty"|lowerFirstWord|escapeReservedKeywords}}{% endset %}
     {% set sceneClass %}{% call className scene %}{% endset %}
@@ -96,7 +96,12 @@ enum {{sceneEnumName}} {
 {% set segueEnumName %}{{param.segueEnumName|default:"StoryboardSegue"}}{% endset %}
 {% set unnamedSegue %}{{param.unnamedSegueCaseName|default:"unnamedSegue"}}{% endset %}
 {% macro segueClassName segue %}{% filter removeNewlines %}
-  {% if segue.customModule %}{{segue.customModule}}.{% endif %}{{segue.customClass}}
+  {% if segue.customModule %}
+    {% if not param.ignoreTargetModule or segue.customModule != env.PRODUCT_MODULE_NAME and segue.customModule != param.module %}
+      {{segue.customModule}}.
+    {% endif %}
+  {% endif %}
+  {{segue.customClass}}
 {% endfilter %}{% endmacro %}
 {% for scene in customSceneTypes where scene.segues %}
 {% set sceneClass %}{% call className scene %}{% endset %}
