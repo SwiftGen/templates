@@ -124,8 +124,10 @@ namespace :output do
     end
     sdks = sdks(f)
 
-    if f.match('extra-definitions')
-      definitions = %("#{MODULE_OUTPUT_PATH}/Definitions.swift" "#{MODULE_OUTPUT_PATH}/ExtraDefinitions.swift")
+    if f.match('ignore-target-module')
+      definitions = %("#{MODULE_OUTPUT_PATH}/Definitions.swift" "#{MODULE_OUTPUT_PATH}/Definitions-ignoreTargetModule.swift")
+    elsif f.match('ignore-module')
+      definitions = %("#{MODULE_OUTPUT_PATH}/Definitions.swift" "#{MODULE_OUTPUT_PATH}/Definitions-ignoreModule.swift")
     else
       definitions = %("#{MODULE_OUTPUT_PATH}/Definitions.swift")
     end
