@@ -125,11 +125,11 @@ namespace :output do
     end
     sdks = sdks(f)
 
-    if f.match('extra-definitions')
-      definitions = %("#{MODULE_OUTPUT_PATH}/Definitions.swift" "#{MODULE_OUTPUT_PATH}/ExtraDefinitions.swift")
-    else
-      definitions = %("#{MODULE_OUTPUT_PATH}/Definitions.swift")
-    end
+    definitions = if f.include?('extra-definitions')
+                    %("#{MODULE_OUTPUT_PATH}/Definitions.swift" "#{MODULE_OUTPUT_PATH}/ExtraDefinitions.swift")
+                  else
+                    definitions = %("#{MODULE_OUTPUT_PATH}/Definitions.swift")
+                  end
 
     commands = sdks.map do |sdk|
       %(--toolchain #{toolchain[:toolchain]} -sdk #{sdk} swiftc -swift-version #{toolchain[:version]} ) +
