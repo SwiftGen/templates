@@ -44,7 +44,7 @@ enum Asset {
 }
 ```
 
-[Full generated code](https://github.com/SwiftGen/templates/blob/master/Tests/Expected/XCAssets/swift2-context-defaults.swift)
+[Full generated code](https://github.com/SwiftGen/templates/blob/master/Tests/Expected/XCAssets/swift2-context-all.swift)
 
 ## Usage example
 
