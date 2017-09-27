@@ -9,6 +9,9 @@
 * Fonts: fix code which checks if a font is already registered.  
   [Vladimir Burdukov](https://github.com/chipp)
   [#77](https://github.com/SwiftGen/templates/pull/77)
+* Documentation: Fix link to generated XCAssets example.  
+  [Alvar Hansen](https://github.com/allu22)
+  [#80](https://github.com/SwiftGen/templates/pull/80)
 
 ### Breaking Changes
 
