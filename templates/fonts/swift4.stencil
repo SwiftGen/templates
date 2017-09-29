@@ -1,26 +1,27 @@
 // Generated using SwiftGen, by O.Halligon — https://github.com/SwiftGen/SwiftGen
+{% set accessModifier %}{% if param.accessModifier %}{{param.accessModifier}} {% endif %}{% endset %}
 
 {% if families %}
 #if os(OSX)
   import AppKit.NSFont
-  {% if param.accessModifier %}{{param.accessModifier}} {% endif %}typealias Font = NSFont
+  {{accessModifier}}typealias Font = NSFont
 #elseif os(iOS) || os(tvOS) || os(watchOS)
   import UIKit.UIFont
-  {% if param.accessModifier %}{{param.accessModifier}} {% endif %}typealias Font = UIFont
+  {{accessModifier}}typealias Font = UIFont
 #endif
 
 // swiftlint:disable file_length
 
-{% if param.accessModifier %}{{param.accessModifier}} {% endif %}struct FontConvertible {
-  {% if param.accessModifier %}{{param.accessModifier}} {% endif %}let name: String
-  {% if param.accessModifier %}{{param.accessModifier}} {% endif %}let family: String
-  {% if param.accessModifier %}{{param.accessModifier}} {% endif %}let path: String
+{{accessModifier}}struct FontConvertible {
+  let name: String
+  {{accessModifier}}let family: String
+  {{accessModifier}}let path: String
 
-  {% if param.accessModifier %}{{param.accessModifier}} {% endif %}func font(size: CGFloat) -> Font! {
+  {{accessModifier}}func font(size: CGFloat) -> Font! {
     return Font(font: self, size: size)
   }
 
-  {% if param.accessModifier %}{{param.accessModifier}} {% endif %}func register() {
+  {{accessModifier}}func register() {
     guard let url = url else { return }
     var errorRef: Unmanaged<CFError>?
     CTFontManagerRegisterFontsForURL(url as CFURL, .process, &errorRef)
@@ -32,8 +33,8 @@
   }
 }
 
-{% if param.accessModifier %}{{param.accessModifier}} {% endif %}extension Font {
-  {% if param.accessModifier %}{{param.accessModifier}} {% endif %}convenience init!(font: FontConvertible, size: CGFloat) {
+{{accessModifier}}extension Font {
+  {{accessModifier}}convenience init!(font: FontConvertible, size: CGFloat) {
     #if os(iOS) || os(tvOS) || os(watchOS)
     if !UIFont.fontNames(forFamilyName: font.family).contains(font.name) {
       font.register()
@@ -56,11 +57,11 @@
     {{path|basename}}
   {% endif %}
 {% endfilter %}{% endmacro %}
-{% if param.accessModifier %}{{param.accessModifier}} {% endif %}enum {{param.enumName|default:"FontFamily"}} {
+{{accessModifier}}enum {{param.enumName|default:"FontFamily"}} {
   {% for family in families %}
-  {% if param.accessModifier %}{{param.accessModifier}} {% endif %}enum {{family.name|swiftIdentifier:"pretty"|escapeReservedKeywords}} {
+  {{accessModifier}}enum {{family.name|swiftIdentifier:"pretty"|escapeReservedKeywords}} {
     {% for font in family.fonts %}
-    {% if param.accessModifier %}{{param.accessModifier}} {% endif %}static let {{font.style|swiftIdentifier:"pretty"|lowerFirstWord|escapeReservedKeywords}} = FontConvertible(name: "{{font.name}}", family: "{{family.name}}", path: "{% call transformPath font.path %}")
+    {{accessModifier}}static let {{font.style|swiftIdentifier:"pretty"|lowerFirstWord|escapeReservedKeywords}} = FontConvertible(name: "{{font.name}}", family: "{{family.name}}", path: "{% call transformPath font.path %}")
     {% endfor %}
   }
   {% endfor %}
