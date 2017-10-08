@@ -59,7 +59,6 @@ enum Asset {
       static let banana = ImageAsset(name: "Exotic/Banana")
       static let mango = ImageAsset(name: "Exotic/Mango")
     }
-    static let `private` = ImageAsset(name: "private")
     enum Round {
       static let apricot = ImageAsset(name: "Round/Apricot")
       enum Red {
@@ -70,6 +69,7 @@ enum Asset {
         static let tomato = ImageAsset(name: "Round/Tomato")
       }
     }
+    static let `private` = ImageAsset(name: "private")
   }
 }
 // swiftlint:enable identifier_name line_length nesting type_body_length type_name
