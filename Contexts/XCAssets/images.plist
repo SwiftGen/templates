@@ -41,14 +41,6 @@
 					<string>group</string>
 				</dict>
 				<dict>
-					<key>name</key>
-					<string>private</string>
-					<key>type</key>
-					<string>image</string>
-					<key>value</key>
-					<string>private</string>
-				</dict>
-				<dict>
 					<key>items</key>
 					<array>
 						<dict>
@@ -106,6 +98,14 @@
 					<string>Round</string>
 					<key>type</key>
 					<string>group</string>
+				</dict>
+				<dict>
+					<key>name</key>
+					<string>private</string>
+					<key>type</key>
+					<string>image</string>
+					<key>value</key>
+					<string>private</string>
 				</dict>
 			</array>
 			<key>name</key>
