@@ -75,7 +75,6 @@ enum Asset {
       static let banana = ImageAsset(name: "Exotic/Banana")
       static let mango = ImageAsset(name: "Exotic/Mango")
     }
-    static let `private` = ImageAsset(name: "private")
     enum Round {
       static let apricot = ImageAsset(name: "Round/Apricot")
       enum Red {
@@ -86,6 +85,7 @@ enum Asset {
         static let tomato = ImageAsset(name: "Round/Tomato")
       }
     }
+    static let `private` = ImageAsset(name: "private")
 
     // swiftlint:disable trailing_comma
     static let allColors: [ColorAsset] = [
@@ -93,11 +93,11 @@ enum Asset {
     static let allImages: [ImageAsset] = [
       Exotic.banana,
       Exotic.mango,
-      `private`,
       Round.apricot,
       Round.Red.apple,
       Round.Red.Double.cherry,
       Round.Red.tomato,
+      `private`,
     ]
     // swiftlint:enable trailing_comma
     @available(*, deprecated, renamed: "allImages")

@@ -66,7 +66,6 @@ enum XCTAssets {
       static let Banana = XCTImageAsset(name: "Exotic/Banana")
       static let Mango = XCTImageAsset(name: "Exotic/Mango")
     }
-    static let Private = XCTImageAsset(name: "private")
     enum Round {
       static let Apricot = XCTImageAsset(name: "Round/Apricot")
       enum Red {
@@ -77,6 +76,7 @@ enum XCTAssets {
         static let Tomato = XCTImageAsset(name: "Round/Tomato")
       }
     }
+    static let Private = XCTImageAsset(name: "private")
 
     // swiftlint:disable trailing_comma
     static let allColors: [XCTColorAsset] = [
@@ -84,11 +84,11 @@ enum XCTAssets {
     static let allImages: [XCTImageAsset] = [
       Exotic.Banana,
       Exotic.Mango,
-      Private,
       Round.Apricot,
       Round.Red.Apple,
       Round.Red.Double.Cherry,
       Round.Red.Tomato,
+      Private,
     ]
     // swiftlint:enable trailing_comma
     @available(*, deprecated, renamed: "allImages")
