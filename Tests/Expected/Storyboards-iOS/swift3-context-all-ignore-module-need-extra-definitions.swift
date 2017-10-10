@@ -6,6 +6,7 @@ import UIKit
 import CustomSegue
 import LocationPicker
 
+// swiftlint:disable superfluous_disable_command
 // swiftlint:disable file_length
 
 protocol StoryboardType {

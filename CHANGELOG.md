@@ -12,6 +12,11 @@
 * Documentation: Fix link to generated XCAssets example.  
   [Alvar Hansen](https://github.com/allu22)
   [#80](https://github.com/SwiftGen/templates/pull/80)
+* SwiftLint rules: Disabled the `superfluous_disable_command` rule
+  for all `swiftlint:disable` exceptions in all templates.  
+  [Olivier Halligon](https://github.com/AliSoftware)
+  [SwiftGen/SwiftGen#334](https://github.com/SwiftGen/SwiftGen/issues/334)
+  [#83](https://github.com/SwiftGen/templates/pull/83)
 
 ### Breaking Changes
 

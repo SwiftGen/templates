@@ -7,6 +7,7 @@ import CustomSegue
 import LocationPicker
 import SlackTextViewController
 
+// swiftlint:disable superfluous_disable_command
 // swiftlint:disable file_length
 
 protocol StoryboardType {

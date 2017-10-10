@@ -8,6 +8,7 @@
   typealias Image = UIImage
 #endif
 
+// swiftlint:disable superfluous_disable_command
 // swiftlint:disable file_length
 
 @available(*, deprecated, renamed: "ImageAsset")

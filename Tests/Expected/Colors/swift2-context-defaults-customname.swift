@@ -8,6 +8,7 @@
   typealias XCTColor = UIColor
 #endif
 
+// swiftlint:disable superfluous_disable_command
 // swiftlint:disable file_length
 
 // swiftlint:disable operator_usage_whitespace
