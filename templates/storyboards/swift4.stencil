@@ -4,14 +4,14 @@
 {% set isAppKit %}{% if platform == "macOS" %}true{% endif %}{% endset %}
 {% set prefix %}{% if isAppKit %}NS{% else %}UI{% endif %}{% endset %}
 {% set controller %}{% if isAppKit %}Controller{% else %}ViewController{% endif %}{% endset %}
-// swiftlint:disable sorted_imports
+// swiftlint:disable superfluous_disable_command sorted_imports
 import Foundation
 import {% if isAppKit %}Cocoa{% else %}UIKit{% endif %}
 {% for module in modules where module != env.PRODUCT_MODULE_NAME and module != param.module %}
 import {{module}}
 {% endfor %}
 
-// swiftlint:disable file_length
+// swiftlint:disable superfluous_disable_command file_length
 
 {# This first part of the code is static, same every time whatever Storyboard you have #}
 protocol StoryboardType {
@@ -59,7 +59,9 @@ extension {% if isAppKit %}NSSeguePerforming{% else %}UIViewController{% endif %
 }
 
 {# This is where the generation begins, this code depends on what you have in your Storyboards #}
-// swiftlint:disable explicit_type_interface identifier_name line_length type_body_length type_name
+// swiftlint:disable superfluous_disable_command explicit_type_interface
+// swiftlint:disable superfluous_disable_command identifier_name type_name
+// swiftlint:disable superfluous_disable_command line_length type_body_length
 {% set sceneEnumName %}{{param.sceneEnumName|default:"StoryboardScene"}}{% endset %}
 {% macro className scene %}{% filter removeNewlines %}
   {% if scene.customClass %}

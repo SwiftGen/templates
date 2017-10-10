@@ -3,7 +3,7 @@
 {% if tables.count > 0 %}
 import Foundation
 
-// swiftlint:disable file_length
+// swiftlint:disable superfluous_disable_command file_length
 {% macro parametersBlock types %}{% filter removeNewlines:"leading" %}
   {% for type in types %}
     p{{forloop.counter}}: {{type}}{% if not forloop.last %}, {% endif %}
@@ -36,7 +36,9 @@ import Foundation
 {{sp}}  {% endfor %}
 {% endmacro %}
 
-// swiftlint:disable explicit_type_interface identifier_name line_length nesting type_body_length type_name
+// swiftlint:disable superfluous_disable_command explicit_type_interface nesting
+// swiftlint:disable superfluous_disable_command identifier_name type_name
+// swiftlint:disable superfluous_disable_command line_length type_body_length
 {% set enumName %}{{param.enumName|default:"L10n"}}{% endset %}
 enum {{enumName}} {
   {% if tables.count > 1 %}

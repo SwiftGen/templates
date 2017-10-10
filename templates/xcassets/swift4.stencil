@@ -13,7 +13,7 @@
   typealias {{imageAlias}} = UIImage
 #endif
 
-// swiftlint:disable file_length
+// swiftlint:disable superfluous_disable_command file_length
 
 {% set enumName %}{{param.enumName|default:"Asset"}}{% endset %}
 {% set imageType %}{{param.imageTypeName|default:"ImageAsset"}}{% endset %}
@@ -50,7 +50,7 @@ struct {{colorType}} {
 {{sp}}  {% call casesBlock assets sp %}
 {{sp}}  {% if not param.noAllValues %}
 
-{{sp}}  // swiftlint:disable trailing_comma
+{{sp}}  // swiftlint:disable superfluous_disable_command trailing_comma
 {{sp}}  static let allColors: [{{colorType}}] = [
 {{sp}}    {% set sp2 %}{{sp}}  {% endset %}
 {{sp}}    {% call allValuesBlock assets "color" "" sp2 %}
@@ -89,7 +89,7 @@ struct {{colorType}} {
 {{sp}}  {% endfor %}
 {% endmacro %}
 
-// swiftlint:disable identifier_name line_length nesting type_body_length type_name
+// swiftlint:disable superfluous_disable_command identifier_name line_length nesting type_body_length type_name
 enum {{enumName}} {
   {% if catalogs.count > 1 %}
   {% for catalog in catalogs %}

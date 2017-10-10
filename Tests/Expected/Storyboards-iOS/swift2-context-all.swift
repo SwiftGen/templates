@@ -1,13 +1,13 @@
 // Generated using SwiftGen, by O.Halligon — https://github.com/SwiftGen/SwiftGen
 
-// swiftlint:disable sorted_imports
+// swiftlint:disable superfluous_disable_command sorted_imports
 import Foundation
 import UIKit
 import CustomSegue
 import LocationPicker
 import SlackTextViewController
 
-// swiftlint:disable file_length
+// swiftlint:disable superfluous_disable_command file_length
 
 protocol StoryboardType {
   static var storyboardName: String { get }
@@ -50,7 +50,9 @@ extension UIViewController {
   }
 }
 
-// swiftlint:disable explicit_type_interface identifier_name line_length type_body_length type_name
+// swiftlint:disable superfluous_disable_command explicit_type_interface
+// swiftlint:disable superfluous_disable_command identifier_name type_name
+// swiftlint:disable superfluous_disable_command line_length type_body_length
 enum StoryboardScene {
   enum AdditionalImport: StoryboardType {
     static let storyboardName = "AdditionalImport"

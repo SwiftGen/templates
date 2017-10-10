@@ -8,9 +8,9 @@
   enum ColorName { }
 #endif
 
-// swiftlint:disable file_length
+// swiftlint:disable superfluous_disable_command file_length
 
-// swiftlint:disable identifier_name line_length type_body_length
+// swiftlint:disable superfluous_disable_command identifier_name line_length type_body_length
 extension ColorName {
   /// 0x339666ff (r: 51, g: 150, b: 102, a: 255)
   static let articleBody = #colorLiteral(red: 0.2, green: 0.588235, blue: 0.4, alpha: 1.0)

@@ -2,9 +2,11 @@
 
 import Foundation
 
-// swiftlint:disable file_length
+// swiftlint:disable superfluous_disable_command file_length
 
-// swiftlint:disable explicit_type_interface identifier_name line_length nesting type_body_length type_name
+// swiftlint:disable superfluous_disable_command explicit_type_interface nesting
+// swiftlint:disable superfluous_disable_command identifier_name type_name
+// swiftlint:disable superfluous_disable_command line_length type_body_length
 enum L10n {
   static let AlertMessage = L10n.tr("Localizable", "alert_message")
   static let AlertTitle = L10n.tr("Localizable", "alert_title")

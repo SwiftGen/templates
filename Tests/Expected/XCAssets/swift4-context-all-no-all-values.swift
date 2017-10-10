@@ -10,7 +10,7 @@
   typealias Image = UIImage
 #endif
 
-// swiftlint:disable file_length
+// swiftlint:disable superfluous_disable_command file_length
 
 @available(*, deprecated, renamed: "ImageAsset")
 typealias AssetType = ImageAsset
@@ -41,7 +41,7 @@ struct ColorAsset {
   }
 }
 
-// swiftlint:disable identifier_name line_length nesting type_body_length type_name
+// swiftlint:disable superfluous_disable_command identifier_name line_length nesting type_body_length type_name
 enum Asset {
   enum Colors {
     enum _24Vision {

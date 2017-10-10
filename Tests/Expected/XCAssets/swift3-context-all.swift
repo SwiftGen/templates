@@ -10,7 +10,7 @@
   typealias Image = UIImage
 #endif
 
-// swiftlint:disable file_length
+// swiftlint:disable superfluous_disable_command file_length
 
 @available(*, deprecated, renamed: "ImageAsset")
 typealias AssetType = ImageAsset
@@ -43,7 +43,7 @@ struct ColorAsset {
   #endif
 }
 
-// swiftlint:disable identifier_name line_length nesting type_body_length type_name
+// swiftlint:disable superfluous_disable_command identifier_name line_length nesting type_body_length type_name
 enum Asset {
   enum Colors {
     enum _24Vision {
@@ -56,7 +56,7 @@ enum Asset {
       static let tint = ColorAsset(name: "Vengo/Tint")
     }
 
-    // swiftlint:disable trailing_comma
+    // swiftlint:disable superfluous_disable_command trailing_comma
     static let allColors: [ColorAsset] = [
       _24Vision.background,
       _24Vision.primary,
@@ -87,7 +87,7 @@ enum Asset {
     }
     static let `private` = ImageAsset(name: "private")
 
-    // swiftlint:disable trailing_comma
+    // swiftlint:disable superfluous_disable_command trailing_comma
     static let allColors: [ColorAsset] = [
     ]
     static let allImages: [ImageAsset] = [
