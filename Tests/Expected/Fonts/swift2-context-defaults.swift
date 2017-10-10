@@ -8,7 +8,8 @@
   typealias Font = UIFont
 #endif
 
-// swiftlint:disable superfluous_disable_command file_length
+// swiftlint:disable superfluous_disable_command
+// swiftlint:disable file_length
 
 struct FontConvertible {
   let name: String
@@ -47,7 +48,7 @@ extension Font {
   }
 }
 
-// swiftlint:disable superfluous_disable_command identifier_name line_length type_body_length
+// swiftlint:disable identifier_name line_length type_body_length
 enum FontFamily {
   enum SFNSDisplay {
     static let Black = FontConvertible(".SFNSDisplay-Black", family: ".SF NS Display", path: "SFNSDisplay-Black.otf")

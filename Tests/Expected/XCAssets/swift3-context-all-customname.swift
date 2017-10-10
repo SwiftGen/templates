@@ -10,7 +10,8 @@
   typealias XCTImage = UIImage
 #endif
 
-// swiftlint:disable superfluous_disable_command file_length
+// swiftlint:disable superfluous_disable_command
+// swiftlint:disable file_length
 
 @available(*, deprecated, renamed: "XCTImageAsset")
 typealias XCTAssetsType = XCTImageAsset
@@ -43,7 +44,7 @@ struct XCTColorAsset {
   #endif
 }
 
-// swiftlint:disable superfluous_disable_command identifier_name line_length nesting type_body_length type_name
+// swiftlint:disable identifier_name line_length nesting type_body_length type_name
 enum XCTAssets {
   enum Colors {
     enum _24Vision {
@@ -56,7 +57,7 @@ enum XCTAssets {
       static let tint = XCTColorAsset(name: "Vengo/Tint")
     }
 
-    // swiftlint:disable superfluous_disable_command trailing_comma
+    // swiftlint:disable trailing_comma
     static let allColors: [XCTColorAsset] = [
       _24Vision.background,
       _24Vision.primary,
@@ -87,7 +88,7 @@ enum XCTAssets {
     }
     static let `private` = XCTImageAsset(name: "private")
 
-    // swiftlint:disable superfluous_disable_command trailing_comma
+    // swiftlint:disable trailing_comma
     static let allColors: [XCTColorAsset] = [
     ]
     static let allImages: [XCTImageAsset] = [

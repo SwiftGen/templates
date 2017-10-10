@@ -10,9 +10,10 @@
   {% if enumName != 'UIColor' %}enum {{enumName}} { }{% endif %}
 #endif
 
-// swiftlint:disable superfluous_disable_command file_length
+// swiftlint:disable superfluous_disable_command
+// swiftlint:disable file_length
 
-// swiftlint:disable superfluous_disable_command identifier_name line_length type_body_length
+// swiftlint:disable identifier_name line_length type_body_length
 extension {{enumName}} {
 {% macro h2f hex %}{{hex|hexToInt|int255toFloat}}{% endmacro %}
 {% macro enumBlock colors sp %}

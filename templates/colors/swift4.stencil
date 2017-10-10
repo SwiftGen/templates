@@ -10,9 +10,10 @@
   typealias {{colorAlias}} = UIColor
 #endif
 
-// swiftlint:disable superfluous_disable_command file_length
+// swiftlint:disable superfluous_disable_command
+// swiftlint:disable file_length
 
-// swiftlint:disable superfluous_disable_command operator_usage_whitespace
+// swiftlint:disable operator_usage_whitespace
 extension {{colorAlias}} {
   convenience init(rgbaValue: UInt32) {
     let red   = CGFloat((rgbaValue >> 24) & 0xff) / 255.0
@@ -25,7 +26,7 @@ extension {{colorAlias}} {
 }
 // swiftlint:enable operator_usage_whitespace
 
-// swiftlint:disable superfluous_disable_command identifier_name line_length type_body_length
+// swiftlint:disable identifier_name line_length type_body_length
 {% set enumName %}{{param.enumName|default:"ColorName"}}{% endset %}
 struct {{enumName}} {
   let rgbaValue: UInt32
