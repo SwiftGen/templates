@@ -28,14 +28,17 @@ You can customize some elements of this template by overriding the following par
 ```swift
 enum L10n {
   /// Some alert body there
-  case alertMessage
+  static let alertMessage = L10n.tr("Localizable", "alert_message")
   /// Title of the alert
-  case alertTitle
+  static let alertTitle = L10n.tr("Localizable", "alert_title")
   /// You have %d apples
-  case applesCount(Int)
+  static func applesCount(_ p1: Int) -> String {
+    return L10n.tr("Localizable", "apples.count", p1)
+  }
   /// Those %d bananas belong to %@.
-  case bananasOwner(Int, String)
-}
+  static func bananasOwner(_ p1: Int, _ p2: String) -> String {
+    return L10n.tr("Localizable", "bananas.owner", p1, p2)
+  }
 ```
 
 [Full generated code](https://github.com/SwiftGen/templates/blob/master/Tests/Expected/Strings/flat-swift3-context-localizable.swift)
