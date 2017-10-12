@@ -10,7 +10,7 @@
 ## When to use it
 
 - When you need to generate *Swift 2* code
-- If you use unstructured key names for your strings, or a structure that we don't support (yet). If you use "dot-syntax" keys, please check out the [dot-syntax](dot-syntax.md) template.
+- If you use unstructured key names for your strings, or a structure that we don't support (yet). If you use "dot-syntax" keys, please check out the [structured-swift2](structured-swift2.md) template.
 - **Warning**: Swift 2 is no longer actively supported, so we cannot guarantee that there won't be issues with the generated code.
 
 ## Customization
