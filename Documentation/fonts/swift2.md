@@ -20,7 +20,7 @@ You can customize some elements of this template by overriding the following par
 | -------------- | ------------- | ----------- |
 | `enumName` | `FontFamily` | Allows you to change the name of the generated `enum` containing all font families. |
 | `preservePath` | N/A | Setting this parameter will disable the basename filter applied to all font paths. Use this if you added your font folder as a "folder reference" in your Xcode project, making that folder hierarchy preserved once copied in the build app bundle. The path will be relative to the folder you provided to SwiftGen. |
-| `public` | N/A | If set, the generated constants will be marked as `public`. Otherwise, they'll be declared `internal`. |
+| `publicAccess` | N/A | If set, the generated constants will be marked as `public`. Otherwise, they'll be declared `internal`. |
 
 ## Generated Code
 

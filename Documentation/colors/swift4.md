@@ -20,7 +20,7 @@ You can customize some elements of this template by overriding the following par
 | -------------- | ------------- | ----------- |
 | `enumName` | `ColorName` | Allows you to change the name of the generated `enum` containing all colors. |
 | `colorAliasName` | `Color` | Allows you to change the name of the generated `typealias` for the platform specific color type. |
-| `public` | N/A | If set, the generated constants will be marked as `public`. Otherwise, they'll be declared `internal`. |
+| `publicAccess` | N/A | If set, the generated constants will be marked as `public`. Otherwise, they'll be declared `internal`. |
 
 ## Generated Code
 

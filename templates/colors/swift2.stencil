@@ -2,7 +2,7 @@
 
 {% if palettes %}
 {% set colorAlias %}{{param.colorAliasName|default:"Color"}}{% endset %}
-{% set accessModifier %}{% if param.public %}public{% else %}internal{% endif %}{% endset %}
+{% set accessModifier %}{% if param.publicAccess %}public{% else %}internal{% endif %}{% endset %}
 #if os(OSX)
   import AppKit.NSColor
   {{accessModifier}} typealias {{colorAlias}} = NSColor
