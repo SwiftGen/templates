@@ -6,50 +6,50 @@ import Foundation
 // swiftlint:disable file_length
 
 // swiftlint:disable identifier_name line_length type_body_length
-enum L10n {
-  enum Localizable {
+internal enum L10n {
+  internal enum Localizable {
     /// Some alert body there
-    static let AlertMessage = L10n.tr("Localizable", "alert_message")
+    internal static let AlertMessage = L10n.tr("Localizable", "alert_message")
     /// Title of the alert
-    static let AlertTitle = L10n.tr("Localizable", "alert_title")
+    internal static let AlertTitle = L10n.tr("Localizable", "alert_title")
     /// These are %3$@'s %1$d %2$@.
-    static func ObjectOwnership(p1: Int, p2: String, p3: String) -> String {
+    internal static func ObjectOwnership(p1: Int, p2: String, p3: String) -> String {
       return L10n.tr("Localizable", "ObjectOwnership", p1, p2, p3)
     }
     /// Hello, my name is %@ and I'm %d
-    static func Private(p1: String, p2: Int) -> String {
+    internal static func Private(p1: String, p2: Int) -> String {
       return L10n.tr("Localizable", "private", p1, p2)
     }
     /// You have %d apples
-    static func ApplesCount(p1: Int) -> String {
+    internal static func ApplesCount(p1: Int) -> String {
       return L10n.tr("Localizable", "apples.count", p1)
     }
     /// Those %d bananas belong to %@.
-    static func BananasOwner(p1: Int, p2: String) -> String {
+    internal static func BananasOwner(p1: Int, p2: String) -> String {
       return L10n.tr("Localizable", "bananas.owner", p1, p2)
     }
     /// Some Reserved Keyword there
-    static let SettingsNavigationBarSelf = L10n.tr("Localizable", "settings.navigation-bar.self")
+    internal static let SettingsNavigationBarSelf = L10n.tr("Localizable", "settings.navigation-bar.self")
     /// DeepSettings
-    static let SettingsNavigationBarTitleDeeperThanWeCanHandleNoReallyThisIsDeep = L10n.tr("Localizable", "settings.navigation-bar.title.deeper.than.we.can.handle.no.really.this.is.deep")
+    internal static let SettingsNavigationBarTitleDeeperThanWeCanHandleNoReallyThisIsDeep = L10n.tr("Localizable", "settings.navigation-bar.title.deeper.than.we.can.handle.no.really.this.is.deep")
     /// Settings
-    static let SettingsNavigationBarTitleEvenDeeper = L10n.tr("Localizable", "settings.navigation-bar.title.even.deeper")
+    internal static let SettingsNavigationBarTitleEvenDeeper = L10n.tr("Localizable", "settings.navigation-bar.title.even.deeper")
     /// Here you can change some user profile settings.
-    static let SeTTingsUSerProFileSectioNFooterText = L10n.tr("Localizable", "seTTings.uSer-proFile-sectioN.footer_text")
+    internal static let SeTTingsUSerProFileSectioNFooterText = L10n.tr("Localizable", "seTTings.uSer-proFile-sectioN.footer_text")
     /// User Profile Settings
-    static let SettingsUserProfileSectionHeaderTitle = L10n.tr("Localizable", "SETTINGS.USER_PROFILE_SECTION.HEADER_TITLE")
+    internal static let SettingsUserProfileSectionHeaderTitle = L10n.tr("Localizable", "SETTINGS.USER_PROFILE_SECTION.HEADER_TITLE")
   }
-  enum LocMultiline {
+  internal enum LocMultiline {
     /// multi\nline
-    static let Multiline = L10n.tr("LocMultiline", "MULTILINE")
+    internal static let Multiline = L10n.tr("LocMultiline", "MULTILINE")
     /// test
-    static let MultiLineNKey = L10n.tr("LocMultiline", "multiLine\nKey")
+    internal static let MultiLineNKey = L10n.tr("LocMultiline", "multiLine\nKey")
     /// another\nmulti\n    line
-    static let Multiline2 = L10n.tr("LocMultiline", "MULTILINE2")
+    internal static let Multiline2 = L10n.tr("LocMultiline", "MULTILINE2")
     /// single line
-    static let Singleline = L10n.tr("LocMultiline", "SINGLELINE")
+    internal static let Singleline = L10n.tr("LocMultiline", "SINGLELINE")
     /// another single line
-    static let Singleline2 = L10n.tr("LocMultiline", "SINGLELINE2")
+    internal static let Singleline2 = L10n.tr("LocMultiline", "SINGLELINE2")
   }
 }
 // swiftlint:enable identifier_name line_length type_body_length

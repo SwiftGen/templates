@@ -6,62 +6,62 @@ import Foundation
 // swiftlint:disable file_length
 
 // swiftlint:disable explicit_type_interface identifier_name line_length nesting type_body_length type_name
-enum L10n {
-  enum Localizable {
+internal enum L10n {
+  internal enum Localizable {
     /// Some alert body there
-    static let alertMessage = L10n.tr("Localizable", "alert_message")
+    internal static let alertMessage = L10n.tr("Localizable", "alert_message")
     /// Title of the alert
-    static let alertTitle = L10n.tr("Localizable", "alert_title")
+    internal static let alertTitle = L10n.tr("Localizable", "alert_title")
     /// These are %3$@'s %1$d %2$@.
-    static func objectOwnership(_ p1: Int, _ p2: String, _ p3: String) -> String {
+    internal static func objectOwnership(_ p1: Int, _ p2: String, _ p3: String) -> String {
       return L10n.tr("Localizable", "ObjectOwnership", p1, p2, p3)
     }
     /// Hello, my name is %@ and I'm %d
-    static func `private`(_ p1: String, _ p2: Int) -> String {
+    internal static func `private`(_ p1: String, _ p2: Int) -> String {
       return L10n.tr("Localizable", "private", p1, p2)
     }
 
-    enum Apples {
+    internal enum Apples {
       /// You have %d apples
-      static func count(_ p1: Int) -> String {
+      internal static func count(_ p1: Int) -> String {
         return L10n.tr("Localizable", "apples.count", p1)
       }
     }
 
-    enum Bananas {
+    internal enum Bananas {
       /// Those %d bananas belong to %@.
-      static func owner(_ p1: Int, _ p2: String) -> String {
+      internal static func owner(_ p1: Int, _ p2: String) -> String {
         return L10n.tr("Localizable", "bananas.owner", p1, p2)
       }
     }
 
-    enum Settings {
+    internal enum Settings {
 
-      enum NavigationBar {
+      internal enum NavigationBar {
         /// Some Reserved Keyword there
-        static let `self` = L10n.tr("Localizable", "settings.navigation-bar.self")
+        internal static let `self` = L10n.tr("Localizable", "settings.navigation-bar.self")
 
-        enum Title {
+        internal enum Title {
 
-          enum Deeper {
+          internal enum Deeper {
 
-            enum Than {
+            internal enum Than {
 
-              enum We {
+              internal enum We {
 
-                enum Can {
+                internal enum Can {
 
-                  enum Handle {
+                  internal enum Handle {
 
-                    enum No {
+                    internal enum No {
 
-                      enum Really {
+                      internal enum Really {
 
-                        enum This {
+                        internal enum This {
 
-                          enum Is {
+                          internal enum Is {
                             /// DeepSettings
-                            static let deep = L10n.tr("Localizable", "settings.navigation-bar.title.deeper.than.we.can.handle.no.really.this.is.deep")
+                            internal static let deep = L10n.tr("Localizable", "settings.navigation-bar.title.deeper.than.we.can.handle.no.really.this.is.deep")
                           }
                         }
                       }
@@ -72,32 +72,32 @@ enum L10n {
             }
           }
 
-          enum Even {
+          internal enum Even {
             /// Settings
-            static let deeper = L10n.tr("Localizable", "settings.navigation-bar.title.even.deeper")
+            internal static let deeper = L10n.tr("Localizable", "settings.navigation-bar.title.even.deeper")
           }
         }
       }
 
-      enum UserProfileSection {
+      internal enum UserProfileSection {
         /// Here you can change some user profile settings.
-        static let footerText = L10n.tr("Localizable", "seTTings.uSer-proFile-sectioN.footer_text")
+        internal static let footerText = L10n.tr("Localizable", "seTTings.uSer-proFile-sectioN.footer_text")
         /// User Profile Settings
-        static let headerTitle = L10n.tr("Localizable", "SETTINGS.USER_PROFILE_SECTION.HEADER_TITLE")
+        internal static let headerTitle = L10n.tr("Localizable", "SETTINGS.USER_PROFILE_SECTION.HEADER_TITLE")
       }
     }
   }
-  enum LocMultiline {
+  internal enum LocMultiline {
     /// multi\nline
-    static let multiline = L10n.tr("LocMultiline", "MULTILINE")
+    internal static let multiline = L10n.tr("LocMultiline", "MULTILINE")
     /// test
-    static let multiLineKey = L10n.tr("LocMultiline", "multiLine\nKey")
+    internal static let multiLineKey = L10n.tr("LocMultiline", "multiLine\nKey")
     /// another\nmulti\n    line
-    static let multiline2 = L10n.tr("LocMultiline", "MULTILINE2")
+    internal static let multiline2 = L10n.tr("LocMultiline", "MULTILINE2")
     /// single line
-    static let singleline = L10n.tr("LocMultiline", "SINGLELINE")
+    internal static let singleline = L10n.tr("LocMultiline", "SINGLELINE")
     /// another single line
-    static let singleline2 = L10n.tr("LocMultiline", "SINGLELINE2")
+    internal static let singleline2 = L10n.tr("LocMultiline", "SINGLELINE2")
   }
 }
 // swiftlint:enable explicit_type_interface identifier_name line_length nesting type_body_length type_name

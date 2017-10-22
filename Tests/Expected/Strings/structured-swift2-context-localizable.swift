@@ -6,61 +6,61 @@ import Foundation
 // swiftlint:disable file_length
 
 // swiftlint:disable explicit_type_interface identifier_name line_length nesting type_body_length type_name
-enum L10n {
+internal enum L10n {
   /// Some alert body there
-  static let AlertMessage = L10n.tr("Localizable", "alert_message")
+  internal static let AlertMessage = L10n.tr("Localizable", "alert_message")
   /// Title of the alert
-  static let AlertTitle = L10n.tr("Localizable", "alert_title")
+  internal static let AlertTitle = L10n.tr("Localizable", "alert_title")
   /// These are %3$@'s %1$d %2$@.
-  static func ObjectOwnership(p1: Int, p2: String, p3: String) -> String {
+  internal static func ObjectOwnership(p1: Int, p2: String, p3: String) -> String {
     return L10n.tr("Localizable", "ObjectOwnership", p1, p2, p3)
   }
   /// Hello, my name is %@ and I'm %d
-  static func Private(p1: String, p2: Int) -> String {
+  internal static func Private(p1: String, p2: Int) -> String {
     return L10n.tr("Localizable", "private", p1, p2)
   }
 
-  enum Apples {
+  internal enum Apples {
     /// You have %d apples
-    static func Count(p1: Int) -> String {
+    internal static func Count(p1: Int) -> String {
       return L10n.tr("Localizable", "apples.count", p1)
     }
   }
 
-  enum Bananas {
+  internal enum Bananas {
     /// Those %d bananas belong to %@.
-    static func Owner(p1: Int, p2: String) -> String {
+    internal static func Owner(p1: Int, p2: String) -> String {
       return L10n.tr("Localizable", "bananas.owner", p1, p2)
     }
   }
 
-  enum Settings {
+  internal enum Settings {
 
-    enum NavigationBar {
+    internal enum NavigationBar {
       /// Some Reserved Keyword there
-      static let `Self` = L10n.tr("Localizable", "settings.navigation-bar.self")
+      internal static let `Self` = L10n.tr("Localizable", "settings.navigation-bar.self")
 
-      enum Title {
+      internal enum Title {
 
-        enum Deeper {
+        internal enum Deeper {
 
-          enum Than {
+          internal enum Than {
 
-            enum We {
+            internal enum We {
 
-              enum Can {
+              internal enum Can {
 
-                enum Handle {
+                internal enum Handle {
 
-                  enum No {
+                  internal enum No {
 
-                    enum Really {
+                    internal enum Really {
 
-                      enum This {
+                      internal enum This {
 
-                        enum Is {
+                        internal enum Is {
                           /// DeepSettings
-                          static let Deep = L10n.tr("Localizable", "settings.navigation-bar.title.deeper.than.we.can.handle.no.really.this.is.deep")
+                          internal static let Deep = L10n.tr("Localizable", "settings.navigation-bar.title.deeper.than.we.can.handle.no.really.this.is.deep")
                         }
                       }
                     }
@@ -71,18 +71,18 @@ enum L10n {
           }
         }
 
-        enum Even {
+        internal enum Even {
           /// Settings
-          static let Deeper = L10n.tr("Localizable", "settings.navigation-bar.title.even.deeper")
+          internal static let Deeper = L10n.tr("Localizable", "settings.navigation-bar.title.even.deeper")
         }
       }
     }
 
-    enum UserProfileSection {
+    internal enum UserProfileSection {
       /// Here you can change some user profile settings.
-      static let FooterText = L10n.tr("Localizable", "seTTings.uSer-proFile-sectioN.footer_text")
+      internal static let FooterText = L10n.tr("Localizable", "seTTings.uSer-proFile-sectioN.footer_text")
       /// User Profile Settings
-      static let HeaderTitle = L10n.tr("Localizable", "SETTINGS.USER_PROFILE_SECTION.HEADER_TITLE")
+      internal static let HeaderTitle = L10n.tr("Localizable", "SETTINGS.USER_PROFILE_SECTION.HEADER_TITLE")
     }
   }
 }

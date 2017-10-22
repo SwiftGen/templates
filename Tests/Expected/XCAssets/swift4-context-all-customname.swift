@@ -2,24 +2,24 @@
 
 #if os(OSX)
   import AppKit.NSImage
-  typealias XCTColor = NSColor
-  typealias XCTImage = NSImage
+  internal typealias XCTColor = NSColor
+  internal typealias XCTImage = NSImage
 #elseif os(iOS) || os(tvOS) || os(watchOS)
   import UIKit.UIImage
-  typealias XCTColor = UIColor
-  typealias XCTImage = UIImage
+  internal typealias XCTColor = UIColor
+  internal typealias XCTImage = UIImage
 #endif
 
 // swiftlint:disable superfluous_disable_command
 // swiftlint:disable file_length
 
 @available(*, deprecated, renamed: "XCTImageAsset")
-typealias XCTAssetsType = XCTImageAsset
+internal typealias XCTAssetsType = XCTImageAsset
 
-struct XCTImageAsset {
-  fileprivate(set) var name: String
+internal struct XCTImageAsset {
+  internal fileprivate(set) var name: String
 
-  var image: XCTImage {
+  internal var image: XCTImage {
     let bundle = Bundle(for: BundleToken.self)
     #if os(iOS) || os(tvOS)
     let image = XCTImage(named: name, in: bundle, compatibleWith: nil)
@@ -33,63 +33,63 @@ struct XCTImageAsset {
   }
 }
 
-struct XCTColorAsset {
-  fileprivate(set) var name: String
+internal struct XCTColorAsset {
+  internal fileprivate(set) var name: String
 
   @available(iOS 11.0, tvOS 11.0, watchOS 4.0, OSX 10.13, *)
-  var color: XCTColor {
+  internal var color: XCTColor {
     return XCTColor(asset: self)
   }
 }
 
 // swiftlint:disable identifier_name line_length nesting type_body_length type_name
-enum XCTAssets {
-  enum Colors {
-    enum _24Vision {
-      static let background = XCTColorAsset(name: "24Vision/Background")
-      static let primary = XCTColorAsset(name: "24Vision/Primary")
+internal enum XCTAssets {
+  internal enum Colors {
+    internal enum _24Vision {
+      internal static let background = XCTColorAsset(name: "24Vision/Background")
+      internal static let primary = XCTColorAsset(name: "24Vision/Primary")
     }
-    static let orange = XCTImageAsset(name: "Orange")
-    enum Vengo {
-      static let primary = XCTColorAsset(name: "Vengo/Primary")
-      static let tint = XCTColorAsset(name: "Vengo/Tint")
+    internal static let orange = XCTImageAsset(name: "Orange")
+    internal enum Vengo {
+      internal static let primary = XCTColorAsset(name: "Vengo/Primary")
+      internal static let tint = XCTColorAsset(name: "Vengo/Tint")
     }
 
     // swiftlint:disable trailing_comma
-    static let allColors: [XCTColorAsset] = [
+    internal static let allColors: [XCTColorAsset] = [
       _24Vision.background,
       _24Vision.primary,
       Vengo.primary,
       Vengo.tint,
     ]
-    static let allImages: [XCTImageAsset] = [
+    internal static let allImages: [XCTImageAsset] = [
       orange,
     ]
     // swiftlint:enable trailing_comma
     @available(*, deprecated, renamed: "allImages")
-    static let allValues: [XCTAssetsType] = allImages
+    internal static let allValues: [XCTAssetsType] = allImages
   }
-  enum Images {
-    enum Exotic {
-      static let banana = XCTImageAsset(name: "Exotic/Banana")
-      static let mango = XCTImageAsset(name: "Exotic/Mango")
+  internal enum Images {
+    internal enum Exotic {
+      internal static let banana = XCTImageAsset(name: "Exotic/Banana")
+      internal static let mango = XCTImageAsset(name: "Exotic/Mango")
     }
-    enum Round {
-      static let apricot = XCTImageAsset(name: "Round/Apricot")
-      enum Red {
-        static let apple = XCTImageAsset(name: "Round/Apple")
-        enum Double {
-          static let cherry = XCTImageAsset(name: "Round/Double/Cherry")
+    internal enum Round {
+      internal static let apricot = XCTImageAsset(name: "Round/Apricot")
+      internal enum Red {
+        internal static let apple = XCTImageAsset(name: "Round/Apple")
+        internal enum Double {
+          internal static let cherry = XCTImageAsset(name: "Round/Double/Cherry")
         }
-        static let tomato = XCTImageAsset(name: "Round/Tomato")
+        internal static let tomato = XCTImageAsset(name: "Round/Tomato")
       }
     }
-    static let `private` = XCTImageAsset(name: "private")
+    internal static let `private` = XCTImageAsset(name: "private")
 
     // swiftlint:disable trailing_comma
-    static let allColors: [XCTColorAsset] = [
+    internal static let allColors: [XCTColorAsset] = [
     ]
-    static let allImages: [XCTImageAsset] = [
+    internal static let allImages: [XCTImageAsset] = [
       Exotic.banana,
       Exotic.mango,
       Round.apricot,
@@ -100,12 +100,12 @@ enum XCTAssets {
     ]
     // swiftlint:enable trailing_comma
     @available(*, deprecated, renamed: "allImages")
-    static let allValues: [XCTAssetsType] = allImages
+    internal static let allValues: [XCTAssetsType] = allImages
   }
 }
 // swiftlint:enable identifier_name line_length nesting type_body_length type_name
 
-extension XCTImage {
+internal extension XCTImage {
   @available(iOS 1.0, tvOS 1.0, watchOS 1.0, *)
   @available(OSX, deprecated,
     message: "This initializer is unsafe on macOS, please use the XCTImageAsset.image property")
@@ -121,7 +121,7 @@ extension XCTImage {
   }
 }
 
-extension XCTColor {
+internal extension XCTColor {
   @available(iOS 11.0, tvOS 11.0, watchOS 4.0, OSX 10.13, *)
   convenience init!(asset: XCTColorAsset) {
     let bundle = Bundle(for: BundleToken.self)

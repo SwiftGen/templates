@@ -2,22 +2,22 @@
 
 #if os(OSX)
   import AppKit.NSImage
-  typealias Image = NSImage
+  internal typealias Image = NSImage
 #elseif os(iOS) || os(tvOS) || os(watchOS)
   import UIKit.UIImage
-  typealias Image = UIImage
+  internal typealias Image = UIImage
 #endif
 
 // swiftlint:disable superfluous_disable_command
 // swiftlint:disable file_length
 
 @available(*, deprecated, renamed: "ImageAsset")
-typealias AssetType = ImageAsset
+internal typealias AssetType = ImageAsset
 
-struct ImageAsset {
-  private(set) var name: String
+internal struct ImageAsset {
+  internal private(set) var name: String
 
-  var image: Image {
+  internal var image: Image {
     let bundle = NSBundle(forClass: BundleToken.self)
     #if os(iOS) || os(tvOS)
     let image = Image(named: name, inBundle: bundle, compatibleWithTraitCollection: nil)
@@ -31,58 +31,58 @@ struct ImageAsset {
   }
 }
 
-struct ColorAsset {
-  fileprivate(set) var name: String
+internal struct ColorAsset {
+  internal fileprivate(set) var name: String
 }
 
 // swiftlint:disable identifier_name line_length nesting type_body_length type_name
-enum Asset {
-  enum Colors {
-    enum _24Vision {
-      static let Background = ColorAsset(name: "24Vision/Background")
-      static let Primary = ColorAsset(name: "24Vision/Primary")
+internal enum Asset {
+  internal enum Colors {
+    internal enum _24Vision {
+      internal static let Background = ColorAsset(name: "24Vision/Background")
+      internal static let Primary = ColorAsset(name: "24Vision/Primary")
     }
-    static let Orange = ImageAsset(name: "Orange")
-    enum Vengo {
-      static let Primary = ColorAsset(name: "Vengo/Primary")
-      static let Tint = ColorAsset(name: "Vengo/Tint")
+    internal static let Orange = ImageAsset(name: "Orange")
+    internal enum Vengo {
+      internal static let Primary = ColorAsset(name: "Vengo/Primary")
+      internal static let Tint = ColorAsset(name: "Vengo/Tint")
     }
 
     // swiftlint:disable trailing_comma
-    static let allColors: [ColorAsset] = [
+    internal static let allColors: [ColorAsset] = [
       _24Vision.Background,
       _24Vision.Primary,
       Vengo.Primary,
       Vengo.Tint,
     ]
-    static let allImages: [ImageAsset] = [
+    internal static let allImages: [ImageAsset] = [
       Orange,
     ]
     // swiftlint:enable trailing_comma
     @available(*, deprecated, renamed: "allImages")
-    static let allValues: [AssetType] = allImages
+    internal static let allValues: [AssetType] = allImages
   }
-  enum Images {
-    enum Exotic {
-      static let Banana = ImageAsset(name: "Exotic/Banana")
-      static let Mango = ImageAsset(name: "Exotic/Mango")
+  internal enum Images {
+    internal enum Exotic {
+      internal static let Banana = ImageAsset(name: "Exotic/Banana")
+      internal static let Mango = ImageAsset(name: "Exotic/Mango")
     }
-    enum Round {
-      static let Apricot = ImageAsset(name: "Round/Apricot")
-      enum Red {
-        static let Apple = ImageAsset(name: "Round/Apple")
-        enum Double {
-          static let Cherry = ImageAsset(name: "Round/Double/Cherry")
+    internal enum Round {
+      internal static let Apricot = ImageAsset(name: "Round/Apricot")
+      internal enum Red {
+        internal static let Apple = ImageAsset(name: "Round/Apple")
+        internal enum Double {
+          internal static let Cherry = ImageAsset(name: "Round/Double/Cherry")
         }
-        static let Tomato = ImageAsset(name: "Round/Tomato")
+        internal static let Tomato = ImageAsset(name: "Round/Tomato")
       }
     }
-    static let Private = ImageAsset(name: "private")
+    internal static let Private = ImageAsset(name: "private")
 
     // swiftlint:disable trailing_comma
-    static let allColors: [ColorAsset] = [
+    internal static let allColors: [ColorAsset] = [
     ]
-    static let allImages: [ImageAsset] = [
+    internal static let allImages: [ImageAsset] = [
       Exotic.Banana,
       Exotic.Mango,
       Round.Apricot,
@@ -93,12 +93,12 @@ enum Asset {
     ]
     // swiftlint:enable trailing_comma
     @available(*, deprecated, renamed: "allImages")
-    static let allValues: [AssetType] = allImages
+    internal static let allValues: [AssetType] = allImages
   }
 }
 // swiftlint:enable identifier_name line_length nesting type_body_length type_name
 
-extension Image {
+internal extension Image {
   @available(iOS 1.0, tvOS 1.0, watchOS 1.0, *)
   @available(OSX, deprecated,
     message: "This initializer is unsafe on macOS, please use the ImageAsset.image property")
