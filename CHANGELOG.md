@@ -2,7 +2,7 @@
 
 ---
 
-## Master
+## 2.2.0
 
 ### Bug Fixes
 
@@ -18,19 +18,11 @@
   [SwiftGen/SwiftGen#334](https://github.com/SwiftGen/SwiftGen/issues/334)
   [#83](https://github.com/SwiftGen/templates/pull/83)
 
-### Breaking Changes
-
-_None_
-
 ### New Features
 
 * Storyboards: Added a new `ignoreTargetModule` parameter if you're using storyboards in multiple targets, to avoid issues with the generated code.  
   [Julien Quéré](https://github.com/juli1quere)
   [#36](https://github.com/SwiftGen/templates/pull/36)
-
-### Internal Changes
-
-_None_
 
 ## 2.1.1
 
