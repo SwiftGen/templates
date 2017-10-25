@@ -134,13 +134,11 @@ class Utils
     # if current Xcode already fulfills min version don't force DEVELOPER_DIR=...
     current_xcode = Pathname.new(`xcode-select -p`).parent.parent
     current_xcode_version = `mdls -name kMDItemVersion -raw "#{current_xcode}"`.chomp
-    puts "Current Xcode: #{current_xcode} (#{current_xcode_version})"
     return '' if current_xcode_version.to_f >= min_version.to_f
 
     # Get all available Xcodes, order by version, get the latest one
     xcodes = `mdfind "kMDItemCFBundleIdentifier = 'com.apple.dt.Xcode'"`.chomp.split("\n")
     versions = xcodes.map { |path| { vers: `mdls -name kMDItemVersion -raw "#{path}"`, path: path } }
-    puts "Found versions: #{versions}"
     latest_xcode = versions.sort_by { |a| a[:vers] }.last
 
     # Check if it's at least the right version
