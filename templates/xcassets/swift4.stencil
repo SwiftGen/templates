@@ -22,7 +22,7 @@
 typealias {{enumName}}Type = {{imageType}}
 
 struct {{imageType}} {
-  fileprivate var name: String
+  fileprivate(set) var name: String
 
   var image: {{imageAlias}} {
     let bundle = Bundle(for: BundleToken.self)
