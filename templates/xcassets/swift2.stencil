@@ -19,7 +19,7 @@
 typealias {{enumName}}Type = {{imageType}}
 
 struct {{imageType}} {
-  private var name: String
+  private(set) var name: String
 
   var image: {{imageAlias}} {
     let bundle = NSBundle(forClass: BundleToken.self)
