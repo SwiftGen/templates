@@ -130,18 +130,23 @@ class Utils
   end
   private_class_method :version_select
 
+  # Return the "DEVELOPER_DIR=..." prefix to use in order to point to the best Xcode version
+  #
+  # @param [String|Float|Gem::Requirement] version_req
+  #        The Xcode version requirement.
+  #        - If it's a Float, it's converted to a "~> x.y" requirement
+  #        - If it's a String, it's converted to a Gem::Requirement as is
+  # @note If you pass a String, be sure to use "~> " in the string unless you really want
+  #       to point to an exact, very specific version
+  #
   def self.compute_developer_dir(version_req)
+    version_req = Gem::Requirement.new("~> #{version_req}") if version_req.is_a?(Float)
     version_req = Gem::Requirement.new(version_req) unless version_req.is_a?(Gem::Requirement)
     # if current Xcode already fulfills min version don't force DEVELOPER_DIR=...
     current_xcode_version = `xcodebuild -version`.split("\n").first.match(/[0-9.]+/).to_s
     return '' if version_req.satisfied_by? Gem::Version.new(current_xcode_version)
 
-    # Get all available Xcodes, order by version, get the latest one
-    xcodes = `mdfind "kMDItemCFBundleIdentifier = 'com.apple.dt.Xcode'"`.chomp.split("\n")
-    all_versions = xcodes.map do |path|
-      { vers: Gem::Version.new(`mdls -name kMDItemVersion -raw "#{path}"`), path: path }
-    end
-    supported_versions = all_versions.select { |app| version_req.satisfied_by?(app[:vers]) }
+    supported_versions = all_xcode_versions.select { |app| version_req.satisfied_by?(app[:vers]) }
     latest_supported_xcode = supported_versions.sort_by { |app| app[:vers] }.last
 
     # Check if it's at least the right version
@@ -154,6 +159,16 @@ class Utils
     %(DEVELOPER_DIR="#{latest_supported_xcode[:path]}/Contents/Developer")
   end
   private_class_method :compute_developer_dir
+
+  # @return [Array<Hash>] A list of { :vers => ... , :path => ... } hashes
+  #                       of all Xcodes found on the machine using Spotlight
+  def self.all_xcode_versions
+    xcodes = `mdfind "kMDItemCFBundleIdentifier = 'com.apple.dt.Xcode'"`.chomp.split("\n")
+    xcodes.map do |path|
+      { vers: Gem::Version.new(`mdls -name kMDItemVersion -raw "#{path}"`), path: path }
+    end
+  end
+  private_class_method :all_xcode_versions
 end
 
 # Colorization support for Strings
