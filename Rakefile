@@ -6,7 +6,7 @@ require 'English'
 WORKSPACE = 'Templates'.freeze
 SCHEME_NAME = 'Tests'.freeze
 CONFIGURATION = 'Debug'.freeze
-MIN_XCODE_VERSION = 9.0
+MIN_XCODE_VERSION = '~> 9.0'
 
 ## [ Output compilation ] #####################################################
 
