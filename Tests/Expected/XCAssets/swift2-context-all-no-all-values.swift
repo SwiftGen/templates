@@ -15,7 +15,7 @@
 typealias AssetType = ImageAsset
 
 struct ImageAsset {
-  private var name: String
+  private(set) var name: String
 
   var image: Image {
     let bundle = NSBundle(forClass: BundleToken.self)

@@ -6,7 +6,9 @@
 
 ### Bug Fixes
 
-_None_
+* XCAssets: exposed getter for image name string.  
+  [Abbey Jackson](https://github.com/abbeyjackson)
+  [#85](https://github.com/SwiftGen/templates/pull/85)
 
 ### Breaking Changes
 
