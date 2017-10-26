@@ -17,7 +17,7 @@
 typealias AssetType = ImageAsset
 
 struct ImageAsset {
-  fileprivate var name: String
+  fileprivate(set) var name: String
 
   var image: Image {
     let bundle = Bundle(for: BundleToken.self)

@@ -15,7 +15,7 @@
 typealias XCTAssetsType = XCTImageAsset
 
 struct XCTImageAsset {
-  private var name: String
+  private(set) var name: String
 
   var image: XCTImage {
     let bundle = NSBundle(forClass: BundleToken.self)
