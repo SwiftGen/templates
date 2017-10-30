@@ -37,7 +37,7 @@ struct {{imageType}} {
 
 {% set colorType %}{{param.colorTypeName|default:"ColorAsset"}}{% endset %}
 struct {{colorType}} {
-  fileprivate var name: String
+  fileprivate(set) var name: String
 }
 {% macro enumBlock assets sp %}
 {{sp}}  {% call casesBlock assets sp %}
