@@ -16,7 +16,9 @@ _None_
 
 ### New Features
 
-_None_
+* XCAssets: exposed getter for color name string.  
+  [Stephan Diederich](https://github.com/diederich)
+  [#87](https://github.com/SwiftGen/templates/pull/87)
 
 ### Internal Changes
 
