@@ -6,9 +6,7 @@
 
 ### Bug Fixes
 
-* XCAssets: exposed getter for image name string.  
-  [Abbey Jackson](https://github.com/abbeyjackson)
-  [#85](https://github.com/SwiftGen/templates/pull/85)
+_None_
 
 ### Breaking Changes
 
@@ -16,6 +14,9 @@ _None_
 
 ### New Features
 
+* XCAssets: exposed getter for image name string.  
+  [Abbey Jackson](https://github.com/abbeyjackson)
+  [#85](https://github.com/SwiftGen/templates/pull/85)
 * XCAssets: exposed getter for color name string.  
   [Stephan Diederich](https://github.com/diederich)
   [#87](https://github.com/SwiftGen/templates/pull/87)
