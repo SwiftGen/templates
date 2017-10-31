@@ -34,7 +34,7 @@ struct ImageAsset {
 }
 
 struct ColorAsset {
-  fileprivate var name: String
+  fileprivate(set) var name: String
 
   @available(iOS 11.0, tvOS 11.0, watchOS 4.0, OSX 10.13, *)
   var color: AssetColorTypeAlias {

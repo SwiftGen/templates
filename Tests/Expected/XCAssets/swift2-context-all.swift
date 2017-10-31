@@ -32,7 +32,7 @@ struct ImageAsset {
 }
 
 struct ColorAsset {
-  fileprivate var name: String
+  fileprivate(set) var name: String
 }
 
 // swiftlint:disable identifier_name line_length nesting type_body_length type_name
