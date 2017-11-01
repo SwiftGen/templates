@@ -8,21 +8,21 @@ import PrefsWindowController
 // swiftlint:disable superfluous_disable_command
 // swiftlint:disable file_length
 
-protocol StoryboardType {
+internal protocol StoryboardType {
   static var storyboardName: String { get }
 }
 
-extension StoryboardType {
+internal extension StoryboardType {
   static var storyboard: NSStoryboard {
     return NSStoryboard(name: self.storyboardName, bundle: Bundle(for: BundleToken.self))
   }
 }
 
-struct SceneType<T: Any> {
-  let storyboard: StoryboardType.Type
-  let identifier: String
+internal struct SceneType<T: Any> {
+  internal let storyboard: StoryboardType.Type
+  internal let identifier: String
 
-  func instantiate() -> T {
+  internal func instantiate() -> T {
     guard let controller = storyboard.storyboard.instantiateController(withIdentifier: identifier) as? T else {
       fatalError("Controller '\(identifier)' is not of the expected class \(T.self).")
     }
@@ -30,10 +30,10 @@ struct SceneType<T: Any> {
   }
 }
 
-struct InitialSceneType<T: Any> {
-  let storyboard: StoryboardType.Type
+internal struct InitialSceneType<T: Any> {
+  internal let storyboard: StoryboardType.Type
 
-  func instantiate() -> T {
+  internal func instantiate() -> T {
     guard let controller = storyboard.storyboard.instantiateInitialController() as? T else {
       fatalError("Controller is not of the expected class \(T.self).")
     }
@@ -41,55 +41,55 @@ struct InitialSceneType<T: Any> {
   }
 }
 
-protocol SegueType: RawRepresentable { }
+internal protocol SegueType: RawRepresentable { }
 
-extension NSSeguePerforming {
+internal extension NSSeguePerforming {
   func perform<S: SegueType>(segue: S, sender: Any? = nil) where S.RawValue == String {
     performSegue?(withIdentifier: segue.rawValue, sender: sender)
   }
 }
 
 // swiftlint:disable explicit_type_interface identifier_name line_length type_body_length type_name
-enum StoryboardScene {
-  enum AdditionalImport: StoryboardType {
-    static let storyboardName = "AdditionalImport"
+internal enum StoryboardScene {
+  internal enum AdditionalImport: StoryboardType {
+    internal static let storyboardName = "AdditionalImport"
 
-    static let `private` = SceneType<PrefsWindowController.DBPrefsWindowController>(storyboard: AdditionalImport.self, identifier: "private")
+    internal static let `private` = SceneType<PrefsWindowController.DBPrefsWindowController>(storyboard: AdditionalImport.self, identifier: "private")
   }
-  enum Anonymous: StoryboardType {
-    static let storyboardName = "Anonymous"
+  internal enum Anonymous: StoryboardType {
+    internal static let storyboardName = "Anonymous"
   }
-  enum Dependency: StoryboardType {
-    static let storyboardName = "Dependency"
+  internal enum Dependency: StoryboardType {
+    internal static let storyboardName = "Dependency"
 
-    static let dependent = SceneType<NSViewController>(storyboard: Dependency.self, identifier: "Dependent")
+    internal static let dependent = SceneType<NSViewController>(storyboard: Dependency.self, identifier: "Dependent")
   }
-  enum Message: StoryboardType {
-    static let storyboardName = "Message"
+  internal enum Message: StoryboardType {
+    internal static let storyboardName = "Message"
 
-    static let messageDetails = SceneType<NSViewController>(storyboard: Message.self, identifier: "MessageDetails")
+    internal static let messageDetails = SceneType<NSViewController>(storyboard: Message.self, identifier: "MessageDetails")
 
-    static let messageList = SceneType<NSViewController>(storyboard: Message.self, identifier: "MessageList")
+    internal static let messageList = SceneType<NSViewController>(storyboard: Message.self, identifier: "MessageList")
 
-    static let messageListFooter = SceneType<NSViewController>(storyboard: Message.self, identifier: "MessageListFooter")
+    internal static let messageListFooter = SceneType<NSViewController>(storyboard: Message.self, identifier: "MessageListFooter")
 
-    static let messagesTab = SceneType<CustomTabViewController>(storyboard: Message.self, identifier: "MessagesTab")
+    internal static let messagesTab = SceneType<CustomTabViewController>(storyboard: Message.self, identifier: "MessagesTab")
 
-    static let splitMessages = SceneType<NSSplitViewController>(storyboard: Message.self, identifier: "SplitMessages")
+    internal static let splitMessages = SceneType<NSSplitViewController>(storyboard: Message.self, identifier: "SplitMessages")
 
-    static let windowCtrl = SceneType<NSWindowController>(storyboard: Message.self, identifier: "WindowCtrl")
+    internal static let windowCtrl = SceneType<NSWindowController>(storyboard: Message.self, identifier: "WindowCtrl")
   }
-  enum Placeholder: StoryboardType {
-    static let storyboardName = "Placeholder"
+  internal enum Placeholder: StoryboardType {
+    internal static let storyboardName = "Placeholder"
 
-    static let dependent = SceneType<NSControllerPlaceholder>(storyboard: Placeholder.self, identifier: "Dependent")
+    internal static let dependent = SceneType<NSControllerPlaceholder>(storyboard: Placeholder.self, identifier: "Dependent")
 
-    static let window = SceneType<NSWindowController>(storyboard: Placeholder.self, identifier: "Window")
+    internal static let window = SceneType<NSWindowController>(storyboard: Placeholder.self, identifier: "Window")
   }
 }
 
-enum StoryboardSegue {
-  enum Message: String, SegueType {
+internal enum StoryboardSegue {
+  internal enum Message: String, SegueType {
     case embed = "Embed"
     case modal = "Modal"
     case popover = "Popover"

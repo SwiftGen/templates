@@ -1,0 +1,25 @@
+AllCops:
+  Exclude:
+    - SwiftGenKit/Tests/Resources/**/*
+    - SwiftGen/Resources/**/*
+
+Style/HashSyntax:
+  Enabled: false
+
+Lint/RescueWithoutErrorClass:
+  Enabled: false
+
+Metrics/AbcSize:
+  Max: 24
+
+Metrics/BlockLength:
+  Enabled: false
+
+Metrics/LineLength:
+  Max: 140
+
+Metrics/MethodLength:
+  Max: 30
+
+Metrics/ClassLength:
+  Max: 120

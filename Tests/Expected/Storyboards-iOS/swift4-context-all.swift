@@ -10,22 +10,22 @@ import SlackTextViewController
 // swiftlint:disable superfluous_disable_command
 // swiftlint:disable file_length
 
-protocol StoryboardType {
+internal protocol StoryboardType {
   static var storyboardName: String { get }
 }
 
-extension StoryboardType {
+internal extension StoryboardType {
   static var storyboard: UIStoryboard {
     let name = self.storyboardName
     return UIStoryboard(name: name, bundle: Bundle(for: BundleToken.self))
   }
 }
 
-struct SceneType<T: Any> {
-  let storyboard: StoryboardType.Type
-  let identifier: String
+internal struct SceneType<T: Any> {
+  internal let storyboard: StoryboardType.Type
+  internal let identifier: String
 
-  func instantiate() -> T {
+  internal func instantiate() -> T {
     let identifier = self.identifier
     guard let controller = storyboard.storyboard.instantiateViewController(withIdentifier: identifier) as? T else {
       fatalError("ViewController '\(identifier)' is not of the expected class \(T.self).")
@@ -34,10 +34,10 @@ struct SceneType<T: Any> {
   }
 }
 
-struct InitialSceneType<T: Any> {
-  let storyboard: StoryboardType.Type
+internal struct InitialSceneType<T: Any> {
+  internal let storyboard: StoryboardType.Type
 
-  func instantiate() -> T {
+  internal func instantiate() -> T {
     guard let controller = storyboard.storyboard.instantiateInitialViewController() as? T else {
       fatalError("ViewController is not of the expected class \(T.self).")
     }
@@ -45,9 +45,9 @@ struct InitialSceneType<T: Any> {
   }
 }
 
-protocol SegueType: RawRepresentable { }
+internal protocol SegueType: RawRepresentable { }
 
-extension UIViewController {
+internal extension UIViewController {
   func perform<S: SegueType>(segue: S, sender: Any? = nil) where S.RawValue == String {
     let identifier = segue.rawValue
     performSegue(withIdentifier: identifier, sender: sender)
@@ -55,68 +55,68 @@ extension UIViewController {
 }
 
 // swiftlint:disable explicit_type_interface identifier_name line_length type_body_length type_name
-enum StoryboardScene {
-  enum AdditionalImport: StoryboardType {
-    static let storyboardName = "AdditionalImport"
+internal enum StoryboardScene {
+  internal enum AdditionalImport: StoryboardType {
+    internal static let storyboardName = "AdditionalImport"
 
-    static let initialScene = InitialSceneType<LocationPicker.LocationPickerViewController>(storyboard: AdditionalImport.self)
+    internal static let initialScene = InitialSceneType<LocationPicker.LocationPickerViewController>(storyboard: AdditionalImport.self)
 
-    static let `public` = SceneType<SlackTextViewController.SLKTextViewController>(storyboard: AdditionalImport.self, identifier: "public")
+    internal static let `public` = SceneType<SlackTextViewController.SLKTextViewController>(storyboard: AdditionalImport.self, identifier: "public")
   }
-  enum Anonymous: StoryboardType {
-    static let storyboardName = "Anonymous"
+  internal enum Anonymous: StoryboardType {
+    internal static let storyboardName = "Anonymous"
 
-    static let initialScene = InitialSceneType<UINavigationController>(storyboard: Anonymous.self)
+    internal static let initialScene = InitialSceneType<UINavigationController>(storyboard: Anonymous.self)
   }
-  enum Dependency: StoryboardType {
-    static let storyboardName = "Dependency"
+  internal enum Dependency: StoryboardType {
+    internal static let storyboardName = "Dependency"
 
-    static let dependent = SceneType<UIViewController>(storyboard: Dependency.self, identifier: "Dependent")
+    internal static let dependent = SceneType<UIViewController>(storyboard: Dependency.self, identifier: "Dependent")
   }
-  enum Message: StoryboardType {
-    static let storyboardName = "Message"
+  internal enum Message: StoryboardType {
+    internal static let storyboardName = "Message"
 
-    static let initialScene = InitialSceneType<UIViewController>(storyboard: Message.self)
+    internal static let initialScene = InitialSceneType<UIViewController>(storyboard: Message.self)
 
-    static let composer = SceneType<UIViewController>(storyboard: Message.self, identifier: "Composer")
+    internal static let composer = SceneType<UIViewController>(storyboard: Message.self, identifier: "Composer")
 
-    static let messagesList = SceneType<UITableViewController>(storyboard: Message.self, identifier: "MessagesList")
+    internal static let messagesList = SceneType<UITableViewController>(storyboard: Message.self, identifier: "MessagesList")
 
-    static let navCtrl = SceneType<UINavigationController>(storyboard: Message.self, identifier: "NavCtrl")
+    internal static let navCtrl = SceneType<UINavigationController>(storyboard: Message.self, identifier: "NavCtrl")
 
-    static let urlChooser = SceneType<XXPickerViewController>(storyboard: Message.self, identifier: "URLChooser")
+    internal static let urlChooser = SceneType<XXPickerViewController>(storyboard: Message.self, identifier: "URLChooser")
   }
-  enum Placeholder: StoryboardType {
-    static let storyboardName = "Placeholder"
+  internal enum Placeholder: StoryboardType {
+    internal static let storyboardName = "Placeholder"
 
-    static let navigation = SceneType<UINavigationController>(storyboard: Placeholder.self, identifier: "Navigation")
+    internal static let navigation = SceneType<UINavigationController>(storyboard: Placeholder.self, identifier: "Navigation")
   }
-  enum Wizard: StoryboardType {
-    static let storyboardName = "Wizard"
+  internal enum Wizard: StoryboardType {
+    internal static let storyboardName = "Wizard"
 
-    static let initialScene = InitialSceneType<CreateAccViewController>(storyboard: Wizard.self)
+    internal static let initialScene = InitialSceneType<CreateAccViewController>(storyboard: Wizard.self)
 
-    static let acceptCGU = SceneType<UIViewController>(storyboard: Wizard.self, identifier: "Accept-CGU")
+    internal static let acceptCGU = SceneType<UIViewController>(storyboard: Wizard.self, identifier: "Accept-CGU")
 
-    static let createAccount = SceneType<CreateAccViewController>(storyboard: Wizard.self, identifier: "CreateAccount")
+    internal static let createAccount = SceneType<CreateAccViewController>(storyboard: Wizard.self, identifier: "CreateAccount")
 
-    static let preferences = SceneType<UITableViewController>(storyboard: Wizard.self, identifier: "Preferences")
+    internal static let preferences = SceneType<UITableViewController>(storyboard: Wizard.self, identifier: "Preferences")
 
-    static let validatePassword = SceneType<UIViewController>(storyboard: Wizard.self, identifier: "Validate_Password")
+    internal static let validatePassword = SceneType<UIViewController>(storyboard: Wizard.self, identifier: "Validate_Password")
   }
 }
 
-enum StoryboardSegue {
-  enum AdditionalImport: String, SegueType {
+internal enum StoryboardSegue {
+  internal enum AdditionalImport: String, SegueType {
     case `private`
   }
-  enum Message: String, SegueType {
+  internal enum Message: String, SegueType {
     case customBack = "CustomBack"
     case embed = "Embed"
     case nonCustom = "NonCustom"
     case showNavCtrl = "Show-NavCtrl"
   }
-  enum Wizard: String, SegueType {
+  internal enum Wizard: String, SegueType {
     case showPassword = "ShowPassword"
   }
 }

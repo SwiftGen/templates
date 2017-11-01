@@ -20,6 +20,11 @@ _None_
 * XCAssets: exposed getter for color name string.  
   [Stephan Diederich](https://github.com/diederich)
   [#87](https://github.com/SwiftGen/templates/pull/87)
+* Allows to set all properties as `public` by using `--param publicAccess` on all templates.  
+  [Olivier Halligon](https://github.com/AliSoftware)
+  [#84](https://github.com/SwiftGen/templates/pull/84)
+  [Txai Wieser](https://github.com/txaiwieser)
+  [#81](https://github.com/SwiftGen/templates/pull/81)
 
 ### Internal Changes
 

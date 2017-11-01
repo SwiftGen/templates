@@ -50,7 +50,10 @@ class StoryboardsiOSTests: XCTestCase {
        suffix: ""),
       (context: try StencilContext.enrich(context: context,
                                           parameters: ["module=SlackTextViewController", "ignoreTargetModule"]),
-       suffix: "-ignore-module-need-extra-definitions")
+       suffix: "-ignore-module-need-extra-definitions"),
+      (context: try StencilContext.enrich(context: context,
+                                          parameters: ["publicAccess"]),
+       suffix: "-publicAccess")
     ]
   }
 

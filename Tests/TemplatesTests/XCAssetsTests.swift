@@ -28,7 +28,10 @@ class XCAssetsTests: XCTestCase {
        suffix: "-customname"),
       (context: try StencilContext.enrich(context: context,
                                           parameters: ["noAllValues"]),
-       suffix: "-no-all-values")
+       suffix: "-no-all-values"),
+      (context: try StencilContext.enrich(context: context,
+                                          parameters: ["publicAccess"]),
+       suffix: "-publicAccess")
     ]
   }
 

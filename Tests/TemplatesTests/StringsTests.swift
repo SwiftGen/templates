@@ -24,7 +24,10 @@ class StringsTests: XCTestCase {
        suffix: "-customname"),
       (context: try StencilContext.enrich(context: context,
                                           parameters: ["noComments"]),
-       suffix: "-no-comments")
+       suffix: "-no-comments"),
+      (context: try StencilContext.enrich(context: context,
+                                          parameters: ["publicAccess"]),
+       suffix: "-publicAccess")
     ]
   }
 
