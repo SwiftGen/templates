@@ -6,7 +6,7 @@ require 'English'
 WORKSPACE = 'Templates'.freeze
 SCHEME_NAME = 'Tests'.freeze
 CONFIGURATION = 'Debug'.freeze
-MIN_XCODE_VERSION = '~> 9.0'
+MIN_XCODE_VERSION = '~> 9.0'.freeze
 
 ## [ Output compilation ] #####################################################
 
@@ -125,11 +125,11 @@ namespace :output do
     end
     sdks = sdks(f)
 
-    if f.include?('publicAccess')
-      defs = ["#{MODULE_OUTPUT_PATH}/PublicDefinitions.swift"]
-    else
-      defs = ["#{MODULE_OUTPUT_PATH}/Definitions.swift"]
-    end
+    defs = if f.include?('publicAccess')
+             ["#{MODULE_OUTPUT_PATH}/PublicDefinitions.swift"]
+           else
+             defs = ["#{MODULE_OUTPUT_PATH}/Definitions.swift"]
+           end
     defs << "#{MODULE_OUTPUT_PATH}/ExtraDefinitions.swift" if f.include?('extra-definitions')
 
     commands = sdks.map do |sdk|
