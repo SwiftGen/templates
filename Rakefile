@@ -125,15 +125,16 @@ namespace :output do
     end
     sdks = sdks(f)
 
-    definitions = if f.include?('extra-definitions')
-                    %("#{MODULE_OUTPUT_PATH}/Definitions.swift" "#{MODULE_OUTPUT_PATH}/ExtraDefinitions.swift")
-                  else
-                    definitions = %("#{MODULE_OUTPUT_PATH}/Definitions.swift")
-                  end
+    if f.include?('publicAccess')
+      defs = ["#{MODULE_OUTPUT_PATH}/PublicDefinitions.swift"]
+    else
+      defs = ["#{MODULE_OUTPUT_PATH}/Definitions.swift"]
+    end
+    defs << "#{MODULE_OUTPUT_PATH}/ExtraDefinitions.swift" if f.include?('extra-definitions')
 
     commands = sdks.map do |sdk|
       %(--toolchain #{toolchain[:toolchain]} -sdk #{sdk} swiftc -swift-version #{toolchain[:version]} ) +
-        %(-typecheck -target #{SDKS[sdk]} -I #{toolchain[:module_path]} #{definitions} #{f})
+        %(-typecheck -target #{SDKS[sdk]} -I #{toolchain[:module_path]} #{defs.join(' ')} #{f})
     end
     subtask = File.basename(f, '.*')
 
