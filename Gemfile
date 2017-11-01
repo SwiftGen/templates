@@ -2,7 +2,7 @@
 
 source 'https://rubygems.org'
 
-gem 'cocoapods', '1.3.1'
+gem 'cocoapods', '~> 1.3'
 gem 'octokit', '~> 4.7'
-gem 'rake'
+gem 'rake', '~> 10.4'
 gem 'xcpretty'
