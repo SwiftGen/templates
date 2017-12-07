@@ -1,3 +1,7 @@
+# :warning: Deprecated :warning:
+
+This repository has been merged into the main [SwiftGen repository](https://github.com/SwiftGen/SwiftGen/).
+
 # SwiftGen Templates
 
 [![CircleCI](https://circleci.com/gh/SwiftGen/templates/tree/master.svg?style=svg)](https://circleci.com/gh/SwiftGen/templates/tree/master)
